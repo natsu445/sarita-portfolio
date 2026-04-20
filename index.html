@@ -240,6 +240,32 @@ footer a:hover{color:var(--g)}
   font-size:24px;transition:color .2s;
 }
 .lightbox-close:hover{color:white}
+
+/* ── VISUAL DESIGN GALLERY ── */
+.visual-section-wrap { margin-bottom: 2.5rem }
+.visual-section-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--g); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.visual-section-label::after { content:''; flex:1; height:1px; background:var(--g-pale) }
+
+.visual-masonry {
+  columns: 3; column-gap: 10px;
+}
+.visual-masonry-img {
+  display: block; width: 100%; margin-bottom: 10px;
+  border-radius: 8px; object-fit: cover;
+  border: 1px solid var(--border);
+  transition: transform .2s, box-shadow .2s;
+  break-inside: avoid;
+}
+.visual-masonry-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 28px rgba(0,0,0,.12);
+}
+@media(max-width:700px){ .visual-masonry { columns: 2 } }
+@media(max-width:420px){ .visual-masonry { columns: 1 } }
 </style>
 </head>
 <body>
@@ -433,11 +459,46 @@ footer a:hover{color:var(--g)}
       <h2 class="section-title">Visual Design</h2>
       <div class="section-line"></div>
     </div>
-    <div class="visual-grid">
-      <div class="visual-card reveal"><div class="visual-thumb t-rose">旅遊</div><div class="visual-body"><div class="visual-title">Travel</div><div class="visual-sub">旅遊主題平面設計創作</div></div></div>
-      <div class="visual-card reveal reveal-delay-1"><div class="visual-thumb" style="background:linear-gradient(135deg,#6b8c3a,#4a6b2a)">社群</div><div class="visual-body"><div class="visual-title">社群圖文</div><div class="visual-sub">Illustrator · PS · Dreamweaver</div></div></div>
-      <div class="visual-card reveal reveal-delay-2"><div class="visual-thumb t-warm">電商</div><div class="visual-body"><div class="visual-title">電商行銷 / 門市布置 / 包裝印刷</div><div class="visual-sub">零售視覺與包裝設計</div></div></div>
-    </div>
+<div class="visual-section-wrap">
+  <div class="visual-section-label">Travel</div>
+  <div class="visual-masonry">
+    <img class="visual-masonry-img" src="images/visual-travel/01.jpg" alt="Travel 1" onclick="openVisualLightbox('travel',0)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-travel/02.jpg" alt="Travel 2" onclick="openVisualLightbox('travel',1)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-travel/03.jpg" alt="Travel 3" onclick="openVisualLightbox('travel',2)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-travel/04.jpg" alt="Travel 4" onclick="openVisualLightbox('travel',3)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-travel/05.jpg" alt="Travel 5" onclick="openVisualLightbox('travel',4)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-travel/06.jpg" alt="Travel 6" onclick="openVisualLightbox('travel',5)" loading="lazy"/>
+  </div>
+</div>
+<div class="visual-section-wrap">
+  <div class="visual-section-label">社群圖文</div>
+  <div class="visual-masonry">
+    <img class="visual-masonry-img" src="images/visual-social/01.jpg" alt="社群圖文 1" onclick="openVisualLightbox('social',0)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/02.jpg" alt="社群圖文 2" onclick="openVisualLightbox('social',1)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/03.jpg" alt="社群圖文 3" onclick="openVisualLightbox('social',2)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/04.jpg" alt="社群圖文 4" onclick="openVisualLightbox('social',3)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
+  </div>
+</div>
+<div class="visual-section-wrap">
+  <div class="visual-section-label">電商行銷 / 門市布置 / 包裝印刷</div>
+  <div class="visual-masonry">
+    <img class="visual-masonry-img" src="images/visual-ecom/01.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 1" onclick="openVisualLightbox('ecom',0)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/02.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 2" onclick="openVisualLightbox('ecom',1)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/03.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 3" onclick="openVisualLightbox('ecom',2)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/04.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 4" onclick="openVisualLightbox('ecom',3)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/05.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 5" onclick="openVisualLightbox('ecom',4)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/06.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 6" onclick="openVisualLightbox('ecom',5)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/07.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 7" onclick="openVisualLightbox('ecom',6)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/08.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 8" onclick="openVisualLightbox('ecom',7)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/09.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 9" onclick="openVisualLightbox('ecom',8)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/10.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 10" onclick="openVisualLightbox('ecom',9)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/11.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 11" onclick="openVisualLightbox('ecom',10)" loading="lazy"/>
+    <img class="visual-masonry-img" src="images/visual-ecom/12.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 12" onclick="openVisualLightbox('ecom',11)" loading="lazy"/>
+  </div>
+</div>
   </div>
 </section>
 
@@ -759,6 +820,44 @@ sections.forEach(s=>{
   </div>
 </div>
 <script>
+
+// Visual section lightbox
+const visualGallery = {
+  travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg"],
+  social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"],
+  ecom:   ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
+};
+let _vlbSec='', _vlbIdx=0;
+function openVisualLightbox(sec, idx){
+  const gals = visualGallery[sec] || [];
+  if(!gals.length) return;
+  _vlbSec=sec; _vlbIdx=idx;
+  document.getElementById('lightboxImg').src = gals[idx];
+  document.getElementById('lightboxCounter').textContent = (idx+1)+' / '+gals.length;
+  document.getElementById('lightbox').classList.add('open');
+  // Override nav to use visual gallery
+  window._lightboxMode = 'visual';
+}
+// Patch lightboxNav to handle both modes
+const _origLightboxNav = lightboxNav;
+lightboxNav = function(dir){
+  if(window._lightboxMode === 'visual'){
+    const gals = visualGallery[_vlbSec] || [];
+    _vlbIdx = (_vlbIdx + dir + gals.length) % gals.length;
+    document.getElementById('lightboxImg').src = gals[_vlbIdx];
+    document.getElementById('lightboxCounter').textContent = (_vlbIdx+1)+' / '+gals.length;
+  } else {
+    _origLightboxNav(dir);
+  }
+};
+// Reset mode on close
+const _origClose = closeLightbox;
+closeLightbox = function(){
+  _origClose();
+  window._lightboxMode = 'project';
+};
+window._lightboxMode = 'project';
+
 // Lightbox
 let _lbId='', _lbIdx=0;
 function openLightbox(pid, idx){
