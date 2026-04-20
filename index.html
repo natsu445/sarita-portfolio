@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sarita — UI/UX Designer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#4a9e5c;
+  --g-light:#c8e6cc;
+  --g-pale:#eef7f0;
+  --g-dark:#2a6b38;
+  --ink:#18181a;
+  --ink2:#48484e;
+  --ink3:#90909a;
+  --bg:#f6f5f0;
+  --card:#ffffff;
+  --border:rgba(24,24,26,0.09);
+  --serif:'Playfair Display',serif;
+  --sans:'Noto Sans TC',sans-serif;
+  --mono:'Space Mono',monospace;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--bg);font-family:var(--sans);color:var(--ink);overflow-x:hidden;line-height:1.6}
+
+/* ── CUSTOM CURSOR ── */
+*, *::before, *::after{cursor:none}
+#cursor{
+  position:fixed;width:12px;height:12px;
+  background:var(--g);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.15s ease,width 0.2s,height 0.2s,opacity 0.2s;
+  mix-blend-mode:multiply;
+}
+#cursor.hover{width:36px;height:36px;opacity:0.5}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(246,245,240,0.88);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:56px;
+}
+.nav-logo{
+  font-family:var(--serif);font-size:1.15rem;font-weight:700;
+  color:var(--ink);text-decoration:none;letter-spacing:-0.01em;
+}
+.nav-logo span{color:var(--g)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:12.5px;color:var(--ink2);text-decoration:none;
+  letter-spacing:0.06em;text-transform:uppercase;
+  transition:color 0.2s;font-weight:400;
+}
+.nav-links a:hover{color:var(--g)}
+.nav-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--g);display:inline-block;margin-right:6px;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:6rem 2.5rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  max-width:1100px;margin:0 auto;width:100%;
+}
+
+/* big text */
+.hero-eyebrow{
+  font-family:var(--mono);font-size:11px;
+  color:var(--g);letter-spacing:0.14em;text-transform:uppercase;
+  margin-bottom:1.2rem;
+  opacity:0;animation:fadeUp 0.7s 0.1s ease forwards;
+}
+.hero-name{
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,5.5rem);
+  font-weight:700;line-height:1.0;
+  color:var(--ink);
+  margin-bottom:0.5rem;
+  opacity:0;animation:fadeUp 0.7s 0.2s ease forwards;
+}
+.hero-name em{color:var(--g);font-style:italic}
+.hero-role{
+  font-family:var(--serif);font-style:italic;
+  font-size:1.3rem;color:var(--ink3);
+  margin-bottom:1.8rem;
+  opacity:0;animation:fadeUp 0.7s 0.3s ease forwards;
+}
+.hero-bio{
+  font-size:15px;line-height:1.8;color:var(--ink2);
+  margin-bottom:1.5rem;max-width:480px;
+  opacity:0;animation:fadeUp 0.7s 0.4s ease forwards;
+}
+.hero-bio strong{color:var(--ink);font-weight:500}
+.hero-quote{
+  border-left:2px solid var(--g);padding-left:1rem;
+  font-family:var(--serif);font-style:italic;
+  font-size:14.5px;color:var(--g-dark);
+  margin-bottom:2rem;max-width:440px;
+  opacity:0;animation:fadeUp 0.7s 0.5s ease forwards;
+}
+.hero-ctas{
+  display:flex;gap:12px;
+  opacity:0;animation:fadeUp 0.7s 0.6s ease forwards;
+}
+.btn{
+  display:inline-block;padding:10px 22px;border-radius:5px;
+  font-size:13px;font-weight:500;text-decoration:none;
+  transition:all 0.2s;letter-spacing:0.03em;
+}
+.btn-primary{background:var(--g);color:white}
+.btn-primary:hover{background:var(--g-dark);transform:translateY(-2px)}
+.btn-outline{border:1.5px solid var(--border);color:var(--ink2)}
+.btn-outline:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
+
+/* hero right — stat card */
+.hero-right{
+  opacity:0;animation:fadeUp 0.7s 0.35s ease forwards;
+}
+.stat-cluster{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  margin-bottom:16px;
+}
+.stat-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:18px 20px;
+}
+.stat-box.accent{background:var(--g);border-color:var(--g)}
+.stat-num{
+  font-family:var(--serif);font-size:2.4rem;
+  font-weight:700;line-height:1;color:var(--g);
+  margin-bottom:4px;
+}
+.stat-box.accent .stat-num{color:white}
+.stat-label{font-size:11px;color:var(--ink3);letter-spacing:0.05em;text-transform:uppercase}
+.stat-box.accent .stat-label{color:rgba(255,255,255,0.7)}
+
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.tag{
+  font-size:11.5px;padding:5px 12px;border-radius:30px;
+  border:1px solid var(--border);color:var(--ink2);
+  background:var(--card);
+  transition:all 0.2s;
+}
+.tag:hover{border-color:var(--g);color:var(--g);background:var(--g-pale)}
+
+/* decorative bg */
+.hero-bg-circle{
+  position:absolute;
+  width:500px;height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(74,158,92,0.08) 0%,transparent 70%);
+  right:-100px;top:50%;transform:translateY(-50%);
+  pointer-events:none;
+}
+.hero-bg-line{
+  position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION COMMON ── */
+section{padding:5rem 2.5rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{
+  display:flex;align-items:baseline;gap:1.2rem;
+  margin-bottom:3rem;
+}
+.section-num{
+  font-family:var(--mono);font-size:11px;
+  color:var(--g);letter-spacing:0.1em;
+  padding:3px 8px;border:1px solid var(--g-light);
+  border-radius:4px;background:var(--g-pale);
+}
+.section-title{
+  font-family:var(--serif);font-size:2rem;font-weight:600;
+  color:var(--ink);line-height:1.15;
+}
+.section-line{flex:1;height:1px;background:var(--border);margin-left:1rem}
+
+/* ── WORKS ── */
+#works{background:var(--bg)}
+.filter-bar{
+  display:flex;gap:8px;margin-bottom:2.5rem;flex-wrap:wrap;
+}
+.filter-btn{
+  font-size:11.5px;padding:6px 14px;border-radius:30px;
+  border:1px solid var(--border);background:var(--card);
+  color:var(--ink2);font-weight:400;
+  transition:all 0.2s;font-family:var(--sans);
+}
+.filter-btn.active,.filter-btn:hover{
+  background:var(--g);color:white;border-color:var(--g);
+}
+
+.works-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.work-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:all 0.25s;position:relative;
+}
+.work-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.work-card:hover .work-overlay{opacity:1}
+
+.work-thumb{
+  height:160px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  font-family:var(--serif);font-size:2.5rem;
+  color:rgba(255,255,255,0.6);font-style:italic;
+}
+.work-overlay{
+  position:absolute;inset:0;background:rgba(74,158,92,0.85);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 0.25s;
+}
+.work-overlay-text{
+  color:white;font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;font-family:var(--mono);
+}
+
+.work-body{padding:16px 18px 18px}
+.work-cat{
+  font-size:10px;font-family:var(--mono);letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--g);margin-bottom:6px;
+}
+.work-title{
+  font-size:14px;font-weight:500;color:var(--ink);
+  line-height:1.4;margin-bottom:6px;
+}
+.work-desc{font-size:12px;color:var(--ink3);line-height:1.55;margin-bottom:10px}
+.work-footer{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.work-tools{display:flex;gap:4px;flex-wrap:wrap}
+.work-tool{
+  font-size:9.5px;padding:2px 6px;border-radius:3px;
+  background:var(--g-pale);color:var(--g-dark);
+}
+.work-year{font-size:10px;color:var(--ink3);font-family:var(--mono)}
+
+/* thumb colours */
+.t-green{background:linear-gradient(135deg,#4a9e5c,#2a6b38)}
+.t-teal{background:linear-gradient(135deg,#2a7d8c,#1a5e6b)}
+.t-slate{background:linear-gradient(135deg,#3a4a5c,#2a3a4c)}
+.t-warm{background:linear-gradient(135deg,#9e6b4a,#6b4a2a)}
+.t-rose{background:linear-gradient(135deg,#9e4a6b,#6b2a4a)}
+.t-olive{background:linear-gradient(135deg,#6b8c3a,#4a6b2a)}
+.t-indigo{background:linear-gradient(135deg,#4a5c9e,#2a3a6b)}
+.t-amber{background:linear-gradient(135deg,#9e7c2a,#6b5a1a)}
+.t-moss{background:linear-gradient(135deg,#5c7a3a,#3a5c2a)}
+.t-clay{background:linear-gradient(135deg,#8c6b4a,#6b4a2a)}
+
+/* ── VISUAL DESIGN ── */
+#visual{background:var(--card)}
+.visual-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.visual-card{
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;
+}
+.visual-thumb{
+  height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;font-family:var(--serif);font-style:italic;color:rgba(255,255,255,0.5);
+}
+.visual-body{padding:12px 14px}
+.visual-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.visual-sub{font-size:11px;color:var(--ink3)}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg)}
+.skills-layout{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+}
+.skill-group{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 26px}
+.skill-group-title{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--g);margin-bottom:16px;
+}
+.skill-items{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+.skill-item{
+  font-size:12px;padding:5px 12px;border-radius:5px;
+  border:1px solid var(--border);color:var(--ink2);
+  transition:all 0.2s;
+}
+.skill-item:hover{border-color:var(--g);color:var(--g);background:var(--g-pale)}
+
+.tools-section{margin-top:2rem}
+.tools-label{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:14px;
+}
+.tools-list{display:flex;flex-wrap:wrap;gap:10px}
+.tool-badge{
+  display:flex;align-items:center;gap:7px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:8px 14px;
+  font-size:12.5px;color:var(--ink2);
+  transition:all 0.2s;
+}
+.tool-badge:hover{border-color:var(--g);color:var(--g)}
+.tool-icon{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--g);flex-shrink:0;
+}
+
+/* ── ABOUT ── */
+#about{
+  background:var(--ink);color:white;
+  position:relative;overflow:hidden;
+}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center;
+}
+.about-eyebrow{
+  font-family:var(--mono);font-size:10px;
+  color:var(--g-light);letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.about-heading{
+  font-family:var(--serif);font-size:2.5rem;font-weight:700;
+  line-height:1.15;color:white;margin-bottom:1.5rem;
+}
+.about-heading em{color:var(--g);font-style:italic}
+.about-text{font-size:14.5px;line-height:1.85;color:rgba(255,255,255,0.65);margin-bottom:2rem}
+.about-text strong{color:white;font-weight:500}
+.about-contact{
+  display:flex;align-items:center;gap:1.5rem;
+  flex-wrap:wrap;
+}
+.contact-link{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.6);text-decoration:none;
+  font-size:13px;transition:color 0.2s;
+}
+.contact-link:hover{color:var(--g)}
+.contact-link svg{opacity:0.5;transition:opacity 0.2s}
+.contact-link:hover svg{opacity:1}
+
+.about-right{position:relative}
+.exp-timeline{
+  border-left:1px solid rgba(255,255,255,0.1);
+  padding-left:2rem;
+  display:flex;flex-direction:column;gap:2rem;
+}
+.exp-item{position:relative}
+.exp-item::before{
+  content:'';position:absolute;
+  left:-2.35rem;top:5px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--g);border:2px solid var(--ink);
+}
+.exp-period{
+  font-family:var(--mono);font-size:10.5px;
+  color:var(--g);letter-spacing:0.08em;margin-bottom:4px;
+}
+.exp-role{font-size:15px;font-weight:500;color:white;margin-bottom:2px}
+.exp-company{font-size:12.5px;color:rgba(255,255,255,0.45)}
+
+.about-bg{
+  position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(74,158,92,0.07) 0%,transparent 65%);
+  right:-80px;bottom:-80px;pointer-events:none;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.35);
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:2rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11.5px;font-family:var(--mono);
+}
+footer a{color:rgba(255,255,255,0.35);text-decoration:none}
+footer a:hover{color:var(--g)}
+.footer-sig{display:flex;align-items:center;gap:8px}
+.footer-dot{width:6px;height:6px;border-radius:50%;background:var(--g)}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-grid,.about-grid{grid-template-columns:1fr}
+  .hero-right,.about-right{display:none}
+  .works-grid,.visual-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-layout{grid-template-columns:1fr}
+  nav{padding:0 1.5rem}
+  section{padding:3.5rem 1.5rem}
+  .hero-name{font-size:3rem}
+}
+@media(max-width:580px){
+  .works-grid{grid-template-columns:1fr}
+  .visual-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Sarita<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#works">Works</a></li>
+    <li><a href="#visual">Visual</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:sarita445645@gmail.com"><span class="nav-dot"></span>Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <p class="hero-eyebrow">✦ UI/UX Designer &amp; Visual Designer</p>
+      <h1 class="hero-name">Hello,<br/>I'm <em>Sarita</em></h1>
+      <p class="hero-role">設計，是解決問題的過程</p>
+      <p class="hero-bio">
+        擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗，橫跨工業 HMI 系統、ERP 介面、RWD 網頁與品牌平面設計。<br/><br/>
+        擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗，並能與 PM 及工程團隊協作推進專案。
+      </p>
+      <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
+      <div class="hero-ctas">
+        <a href="#works" class="btn btn-primary">View My Work</a>
+        <a href="mailto:sarita445645@gmail.com" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-cluster">
+        <div class="stat-box accent">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Years UIUX</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--g)">7</div>
+          <div class="stat-label">Years Visual</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--g)">12+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--g)">∞</div>
+          <div class="stat-label">Curiosity</div>
+        </div>
+      </div>
+      <div class="tag-cloud">
+        <span class="tag">HMI Interface</span>
+        <span class="tag">Design System</span>
+        <span class="tag">RWD Web</span>
+        <span class="tag">B2B / B2C</span>
+        <span class="tag">User Research</span>
+        <span class="tag">Prototyping</span>
+        <span class="tag">Brand Design</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bg-line"></div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title">UI/UX Design Works</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="filter-bar reveal reveal-delay-1">
+      <button class="filter-btn active" onclick="filterWorks('all',this)">All</button>
+      <button class="filter-btn" onclick="filterWorks('hmi',this)">HMI 工業介面</button>
+      <button class="filter-btn" onclick="filterWorks('web',this)">網頁設計</button>
+      <button class="filter-btn" onclick="filterWorks('ecom',this)">電商 / 品牌</button>
+    </div>
+    <div class="works-grid" id="worksGrid">
+
+      <div class="work-card reveal" data-cat="hmi">
+        <div class="work-thumb t-slate">
+          <div>HMI</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Industrial HMI</div>
+          <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
+          <div class="work-desc">中鋼 W11 廠區生產資訊系統全介面重設計，建立操作員監控儀表板與即時數據呈現架構。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">Illustrator</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-1" data-cat="hmi">
+        <div class="work-thumb t-teal">
+          <div>HMI</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Industrial HMI</div>
+          <div class="work-title">中鋼 W433 球化場 HMI</div>
+          <div class="work-desc">球化場製程監控 HMI 翻新，新舊版對比研究，改善操作員效率並降低認知負擔。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-2" data-cat="hmi">
+        <div class="work-thumb t-indigo">
+          <div>Web</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Smart Factory</div>
+          <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
+          <div class="work-desc">HMI to Web 平台遷移，將工廠內物流排程介面從桌面 HMI 重構為瀏覽器端應用。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+            </div>
+            <span class="work-year">2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" data-cat="web">
+        <div class="work-thumb t-moss">
+          <div>Map</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Web App</div>
+          <div class="work-title">中鋼 CSC 街景地圖</div>
+          <div class="work-desc">中鋼廠區互動式街景地圖工具，空間 UX 設計與廠區導覽路徑規劃。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">Illustrator</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-1" data-cat="web">
+        <div class="work-thumb t-olive">
+          <div>B2B</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">B2B Website</div>
+          <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
+          <div class="work-desc">以數據為核心的企業官網重構，改善 B2B 資訊架構與轉換漏斗，強化潛在客戶路徑。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-2" data-cat="web">
+        <div class="work-thumb t-green">
+          <div>LP</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Landing Page</div>
+          <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
+          <div class="work-desc">夥伴營銷導流 Landing Page，高轉換導向設計，RWD 響應式佈局開發。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" data-cat="web">
+        <div class="work-thumb t-amber">
+          <div>Tool</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Web Tool</div>
+          <div class="work-title">獲利計算機</div>
+          <div class="work-desc">投資獲利計算機 Web App，表單 UX 設計搭配即時運算與結果視覺化呈現。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-1" data-cat="web">
+        <div class="work-thumb t-clay">
+          <div>Survey</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Web Form</div>
+          <div class="work-title">關稅評量問券網頁</div>
+          <div class="work-desc">關稅評估互動式問卷頁面，步驟式表單設計，引導使用者完成風險評估流程。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+            </div>
+            <span class="work-year">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-2" data-cat="web">
+        <div class="work-thumb t-slate" style="background:linear-gradient(135deg,#3a5c7a,#2a4a6b)">
+          <div>Y26</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Recruitment</div>
+          <div class="work-title">Y26 招募網翻新設計</div>
+          <div class="work-desc">企業招募官網全面翻新，現代化視覺語言與改善求職者流程體驗。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+            </div>
+            <span class="work-year">2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal" data-cat="ecom">
+        <div class="work-thumb t-rose">
+          <div>e-com</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">E-Commerce</div>
+          <div class="work-title">弘信生醫 — 多品牌美妝電商架構重組</div>
+          <div class="work-desc">多品牌美妝電商 IA 重組與轉化率優化，改善跨品牌導覽與結帳轉換漏斗。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-1" data-cat="ecom">
+        <div class="work-thumb t-warm">
+          <div>品牌</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Brand + UIUX</div>
+          <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
+          <div class="work-desc">冷凍食品品牌 UI 與品牌識別設計，從視覺語言建立到介面設計的完整規劃。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">Illustrator</span>
+            </div>
+            <span class="work-year">2023</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card reveal reveal-delay-2" data-cat="web">
+        <div class="work-thumb t-green" style="background:linear-gradient(135deg,#3a7c5c,#2a5c40)">
+          <div>Web</div>
+          <div class="work-overlay"><span class="work-overlay-text">View Project</span></div>
+        </div>
+        <div class="work-body">
+          <div class="work-cat">Web Redesign</div>
+          <div class="work-title">鼎新官網 — 關於我們頁面重製</div>
+          <div class="work-desc">以 Claude + Figma + VS Code 協作完成的官網 About Us 頁面重製，AI 輔助設計流程實踐。</div>
+          <div class="work-footer">
+            <div class="work-tools">
+              <span class="work-tool">Claude</span>
+              <span class="work-tool">Figma</span>
+              <span class="work-tool">VS Code</span>
+            </div>
+            <span class="work-year">2026</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL DESIGN -->
+<section id="visual">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Visual Design</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="visual-grid">
+      <div class="visual-card reveal">
+        <div class="visual-thumb t-rose" style="background:linear-gradient(135deg,#c45a8a,#8c3a6b)">旅遊</div>
+        <div class="visual-body">
+          <div class="visual-title">Travel</div>
+          <div class="visual-sub">旅遊主題平面設計創作</div>
+        </div>
+      </div>
+      <div class="visual-card reveal reveal-delay-1">
+        <div class="visual-thumb" style="background:linear-gradient(135deg,#6b8c3a,#4a6b2a)">社群</div>
+        <div class="visual-body">
+          <div class="visual-title">社群圖文</div>
+          <div class="visual-sub">Illustrator · PS · Dreamweaver</div>
+        </div>
+      </div>
+      <div class="visual-card reveal reveal-delay-2">
+        <div class="visual-thumb t-warm">電商</div>
+        <div class="visual-body">
+          <div class="visual-title">電商行銷 / 門市布置 / 包裝印刷</div>
+          <div class="visual-sub">零售視覺與包裝設計</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Skills &amp; Tools</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-layout">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Design Expertise</div>
+        <div class="skill-items">
+          <span class="skill-item">UI/UX Design</span>
+          <span class="skill-item">HMI 介面設計</span>
+          <span class="skill-item">RWD 響應式設計</span>
+          <span class="skill-item">Wireframe</span>
+          <span class="skill-item">Prototype</span>
+          <span class="skill-item">Design System</span>
+          <span class="skill-item">User Research</span>
+          <span class="skill-item">IA 資訊架構</span>
+        </div>
+      </div>
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-title">Tech &amp; Collaboration</div>
+        <div class="skill-items">
+          <span class="skill-item">Bootstrap 框架</span>
+          <span class="skill-item">HTML5 / CSS</span>
+          <span class="skill-item">Git / GitHub</span>
+          <span class="skill-item">跨部門專案管理</span>
+          <span class="skill-item">PM 協作</span>
+          <span class="skill-item">工程團隊溝通</span>
+          <span class="skill-item">Claude AI 協作</span>
+        </div>
+      </div>
+    </div>
+    <div class="tools-section reveal">
+      <div class="tools-label">Design Tools</div>
+      <div class="tools-list">
+        <div class="tool-badge"><div class="tool-icon"></div>Figma</div>
+        <div class="tool-badge"><div class="tool-icon"></div>Adobe Illustrator</div>
+        <div class="tool-badge"><div class="tool-icon"></div>Adobe Photoshop</div>
+        <div class="tool-badge"><div class="tool-icon"></div>Adobe XD</div>
+        <div class="tool-badge"><div class="tool-icon"></div>MidJourney</div>
+        <div class="tool-badge"><div class="tool-icon"></div>Canva</div>
+        <div class="tool-badge"><div class="tool-icon"></div>VS Code</div>
+        <div class="tool-badge"><div class="tool-icon"></div>Claude AI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-bg"></div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="about-eyebrow">About Me</p>
+        <h2 class="about-heading">Design with<br/><em>Purpose.</em></h2>
+        <p class="about-text">
+          我是 Sarita，一位擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗的設計師。<br/><br/>
+          曾參與工業製造系統 HMI 介面重設計、多品牌電商 IA 優化、B2B 企業官網重構等多樣化專案，橫跨製造業、美妝電商與科技產業。<br/><br/>
+          我相信好的設計來自對人的理解 — 深入研究使用者需求、找出真正的痛點，再透過設計將複雜問題轉化為直覺流暢的體驗。
+        </p>
+        <div class="about-contact">
+          <a href="mailto:sarita445645@gmail.com" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.2"/></svg>
+            sarita445645@gmail.com
+          </a>
+          <a href="#works" class="contact-link">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            View All Works
+          </a>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-period">2022 — Present</div>
+            <div class="exp-role">UI/UX Designer</div>
+            <div class="exp-company">工業製造 · HMI &amp; Web Platform</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-period">2020 — 2022</div>
+            <div class="exp-role">Visual Designer</div>
+            <div class="exp-company">電商品牌 · 行銷設計</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-period">2017 — 2020</div>
+            <div class="exp-role">Graphic Designer</div>
+            <div class="exp-company">品牌視覺 · 印刷 · 社群</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-period">Education</div>
+            <div class="exp-role">視覺傳達設計學系</div>
+            <div class="exp-company">設計相關科系畢業</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-sig">
+    <div class="footer-dot"></div>
+    <span>2026 Sarita · Design</span>
+  </div>
+  <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
+  <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
+</footer>
+
+<script>
+// cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.work-card,.tag,.skill-item,.tool-badge').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// filter
+function filterWorks(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.work-card').forEach(card => {
+    if(cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+const sio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      links.forEach(l => l.style.color = '');
+      const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(link) link.style.color = 'var(--g)';
+    }
+  });
+}, {threshold:0.4});
+sections.forEach(s => sio.observe(s));
+</script>
+</body>
+</html>
