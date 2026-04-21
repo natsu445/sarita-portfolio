@@ -1,1020 +1,2436 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CD370JX6XW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-CD370JX6XW');
-</script>
-<title>Sarita — UI/UX Designer Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --g:#4a9e5c;--g-light:#c8e6cc;--g-pale:#eef7f0;--g-dark:#2a6b38;
-  --ink:#18181a;--ink2:#48484e;--ink3:#90909a;
-  --bg:#f6f5f0;--card:#ffffff;--border:rgba(24,24,26,0.09);
-  --serif:'Playfair Display',serif;--sans:'Noto Sans TC',sans-serif;--mono:'Space Mono',monospace;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);font-family:var(--sans);color:var(--ink);overflow-x:hidden;line-height:1.6}
-*{cursor:none}
-#cursor{position:fixed;width:12px;height:12px;background:var(--g);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .2s;mix-blend-mode:multiply}
-#cursor.hover{width:36px;height:36px;opacity:.5}
-#cursor.modal-open{mix-blend-mode:normal;background:white;opacity:.8}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(246,245,240,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px}
-.nav-logo{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);text-decoration:none}
-.nav-logo span{color:var(--g)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:12px;color:var(--ink2);text-decoration:none;letter-spacing:.07em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--g)}
-.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--g);display:inline-block;margin-right:6px;animation:pulse 2.5s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-#hero{min-height:100vh;display:flex;align-items:center;padding:6rem 2.5rem 4rem;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;width:100%}
-.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--g);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0;animation:fadeUp .7s .1s ease forwards}
-.hero-name{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:700;line-height:1;color:var(--ink);margin-bottom:.5rem;opacity:0;animation:fadeUp .7s .2s ease forwards}
-.hero-name em{color:var(--g);font-style:italic}
-.hero-role{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--ink3);margin-bottom:1.8rem;opacity:0;animation:fadeUp .7s .3s ease forwards}
-.hero-bio{font-size:15px;line-height:1.8;color:var(--ink2);margin-bottom:1.5rem;max-width:480px;opacity:0;animation:fadeUp .7s .4s ease forwards}
-.hero-bio strong{color:var(--ink);font-weight:500}
-.hero-quote{border-left:2px solid var(--g);padding-left:1rem;font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--g-dark);margin-bottom:2rem;max-width:440px;opacity:0;animation:fadeUp .7s .5s ease forwards}
-.hero-ctas{display:flex;gap:12px;opacity:0;animation:fadeUp .7s .6s ease forwards}
-.btn{display:inline-block;padding:10px 22px;border-radius:5px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;letter-spacing:.03em}
-.btn-primary{background:var(--g);color:white}
-.btn-primary:hover{background:var(--g-dark);transform:translateY(-2px)}
-.btn-outline{border:1.5px solid var(--border);color:var(--ink2)}
-.btn-outline:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
-.hero-right{opacity:0;animation:fadeUp .7s .35s ease forwards}
-.stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.stat-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px}
-.stat-box.accent{background:var(--g);border-color:var(--g)}
-.stat-num{font-family:var(--serif);font-size:2.4rem;font-weight:700;line-height:1;color:var(--g);margin-bottom:4px}
-.stat-box.accent .stat-num{color:white}
-.stat-label{font-size:11px;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase}
-.stat-box.accent .stat-label{color:rgba(255,255,255,.7)}
-.tag-cloud{display:flex;flex-wrap:wrap;gap:8px}
-.tag{font-size:11.5px;padding:5px 12px;border-radius:30px;border:1px solid var(--border);color:var(--ink2);background:var(--card);transition:all .2s}
-.tag:hover{border-color:var(--g);color:var(--g);background:var(--g-pale)}
-.hero-bg-circle{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,92,.08) 0%,transparent 70%);right:-100px;top:50%;transform:translateY(-50%);pointer-events:none}
-.hero-bg-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-section{padding:5rem 2.5rem}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-header{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:3rem}
-.section-num{font-family:var(--mono);font-size:11px;color:var(--g);letter-spacing:.1em;padding:3px 8px;border:1px solid var(--g-light);border-radius:4px;background:var(--g-pale)}
-.section-title{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--ink);line-height:1.15}
-.section-line{flex:1;height:1px;background:var(--border);margin-left:1rem}
-#works{background:var(--bg)}
-.filter-bar{display:flex;gap:8px;margin-bottom:2.5rem;flex-wrap:wrap}
-.filter-btn{font-size:11.5px;padding:6px 14px;border-radius:30px;border:1px solid var(--border);background:var(--card);color:var(--ink2);font-weight:400;transition:all .2s;font-family:var(--sans)}
-.filter-btn.active,.filter-btn:hover{background:var(--g);color:white;border-color:var(--g)}
-.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.work-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .25s;position:relative}
-.work-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.08)}
-.work-card:hover .work-overlay{opacity:1}
-.work-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;font-family:var(--serif);font-size:2.5rem;color:rgba(255,255,255,.5);font-style:italic}
-.work-overlay{position:absolute;inset:0;background:rgba(42,107,56,.88);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;flex-direction:column;gap:6px}
-.work-overlay-text{color:white;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-family:var(--mono)}
-.work-overlay-sub{color:rgba(255,255,255,.6);font-size:10px}
-.work-body{padding:16px 18px 18px}
-.work-cat{font-size:10px;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:6px}
-.work-title{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:6px}
-.work-desc{font-size:12px;color:var(--ink3);line-height:1.55;margin-bottom:10px}
-.work-footer{display:flex;align-items:center;justify-content:space-between}
-.work-tools{display:flex;gap:4px;flex-wrap:wrap}
-.work-tool{font-size:9.5px;padding:2px 6px;border-radius:3px;background:var(--g-pale);color:var(--g-dark)}
-.work-year{font-size:10px;color:var(--ink3);font-family:var(--mono)}
-.t-green{background:linear-gradient(135deg,#4a9e5c,#2a6b38)}
-.t-teal{background:linear-gradient(135deg,#2a7d8c,#1a5e6b)}
-.t-slate{background:linear-gradient(135deg,#3a4a5c,#2a3a4c)}
-.t-warm{background:linear-gradient(135deg,#9e6b4a,#6b4a2a)}
-.t-rose{background:linear-gradient(135deg,#9e4a6b,#6b2a4a)}
-.t-olive{background:linear-gradient(135deg,#6b8c3a,#4a6b2a)}
-.t-indigo{background:linear-gradient(135deg,#4a5c9e,#2a3a6b)}
-.t-amber{background:linear-gradient(135deg,#9e7c2a,#6b5a1a)}
-.t-moss{background:linear-gradient(135deg,#5c7a3a,#3a5c2a)}
-.t-clay{background:linear-gradient(135deg,#8c6b4a,#6b4a2a)}
-.t-navy{background:linear-gradient(135deg,#3a5c7a,#2a4a6b)}
-.t-forest{background:linear-gradient(135deg,#3a7c5c,#2a5c40)}
-#visual{background:var(--card)}
-.visual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.visual-card{border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.visual-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-family:var(--serif);font-style:italic;color:rgba(255,255,255,.5)}
-.visual-body{padding:12px 14px}
-.visual-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px}
-.visual-sub{font-size:11px;color:var(--ink3)}
-#skills{background:var(--bg)}
-.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.skill-group{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 26px}
-.skill-group-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:16px}
-.skill-items{display:flex;flex-wrap:wrap;gap:8px}
-.skill-item{font-size:12px;padding:5px 12px;border-radius:5px;border:1px solid var(--border);color:var(--ink2);transition:all .2s}
-.skill-item:hover{border-color:var(--g);color:var(--g);background:var(--g-pale)}
-.tools-section{margin-top:2rem}
-.tools-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
-.tools-list{display:flex;flex-wrap:wrap;gap:10px}
-.tool-badge{display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12.5px;color:var(--ink2);transition:all .2s}
-.tool-badge:hover{border-color:var(--g);color:var(--g)}
-.tool-icon{width:8px;height:8px;border-radius:50%;background:var(--g);flex-shrink:0}
-#about{background:var(--ink);color:white;position:relative;overflow:hidden}
-.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center}
-.about-eyebrow{font-family:var(--mono);font-size:10px;color:var(--g-light);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
-.about-heading{font-family:var(--serif);font-size:2.5rem;font-weight:700;line-height:1.15;color:white;margin-bottom:1.5rem}
-.about-heading em{color:var(--g);font-style:italic}
-.about-text{font-size:14.5px;line-height:1.85;color:rgba(255,255,255,.65);margin-bottom:2rem}
-.about-text strong{color:white;font-weight:500}
-.about-contact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.contact-link{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);text-decoration:none;font-size:13px;transition:color .2s}
-.contact-link:hover{color:var(--g)}
-.exp-timeline{border-left:1px solid rgba(255,255,255,.1);padding-left:2rem;display:flex;flex-direction:column;gap:2rem}
-.exp-item{position:relative}
-.exp-item::before{content:'';position:absolute;left:-2.35rem;top:5px;width:8px;height:8px;border-radius:50%;background:var(--g);border:2px solid var(--ink)}
-.exp-period{font-family:var(--mono);font-size:10.5px;color:var(--g);letter-spacing:.08em;margin-bottom:4px}
-.exp-role{font-size:15px;font-weight:500;color:white;margin-bottom:2px}
-.exp-company{font-size:12.5px;color:rgba(255,255,255,.45)}
-.about-bg{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,92,.07) 0%,transparent 65%);right:-80px;bottom:-80px;pointer-events:none}
-footer{background:var(--ink);color:rgba(255,255,255,.35);border-top:1px solid rgba(255,255,255,.06);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;font-family:var(--mono)}
-footer a{color:rgba(255,255,255,.35);text-decoration:none}
-footer a:hover{color:var(--g)}
-.footer-sig{display:flex;align-items:center;gap:8px}
-.footer-dot{width:6px;height:6px;border-radius:50%;background:var(--g)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.1s}
-.reveal-delay-2{transition-delay:.2s}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CD370JX6XW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-CD370JX6XW');
+  </script>
+  <title>Sarita — UI/UX Designer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── MODAL ── */
-.modal-backdrop{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,12,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem;animation:bdFadeIn .25s ease}
-.modal-backdrop.open{display:flex;align-items:flex-start;justify-content:center}
-@keyframes bdFadeIn{from{opacity:0}to{opacity:1}}
-/* ── MODAL SHELL ── */
-.modal{
-  background:var(--card);border-radius:16px;
-  width:100%;max-width:900px;
-  overflow:hidden;
-  animation:modalIn .3s cubic-bezier(.34,1.2,.64,1);
-  position:relative;margin:auto;
-  display:flex;flex-direction:column;
-  max-height:90vh;
-}
-@keyframes modalIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    :root {
+      --g: #4a9e5c;
+      --g-light: #c8e6cc;
+      --g-pale: #eef7f0;
+      --g-dark: #2a6b38;
+      --ink: #18181a;
+      --ink2: #48484e;
+      --ink3: #90909a;
+      --bg: #f6f5f0;
+      --card: #ffffff;
+      --border: rgba(24, 24, 26, 0.09);
+      --serif: 'Playfair Display', serif;
+      --sans: 'Noto Sans TC', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
 
-/* header strip */
-.modal-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 20px 12px;
-  border-bottom:1px solid var(--border);
-  flex-shrink:0;
-}
-.modal-header-left{display:flex;align-items:center;gap:10px}
-.modal-cat{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);background:var(--g-pale);padding:3px 9px;border-radius:4px}
-.modal-title{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ink);line-height:1.25}
-.modal-close{width:32px;height:32px;border-radius:50%;background:var(--bg);border:1px solid var(--border);color:var(--ink3);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.modal-close:hover{background:var(--ink);color:white;border-color:var(--ink)}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* meta row */
-.modal-meta{
-  display:flex;gap:.75rem;padding:10px 20px;
-  border-bottom:1px solid var(--border);
-  background:var(--bg);flex-wrap:wrap;align-items:center;
-  flex-shrink:0;
-}
-.meta-label{font-size:9.5px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);margin-right:3px}
-.meta-tag{font-size:10.5px;background:var(--g-pale);color:var(--g-dark);padding:2px 7px;border-radius:3px;font-weight:500;margin-right:2px}
-.meta-item{display:flex;align-items:center;font-size:12px;color:var(--ink2)}
-.meta-link{font-size:11px;color:var(--g);text-decoration:none;display:flex;align-items:center;gap:4px;border:1px solid var(--g-light);padding:3px 9px;border-radius:5px;transition:all .2s}
-.meta-link:hover{background:var(--g);color:white;border-color:var(--g)}
+    body {
+      background: var(--bg);
+      font-family: var(--sans);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.6
+    }
 
-/* two-column body */
-.modal-body{
-  display:flex;flex:1;min-height:0;overflow:hidden;
-}
+    * {
+      cursor: none
+    }
 
-/* LEFT — image panel */
-.modal-img-panel{
-  width:42%;flex-shrink:0;
-  overflow-y:auto;
-  background:var(--bg);
-  padding:16px;
-  display:flex;flex-direction:column;gap:10px;
-  border-right:1px solid var(--border);
-  scrollbar-width:thin;scrollbar-color:var(--g-light) transparent;
-}
-.modal-img-panel::-webkit-scrollbar{width:3px}
-.modal-img-panel::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:3px}
-.modal-panel-img{
-  width:100%;border-radius:8px;object-fit:cover;
-  border:1px solid var(--border);
-  transition:transform .2s,border-color .2s;
-  display:block;
-}
-.modal-panel-img:hover{transform:scale(1.015);border-color:var(--g)}
-.modal-no-img{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  border-radius:10px;border:1.5px dashed var(--border);
-  color:var(--ink3);font-size:12px;font-family:var(--mono);
-  letter-spacing:.06em;min-height:120px;
-}
+    #cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background: var(--g);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width .2s, height .2s, opacity .2s;
+      mix-blend-mode: multiply
+    }
 
-/* RIGHT — text panel */
-.modal-text-panel{
-  flex:1;overflow-y:auto;padding:20px 22px;
-  scrollbar-width:thin;scrollbar-color:var(--g-light) transparent;
-}
-.modal-text-panel::-webkit-scrollbar{width:4px}
-.modal-text-panel::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:4px}
+    #cursor.hover {
+      width: 36px;
+      height: 36px;
+      opacity: .5
+    }
 
-.modal-section{margin-bottom:1.6rem}
-.modal-section:last-child{margin-bottom:0}
-.modal-section-title{
-  font-family:var(--mono);font-size:9.5px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--g);
-  margin-bottom:.6rem;display:flex;align-items:center;gap:8px;
-}
-.modal-section-title::after{content:'';flex:1;height:1px;background:var(--g-pale)}
-.modal-section-text{font-size:13px;line-height:1.85;color:var(--ink2)}
-.modal-section-text strong{color:var(--ink);font-weight:500}
-.modal-highlight{
-  background:var(--g-pale);border-left:3px solid var(--g);
-  border-radius:0 6px 6px 0;padding:12px 14px;
-  font-size:12.5px;color:var(--g-dark);line-height:1.7;
-  margin:.75rem 0;font-family:var(--serif);font-style:italic;
-}
-.modal-points{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:.4rem}
-.modal-points li{font-size:12.5px;color:var(--ink2);line-height:1.7;padding-left:1.2rem;position:relative}
-.modal-points li::before{content:'→';position:absolute;left:0;color:var(--g);font-size:10px;top:3px}
+    #cursor.modal-open {
+      mix-blend-mode: normal;
+      background: white;
+      opacity: .8
+    }
 
-/* mobile: stack vertically */
-@media(max-width:680px){
-  .modal-body{flex-direction:column}
-  .modal-img-panel{width:100%;border-right:none;border-bottom:1px solid var(--border);max-height:220px;flex-direction:row;overflow-x:auto;overflow-y:hidden;padding:12px}
-  .modal-panel-img{width:auto;height:180px;flex-shrink:0}
-  .modal-text-panel{padding:16px}
-}
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(246, 245, 240, .9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px
+    }
 
-@media(max-width:900px){
-  .hero-grid,.about-grid{grid-template-columns:1fr}
-  .hero-right,.about-right{display:none}
-  .works-grid,.visual-grid{grid-template-columns:repeat(2,1fr)}
-  .skills-layout{grid-template-columns:1fr}
-  nav{padding:0 1.5rem}
-  section{padding:3.5rem 1.5rem}
-  .hero-name{font-size:3rem}
-}
-@media(max-width:580px){
-  .works-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:8px;text-align:center}
-  .modal-body{max-height:65vh}
-}
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none
+    }
 
-/* ── IMAGE GALLERY in Modal ── */
-.modal-gallery{
-  display:flex;gap:10px;margin:1rem 0 1.5rem;
-  overflow-x:auto;padding-bottom:6px;
-  scrollbar-width:thin;scrollbar-color:var(--g-light) transparent;
-}
-.modal-gallery::-webkit-scrollbar{height:4px}
-.modal-gallery::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:4px}
-.modal-gallery-img{
-  height:180px;border-radius:8px;
-  flex-shrink:0;object-fit:cover;
-  border:1.5px solid var(--border);
-  transition:transform .2s,border-color .2s;
-}
-.modal-gallery-img:hover{transform:scale(1.02);border-color:var(--g)}
+    .nav-logo span {
+      color: var(--g)
+    }
 
-/* ── LIGHTBOX ── */
-#lightbox{
-  display:none;position:fixed;inset:0;z-index:800;
-  background:rgba(0,0,0,.92);
-  align-items:center;justify-content:center;
-  flex-direction:column;gap:12px;
-}
-#lightbox.open{display:flex}
-#lightbox img{
-  max-width:92vw;max-height:82vh;
-  object-fit:contain;border-radius:8px;
-}
-.lightbox-controls{display:flex;align-items:center;gap:1rem}
-.lightbox-btn{
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
-  color:white;padding:8px 18px;border-radius:6px;font-size:13px;
-  transition:background .2s;
-}
-.lightbox-btn:hover{background:rgba(255,255,255,.25)}
-.lightbox-counter{color:rgba(255,255,255,.5);font-family:var(--mono);font-size:11px}
-.lightbox-close{
-  position:absolute;top:16px;right:20px;
-  background:none;border:none;color:rgba(255,255,255,.6);
-  font-size:24px;transition:color .2s;
-}
-.lightbox-close:hover{color:white}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none
+    }
 
-/* ── VISUAL DESIGN GALLERY ── */
-.visual-section-wrap { margin-bottom: 2.5rem }
-.visual-section-label {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--g); margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 8px;
-}
-.visual-section-label::after { content:''; flex:1; height:1px; background:var(--g-pale) }
+    .nav-links a {
+      font-size: 12px;
+      color: var(--ink2);
+      text-decoration: none;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      transition: color .2s
+    }
 
-.visual-masonry {
-  columns: 3; column-gap: 10px;
-}
-.visual-masonry-img {
-  display: block; width: 100%; margin-bottom: 10px;
-  border-radius: 8px; object-fit: cover;
-  border: 1px solid var(--border);
-  transition: transform .2s, box-shadow .2s;
-  break-inside: avoid;
-}
-.visual-masonry-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 28px rgba(0,0,0,.12);
-}
-@media(max-width:700px){ .visual-masonry { columns: 2 } }
-@media(max-width:420px){ .visual-masonry { columns: 1 } }
+    .nav-links a:hover {
+      color: var(--g)
+    }
 
-/* ── UX PROCESS TAGS on cards ── */
-.ux-tags { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:10px }
-.ux-tag {
-  font-size:9.5px; padding:2px 7px; border-radius:3px;
-  border:1px solid rgba(74,158,92,.25);
-  color:var(--g-dark); background:var(--g-pale);
-  font-family:var(--mono); letter-spacing:.04em;
-}
+    .nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--g);
+      display: inline-block;
+      margin-right: 6px;
+      animation: pulse 2.5s ease-in-out infinite
+    }
 
-/* ── SOCIAL 4-column grid ── */
-.social-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-.social-grid-img{
-  width:100%;aspect-ratio:1/1;object-fit:cover;
-  border-radius:8px;border:1px solid var(--border);
-  transition:transform .2s,box-shadow .2s;display:block;
-}
-.social-grid-img:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,.1)}
-@media(max-width:600px){.social-grid{grid-template-columns:repeat(2,1fr)}}
+    @keyframes pulse {
 
-/* ── HERO UX PROCESS CHIPS ── */
-.hero-process-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem}
-.process-chip{
-  font-size:11.5px;padding:5px 12px;border-radius:20px;
-  background:var(--card);border:1px solid var(--border);
-  color:var(--ink2);
-}
-</style>
-</head>
-<body>
-<div id="cursor"></div>
-
-<nav>
-  <a href="#hero" class="nav-logo">Sarita<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#works">Works</a></li>
-    <li><a href="#visual">Visual</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="mailto:sarita445645@gmail.com"><span class="nav-dot"></span>Contact</a></li>
-  </ul>
-</nav>
-
-<section id="hero">
-  <div class="hero-bg-circle"></div>
-  <div class="hero-grid">
-    <div>
-      <p class="hero-eyebrow">✦ UI/UX Designer &amp; Visual Designer</p>
-      <h1 class="hero-name">Hello,<br/>I'm <em>Sarita</em></h1>
-      <p class="hero-role">設計，是解決問題的過程</p>
-      <p class="hero-bio">擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗，橫跨工業 HMI 系統、ERP 介面、RWD 網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
-      <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
-      <div class="hero-process-chips">
-        <span class="process-chip">🔍 使用者研究</span>
-        <span class="process-chip">🗂 資訊架構</span>
-        <span class="process-chip">⚡ Prototype</span>
-        <span class="process-chip">📐 Design System</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#works" class="btn btn-primary">View My Work</a>
-        <a href="mailto:sarita445645@gmail.com" class="btn btn-outline">Get in Touch</a>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="stat-cluster">
-        <div class="stat-box accent"><div class="stat-num">3</div><div class="stat-label">Years UIUX</div></div>
-        <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Years Visual</div></div>
-        <div class="stat-box"><div class="stat-num">12+</div><div class="stat-label">Projects</div></div>
-        <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">Curiosity</div></div>
-      </div>
-      <div class="tag-cloud">
-        <span class="tag">HMI Interface</span><span class="tag">Design System</span>
-        <span class="tag">RWD Web</span><span class="tag">B2B / B2C</span>
-        <span class="tag">User Research</span><span class="tag">Prototyping</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-bg-line"></div>
-</section>
-
-<section id="works">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">01</span>
-      <h2 class="section-title">UI/UX Design Works</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="filter-bar reveal reveal-delay-1">
-      <button class="filter-btn active" onclick="filterWorks('all',this)">All</button>
-      <button class="filter-btn" onclick="filterWorks('hmi',this)">HMI 工業介面</button>
-      <button class="filter-btn" onclick="filterWorks('web',this)">網頁設計</button>
-      <button class="filter-btn" onclick="filterWorks('ecom',this)">電商 / 品牌</button>
-    </div>
-    <div class="works-grid" id="worksGrid">
-
-      <div class="work-card reveal" data-cat="hmi" onclick="openModal('w11')">
-        <div class="work-thumb t-slate" style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Industrial HMI</div>
-          <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
-          <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
-          <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span class="ux-tag">IA 重構</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span><span class="work-tool">VS Code</span></div><span class="work-year">2024</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-1" data-cat="hmi" onclick="openModal('w433')">
-        <div class="work-thumb t-teal" style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Industrial HMI</div>
-          <div class="work-title">中鋼 W433 球化場 HMI</div>
-          <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
-          <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span class="ux-tag">視覺層級</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-2" data-cat="hmi" onclick="openModal('w1')">
-        <div class="work-thumb t-indigo" style="background-image:url(images/w1/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Smart Factory</div>
-          <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
-          <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
-          <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span class="ux-tag">模組化</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal" data-cat="hmi" onclick="openModal('csc')">
-        <div class="work-thumb t-moss" style="background-image:url(images/csc/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Web App / GIS</div>
-          <div class="work-title">中鋼 CSC 街景地圖</div>
-          <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
-          <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span class="ux-tag">元件規範</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('b2b')">
-        <div class="work-thumb t-olive" style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">B2B Website</div>
-          <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
-          <div class="work-desc">GA4 數據審計 + 任務導向網格，讓核心產品從 L3 深層浮出，轉換漏斗全面重整。</div>
-          <div class="ux-tags"><span class="ux-tag">數據審計</span><span class="ux-tag">任務導向</span><span class="ux-tag">AI 整合</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('landing')">
-        <div class="work-thumb t-green" style="background-image:url(images/landing/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Landing Page</div>
-          <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
-          <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
-          <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span class="ux-tag">CTA 策略</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal" data-cat="web" onclick="openModal('calculator')">
-        <div class="work-thumb t-amber" style="background-image:url(images/calculator/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Web Tool / Lead Gen</div>
-          <div class="work-title">獲利計算機</div>
-          <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
-          <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span class="ux-tag">互動回饋</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('survey')">
-        <div class="work-thumb t-clay" style="background-image:url(images/survey/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Web Form / Lead Gen</div>
-          <div class="work-title">關稅評量問券網頁</div>
-          <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
-          <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span class="ux-tag">心理模型</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('y26')">
-        <div class="work-thumb t-navy" style="background-image:url(images/y26/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Recruitment</div>
-          <div class="work-title">Y26 招募網翻新設計</div>
-          <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
-          <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span class="ux-tag">模組化管理</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal" data-cat="ecom" onclick="openModal('hongxin')">
-        <div class="work-thumb t-rose" style="background-image:url(images/hongxin/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">E-Commerce</div>
-          <div class="work-title">弘信生醫 — 多品牌美妝電商架構重組</div>
-          <div class="work-desc">雙軌式導航解決多品牌迷宮問題，Token 化設計系統讓新品牌上架只需調色。</div>
-          <div class="ux-tags"><span class="ux-tag">雙軌導航</span><span class="ux-tag">Token 系統</span><span class="ux-tag">折扣邏輯</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2023</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-1" data-cat="ecom" onclick="openModal('yisen')">
-        <div class="work-thumb t-warm" style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Brand + UIUX</div>
-          <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
-          <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
-          <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span class="ux-tag">Mobile First</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div><span class="work-year">2023</span></div>
-        </div>
-      </div>
-
-      <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('dingxin')">
-        <div class="work-thumb t-forest" style="background-image:url(images/dingxin/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span class="work-overlay-sub">點擊查看完整介紹</span></div></div>
-        <div class="work-body">
-          <div class="work-cat">Web Redesign</div>
-          <div class="work-title">鼎新官網 — 關於我們頁面重製</div>
-          <div class="work-desc">Claude + Figma + VS Code 協作完成，AI 輔助設計流程的實際落地。</div>
-          <div class="ux-tags"><span class="ux-tag">AI 協作</span><span class="ux-tag">設計轉開發</span><span class="ux-tag">品牌形象</span></div>
-          <div class="work-footer"><div class="work-tools"><span class="work-tool">Claude</span><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2026</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="visual">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Visual Design</h2>
-      <div class="section-line"></div>
-    </div>
-<div class="visual-section-wrap">
-  <div class="visual-section-label">Travel</div>
-  <div class="visual-masonry">
-    <img class="visual-masonry-img" src="images/visual-travel/01.jpg" alt="Travel 1" onclick="openVisualLightbox('travel',0)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-travel/02.jpg" alt="Travel 2" onclick="openVisualLightbox('travel',1)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-travel/03.jpg" alt="Travel 3" onclick="openVisualLightbox('travel',2)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-travel/04.jpg" alt="Travel 4" onclick="openVisualLightbox('travel',3)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-travel/05.jpg" alt="Travel 5" onclick="openVisualLightbox('travel',4)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-travel/06.jpg" alt="Travel 6" onclick="openVisualLightbox('travel',5)" loading="lazy"/>
-  </div>
-</div>
-<div class="visual-section-wrap">
-  <div class="visual-section-label">社群圖文</div>
-  <div class="social-grid">
-    <img class="social-grid-img" src="images/visual-social/01.jpg" alt="社群圖文 1" onclick="openVisualLightbox('social',0)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/02.jpg" alt="社群圖文 2" onclick="openVisualLightbox('social',1)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/03.jpg" alt="社群圖文 3" onclick="openVisualLightbox('social',2)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/04.jpg" alt="社群圖文 4" onclick="openVisualLightbox('social',3)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
-  </div>
-</div>
-<div class="visual-section-wrap">
-  <div class="visual-section-label">電商行銷 / 門市布置 / 包裝印刷</div>
-  <div class="social-grid">
-    <img class="social-grid-img" src="images/visual-ecom/01.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 1" onclick="openVisualLightbox('ecom',0)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/02.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 2" onclick="openVisualLightbox('ecom',1)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/03.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 3" onclick="openVisualLightbox('ecom',2)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/04.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 4" onclick="openVisualLightbox('ecom',3)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/05.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 5" onclick="openVisualLightbox('ecom',4)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/06.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 6" onclick="openVisualLightbox('ecom',5)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/07.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 7" onclick="openVisualLightbox('ecom',6)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/08.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 8" onclick="openVisualLightbox('ecom',7)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/09.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 9" onclick="openVisualLightbox('ecom',8)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/10.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 10" onclick="openVisualLightbox('ecom',9)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/11.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 11" onclick="openVisualLightbox('ecom',10)" loading="lazy"/>
-    <img class="social-grid-img" src="images/visual-ecom/12.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 12" onclick="openVisualLightbox('ecom',11)" loading="lazy"/>
-  </div>
-</div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Skills &amp; Tools</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="skills-layout">
-      <div class="skill-group reveal">
-        <div class="skill-group-title">Design Expertise</div>
-        <div class="skill-items">
-          <span class="skill-item">UI/UX Design</span><span class="skill-item">HMI 介面設計</span>
-          <span class="skill-item">RWD 響應式設計</span><span class="skill-item">Wireframe</span>
-          <span class="skill-item">Prototype</span><span class="skill-item">Design System</span>
-          <span class="skill-item">User Research</span><span class="skill-item">IA 資訊架構</span>
-        </div>
-      </div>
-      <div class="skill-group reveal reveal-delay-1">
-        <div class="skill-group-title">Tech &amp; Collaboration</div>
-        <div class="skill-items">
-          <span class="skill-item">Bootstrap 框架</span><span class="skill-item">HTML5 / CSS</span>
-          <span class="skill-item">Git / GitHub</span><span class="skill-item">跨部門專案管理</span>
-          <span class="skill-item">PM 協作</span><span class="skill-item">工程團隊溝通</span>
-          <span class="skill-item">Claude AI 協作</span>
-        </div>
-      </div>
-    </div>
-    <div class="tools-section reveal">
-      <div class="tools-label">Design Tools</div>
-      <div class="tools-list">
-        <div class="tool-badge"><div class="tool-icon"></div>Figma</div>
-        <div class="tool-badge"><div class="tool-icon"></div>Adobe Illustrator</div>
-        <div class="tool-badge"><div class="tool-icon"></div>Adobe Photoshop</div>
-        <div class="tool-badge"><div class="tool-icon"></div>Adobe XD</div>
-        <div class="tool-badge"><div class="tool-icon"></div>MidJourney</div>
-        <div class="tool-badge"><div class="tool-icon"></div>Canva</div>
-        <div class="tool-badge"><div class="tool-icon"></div>VS Code</div>
-        <div class="tool-badge"><div class="tool-icon"></div>Claude AI</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="about-bg"></div>
-  <div class="section-inner">
-    <div class="about-grid">
-      <div>
-        <p class="about-eyebrow">About Me</p>
-        <h2 class="about-heading">Design with<br/><em>Purpose.</em></h2>
-        <p class="about-text">我是 Sarita，一位擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗的設計師。<br/><br/>曾參與工業製造系統 HMI 介面重設計、多品牌電商 IA 優化、B2B 企業官網重構等多樣化專案，橫跨製造業、美妝電商與科技產業。<br/><br/>我相信好的設計來自對人的理解——深入研究使用者需求，再透過設計將複雜問題轉化為直覺流暢的體驗。</p>
-        <div class="about-contact">
-          <a href="mailto:sarita445645@gmail.com" class="contact-link">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.2"/></svg>
-            sarita445645@gmail.com
-          </a>
-        </div>
-      </div>
-      <div class="about-right">
-        <div class="exp-timeline">
-          <div class="exp-item"><div class="exp-period">2022 — Present</div><div class="exp-role">UI/UX Designer</div><div class="exp-company">工業製造 · HMI &amp; Web Platform</div></div>
-          <div class="exp-item"><div class="exp-period">2020 — 2022</div><div class="exp-role">Visual Designer</div><div class="exp-company">電商品牌 · 行銷設計</div></div>
-          <div class="exp-item"><div class="exp-period">2017 — 2020</div><div class="exp-role">Graphic Designer</div><div class="exp-company">品牌視覺 · 印刷 · 社群</div></div>
-          <div class="exp-item"><div class="exp-period">Education</div><div class="exp-role">視覺傳達設計學系</div><div class="exp-company">設計相關科系畢業</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-sig"><div class="footer-dot"></div><span>2026 Sarita · Design</span></div>
-  <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
-  <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
-</footer>
-
-<!-- MODAL -->
-<div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
-  <div class="modal" id="modalBox">
-    <!-- Header -->
-    <div class="modal-header">
-      <div class="modal-header-left">
-        <span class="modal-cat" id="modalCat"></span>
-        <span class="modal-title" id="modalTitle"></span>
-      </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <!-- Meta -->
-    <div class="modal-meta" id="modalMeta"></div>
-    <!-- Two-column body -->
-    <div class="modal-body">
-      <div class="modal-img-panel" id="modalImgPanel"></div>
-      <div class="modal-text-panel" id="modalBody"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-const projectGallery = {
-  w11: [
-    "images/w11/gallery-01.jpg",
-    "images/w11/gallery-02.jpg"
-  ],
-  w433: [
-    "images/w433/gallery-01.jpg",
-    "images/w433/gallery-02.jpg",
-    "images/w433/gallery-03.jpg"
-  ],
-  w1: [
-    "images/w1/gallery-01.jpg",
-    "images/w1/gallery-02.jpg"
-  ],
-  csc: [
-    "images/csc/gallery-01.jpg",
-    "images/csc/gallery-02.jpg",
-    "images/csc/gallery-03.jpg"
-  ],
-  b2b: [
-    "images/b2b/gallery-01.jpg"
-  ],
-  landing: [
-    "images/landing/gallery-01.jpg"
-  ],
-  calculator: [
-    "images/calculator/gallery-01.jpg",
-    "images/calculator/gallery-02.jpg"
-  ],
-  survey: [
-    "images/survey/gallery-01.jpg"
-  ],
-  y26: [
-
-  ],
-  hongxin: [
-    "images/hongxin/gallery-01.jpg",
-    "images/hongxin/gallery-02.jpg"
-  ],
-  yisen: [
-    "images/yisen/gallery-01.jpg",
-    "images/yisen/gallery-02.jpg"
-  ],
-  dingxin: [
-    "images/dingxin/gallery-01.jpg",
-    "images/dingxin/gallery-02.jpg"
-  ],
-};
-
-const projects={
-  w11:{cat:'Industrial HMI',title:'中鋼 W11 生產資訊系統 HMI',thumb:'t-slate',year:'2024',tools:['Figma','Illustrator','VS Code'],sections:[
-    {title:'專案背景',text:'面對一個已經運作超過 30 年、承載了無數操作員經驗的系統，設計師最忌諱的就是「為了改而改」。核心任務是監控 W11 產線的原料運輸與料廠存量，真正的挑戰是如何讓老系統在不丟失效率的前提下，順利完成新舊世代的交接。'},
-    {title:'走下座位，進入生產現場',text:'設計初期，直接戴上安全帽，跟著現場人員走了一遍廠房、鐵軌與港口。如果不理解實體設備的相對位置和運輸原理，畫出來的圖示就只是冰冷的符號。透過「由虛入實」的過程，將數位圖示與物理現場對齊——如果介面能反映真實空間感，新進人員就不需要再靠前輩傳承那套「通靈式」的理解，看一眼螢幕就知道料送到哪了。'},
-    {title:'解決跨世代認知斷層',text:'資深員工看「位置」與「顏色」，哪裡的色塊變了就立刻知道出問題；新進人員看「直覺」與「層級」，原有畫面資訊過於細碎，學習曲線被拉得很長。挑戰是：有沒有可能在不破壞老員工「顏色記憶」的情況下，重新梳理一套符合現代邏輯的資訊架構？'},
-    {title:'以港口為核心的視覺重組',points:['拿掉讓人眼花撩亂的線條，改用模組化思維佈局','港口置於右側中心，所有送料路徑以此為基準向外發散','畫面切分為左側固定料廠狀態、右側動態船隻、底部集中數據區','路徑簡化但強化連動感，操作員能輕易聯想到實體設備的對應關係']},
-    {title:'設計成果',highlight:'保留了資深員工習慣的數據座標，但重新繪製了圖像特徵。老手能繼續靠肌肉記憶找到數據，而新人看著那些像船、像起重機的圖像，也能一眼秒懂現場狀況。工業介面的改版不是設計師的自我表現，而是成為新舊操作員之間那座無形的橋樑。'}
-  ]},
-  w433:{cat:'Industrial HMI',title:'中鋼 W433 球化場 HMI',thumb:'t-teal',year:'2025',tools:['Figma','VS Code'],sections:[
-    {title:'專案背景',text:'W433 球化場這套 HMI 系統已經運作了超過三十年。介面風格跟現在主流的工業軟體相比，中間差的不只是美感，而是整個作業邏輯的代溝。任務是在不改動核心操作流程的前提下，讓新進員工覺得系統好上手，同時確保資深前輩那套磨練了幾十年的「肌肉記憶」不被破壞。'},
-    {title:'那些隱藏在顏色背後的衝突',text:'訪談時察覺一種「世代對立」：對前輩們來說，色塊要夠鮮豔才算好認；但在年輕一輩眼裡，那樣的介面是視覺災難。真正的斷點是視覺層級的徹底崩解——當畫面上每個元素都在瘋狂爭奪注意力，使用者反而找不到重點。'},
-    {title:'三大痛點分析',points:['主次不分：高亮度色塊導致最關鍵的「異常狀態監視欄」被淹沒在背景裡，警報跟背景一樣大聲','地圖式認知負荷：操作員必須記住每個按鈕的精確座標，高強度掃視造成視覺疲勞，是人為誤操作的隱性誘因','30 年肌肉記憶：前輩的排斥並非無理取鬧，新設計往往切斷「不需思考即可操作」的直覺']},
-    {title:'漸進式優化策略',highlight:'不推翻，而是進步。在工廠端，穩定與安全永遠是第一順位。我保留原本顏色分類，但大幅縮小色塊比例——從大面積背景填充改為精準標籤與引導元素。'},
-    {title:'設計落地',points:['卡片式架構 + 適度留白，讓操作員更快速定位目標，不再需要在色塊迷宮裡找按鈕','降低整體亮度與飽和度，讓底部紅色警報燈在出問題時，才能真正地從畫面中「跳」出來','邀請資深同事現場演示最常用功能，告訴他們：「操作流程一個都沒變，我們只是把燈光調得更舒服了」']}
-  ]},
-  w1:{cat:'Smart Factory',title:'W1 場內運輸智慧工廠平台重構',thumb:'t-indigo',year:'2024',tools:['Figma'],sections:[
-    {title:'專案背景',text:'針對廠內運輸處 W1 智慧平台的重構，面對一個運作了三、四十年的老系統，這不只是介面換個皮膚，更像是在梳理一段漫長的歷史。原本的介面採用左右對稱的長條清單，隨著功能越加越多，這種排版已經快撐不住了，視覺上亂成一團不說，維護起來也讓人頭大。'},
-    {title:'核心共識',highlight:'核心流程絕對不動。對第一線的人來說，穩定性永遠排在第一位。目標是透過區域化歸納來減輕認知負擔，而不是去挑戰老同仁跑了幾十年的肌肉記憶。'},
-    {title:'現場調研',text:'坐在辦公室看圖稿，很難感受到廠區的真實落差。在課長支持下，由熟悉場地的同仁帶著走一趟現場，手持手機拍下各區實景。走了一圈才發現，與其對著 A01 或 B01 這種冷冰冰的編碼猜測，不如直接把拍攝的景象帶進介面——當數位資訊跟實體空間產生連結，系統才真的有了靈魂。'},
-    {title:'架構創新：從清單撈針到地圖導航',points:['區域化分流：將零散功能按鈕依照 W11 到 W16 四大產線區域重新劃分，各歸其位','轉盤導航：中間圓盤是視覺化地圖，讓熟門熟路的老手能直接找到捷徑，不用再從清單裡撈功能','實景導引：把現場照片融入首頁，讓新進同仁能迅速把畫面對應到腳下站的位置']},
-    {title:'異常處理：警報分級策略',text:'以前系統習慣「一出事就套紅框」，結果滿螢幕都是紅框，反而沒人理。這次把通知分級，一般待辦事項待在狀態列，真的需要立即處理的警報才強化視覺。同時預製標準 UI 樣板，確保後續維護的長久邏輯。'}
-  ]},
-  csc:{cat:'Web App / GIS',title:'中鋼 CSC 街景地圖',thumb:'t-moss',year:'2025',tools:['Figma','Illustrator'],sections:[
-    {title:'專案背景',text:'在中鋼這樣的重工業場域，Google Maps 是派不上用場的——受限於嚴格的資安政策，所有導航與圖資都必須留在內網。這對現場員工來說，廠區裡準確找到路比起技術問題更加困難。我擔任 UI 設計，協助後端工程師將地圖數據轉化為真正能被「人」使用的 Web 介面。'},
-    {title:'最尷尬的限制',text:'使用者無法拿著手機隨處定位，因為內網網頁只能在辦公室電腦上跑。這意味著現場維修人員必須在出發前，先在辦公室螢幕上建立起清晰的地理空間認知——所以前期的「空間記憶建立」成為設計的最高優先。'},
-    {title:'關鍵設計決策',points:['雙模式切換（地圖 / 衛星照片）：有時候看相對位置還不夠，使用者需要透過建物具體外型確認方向','搜尋與路徑規劃死死釘在左上角黃金區域，讓使用者一坐下來就能立刻進入任務','廠區等級色彩規範：一至三級區域透過 Marker 顏色直接區分，高負載環境下省下大腦轉速']},
-    {title:'那些被忽視的細節',text:'制定嚴格的 CSS 規範，微調 padding 與 gap 的數值，只為確保在複雜標註中文字依然維持易讀性。甚至連選單展開後的關閉按鈕，都要求與漢堡選單維持在同一個錨點——使用者在快速操作時，不需要移動滑鼠就能在同一位置完成開啟與關閉，這是一種隱形的體貼。'},
-    {title:'成果',text:'所有元件模組化，從按鈕各種狀態到路徑標記都整理成開發者友好的規範。規範已順利落地，後續團隊也正準備導入「最短路徑計算」功能。'}
-  ]},
-  b2b:{cat:'B2B Website',title:'官網重構 — 數據驅動的 B2B 架構轉型',thumb:'t-olive',year:'2025',tools:['Figma','VS Code'],live:'https://www.digiwin.com/',sections:[
-    {title:'數據背後的斷裂',points:['67% 的流量是老客戶回來找登入或支援，但這群人的需求根本沒被妥善安置','57% 的新訪客在進入「行業方案」後迷航——導航命名太過內部化，充滿只有自己人才懂的型號','MES、AI 等高搜尋量核心產品被埋在第三層（L3），路徑長到讓人失去耐心，流失率居高不下']},
-    {title:'解方：任務導向網格',text:'捨棄死板的樹狀結構，改以任務為核心重排 Sitemap。URL 規律重新制定，像 /solutions/industry/product 這種語意化路徑，不只對 SEO 友善，更讓使用者對接下來會看到什麼有心理預期。'},
-    {title:'雙軸導航策略',highlight:'頂層導覽（Header）是新客的舞台，聚焦品牌價值、情境方案與成功案例，縮短探索路徑。頁尾（Footer）是老客戶的避風港，把登入、工單、技術文件等具體工作任務收進這裡，減少主導覽的資訊干擾。'},
-    {title:'AI 領航員藍圖',points:['Phase 1：減負——從 FAQ 導覽與產品推薦做起，幫使用者省下搜尋時間','Phase 2：識別——AI 根據停留時間與行為判斷新客或回流客，主動拋出合適建議','Phase 3：整合——最終目標讓 AI 導覽與 CRM 和銷售漏斗接軌，實現行銷自動化']},
-    {title:'組件化設計系統',text:'建立一套專屬 B2B 的組件庫，從複雜篩選器到產業案例卡片應有盡有。後續要新增半導體或零售方案時，設計與開發能像搭積木一樣，在維持專業感的同時大幅縮短上線時間。'}
-  ]},
-  landing:{cat:'Landing Page',title:'就享知導流推廣頁（夥伴營銷 Landing Page）',thumb:'t-green',year:'2025',tools:['Figma','VS Code'],live:'https://www.digiwin.com.tw/digiknow/service/index.html',preview:'https://sarita645.github.io/digiknow-redesign02/',sections:[
-    {title:'專案目標',text:'本頁面核心目標在於「導流」，將使用者有效引導至「就享知」平台。目標受眾推論為「尋求數位轉型解方的中小企業決策者」，設計策略定調為：以最高效率傳達核心價值，讓這群繁忙的主管級受眾能第一時間捕捉到重點。'},
-    {title:'Banner 策略決策',highlight:'原先考量滿版影片或幻燈片，但從轉換率角度切入，建議改用「精煉標題 + 清晰 CTA」——避免過多動態元素分散受眾對導流入口的注意力，確保目標路徑是直覺且流暢的。'},
-    {title:'資訊架構：內容減法',text:'為確保版面的節奏感與集中力，定義了方塊與標籤的字數建議，透過精簡贅字並強化重點關鍵字，讓受眾在快速滑動時也能輕鬆理解核心內容。'},
-    {title:'案例展示：2+N 策略',text:'先完整展示兩項最具代表性的案例，再讓其他案例透過「閱讀更多」提供選項。縮短初次閱讀的頁面長度，避免受眾產生滑動疲勞，透過分層展示逐步引導深入了解。'},
-    {title:'服務項目區塊',text:'採用互動式切換設計，將複雜服務拆解為「線上」與「線下」兩大核心模組，引導使用者根據自身需求進行篩選，縮短決策路徑，提升預約諮詢的轉換效率。'}
-  ]},
-  calculator:{cat:'Web Tool / Lead Gen',title:'獲利計算機',thumb:'t-amber',year:'2025',tools:['Figma','VS Code'],live:'https://www.digiwin.com.tw/dsc/solution/WB003954/profit',sections:[
-    {title:'專案背景',text:'因應川普關稅議題升溫，企業對成本轉嫁與毛利評估需求激增。因母產品（大型 ERP）門檻較高、推廣不易，提出「試玩版（Lite Version）」策略——作為獲取潛在客戶名單的誘餌工具，降低中小企業主的進入門檻。'},
-    {title:'核心洞察',highlight:'在決策工具中，使用者需要的不是精確到小數點後的財務報表，而是「我現在該不該擔心？」的直覺警示。'},
-    {title:'UX 設計策略',points:['單頁式流程：銷售價格 → 成本 → 現行關稅 → 預計關稅，即可產生分析結果','動態回饋：視覺閃爍與區塊強調（Highlighting），讓使用者輸入數值後立刻鎖定結果落點','Desktop 優先：B2B 情境多為辦公室 PC 操作，集中資源優化桌機體驗以換取更豐富的數據圖表']},
-    {title:'Teaser Design 誘餌策略',text:'刻意不提供「完整解析」，僅提供「關鍵提示」——引導使用者因好奇或需求進一步詢問產品。在分析結果下方直接埋入「諮詢服務」按鈕，縮短從工具使用到商業轉化的路徑。'},
-    {title:'上線後主動反思',text:'諮詢轉化率不如預期，主動分析並回饋給團隊：外層推廣頁面的文案未能精準擊中用戶對關稅的恐懼或痛點；試玩版介面過於現代，與正式版軟體的傳統介面存在「體驗斷層」——這是後續需要優化的關鍵點。'}
-  ]},
-  survey:{cat:'Web Form / Lead Gen',title:'關稅評量問券網頁',thumb:'t-clay',year:'2025',tools:['Figma'],live:'https://www.digiwin.com.tw/dsc/diagnosis/07/',sections:[
-    {title:'核心挑戰',text:'如何在枯燥的問卷中降低跳出率，並讓複雜的對比數據在手機端依然「一眼即懂」。目標受眾為忙碌的中小企業主，他們對繁瑣表單耐性極低，一旦遇到阻力便會離開。'},
-    {title:'降低填答壓力',points:['微互動進度條：將問卷拆解為 5 大階段，這不只是視覺導引，更是心理暗示——讓使用者明確感知「距離終點還有多遠」，有效降低放棄填寫的機率','場域考量：老闆們可能在通勤或零碎時間查看報告，特別強化 Mobile (375px) 操作流暢度，確保所有圖表在小螢幕上不需橫向滾動即可閱讀']},
-    {title:'數據視覺化的心理模型',highlight:'根據古騰堡瀏覽動線（Gutenberg Diagram），建議將「使用者企業」數據置於右側——因為右下角是視覺的「終點/結論區」，讓使用者在看完產業基準後，最後一眼落在自己的數據上，產生強烈的對比感與行動動機。'},
-    {title:'與需求方的設計權衡',text:'需求方希望以「交通工具」代表企業等級，但交通工具的強弱語意在關稅議題上較為模糊。優化方案：在保留交通工具視覺的前提下，主動提議導入「全球通用五星評等系統」，讓使用者不需思考就能秒懂自己的抗風險等級。'},
-    {title:'響應式設計',text:'針對手機版，將橫向複雜的對比圖表重新解構為「垂直堆疊式卡片」，並保持觸控熱區的易操作性。建立標準化元件庫，確保從問卷輸入頁到報告產出頁的視覺語言高度統一。'}
-  ]},
-  y26:{cat:'Recruitment Website',title:'Y26 招募網翻新設計',thumb:'t-navy',year:'2026',tools:['Figma'],live:'https://www.digiwin.com.tw/hr/school/',sections:[
-    {title:'接手時的挑戰',text:'面對一個兩年前製作、維護邏輯混亂的舊站。製作方式並不符合「網頁模組化」的思維，導致 PM 在管理上非常痛苦。核心問題不只是視覺老舊，而是整個資訊架構都需要從求職者的角度重新思考。'},
-    {title:'轉換率優先：刪除干擾',highlight:'招募網的本質是轉換率（Conversion Rate）。舊版選單塞滿了 YouTube、就享知等外部連結——協調 PM 刪除這些會讓流量流失的按鈕，將導航列空間留給關鍵的「職缺類別」。'},
-    {title:'色彩編碼解決職務辨識問題',text:'面對五大職務計畫，光靠文字名稱太難辨識。為每個職務定義專屬色系（如：領袖之星 = 紫色、服務顧問 = 綠色、營運規劃 = 黃色）。在資訊負荷過重的環境下，色彩是直覺導航的第一步，讓使用者一眼就認出「我現在在哪個計畫裡」。'},
-    {title:'視覺年輕化',text:'校招對象是大學生，希望避開 ERP 產業那種硬梆梆、沈重的刻板印象。雖然部分插圖（樹苗、太空人等）是 PM 指定的既有素材，但透過重新規劃整體色彩調性，改用更陽光、輕透且高飽和的配色，把原本感覺比較悶的 ERP 形象換掉，讓學生進到網頁時感受到活力和可能性。'},
-    {title:'執行成果',points:['模組化建構：省略無效按鈕與冗餘區塊，PM 後續在文字替換與管理上變得非常輕鬆','一致性體驗：從 Banner、eDM 到網頁元件，都建立了一致的規範','UI/UX 師不只是畫圖的人，更是企業與使用者之間的轉譯者']}
-  ]},
-  hongxin:{cat:'E-Commerce',title:'弘信生醫 — 多品牌美妝電商架構重組',thumb:'t-rose',year:'2023',tools:['Figma'],sections:[
-    {title:'核心課題',text:'面對自創品牌快速增加的產品線，客戶需要的不只是一個網頁，而是一個能包容多元調性、且不因品項變多就導致導航崩潰的系統。目標：縮短從搜尋到結帳的決策路徑，同時打造具備高度延展性的設計底層。'},
-    {title:'使用者痛點',points:['導航摩擦：品項一多，傳統選單層級就像迷宮，使用者找不到想要的商品','計算負擔：促銷活動一多，使用者得在心裡反覆計算哪種組合最划算，這往往是棄單的開始']},
-    {title:'雙軌式導航',highlight:'品牌導向：滿足對特定品牌有忠誠度的用戶，強化信賴感。功效導向：針對「解決問題」型的用戶，讓他們能橫向跨品牌篩選保養需求。在這個階段花了許多時間與工程師「對邏輯」，確保促銷規則在前端呈現時是清爽且易讀的。'},
-    {title:'細節嚴謹性',points:['折扣疊加邏輯：系統預設以「最大折扣」為優先，明確定義疊加規則（現金折抵可並用，但折扣券僅能擇一）','過期代碼的留客術：使用者輸入無效代碼時，主動推薦當下最熱門的優惠，而不是冷冰冰的錯誤提示——既然他都有意願結帳了，為什麼要讓他空手而回？']},
-    {title:'Token 化設計系統',text:'帶入 Token 的設計思維，未來如果代理新品牌，設計師只需微調顏色或字體參數，就能快速生成新頁面，讓後續維護成本降到最低。專案交付後，客戶端運作相當順暢，甚至沒有提出後續的修改需求。'}
-  ]},
-  yisen:{cat:'Brand + UIUX',title:'永昇冷凍食品 — 壹然品牌設計',thumb:'t-warm',year:'2023',tools:['Figma','Illustrator'],sections:[
-    {title:'專案背景',text:'「壹然」這個新創品牌的起步，核心是要在數位環境中定義什麼是「天然與純粹」。負責從功能梳理、架構規劃到最終視覺產出的完整流程。網站的定位很明確——必須是 SEO 的佈局核心，同時要在短暫的進站時間內，用專業的視覺感建立起用戶的信任。'},
-    {title:'市場洞察',text:'面對數據幾乎是空白的新品牌，從成熟競品拆解（Benchmarking）做起。發現許多網站的資訊過於細碎，消費者看著生澀的化學成分名詞，很容易產生「決策疲勞」。建議客戶將「成分標籤化」——把複雜的專業術語轉化為直覺的標籤，讓挑選過程變得輕鬆一點。'},
-    {title:'資訊架構',points:['扁平化導覽架構：對一般使用者來說「好找」，更重要的是讓搜尋引擎爬蟲能順暢抓取','購物路徑縮減到最短：確保從加入購物車到結帳完成的流程是無礙的，為品牌未來的營運轉型打好基礎','防錯機制：加入即時的表單驗證提示，當必填欄位漏填時立刻引導修正，降低使用者因挫折而中斷購買的機率']},
-    {title:'視覺策略',highlight:'刻意營造留白的「呼吸感」。運用自然色系結合適度留白，將「無添加」的品牌理念視覺化，試圖在視覺上建立起高品質的信賴感，而不是像傳統藥局那樣冷冰冰的。'},
-    {title:'設計系統',text:'整理了一套基礎元件規範（UI Kit），從定義色彩計畫到常用的按鈕、卡片與輸入框模組。模組化設計的好處是未來不論是要新增產品類別還是活動頁，都能直接復用現有元件，大幅降低溝通成本，維持視覺一致性。'}
-  ]},
-  dingxin:{cat:'Web Redesign',title:'鼎新官網 — 關於我們頁面重製',thumb:'t-forest',year:'2026',tools:['Claude AI','Figma','VS Code'],live:'https://www.digiwin.com.tw/aboutdsc',preview:'https://sarita645.github.io/dinwin_about02/',sections:[
-    {title:'專案背景',text:'以 Claude + Figma + VS Code 協作完成的官網「關於我們」頁面重製，是一次 AI 輔助設計流程的實際落地實踐。這個專案也印證了設計師與 AI 工具協作的工作模式，讓設計到開發的流程更緊密整合。'},
-    {title:'AI 輔助工作流',points:['Figma：完成版面設計與視覺規格定義','Claude AI：協助將設計稿轉換為可落地的 HTML/CSS 代碼','VS Code：最終細節調整與跨瀏覽器優化']},
-    {title:'設計理念',text:'企業形象頁面不只是公司資料的陳列，更是品牌價值的視覺傳達。透過清晰的資訊層級與現代化的視覺語言，讓訪客在短暫的閱讀時間內，快速建立對品牌的正面印象與信任感。'},
-    {title:'反思',highlight:'AI 工具的加入不是取代設計師，而是讓設計師能更快地驗證想法、迭代版本。這次的協作經驗，讓我對「設計 → 開發」的整合流程有了更直接的感受與理解。'}
-  ]}
-};
-
-function openModal(id){
-  const p=projects[id];if(!p)return;
-  // Header
-  document.getElementById('modalCat').textContent=p.cat;
-  document.getElementById('modalTitle').textContent=p.title;
-  // Meta
-  let meta=`<div class="meta-item"><span class="meta-label">Year</span>&nbsp;${p.year}</div>`;
-  meta+=`<div class="meta-item"><span class="meta-label">Tools</span>&nbsp;${p.tools.map(t=>`<span class="meta-tag">${t}</span>`).join('')}</div>`;
-  if(p.figma)meta+=`<a class="meta-link" href="${p.figma}" target="_blank">↗ Figma</a>`;
-  if(p.live)meta+=`<a class="meta-link" href="${p.live}" target="_blank">↗ Live Site</a>`;
-  if(p.preview)meta+=`<a class="meta-link" href="${p.preview}" target="_blank">↗ Preview</a>`;
-  document.getElementById('modalMeta').innerHTML=meta;
-  // LEFT — image panel
-  const gals = projectGallery[id] || [];
-  let imgPanel='';
-  if(gals.length>0){
-    gals.forEach((src,gi)=>{
-      imgPanel+=`<img class="modal-panel-img" src="${src}" alt="Project image ${gi+1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
-    });
-  } else {
-    imgPanel=`<div class="modal-no-img">No images</div>`;
-  }
-  document.getElementById('modalImgPanel').innerHTML=imgPanel;
-  // RIGHT — text panel
-  let body='';
-  p.sections.forEach(s=>{
-    body+=`<div class="modal-section"><div class="modal-section-title">${s.title}</div>`;
-    if(s.text)body+=`<p class="modal-section-text">${s.text}</p>`;
-    if(s.highlight)body+=`<div class="modal-highlight">${s.highlight}</div>`;
-    if(s.points){body+=`<ul class="modal-points">`;s.points.forEach(pt=>{body+=`<li>${pt}</li>`;});body+=`</ul>`;}
-    body+=`</div>`;
-  });
-  document.getElementById('modalBody').innerHTML=body;
-  document.getElementById('modalBody').scrollTop=0;
-  document.getElementById('modalImgPanel').scrollTop=0;
-  document.getElementById('modalBackdrop').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('cursor').classList.add('modal-open');
-}
-
-function closeModal(){
-  document.getElementById('modalBackdrop').classList.remove('open');
-  document.body.style.overflow='';
-  document.getElementById('cursor').classList.remove('modal-open');
-}
-
-function handleBackdropClick(e){if(e.target===document.getElementById('modalBackdrop'))closeModal();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-// cursor
-const cursor=document.getElementById('cursor');
-document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
-document.querySelectorAll('a,button,.work-card,.tag,.skill-item,.tool-badge,.filter-btn').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-});
-
-// reveal
-const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// filter
-function filterWorks(cat,btn){
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.work-card').forEach(card=>{card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';});
-}
-
-// nav highlight
-sections=document.querySelectorAll('section[id]');
-sections.forEach(s=>{
-  new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        document.querySelectorAll('.nav-links a').forEach(l=>l.style.color='');
-        const lk=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if(lk)lk.style.color='var(--g)';
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
       }
-    });
-  },{threshold:.4}).observe(s);
-});
-</script>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLightboxIfBg(event)">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightboxImg" src="" alt=""/>
-  <div class="lightbox-controls">
-    <button class="lightbox-btn" onclick="lightboxNav(-1)">← Prev</button>
-    <span class="lightbox-counter" id="lightboxCounter"></span>
-    <button class="lightbox-btn" onclick="lightboxNav(1)">Next →</button>
+      50% {
+        opacity: .4;
+        transform: scale(.7)
+      }
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--g);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp .7s .1s ease forwards
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: .5rem;
+      opacity: 0;
+      animation: fadeUp .7s .2s ease forwards
+    }
+
+    .hero-name em {
+      color: var(--g);
+      font-style: italic
+    }
+
+    .hero-role {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--ink3);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp .7s .3s ease forwards
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink2);
+      margin-bottom: 1.5rem;
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp .7s .4s ease forwards
+    }
+
+    .hero-bio strong {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .hero-quote {
+      border-left: 2px solid var(--g);
+      padding-left: 1rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 14.5px;
+      color: var(--g-dark);
+      margin-bottom: 2rem;
+      max-width: 440px;
+      opacity: 0;
+      animation: fadeUp .7s .5s ease forwards
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp .7s .6s ease forwards
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .2s;
+      letter-spacing: .03em
+    }
+
+    .btn-primary {
+      background: var(--g);
+      color: white
+    }
+
+    .btn-primary:hover {
+      background: var(--g-dark);
+      transform: translateY(-2px)
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--ink2)
+    }
+
+    .btn-outline:hover {
+      border-color: var(--g);
+      color: var(--g);
+      transform: translateY(-2px)
+    }
+
+    .hero-right {
+      opacity: 0;
+      animation: fadeUp .7s .35s ease forwards
+    }
+
+    .stat-cluster {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px
+    }
+
+    .stat-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px
+    }
+
+    .stat-box.accent {
+      background: var(--g);
+      border-color: var(--g)
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--g);
+      margin-bottom: 4px
+    }
+
+    .stat-box.accent .stat-num {
+      color: white
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--ink3);
+      letter-spacing: .05em;
+      text-transform: uppercase
+    }
+
+    .stat-box.accent .stat-label {
+      color: rgba(255, 255, 255, .7)
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .tag {
+      font-size: 11.5px;
+      padding: 5px 12px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      color: var(--ink2);
+      background: var(--card);
+      transition: all .2s
+    }
+
+    .tag:hover {
+      border-color: var(--g);
+      color: var(--g);
+      background: var(--g-pale)
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 158, 92, .08) 0%, transparent 70%);
+      right: -100px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none
+    }
+
+    .hero-bg-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent)
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    section {
+      padding: 5rem 2.5rem
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 3rem
+    }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--g);
+      letter-spacing: .1em;
+      padding: 3px 8px;
+      border: 1px solid var(--g-light);
+      border-radius: 4px;
+      background: var(--g-pale)
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin-left: 1rem
+    }
+
+    #works {
+      background: var(--bg)
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap
+    }
+
+    .filter-btn {
+      font-size: 11.5px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--ink2);
+      font-weight: 400;
+      transition: all .2s;
+      font-family: var(--sans)
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--g);
+      color: white;
+      border-color: var(--g)
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .work-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all .25s;
+      position: relative
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .08)
+    }
+
+    .work-card:hover .work-overlay {
+      opacity: 1
+    }
+
+    .work-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: rgba(255, 255, 255, .5);
+      font-style: italic
+    }
+
+    .work-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(42, 107, 56, .88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .25s;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .work-overlay-text {
+      color: white;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-family: var(--mono)
+    }
+
+    .work-overlay-sub {
+      color: rgba(255, 255, 255, .6);
+      font-size: 10px
+    }
+
+    .work-body {
+      padding: 16px 18px 18px
+    }
+
+    .work-cat {
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: 6px
+    }
+
+    .work-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 6px
+    }
+
+    .work-desc {
+      font-size: 12px;
+      color: var(--ink3);
+      line-height: 1.55;
+      margin-bottom: 10px
+    }
+
+    .work-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .work-tools {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap
+    }
+
+    .work-tool {
+      font-size: 9.5px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: var(--g-pale);
+      color: var(--g-dark)
+    }
+
+    .work-year {
+      font-size: 10px;
+      color: var(--ink3);
+      font-family: var(--mono)
+    }
+
+    .t-green {
+      background: linear-gradient(135deg, #4a9e5c, #2a6b38)
+    }
+
+    .t-teal {
+      background: linear-gradient(135deg, #2a7d8c, #1a5e6b)
+    }
+
+    .t-slate {
+      background: linear-gradient(135deg, #3a4a5c, #2a3a4c)
+    }
+
+    .t-warm {
+      background: linear-gradient(135deg, #9e6b4a, #6b4a2a)
+    }
+
+    .t-rose {
+      background: linear-gradient(135deg, #9e4a6b, #6b2a4a)
+    }
+
+    .t-olive {
+      background: linear-gradient(135deg, #6b8c3a, #4a6b2a)
+    }
+
+    .t-indigo {
+      background: linear-gradient(135deg, #4a5c9e, #2a3a6b)
+    }
+
+    .t-amber {
+      background: linear-gradient(135deg, #9e7c2a, #6b5a1a)
+    }
+
+    .t-moss {
+      background: linear-gradient(135deg, #5c7a3a, #3a5c2a)
+    }
+
+    .t-clay {
+      background: linear-gradient(135deg, #8c6b4a, #6b4a2a)
+    }
+
+    .t-navy {
+      background: linear-gradient(135deg, #3a5c7a, #2a4a6b)
+    }
+
+    .t-forest {
+      background: linear-gradient(135deg, #3a7c5c, #2a5c40)
+    }
+
+    #visual {
+      background: var(--card)
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px
+    }
+
+    .visual-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden
+    }
+
+    .visual-thumb {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-family: var(--serif);
+      font-style: italic;
+      color: rgba(255, 255, 255, .5)
+    }
+
+    .visual-body {
+      padding: 12px 14px
+    }
+
+    .visual-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3px
+    }
+
+    .visual-sub {
+      font-size: 11px;
+      color: var(--ink3)
+    }
+
+    #skills {
+      background: var(--bg)
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 26px
+    }
+
+    .skill-group-title {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: 16px
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .skill-item {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      color: var(--ink2);
+      transition: all .2s
+    }
+
+    .skill-item:hover {
+      border-color: var(--g);
+      color: var(--g);
+      background: var(--g-pale)
+    }
+
+    .tools-section {
+      margin-top: 2rem
+    }
+
+    .tools-label {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 14px
+    }
+
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .tool-badge {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      color: var(--ink2);
+      transition: all .2s
+    }
+
+    .tool-badge:hover {
+      border-color: var(--g);
+      color: var(--g)
+    }
+
+    .tool-icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--g);
+      flex-shrink: 0
+    }
+
+    #about {
+      background: var(--ink);
+      color: white;
+      position: relative;
+      overflow: hidden
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center
+    }
+
+    .about-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--g-light);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem
+    }
+
+    .about-heading {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: white;
+      margin-bottom: 1.5rem
+    }
+
+    .about-heading em {
+      color: var(--g);
+      font-style: italic
+    }
+
+    .about-text {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, .65);
+      margin-bottom: 2rem
+    }
+
+    .about-text strong {
+      color: white;
+      font-weight: 500
+    }
+
+    .about-contact {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, .6);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s
+    }
+
+    .contact-link:hover {
+      color: var(--g)
+    }
+
+    .exp-timeline {
+      border-left: 1px solid rgba(255, 255, 255, .1);
+      padding-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem
+    }
+
+    .exp-item {
+      position: relative
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--g);
+      border: 2px solid var(--ink)
+    }
+
+    .exp-period {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--g);
+      letter-spacing: .08em;
+      margin-bottom: 4px
+    }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 2px
+    }
+
+    .exp-company {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .45)
+    }
+
+    .about-bg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74, 158, 92, .07) 0%, transparent 65%);
+      right: -80px;
+      bottom: -80px;
+      pointer-events: none
+    }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, .35);
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      font-family: var(--mono)
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, .35);
+      text-decoration: none
+    }
+
+    footer a:hover {
+      color: var(--g)
+    }
+
+    .footer-sig {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .footer-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--g)
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s
+    }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(10, 10, 12, .75);
+      backdrop-filter: blur(6px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
+      animation: bdFadeIn .25s ease
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center
+    }
+
+    @keyframes bdFadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* ── MODAL SHELL ── */
+    .modal {
+      background: var(--card);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      overflow: hidden;
+      animation: modalIn .3s cubic-bezier(.34, 1.2, .64, 1);
+      position: relative;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: scale(.94) translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+      }
+    }
+
+    /* header strip */
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .modal-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .modal-cat {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g);
+      background: var(--g-pale);
+      padding: 3px 9px;
+      border-radius: 4px
+    }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--ink3);
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      flex-shrink: 0
+    }
+
+    .modal-close:hover {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink)
+    }
+
+    /* meta row */
+    .modal-meta {
+      display: flex;
+      gap: .75rem;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      flex-wrap: wrap;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .meta-label {
+      font-size: 9.5px;
+      color: var(--ink3);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      margin-right: 3px
+    }
+
+    .meta-tag {
+      font-size: 10.5px;
+      background: var(--g-pale);
+      color: var(--g-dark);
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 500;
+      margin-right: 2px
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: var(--ink2)
+    }
+
+    .meta-link {
+      font-size: 11px;
+      color: var(--g);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--g-light);
+      padding: 3px 9px;
+      border-radius: 5px;
+      transition: all .2s
+    }
+
+    .meta-link:hover {
+      background: var(--g);
+      color: white;
+      border-color: var(--g)
+    }
+
+    /* two-column body */
+    .modal-body {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* LEFT — image panel */
+    .modal-img-panel {
+      width: 42%;
+      flex-shrink: 0;
+      overflow-y: auto;
+      background: var(--bg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-right: 1px solid var(--border);
+      scrollbar-width: thin;
+      scrollbar-color: var(--g-light) transparent;
+    }
+
+    .modal-img-panel::-webkit-scrollbar {
+      width: 3px
+    }
+
+    .modal-img-panel::-webkit-scrollbar-thumb {
+      background: var(--g-light);
+      border-radius: 3px
+    }
+
+    .modal-panel-img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      transition: transform .2s, border-color .2s;
+      display: block;
+    }
+
+    .modal-panel-img:hover {
+      transform: scale(1.015);
+      border-color: var(--g)
+    }
+
+    .modal-no-img {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1.5px dashed var(--border);
+      color: var(--ink3);
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: .06em;
+      min-height: 120px;
+    }
+
+    /* RIGHT — text panel */
+    .modal-text-panel {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 22px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--g-light) transparent;
+    }
+
+    .modal-text-panel::-webkit-scrollbar {
+      width: 4px
+    }
+
+    .modal-text-panel::-webkit-scrollbar-thumb {
+      background: var(--g-light);
+      border-radius: 4px
+    }
+
+    .modal-section {
+      margin-bottom: 1.6rem
+    }
+
+    .modal-section:last-child {
+      margin-bottom: 0
+    }
+
+    .modal-section-title {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--g-pale)
+    }
+
+    .modal-section-text {
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--ink2)
+    }
+
+    .modal-section-text strong {
+      color: var(--ink);
+      font-weight: 500
+    }
+
+    .modal-highlight {
+      background: var(--g-pale);
+      border-left: 3px solid var(--g);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: var(--g-dark);
+      line-height: 1.7;
+      margin: .75rem 0;
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    .modal-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-top: .4rem
+    }
+
+    .modal-points li {
+      font-size: 12.5px;
+      color: var(--ink2);
+      line-height: 1.7;
+      padding-left: 1.2rem;
+      position: relative
+    }
+
+    .modal-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--g);
+      font-size: 10px;
+      top: 3px
+    }
+
+    /* mobile: stack vertically */
+    @media(max-width:680px) {
+      .modal-body {
+        flex-direction: column
+      }
+
+      .modal-img-panel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        max-height: 220px;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 12px
+      }
+
+      .modal-panel-img {
+        width: auto;
+        height: 180px;
+        flex-shrink: 0
+      }
+
+      .modal-text-panel {
+        padding: 16px
+      }
+    }
+
+    @media(max-width:900px) {
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-right,
+      .about-right {
+        display: none
+      }
+
+      .works-grid,
+      .visual-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .skills-layout {
+        grid-template-columns: 1fr
+      }
+
+      nav {
+        padding: 0 1.5rem
+      }
+
+      section {
+        padding: 3.5rem 1.5rem
+      }
+
+      .hero-name {
+        font-size: 3rem
+      }
+    }
+
+    @media(max-width:580px) {
+      .works-grid {
+        grid-template-columns: 1fr
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center
+      }
+
+      .modal-body {
+        max-height: 65vh
+      }
+    }
+
+    /* ── IMAGE GALLERY in Modal ── */
+    .modal-gallery {
+      display: flex;
+      gap: 10px;
+      margin: 1rem 0 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--g-light) transparent;
+    }
+
+    .modal-gallery::-webkit-scrollbar {
+      height: 4px
+    }
+
+    .modal-gallery::-webkit-scrollbar-thumb {
+      background: var(--g-light);
+      border-radius: 4px
+    }
+
+    .modal-gallery-img {
+      height: 180px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border: 1.5px solid var(--border);
+      transition: transform .2s, border-color .2s;
+    }
+
+    .modal-gallery-img:hover {
+      transform: scale(1.02);
+      border-color: var(--g)
+    }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      background: rgba(0, 0, 0, .92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    #lightbox.open {
+      display: flex
+    }
+
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .lightbox-btn {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: white;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: background .2s;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, .25)
+    }
+
+    .lightbox-counter {
+      color: rgba(255, 255, 255, .5);
+      font-family: var(--mono);
+      font-size: 11px
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, .6);
+      font-size: 24px;
+      transition: color .2s;
+    }
+
+    .lightbox-close:hover {
+      color: white
+    }
+
+    /* ── VISUAL DESIGN GALLERY ── */
+    .visual-section-wrap {
+      margin-bottom: 2.5rem
+    }
+
+    .visual-section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .visual-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--g-pale)
+    }
+
+    .visual-masonry {
+      columns: 3;
+      column-gap: 10px;
+    }
+
+    .visual-masonry-img {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      break-inside: avoid;
+    }
+
+    .visual-masonry-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .12);
+    }
+
+    @media(max-width:700px) {
+      .visual-masonry {
+        columns: 2
+      }
+    }
+
+    @media(max-width:420px) {
+      .visual-masonry {
+        columns: 1
+      }
+    }
+
+    /* ── UX PROCESS TAGS on cards ── */
+    .ux-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px
+    }
+
+    .ux-tag {
+      font-size: 9.5px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      border: 1px solid rgba(74, 158, 92, .25);
+      color: var(--g-dark);
+      background: var(--g-pale);
+      font-family: var(--mono);
+      letter-spacing: .04em;
+    }
+
+    /* ── SOCIAL 4-column grid ── */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .social-grid-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      display: block;
+    }
+
+    .social-grid-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .1)
+    }
+
+    @media(max-width:600px) {
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* ── HERO UX PROCESS CHIPS ── */
+    .hero-process-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 1.5rem
+    }
+
+    .process-chip {
+      font-size: 11.5px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--ink2);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cursor"></div>
+
+  <nav>
+    <a href="#hero" class="nav-logo">Sarita<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#works">Works</a></li>
+      <li><a href="#visual">Visual</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="mailto:sarita445645@gmail.com"><span class="nav-dot"></span>Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg-circle"></div>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">✦ UI/UX Designer &amp; Visual Designer</p>
+        <h1 class="hero-name">Hello,<br />I'm <em>Sarita</em></h1>
+        <p class="hero-role">設計，是解決問題的過程</p>
+        <p class="hero-bio">擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗，橫跨工業 HMI 系統、ERP 介面、RWD
+          網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
+        <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
+        <div class="hero-process-chips">
+          <span class="process-chip">🔍 使用者研究</span>
+          <span class="process-chip">🗂 資訊架構</span>
+          <span class="process-chip">⚡ Prototype</span>
+          <span class="process-chip">📐 Design System</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#works" class="btn btn-primary">View My Work</a>
+          <a href="mailto:sarita445645@gmail.com" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-cluster">
+          <div class="stat-box accent">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Years UIUX</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Years Visual</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Curiosity</div>
+          </div>
+        </div>
+        <div class="tag-cloud">
+          <span class="tag">HMI Interface</span><span class="tag">Design System</span>
+          <span class="tag">RWD Web</span><span class="tag">B2B / B2C</span>
+          <span class="tag">User Research</span><span class="tag">Prototyping</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg-line"></div>
+  </section>
+
+  <section id="works">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title">UI/UX Design Works</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="filter-bar reveal reveal-delay-1">
+        <button class="filter-btn active" onclick="filterWorks('all',this)">All</button>
+        <button class="filter-btn" onclick="filterWorks('hmi',this)">HMI 工業介面</button>
+        <button class="filter-btn" onclick="filterWorks('web',this)">網頁設計</button>
+        <button class="filter-btn" onclick="filterWorks('ecom',this)">電商 / 品牌</button>
+      </div>
+      <div class="works-grid" id="worksGrid">
+
+        <div class="work-card reveal" data-cat="hmi" onclick="openModal('w11')">
+          <div class="work-thumb t-slate"
+            style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Industrial HMI</div>
+            <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
+            <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
+            <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span
+                class="ux-tag">IA 重構</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span
+                  class="work-tool">Illustrator</span><span class="work-tool">VS Code</span></div><span
+                class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="hmi" onclick="openModal('w433')">
+          <div class="work-thumb t-teal"
+            style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Industrial HMI</div>
+            <div class="work-title">中鋼 W433 球化場 HMI</div>
+            <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
+            <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span
+                class="ux-tag">視覺層級</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="hmi" onclick="openModal('w1')">
+          <div class="work-thumb t-indigo"
+            style="background-image:url(images/w1/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Smart Factory</div>
+            <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
+            <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
+            <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span
+                class="ux-tag">模組化</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal" data-cat="hmi" onclick="openModal('csc')">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/csc/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web App / GIS</div>
+            <div class="work-title">中鋼 CSC 街景地圖</div>
+            <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
+            <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span
+                class="ux-tag">元件規範</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('b2b')">
+          <div class="work-thumb t-olive"
+            style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">B2B Website</div>
+            <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
+            <div class="work-desc">GA4 數據審計 + 任務導向網格，讓核心產品從 L3 深層浮出，轉換漏斗全面重整。</div>
+            <div class="ux-tags"><span class="ux-tag">數據審計</span><span class="ux-tag">任務導向</span><span class="ux-tag">AI
+                整合</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('landing')">
+          <div class="work-thumb t-green"
+            style="background-image:url(images/landing/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Landing Page</div>
+            <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
+            <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
+            <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span
+                class="ux-tag">CTA 策略</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal" data-cat="web" onclick="openModal('calculator')">
+          <div class="work-thumb t-amber"
+            style="background-image:url(images/calculator/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Tool / Lead Gen</div>
+            <div class="work-title">獲利計算機</div>
+            <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
+            <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span
+                class="ux-tag">互動回饋</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('survey')">
+          <div class="work-thumb t-clay"
+            style="background-image:url(images/survey/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Form / Lead Gen</div>
+            <div class="work-title">關稅評量問券網頁</div>
+            <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
+            <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span
+                class="ux-tag">心理模型</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('y26')">
+          <div class="work-thumb t-navy"
+            style="background-image:url(images/y26/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Recruitment</div>
+            <div class="work-title">Y26 招募網翻新設計</div>
+            <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
+            <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span
+                class="ux-tag">模組化管理</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal" data-cat="ecom" onclick="openModal('hongxin')">
+          <div class="work-thumb t-rose"
+            style="background-image:url(images/hongxin/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">E-Commerce</div>
+            <div class="work-title">弘信生醫 — 多品牌美妝電商架構重組</div>
+            <div class="work-desc">雙軌式導航解決多品牌迷宮問題，Token 化設計系統讓新品牌上架只需調色。</div>
+            <div class="ux-tags"><span class="ux-tag">雙軌導航</span><span class="ux-tag">Token 系統</span><span
+                class="ux-tag">折扣邏輯</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2023</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="ecom" onclick="openModal('yisen')">
+          <div class="work-thumb t-warm"
+            style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Brand + UIUX</div>
+            <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
+            <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
+            <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span
+                class="ux-tag">Mobile First</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2023</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('dingxin')">
+          <div class="work-thumb t-forest"
+            style="background-image:url(images/dingxin/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Redesign</div>
+            <div class="work-title">鼎新官網 — 關於我們頁面重製</div>
+            <div class="work-desc">Claude + Figma + VS Code 協作完成，AI 輔助設計流程的實際落地。</div>
+            <div class="ux-tags"><span class="ux-tag">AI 協作</span><span class="ux-tag">設計轉開發</span><span
+                class="ux-tag">品牌形象</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Claude</span><span class="work-tool">Figma</span><span
+                  class="work-tool">VS Code</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="visual">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Visual Design</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="visual-section-wrap">
+        <div class="visual-section-label">Travel</div>
+        <div class="visual-masonry">
+          <img class="visual-masonry-img" src="images/visual-travel/01.jpg" alt="Travel 1"
+            onclick="openVisualLightbox('travel',0)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/02.jpg" alt="Travel 2"
+            onclick="openVisualLightbox('travel',1)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/03.jpg" alt="Travel 3"
+            onclick="openVisualLightbox('travel',2)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/04.jpg" alt="Travel 4"
+            onclick="openVisualLightbox('travel',3)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/05.jpg" alt="Travel 5"
+            onclick="openVisualLightbox('travel',4)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/06.jpg" alt="Travel 6"
+            onclick="openVisualLightbox('travel',5)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/07.jpg" alt="Travel 7"
+            onclick="openVisualLightbox('travel',6)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/08.jpg" alt="Travel 8"
+            onclick="openVisualLightbox('travel',7)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/09.jpg" alt="Travel 9"
+            onclick="openVisualLightbox('travel',8)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/10.jpg" alt="Travel 10"
+            onclick="openVisualLightbox('travel',9)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/11.jpg" alt="Travel 11"
+            onclick="openVisualLightbox('travel',10)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/12.jpg" alt="Travel 12"
+            onclick="openVisualLightbox('travel',11)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/13.jpg" alt="Travel 13"
+            onclick="openVisualLightbox('travel',12)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/14.jpg" alt="Travel 14"
+            onclick="openVisualLightbox('travel',13)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/15.jpg" alt="Travel 15"
+            onclick="openVisualLightbox('travel',14)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/16.jpg" alt="Travel 16"
+            onclick="openVisualLightbox('travel',15)" loading="lazy" />
+          <img class="visual-masonry-img" src="images/visual-travel/17.jpg" alt="Travel 17"
+            onclick="openVisualLightbox('travel',16)" loading="lazy" />
+                      <img class="visual-masonry-img" src="images/visual-travel/18.jpg" alt="Travel 18"
+            onclick="openVisualLightbox('travel',17)" loading="lazy" />
+                      <img class="visual-masonry-img" src="images/visual-travel/19.jpg" alt="Travel 19"
+            onclick="openVisualLightbox('travel',18)" loading="lazy" />
+                      <img class="visual-masonry-img" src="images/visual-travel/20.jpg" alt="Travel 20"
+            onclick="openVisualLightbox('travel',19)" loading="lazy" />
+                      <img class="visual-masonry-img" src="images/visual-travel/21.jpg" alt="Travel 21"
+            onclick="openVisualLightbox('travel',20)" loading="lazy" />
+        </div>
+      </div>
+      <div class="visual-section-wrap">
+        <div class="visual-section-label">社群圖文</div>
+        <div class="social-grid">
+          <img class="social-grid-img" src="images/visual-social/01.jpg" alt="社群圖文 1"
+            onclick="openVisualLightbox('social',0)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/02.jpg" alt="社群圖文 2"
+            onclick="openVisualLightbox('social',1)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/03.jpg" alt="社群圖文 3"
+            onclick="openVisualLightbox('social',2)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/04.jpg" alt="社群圖文 4"
+            onclick="openVisualLightbox('social',3)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/05.jpg" alt="社群圖文 5"
+            onclick="openVisualLightbox('social',4)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/06.jpg" alt="社群圖文 6"
+            onclick="openVisualLightbox('social',5)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-social/07.jpg" alt="社群圖文 7"
+            onclick="openVisualLightbox('social',6)" loading="lazy" />
+        </div>
+      </div>
+
+            <div class="visual-section-wrap">
+        <div class="visual-section-label">EDM</div>
+        <div class="social-grid">
+          <img class="social-grid-img" src="images/EDM/01.jpg" alt="EDM 1"
+            onclick="openVisualLightbox('social',0)" loading="lazy" />
+          <img class="social-grid-img" src="images/EDM/02.png" alt="EDM 2"
+            onclick="openVisualLightbox('social',1)" loading="lazy" />
+          <img class="social-grid-img" src="images/EDM/03.jpg" alt="EDM 3"
+            onclick="openVisualLightbox('social',2)" loading="lazy" />
+
+        </div>
+      </div>
+      <div class="visual-section-wrap">
+        <div class="visual-section-label">電商行銷 / 門市布置 / 包裝印刷</div>
+        <div class="social-grid">
+          <img class="social-grid-img" src="images/visual-ecom/01.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 1"
+            onclick="openVisualLightbox('ecom',0)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/02.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 2"
+            onclick="openVisualLightbox('ecom',1)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/03.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 3"
+            onclick="openVisualLightbox('ecom',2)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/04.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 4"
+            onclick="openVisualLightbox('ecom',3)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/05.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 5"
+            onclick="openVisualLightbox('ecom',4)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/06.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 6"
+            onclick="openVisualLightbox('ecom',5)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/07.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 7"
+            onclick="openVisualLightbox('ecom',6)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/08.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 8"
+            onclick="openVisualLightbox('ecom',7)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/09.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 9"
+            onclick="openVisualLightbox('ecom',8)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/10.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 10"
+            onclick="openVisualLightbox('ecom',9)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/11.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 11"
+            onclick="openVisualLightbox('ecom',10)" loading="lazy" />
+          <img class="social-grid-img" src="images/visual-ecom/12.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 12"
+            onclick="openVisualLightbox('ecom',11)" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-layout">
+        <div class="skill-group reveal">
+          <div class="skill-group-title">Design Expertise</div>
+          <div class="skill-items">
+            <span class="skill-item">UI/UX Design</span><span class="skill-item">HMI 介面設計</span>
+            <span class="skill-item">RWD 響應式設計</span><span class="skill-item">Wireframe</span>
+            <span class="skill-item">Prototype</span><span class="skill-item">Design System</span>
+            <span class="skill-item">User Research</span><span class="skill-item">IA 資訊架構</span>
+          </div>
+        </div>
+        <div class="skill-group reveal reveal-delay-1">
+          <div class="skill-group-title">Tech &amp; Collaboration</div>
+          <div class="skill-items">
+            <span class="skill-item">Bootstrap 框架</span><span class="skill-item">HTML5 / CSS</span>
+            <span class="skill-item">Git / GitHub</span><span class="skill-item">跨部門專案管理</span>
+            <span class="skill-item">PM 協作</span><span class="skill-item">工程團隊溝通</span>
+            <span class="skill-item">Claude AI 協作</span>
+          </div>
+        </div>
+      </div>
+      <div class="tools-section reveal">
+        <div class="tools-label">Design Tools</div>
+        <div class="tools-list">
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Figma
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Adobe Illustrator
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Adobe Photoshop
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Adobe XD
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>MidJourney
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Canva
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>VS Code
+          </div>
+          <div class="tool-badge">
+            <div class="tool-icon"></div>Claude AI
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-bg"></div>
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <p class="about-eyebrow">About Me</p>
+          <h2 class="about-heading">Design with<br /><em>Purpose.</em></h2>
+          <p class="about-text">我是 Sarita，一位擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7
+              年視覺設計</strong>經驗的設計師。<br /><br />曾參與工業製造系統 HMI 介面重設計、多品牌電商 IA 優化、B2B
+            企業官網重構等多樣化專案，橫跨製造業、美妝電商與科技產業。<br /><br />我相信好的設計來自對人的理解——深入研究使用者需求，再透過設計將複雜問題轉化為直覺流暢的體驗。</p>
+          <div class="about-contact">
+            <a href="mailto:sarita445645@gmail.com" class="contact-link">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.2" />
+              </svg>
+              sarita445645@gmail.com
+            </a>
+          </div>
+        </div>
+        <div class="about-right">
+          <div class="exp-timeline">
+            <div class="exp-item">
+              <div class="exp-period">2022 — Present</div>
+              <div class="exp-role">UI/UX Designer</div>
+              <div class="exp-company">工業製造 · HMI &amp; Web Platform</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-period">2020 — 2022</div>
+              <div class="exp-role">Visual Designer</div>
+              <div class="exp-company">電商品牌 · 行銷設計</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-period">2017 — 2020</div>
+              <div class="exp-role">Graphic Designer</div>
+              <div class="exp-company">品牌視覺 · 印刷 · 社群</div>
+            </div>
+            <div class="exp-item">
+              <div class="exp-period">Education</div>
+              <div class="exp-role">視覺傳達設計學系</div>
+              <div class="exp-company">設計相關科系畢業</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-sig">
+      <div class="footer-dot"></div><span>2026 Sarita · Design</span>
+    </div>
+    <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
+    <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
+    <div class="modal" id="modalBox">
+      <!-- Header -->
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <span class="modal-cat" id="modalCat"></span>
+          <span class="modal-title" id="modalTitle"></span>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <!-- Meta -->
+      <div class="modal-meta" id="modalMeta"></div>
+      <!-- Two-column body -->
+      <div class="modal-body">
+        <div class="modal-img-panel" id="modalImgPanel"></div>
+        <div class="modal-text-panel" id="modalBody"></div>
+      </div>
+    </div>
   </div>
-</div>
-<script>
 
-// Visual section lightbox
-const visualGallery = {
-  travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg"],
-  social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"],
-  ecom:   ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
-};
-let _vlbSec='', _vlbIdx=0;
-function openVisualLightbox(sec, idx){
-  const gals = visualGallery[sec] || [];
-  if(!gals.length) return;
-  _vlbSec=sec; _vlbIdx=idx;
-  document.getElementById('lightboxImg').src = gals[idx];
-  document.getElementById('lightboxCounter').textContent = (idx+1)+' / '+gals.length;
-  document.getElementById('lightbox').classList.add('open');
-  // Override nav to use visual gallery
-  window._lightboxMode = 'visual';
-}
-// Patch lightboxNav to handle both modes
-const _origLightboxNav = lightboxNav;
-lightboxNav = function(dir){
-  if(window._lightboxMode === 'visual'){
-    const gals = visualGallery[_vlbSec] || [];
-    _vlbIdx = (_vlbIdx + dir + gals.length) % gals.length;
-    document.getElementById('lightboxImg').src = gals[_vlbIdx];
-    document.getElementById('lightboxCounter').textContent = (_vlbIdx+1)+' / '+gals.length;
-  } else {
-    _origLightboxNav(dir);
-  }
-};
-// Reset mode on close
-const _origClose = closeLightbox;
-closeLightbox = function(){
-  _origClose();
-  window._lightboxMode = 'project';
-};
-window._lightboxMode = 'project';
+  <script>
+    const projectGallery = {
+      w11: [
+        "images/w11/gallery-01.jpg",
+        "images/w11/gallery-02.jpg"
+             "images/w11/cover.jpg"
+      ],
+      w433: [
+        "images/w433/gallery-01.jpg",
+        "images/w433/gallery-02.jpg",
+        "images/w433/gallery-03.jpg"
+      ],
+      w1: [
+        "images/w1/gallery-01.jpg",
+        "images/w1/gallery-02.jpg"
+      ],
+      csc: [
+        "images/csc/gallery-01.jpg",
+        "images/csc/gallery-02.jpg",
+        "images/csc/gallery-03.jpg"
+      ],
+      b2b: [
+        "images/b2b/gallery-01.jpg"
+      ],
+      landing: [
+        "images/landing/gallery-01.jpg"
+      ],
+      calculator: [
+        "images/calculator/gallery-01.jpg",
+        "images/calculator/gallery-02.jpg"
+      ],
+      survey: [
+        "images/survey/gallery-01.jpg"
+      ],
+      y26: [
 
-// Lightbox
-let _lbId='', _lbIdx=0;
-function openLightbox(pid, idx){
-  const gals = projectGallery[pid]||[];
-  if(!gals.length) return;
-  _lbId=pid; _lbIdx=idx;
-  document.getElementById('lightboxImg').src=gals[idx];
-  document.getElementById('lightboxCounter').textContent=(idx+1)+' / '+gals.length;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
-function closeLightboxIfBg(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
-function lightboxNav(dir){
-  const gals=projectGallery[_lbId]||[];
-  _lbIdx=(_lbIdx+dir+gals.length)%gals.length;
-  document.getElementById('lightboxImg').src=gals[_lbIdx];
-  document.getElementById('lightboxCounter').textContent=(_lbIdx+1)+' / '+gals.length;
-}
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('lightbox').classList.contains('open')) return;
-  if(e.key==='ArrowLeft')lightboxNav(-1);
-  if(e.key==='ArrowRight')lightboxNav(1);
-  if(e.key==='Escape')closeLightbox();
-});
-</script></body>
+      ],
+      hongxin: [
+        "images/hongxin/gallery-01.jpg",
+        "images/hongxin/gallery-02.jpg"
+      ],
+      yisen: [
+        "images/yisen/gallery-01.jpg",
+        "images/yisen/gallery-02.jpg"
+      ],
+      dingxin: [
+        "images/dingxin/gallery-01.jpg",
+        "images/dingxin/gallery-02.jpg"
+      ],
+    };
+
+    const projects = {
+      w11: {
+        cat: 'Industrial HMI', title: '中鋼 W11 生產資訊系統 HMI', thumb: 't-slate', year: '2024', tools: ['Figma', 'Illustrator', 'VS Code'], sections: [
+          { title: '專案背景', text: '面對一個已經運作超過 30 年、承載了無數操作員經驗的系統，設計師最忌諱的就是「為了改而改」。核心任務是監控 W11 產線的原料運輸與料廠存量，真正的挑戰是如何讓老系統在不丟失效率的前提下，順利完成新舊世代的交接。' },
+          { title: '走下座位，進入生產現場', text: '設計初期，直接戴上安全帽，跟著現場人員走了一遍廠房、鐵軌與港口。如果不理解實體設備的相對位置和運輸原理，畫出來的圖示就只是冰冷的符號。透過「由虛入實」的過程，將數位圖示與物理現場對齊——如果介面能反映真實空間感，新進人員就不需要再靠前輩傳承那套「通靈式」的理解，看一眼螢幕就知道料送到哪了。' },
+          { title: '解決跨世代認知斷層', text: '資深員工看「位置」與「顏色」，哪裡的色塊變了就立刻知道出問題；新進人員看「直覺」與「層級」，原有畫面資訊過於細碎，學習曲線被拉得很長。挑戰是：有沒有可能在不破壞老員工「顏色記憶」的情況下，重新梳理一套符合現代邏輯的資訊架構？' },
+          { title: '以港口為核心的視覺重組', points: ['拿掉讓人眼花撩亂的線條，改用模組化思維佈局', '港口置於右側中心，所有送料路徑以此為基準向外發散', '畫面切分為左側固定料廠狀態、右側動態船隻、底部集中數據區', '路徑簡化但強化連動感，操作員能輕易聯想到實體設備的對應關係'] },
+          { title: '設計成果', highlight: '保留了資深員工習慣的數據座標，但重新繪製了圖像特徵。老手能繼續靠肌肉記憶找到數據，而新人看著那些像船、像起重機的圖像，也能一眼秒懂現場狀況。工業介面的改版不是設計師的自我表現，而是成為新舊操作員之間那座無形的橋樑。' }
+        ]
+      },
+      w433: {
+        cat: 'Industrial HMI', title: '中鋼 W433 球化場 HMI', thumb: 't-teal', year: '2025', tools: ['Figma', 'VS Code'], sections: [
+          { title: '專案背景', text: 'W433 球化場這套 HMI 系統已經運作了超過三十年。介面風格跟現在主流的工業軟體相比，中間差的不只是美感，而是整個作業邏輯的代溝。任務是在不改動核心操作流程的前提下，讓新進員工覺得系統好上手，同時確保資深前輩那套磨練了幾十年的「肌肉記憶」不被破壞。' },
+          { title: '那些隱藏在顏色背後的衝突', text: '訪談時察覺一種「世代對立」：對前輩們來說，色塊要夠鮮豔才算好認；但在年輕一輩眼裡，那樣的介面是視覺災難。真正的斷點是視覺層級的徹底崩解——當畫面上每個元素都在瘋狂爭奪注意力，使用者反而找不到重點。' },
+          { title: '三大痛點分析', points: ['主次不分：高亮度色塊導致最關鍵的「異常狀態監視欄」被淹沒在背景裡，警報跟背景一樣大聲', '地圖式認知負荷：操作員必須記住每個按鈕的精確座標，高強度掃視造成視覺疲勞，是人為誤操作的隱性誘因', '30 年肌肉記憶：前輩的排斥並非無理取鬧，新設計往往切斷「不需思考即可操作」的直覺'] },
+          { title: '漸進式優化策略', highlight: '不推翻，而是進步。在工廠端，穩定與安全永遠是第一順位。我保留原本顏色分類，但大幅縮小色塊比例——從大面積背景填充改為精準標籤與引導元素。' },
+          { title: '設計落地', points: ['卡片式架構 + 適度留白，讓操作員更快速定位目標，不再需要在色塊迷宮裡找按鈕', '降低整體亮度與飽和度，讓底部紅色警報燈在出問題時，才能真正地從畫面中「跳」出來', '邀請資深同事現場演示最常用功能，告訴他們：「操作流程一個都沒變，我們只是把燈光調得更舒服了」'] }
+        ]
+      },
+      w1: {
+        cat: 'Smart Factory', title: 'W1 場內運輸智慧工廠平台重構', thumb: 't-indigo', year: '2024', tools: ['Figma'], sections: [
+          { title: '專案背景', text: '針對廠內運輸處 W1 智慧平台的重構，面對一個運作了三、四十年的老系統，這不只是介面換個皮膚，更像是在梳理一段漫長的歷史。原本的介面採用左右對稱的長條清單，隨著功能越加越多，這種排版已經快撐不住了，視覺上亂成一團不說，維護起來也讓人頭大。' },
+          { title: '核心共識', highlight: '核心流程絕對不動。對第一線的人來說，穩定性永遠排在第一位。目標是透過區域化歸納來減輕認知負擔，而不是去挑戰老同仁跑了幾十年的肌肉記憶。' },
+          { title: '現場調研', text: '坐在辦公室看圖稿，很難感受到廠區的真實落差。在課長支持下，由熟悉場地的同仁帶著走一趟現場，手持手機拍下各區實景。走了一圈才發現，與其對著 A01 或 B01 這種冷冰冰的編碼猜測，不如直接把拍攝的景象帶進介面——當數位資訊跟實體空間產生連結，系統才真的有了靈魂。' },
+          { title: '架構創新：從清單撈針到地圖導航', points: ['區域化分流：將零散功能按鈕依照 W11 到 W16 四大產線區域重新劃分，各歸其位', '轉盤導航：中間圓盤是視覺化地圖，讓熟門熟路的老手能直接找到捷徑，不用再從清單裡撈功能', '實景導引：把現場照片融入首頁，讓新進同仁能迅速把畫面對應到腳下站的位置'] },
+          { title: '異常處理：警報分級策略', text: '以前系統習慣「一出事就套紅框」，結果滿螢幕都是紅框，反而沒人理。這次把通知分級，一般待辦事項待在狀態列，真的需要立即處理的警報才強化視覺。同時預製標準 UI 樣板，確保後續維護的長久邏輯。' }
+        ]
+      },
+      csc: {
+        cat: 'Web App / GIS', title: '中鋼 CSC 街景地圖', thumb: 't-moss', year: '2025', tools: ['Figma', 'Illustrator'], sections: [
+          { title: '專案背景', text: '在中鋼這樣的重工業場域，Google Maps 是派不上用場的——受限於嚴格的資安政策，所有導航與圖資都必須留在內網。這對現場員工來說，廠區裡準確找到路比起技術問題更加困難。我擔任 UI 設計，協助後端工程師將地圖數據轉化為真正能被「人」使用的 Web 介面。' },
+          { title: '最尷尬的限制', text: '使用者無法拿著手機隨處定位，因為內網網頁只能在辦公室電腦上跑。這意味著現場維修人員必須在出發前，先在辦公室螢幕上建立起清晰的地理空間認知——所以前期的「空間記憶建立」成為設計的最高優先。' },
+          { title: '關鍵設計決策', points: ['雙模式切換（地圖 / 衛星照片）：有時候看相對位置還不夠，使用者需要透過建物具體外型確認方向', '搜尋與路徑規劃死死釘在左上角黃金區域，讓使用者一坐下來就能立刻進入任務', '廠區等級色彩規範：一至三級區域透過 Marker 顏色直接區分，高負載環境下省下大腦轉速'] },
+          { title: '那些被忽視的細節', text: '制定嚴格的 CSS 規範，微調 padding 與 gap 的數值，只為確保在複雜標註中文字依然維持易讀性。甚至連選單展開後的關閉按鈕，都要求與漢堡選單維持在同一個錨點——使用者在快速操作時，不需要移動滑鼠就能在同一位置完成開啟與關閉，這是一種隱形的體貼。' },
+          { title: '成果', text: '所有元件模組化，從按鈕各種狀態到路徑標記都整理成開發者友好的規範。規範已順利落地，後續團隊也正準備導入「最短路徑計算」功能。' }
+        ]
+      },
+      b2b: {
+        cat: 'B2B Website', title: '官網重構 — 數據驅動的 B2B 架構轉型', thumb: 't-olive', year: '2025', tools: ['Figma', 'VS Code'], live: 'https://www.digiwin.com/', sections: [
+          { title: '數據背後的斷裂', points: ['67% 的流量是老客戶回來找登入或支援，但這群人的需求根本沒被妥善安置', '57% 的新訪客在進入「行業方案」後迷航——導航命名太過內部化，充滿只有自己人才懂的型號', 'MES、AI 等高搜尋量核心產品被埋在第三層（L3），路徑長到讓人失去耐心，流失率居高不下'] },
+          { title: '解方：任務導向網格', text: '捨棄死板的樹狀結構，改以任務為核心重排 Sitemap。URL 規律重新制定，像 /solutions/industry/product 這種語意化路徑，不只對 SEO 友善，更讓使用者對接下來會看到什麼有心理預期。' },
+          { title: '雙軸導航策略', highlight: '頂層導覽（Header）是新客的舞台，聚焦品牌價值、情境方案與成功案例，縮短探索路徑。頁尾（Footer）是老客戶的避風港，把登入、工單、技術文件等具體工作任務收進這裡，減少主導覽的資訊干擾。' },
+          { title: 'AI 領航員藍圖', points: ['Phase 1：減負——從 FAQ 導覽與產品推薦做起，幫使用者省下搜尋時間', 'Phase 2：識別——AI 根據停留時間與行為判斷新客或回流客，主動拋出合適建議', 'Phase 3：整合——最終目標讓 AI 導覽與 CRM 和銷售漏斗接軌，實現行銷自動化'] },
+          { title: '組件化設計系統', text: '建立一套專屬 B2B 的組件庫，從複雜篩選器到產業案例卡片應有盡有。後續要新增半導體或零售方案時，設計與開發能像搭積木一樣，在維持專業感的同時大幅縮短上線時間。' }
+        ]
+      },
+      landing: {
+        cat: 'Landing Page', title: '就享知導流推廣頁（夥伴營銷 Landing Page）', thumb: 't-green', year: '2025', tools: ['Figma', 'VS Code'], live: 'https://www.digiwin.com.tw/digiknow/service/index.html', preview: 'https://sarita645.github.io/digiknow-redesign02/', sections: [
+          { title: '專案目標', text: '本頁面核心目標在於「導流」，將使用者有效引導至「就享知」平台。目標受眾推論為「尋求數位轉型解方的中小企業決策者」，設計策略定調為：以最高效率傳達核心價值，讓這群繁忙的主管級受眾能第一時間捕捉到重點。' },
+          { title: 'Banner 策略決策', highlight: '原先考量滿版影片或幻燈片，但從轉換率角度切入，建議改用「精煉標題 + 清晰 CTA」——避免過多動態元素分散受眾對導流入口的注意力，確保目標路徑是直覺且流暢的。' },
+          { title: '資訊架構：內容減法', text: '為確保版面的節奏感與集中力，定義了方塊與標籤的字數建議，透過精簡贅字並強化重點關鍵字，讓受眾在快速滑動時也能輕鬆理解核心內容。' },
+          { title: '案例展示：2+N 策略', text: '先完整展示兩項最具代表性的案例，再讓其他案例透過「閱讀更多」提供選項。縮短初次閱讀的頁面長度，避免受眾產生滑動疲勞，透過分層展示逐步引導深入了解。' },
+          { title: '服務項目區塊', text: '採用互動式切換設計，將複雜服務拆解為「線上」與「線下」兩大核心模組，引導使用者根據自身需求進行篩選，縮短決策路徑，提升預約諮詢的轉換效率。' }
+        ]
+      },
+      calculator: {
+        cat: 'Web Tool / Lead Gen', title: '獲利計算機', thumb: 't-amber', year: '2025', tools: ['Figma', 'VS Code'], live: 'https://www.digiwin.com.tw/dsc/solution/WB003954/profit', sections: [
+          { title: '專案背景', text: '因應川普關稅議題升溫，企業對成本轉嫁與毛利評估需求激增。因母產品（大型 ERP）門檻較高、推廣不易，提出「試玩版（Lite Version）」策略——作為獲取潛在客戶名單的誘餌工具，降低中小企業主的進入門檻。' },
+          { title: '核心洞察', highlight: '在決策工具中，使用者需要的不是精確到小數點後的財務報表，而是「我現在該不該擔心？」的直覺警示。' },
+          { title: 'UX 設計策略', points: ['單頁式流程：銷售價格 → 成本 → 現行關稅 → 預計關稅，即可產生分析結果', '動態回饋：視覺閃爍與區塊強調（Highlighting），讓使用者輸入數值後立刻鎖定結果落點', 'Desktop 優先：B2B 情境多為辦公室 PC 操作，集中資源優化桌機體驗以換取更豐富的數據圖表'] },
+          { title: 'Teaser Design 誘餌策略', text: '刻意不提供「完整解析」，僅提供「關鍵提示」——引導使用者因好奇或需求進一步詢問產品。在分析結果下方直接埋入「諮詢服務」按鈕，縮短從工具使用到商業轉化的路徑。' },
+          { title: '上線後主動反思', text: '諮詢轉化率不如預期，主動分析並回饋給團隊：外層推廣頁面的文案未能精準擊中用戶對關稅的恐懼或痛點；試玩版介面過於現代，與正式版軟體的傳統介面存在「體驗斷層」——這是後續需要優化的關鍵點。' }
+        ]
+      },
+      survey: {
+        cat: 'Web Form / Lead Gen', title: '關稅評量問券網頁', thumb: 't-clay', year: '2025', tools: ['Figma'], live: 'https://www.digiwin.com.tw/dsc/diagnosis/07/', sections: [
+          { title: '核心挑戰', text: '如何在枯燥的問卷中降低跳出率，並讓複雜的對比數據在手機端依然「一眼即懂」。目標受眾為忙碌的中小企業主，他們對繁瑣表單耐性極低，一旦遇到阻力便會離開。' },
+          { title: '降低填答壓力', points: ['微互動進度條：將問卷拆解為 5 大階段，這不只是視覺導引，更是心理暗示——讓使用者明確感知「距離終點還有多遠」，有效降低放棄填寫的機率', '場域考量：老闆們可能在通勤或零碎時間查看報告，特別強化 Mobile (375px) 操作流暢度，確保所有圖表在小螢幕上不需橫向滾動即可閱讀'] },
+          { title: '數據視覺化的心理模型', highlight: '根據古騰堡瀏覽動線（Gutenberg Diagram），建議將「使用者企業」數據置於右側——因為右下角是視覺的「終點/結論區」，讓使用者在看完產業基準後，最後一眼落在自己的數據上，產生強烈的對比感與行動動機。' },
+          { title: '與需求方的設計權衡', text: '需求方希望以「交通工具」代表企業等級，但交通工具的強弱語意在關稅議題上較為模糊。優化方案：在保留交通工具視覺的前提下，主動提議導入「全球通用五星評等系統」，讓使用者不需思考就能秒懂自己的抗風險等級。' },
+          { title: '響應式設計', text: '針對手機版，將橫向複雜的對比圖表重新解構為「垂直堆疊式卡片」，並保持觸控熱區的易操作性。建立標準化元件庫，確保從問卷輸入頁到報告產出頁的視覺語言高度統一。' }
+        ]
+      },
+      y26: {
+        cat: 'Recruitment Website', title: 'Y26 招募網翻新設計', thumb: 't-navy', year: '2026', tools: ['Figma'], live: 'https://www.digiwin.com.tw/hr/school/', sections: [
+          { title: '接手時的挑戰', text: '面對一個兩年前製作、維護邏輯混亂的舊站。製作方式並不符合「網頁模組化」的思維，導致 PM 在管理上非常痛苦。核心問題不只是視覺老舊，而是整個資訊架構都需要從求職者的角度重新思考。' },
+          { title: '轉換率優先：刪除干擾', highlight: '招募網的本質是轉換率（Conversion Rate）。舊版選單塞滿了 YouTube、就享知等外部連結——協調 PM 刪除這些會讓流量流失的按鈕，將導航列空間留給關鍵的「職缺類別」。' },
+          { title: '色彩編碼解決職務辨識問題', text: '面對五大職務計畫，光靠文字名稱太難辨識。為每個職務定義專屬色系（如：領袖之星 = 紫色、服務顧問 = 綠色、營運規劃 = 黃色）。在資訊負荷過重的環境下，色彩是直覺導航的第一步，讓使用者一眼就認出「我現在在哪個計畫裡」。' },
+          { title: '視覺年輕化', text: '校招對象是大學生，希望避開 ERP 產業那種硬梆梆、沈重的刻板印象。雖然部分插圖（樹苗、太空人等）是 PM 指定的既有素材，但透過重新規劃整體色彩調性，改用更陽光、輕透且高飽和的配色，把原本感覺比較悶的 ERP 形象換掉，讓學生進到網頁時感受到活力和可能性。' },
+          { title: '執行成果', points: ['模組化建構：省略無效按鈕與冗餘區塊，PM 後續在文字替換與管理上變得非常輕鬆', '一致性體驗：從 Banner、eDM 到網頁元件，都建立了一致的規範', 'UI/UX 師不只是畫圖的人，更是企業與使用者之間的轉譯者'] }
+        ]
+      },
+      hongxin: {
+        cat: 'E-Commerce', title: '弘信生醫 — 多品牌美妝電商架構重組', thumb: 't-rose', year: '2023', tools: ['Figma'], sections: [
+          { title: '核心課題', text: '面對自創品牌快速增加的產品線，客戶需要的不只是一個網頁，而是一個能包容多元調性、且不因品項變多就導致導航崩潰的系統。目標：縮短從搜尋到結帳的決策路徑，同時打造具備高度延展性的設計底層。' },
+          { title: '使用者痛點', points: ['導航摩擦：品項一多，傳統選單層級就像迷宮，使用者找不到想要的商品', '計算負擔：促銷活動一多，使用者得在心裡反覆計算哪種組合最划算，這往往是棄單的開始'] },
+          { title: '雙軌式導航', highlight: '品牌導向：滿足對特定品牌有忠誠度的用戶，強化信賴感。功效導向：針對「解決問題」型的用戶，讓他們能橫向跨品牌篩選保養需求。在這個階段花了許多時間與工程師「對邏輯」，確保促銷規則在前端呈現時是清爽且易讀的。' },
+          { title: '細節嚴謹性', points: ['折扣疊加邏輯：系統預設以「最大折扣」為優先，明確定義疊加規則（現金折抵可並用，但折扣券僅能擇一）', '過期代碼的留客術：使用者輸入無效代碼時，主動推薦當下最熱門的優惠，而不是冷冰冰的錯誤提示——既然他都有意願結帳了，為什麼要讓他空手而回？'] },
+          { title: 'Token 化設計系統', text: '帶入 Token 的設計思維，未來如果代理新品牌，設計師只需微調顏色或字體參數，就能快速生成新頁面，讓後續維護成本降到最低。專案交付後，客戶端運作相當順暢，甚至沒有提出後續的修改需求。' }
+        ]
+      },
+      yisen: {
+        cat: 'Brand + UIUX', title: '永昇冷凍食品 — 壹然品牌設計', thumb: 't-warm', year: '2023', tools: ['Figma', 'Illustrator'], sections: [
+          { title: '專案背景', text: '「壹然」這個新創品牌的起步，核心是要在數位環境中定義什麼是「天然與純粹」。負責從功能梳理、架構規劃到最終視覺產出的完整流程。網站的定位很明確——必須是 SEO 的佈局核心，同時要在短暫的進站時間內，用專業的視覺感建立起用戶的信任。' },
+          { title: '市場洞察', text: '面對數據幾乎是空白的新品牌，從成熟競品拆解（Benchmarking）做起。發現許多網站的資訊過於細碎，消費者看著生澀的化學成分名詞，很容易產生「決策疲勞」。建議客戶將「成分標籤化」——把複雜的專業術語轉化為直覺的標籤，讓挑選過程變得輕鬆一點。' },
+          { title: '資訊架構', points: ['扁平化導覽架構：對一般使用者來說「好找」，更重要的是讓搜尋引擎爬蟲能順暢抓取', '購物路徑縮減到最短：確保從加入購物車到結帳完成的流程是無礙的，為品牌未來的營運轉型打好基礎', '防錯機制：加入即時的表單驗證提示，當必填欄位漏填時立刻引導修正，降低使用者因挫折而中斷購買的機率'] },
+          { title: '視覺策略', highlight: '刻意營造留白的「呼吸感」。運用自然色系結合適度留白，將「無添加」的品牌理念視覺化，試圖在視覺上建立起高品質的信賴感，而不是像傳統藥局那樣冷冰冰的。' },
+          { title: '設計系統', text: '整理了一套基礎元件規範（UI Kit），從定義色彩計畫到常用的按鈕、卡片與輸入框模組。模組化設計的好處是未來不論是要新增產品類別還是活動頁，都能直接復用現有元件，大幅降低溝通成本，維持視覺一致性。' }
+        ]
+      },
+      dingxin: {
+        cat: 'Web Redesign', title: '鼎新官網 — 關於我們頁面重製', thumb: 't-forest', year: '2026', tools: ['Claude AI', 'Figma', 'VS Code'], live: 'https://www.digiwin.com.tw/aboutdsc', preview: 'https://sarita645.github.io/dinwin_about02/', sections: [
+          { title: '專案背景', text: '以 Claude + Figma + VS Code 協作完成的官網「關於我們」頁面重製，是一次 AI 輔助設計流程的實際落地實踐。這個專案也印證了設計師與 AI 工具協作的工作模式，讓設計到開發的流程更緊密整合。' },
+          { title: 'AI 輔助工作流', points: ['Figma：完成版面設計與視覺規格定義', 'Claude AI：協助將設計稿轉換為可落地的 HTML/CSS 代碼', 'VS Code：最終細節調整與跨瀏覽器優化'] },
+          { title: '設計理念', text: '企業形象頁面不只是公司資料的陳列，更是品牌價值的視覺傳達。透過清晰的資訊層級與現代化的視覺語言，讓訪客在短暫的閱讀時間內，快速建立對品牌的正面印象與信任感。' },
+          { title: '反思', highlight: 'AI 工具的加入不是取代設計師，而是讓設計師能更快地驗證想法、迭代版本。這次的協作經驗，讓我對「設計 → 開發」的整合流程有了更直接的感受與理解。' }
+        ]
+      }
+    };
+
+    function openModal(id) {
+      const p = projects[id]; if (!p) return;
+      // Header
+      document.getElementById('modalCat').textContent = p.cat;
+      document.getElementById('modalTitle').textContent = p.title;
+      // Meta
+      let meta = `<div class="meta-item"><span class="meta-label">Year</span>&nbsp;${p.year}</div>`;
+      meta += `<div class="meta-item"><span class="meta-label">Tools</span>&nbsp;${p.tools.map(t => `<span class="meta-tag">${t}</span>`).join('')}</div>`;
+      if (p.figma) meta += `<a class="meta-link" href="${p.figma}" target="_blank">↗ Figma</a>`;
+      if (p.live) meta += `<a class="meta-link" href="${p.live}" target="_blank">↗ Live Site</a>`;
+      if (p.preview) meta += `<a class="meta-link" href="${p.preview}" target="_blank">↗ Preview</a>`;
+      document.getElementById('modalMeta').innerHTML = meta;
+      // LEFT — image panel
+      const gals = projectGallery[id] || [];
+      let imgPanel = '';
+      if (gals.length > 0) {
+        gals.forEach((src, gi) => {
+          imgPanel += `<img class="modal-panel-img" src="${src}" alt="Project image ${gi + 1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
+        });
+      } else {
+        imgPanel = `<div class="modal-no-img">No images</div>`;
+      }
+      document.getElementById('modalImgPanel').innerHTML = imgPanel;
+      // RIGHT — text panel
+      let body = '';
+      p.sections.forEach(s => {
+        body += `<div class="modal-section"><div class="modal-section-title">${s.title}</div>`;
+        if (s.text) body += `<p class="modal-section-text">${s.text}</p>`;
+        if (s.highlight) body += `<div class="modal-highlight">${s.highlight}</div>`;
+        if (s.points) { body += `<ul class="modal-points">`; s.points.forEach(pt => { body += `<li>${pt}</li>`; }); body += `</ul>`; }
+        body += `</div>`;
+      });
+      document.getElementById('modalBody').innerHTML = body;
+      document.getElementById('modalBody').scrollTop = 0;
+      document.getElementById('modalImgPanel').scrollTop = 0;
+      document.getElementById('modalBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('cursor').classList.add('modal-open');
+    }
+
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+      document.getElementById('cursor').classList.remove('modal-open');
+    }
+
+    function handleBackdropClick(e) { if (e.target === document.getElementById('modalBackdrop')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a,button,.work-card,.tag,.skill-item,.tool-badge,.filter-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // reveal
+    const io = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // filter
+    function filterWorks(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.work-card').forEach(card => { card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none'; });
+    }
+
+    // nav highlight
+    sections = document.querySelectorAll('section[id]');
+    sections.forEach(s => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            document.querySelectorAll('.nav-links a').forEach(l => l.style.color = '');
+            const lk = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+            if (lk) lk.style.color = 'var(--g)';
+          }
+        });
+      }, { threshold: .4 }).observe(s);
+    });
+  </script>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" onclick="closeLightboxIfBg(event)">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-controls">
+      <button class="lightbox-btn" onclick="lightboxNav(-1)">← Prev</button>
+      <span class="lightbox-counter" id="lightboxCounter"></span>
+      <button class="lightbox-btn" onclick="lightboxNav(1)">Next →</button>
+    </div>
+  </div>
+  <script>
+
+    // Visual section lightbox
+    const visualGallery = {
+      travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg"],
+      social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"],
+      ecom: ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
+    };
+    let _vlbSec = '', _vlbIdx = 0;
+    function openVisualLightbox(sec, idx) {
+      const gals = visualGallery[sec] || [];
+      if (!gals.length) return;
+      _vlbSec = sec; _vlbIdx = idx;
+      document.getElementById('lightboxImg').src = gals[idx];
+      document.getElementById('lightboxCounter').textContent = (idx + 1) + ' / ' + gals.length;
+      document.getElementById('lightbox').classList.add('open');
+      // Override nav to use visual gallery
+      window._lightboxMode = 'visual';
+    }
+    // Patch lightboxNav to handle both modes
+    const _origLightboxNav = lightboxNav;
+    lightboxNav = function (dir) {
+      if (window._lightboxMode === 'visual') {
+        const gals = visualGallery[_vlbSec] || [];
+        _vlbIdx = (_vlbIdx + dir + gals.length) % gals.length;
+        document.getElementById('lightboxImg').src = gals[_vlbIdx];
+        document.getElementById('lightboxCounter').textContent = (_vlbIdx + 1) + ' / ' + gals.length;
+      } else {
+        _origLightboxNav(dir);
+      }
+    };
+    // Reset mode on close
+    const _origClose = closeLightbox;
+    closeLightbox = function () {
+      _origClose();
+      window._lightboxMode = 'project';
+    };
+    window._lightboxMode = 'project';
+
+    // Lightbox
+    let _lbId = '', _lbIdx = 0;
+    function openLightbox(pid, idx) {
+      const gals = projectGallery[pid] || [];
+      if (!gals.length) return;
+      _lbId = pid; _lbIdx = idx;
+      document.getElementById('lightboxImg').src = gals[idx];
+      document.getElementById('lightboxCounter').textContent = (idx + 1) + ' / ' + gals.length;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    function closeLightboxIfBg(e) { if (e.target === document.getElementById('lightbox')) closeLightbox(); }
+    function lightboxNav(dir) {
+      const gals = projectGallery[_lbId] || [];
+      _lbIdx = (_lbIdx + dir + gals.length) % gals.length;
+      document.getElementById('lightboxImg').src = gals[_lbIdx];
+      document.getElementById('lightboxCounter').textContent = (_lbIdx + 1) + ' / ' + gals.length;
+    }
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+
 </html>
