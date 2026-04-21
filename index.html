@@ -154,34 +154,110 @@ footer a:hover{color:var(--g)}
 .modal-backdrop{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,10,12,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem;animation:bdFadeIn .25s ease}
 .modal-backdrop.open{display:flex;align-items:flex-start;justify-content:center}
 @keyframes bdFadeIn{from{opacity:0}to{opacity:1}}
-.modal{background:var(--card);border-radius:16px;width:100%;max-width:760px;overflow:hidden;animation:modalIn .3s cubic-bezier(.34,1.2,.64,1);position:relative;margin:auto}
+/* ── MODAL SHELL ── */
+.modal{
+  background:var(--card);border-radius:16px;
+  width:100%;max-width:900px;
+  overflow:hidden;
+  animation:modalIn .3s cubic-bezier(.34,1.2,.64,1);
+  position:relative;margin:auto;
+  display:flex;flex-direction:column;
+  max-height:90vh;
+}
 @keyframes modalIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.modal-hero{height:200px;display:flex;align-items:flex-end;padding:0 2rem 1.5rem;position:relative;overflow:hidden}
-.modal-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 60%)}
-.modal-hero-content{position:relative;z-index:1}
-.modal-cat{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px}
-.modal-title{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:white;line-height:1.2}
-.modal-close{position:absolute;top:16px;right:16px;z-index:10;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.4);border:none;color:white;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
-.modal-close:hover{background:rgba(0,0,0,.7)}
-.modal-meta{display:flex;gap:1rem;padding:1.25rem 2rem;border-bottom:1px solid var(--border);background:var(--bg);flex-wrap:wrap;align-items:center}
-.meta-label{font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);margin-right:4px}
-.meta-tag{font-size:11px;background:var(--g-pale);color:var(--g-dark);padding:2px 8px;border-radius:4px;font-weight:500;margin-right:3px}
+
+/* header strip */
+.modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px 12px;
+  border-bottom:1px solid var(--border);
+  flex-shrink:0;
+}
+.modal-header-left{display:flex;align-items:center;gap:10px}
+.modal-cat{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);background:var(--g-pale);padding:3px 9px;border-radius:4px}
+.modal-title{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--ink);line-height:1.25}
+.modal-close{width:32px;height:32px;border-radius:50%;background:var(--bg);border:1px solid var(--border);color:var(--ink3);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.modal-close:hover{background:var(--ink);color:white;border-color:var(--ink)}
+
+/* meta row */
+.modal-meta{
+  display:flex;gap:.75rem;padding:10px 20px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);flex-wrap:wrap;align-items:center;
+  flex-shrink:0;
+}
+.meta-label{font-size:9.5px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);margin-right:3px}
+.meta-tag{font-size:10.5px;background:var(--g-pale);color:var(--g-dark);padding:2px 7px;border-radius:3px;font-weight:500;margin-right:2px}
 .meta-item{display:flex;align-items:center;font-size:12px;color:var(--ink2)}
-.meta-link{font-size:11px;color:var(--g);text-decoration:none;display:flex;align-items:center;gap:4px;border:1px solid var(--g-light);padding:4px 10px;border-radius:5px;transition:all .2s}
+.meta-link{font-size:11px;color:var(--g);text-decoration:none;display:flex;align-items:center;gap:4px;border:1px solid var(--g-light);padding:3px 9px;border-radius:5px;transition:all .2s}
 .meta-link:hover{background:var(--g);color:white;border-color:var(--g)}
-.modal-body{padding:2rem;max-height:60vh;overflow-y:auto}
-.modal-body::-webkit-scrollbar{width:4px}
-.modal-body::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:4px}
-.modal-section{margin-bottom:1.75rem}
+
+/* two-column body */
+.modal-body{
+  display:flex;flex:1;min-height:0;overflow:hidden;
+}
+
+/* LEFT — image panel */
+.modal-img-panel{
+  width:42%;flex-shrink:0;
+  overflow-y:auto;
+  background:var(--bg);
+  padding:16px;
+  display:flex;flex-direction:column;gap:10px;
+  border-right:1px solid var(--border);
+  scrollbar-width:thin;scrollbar-color:var(--g-light) transparent;
+}
+.modal-img-panel::-webkit-scrollbar{width:3px}
+.modal-img-panel::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:3px}
+.modal-panel-img{
+  width:100%;border-radius:8px;object-fit:cover;
+  border:1px solid var(--border);
+  transition:transform .2s,border-color .2s;
+  display:block;
+}
+.modal-panel-img:hover{transform:scale(1.015);border-color:var(--g)}
+.modal-no-img{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  border-radius:10px;border:1.5px dashed var(--border);
+  color:var(--ink3);font-size:12px;font-family:var(--mono);
+  letter-spacing:.06em;min-height:120px;
+}
+
+/* RIGHT — text panel */
+.modal-text-panel{
+  flex:1;overflow-y:auto;padding:20px 22px;
+  scrollbar-width:thin;scrollbar-color:var(--g-light) transparent;
+}
+.modal-text-panel::-webkit-scrollbar{width:4px}
+.modal-text-panel::-webkit-scrollbar-thumb{background:var(--g-light);border-radius:4px}
+
+.modal-section{margin-bottom:1.6rem}
 .modal-section:last-child{margin-bottom:0}
-.modal-section-title{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:.75rem;display:flex;align-items:center;gap:8px}
+.modal-section-title{
+  font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--g);
+  margin-bottom:.6rem;display:flex;align-items:center;gap:8px;
+}
 .modal-section-title::after{content:'';flex:1;height:1px;background:var(--g-pale)}
-.modal-section-text{font-size:13.5px;line-height:1.85;color:var(--ink2)}
+.modal-section-text{font-size:13px;line-height:1.85;color:var(--ink2)}
 .modal-section-text strong{color:var(--ink);font-weight:500}
-.modal-highlight{background:var(--g-pale);border-left:3px solid var(--g);border-radius:0 6px 6px 0;padding:14px 16px;font-size:13px;color:var(--g-dark);line-height:1.7;margin:1rem 0;font-family:var(--serif);font-style:italic}
-.modal-points{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:.5rem}
-.modal-points li{font-size:13px;color:var(--ink2);line-height:1.7;padding-left:1.2rem;position:relative}
-.modal-points li::before{content:'→';position:absolute;left:0;color:var(--g);font-size:11px;top:2px}
+.modal-highlight{
+  background:var(--g-pale);border-left:3px solid var(--g);
+  border-radius:0 6px 6px 0;padding:12px 14px;
+  font-size:12.5px;color:var(--g-dark);line-height:1.7;
+  margin:.75rem 0;font-family:var(--serif);font-style:italic;
+}
+.modal-points{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:.4rem}
+.modal-points li{font-size:12.5px;color:var(--ink2);line-height:1.7;padding-left:1.2rem;position:relative}
+.modal-points li::before{content:'→';position:absolute;left:0;color:var(--g);font-size:10px;top:3px}
+
+/* mobile: stack vertically */
+@media(max-width:680px){
+  .modal-body{flex-direction:column}
+  .modal-img-panel{width:100%;border-right:none;border-bottom:1px solid var(--border);max-height:220px;flex-direction:row;overflow-x:auto;overflow-y:hidden;padding:12px}
+  .modal-panel-img{width:auto;height:180px;flex-shrink:0}
+  .modal-text-panel{padding:16px}
+}
 
 @media(max-width:900px){
   .hero-grid,.about-grid{grid-template-columns:1fr}
@@ -266,6 +342,37 @@ footer a:hover{color:var(--g)}
 }
 @media(max-width:700px){ .visual-masonry { columns: 2 } }
 @media(max-width:420px){ .visual-masonry { columns: 1 } }
+
+/* ── UX PROCESS TAGS on cards ── */
+.ux-tags { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:10px }
+.ux-tag {
+  font-size:9.5px; padding:2px 7px; border-radius:3px;
+  border:1px solid rgba(74,158,92,.25);
+  color:var(--g-dark); background:var(--g-pale);
+  font-family:var(--mono); letter-spacing:.04em;
+}
+
+/* ── SOCIAL 4-column grid ── */
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+.social-grid-img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  border-radius:8px;border:1px solid var(--border);
+  transition:transform .2s,box-shadow .2s;display:block;
+}
+.social-grid-img:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+@media(max-width:600px){.social-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── HERO UX PROCESS CHIPS ── */
+.hero-process-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem}
+.process-chip{
+  font-size:11.5px;padding:5px 12px;border-radius:20px;
+  background:var(--card);border:1px solid var(--border);
+  color:var(--ink2);
+}
 </style>
 </head>
 <body>
@@ -291,6 +398,12 @@ footer a:hover{color:var(--g)}
       <p class="hero-role">設計，是解決問題的過程</p>
       <p class="hero-bio">擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗，橫跨工業 HMI 系統、ERP 介面、RWD 網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
       <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
+      <div class="hero-process-chips">
+        <span class="process-chip">🔍 使用者研究</span>
+        <span class="process-chip">🗂 資訊架構</span>
+        <span class="process-chip">⚡ Prototype</span>
+        <span class="process-chip">📐 Design System</span>
+      </div>
       <div class="hero-ctas">
         <a href="#works" class="btn btn-primary">View My Work</a>
         <a href="mailto:sarita445645@gmail.com" class="btn btn-outline">Get in Touch</a>
@@ -334,6 +447,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Industrial HMI</div>
           <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
           <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
+          <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span class="ux-tag">IA 重構</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span><span class="work-tool">VS Code</span></div><span class="work-year">2024</span></div>
         </div>
       </div>
@@ -344,6 +458,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Industrial HMI</div>
           <div class="work-title">中鋼 W433 球化場 HMI</div>
           <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
+          <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span class="ux-tag">視覺層級</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -354,6 +469,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Smart Factory</div>
           <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
           <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
+          <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span class="ux-tag">模組化</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span></div>
         </div>
       </div>
@@ -364,6 +480,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Web App / GIS</div>
           <div class="work-title">中鋼 CSC 街景地圖</div>
           <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
+          <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span class="ux-tag">元件規範</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -374,6 +491,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">B2B Website</div>
           <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
           <div class="work-desc">GA4 數據審計 + 任務導向網格，讓核心產品從 L3 深層浮出，轉換漏斗全面重整。</div>
+          <div class="ux-tags"><span class="ux-tag">數據審計</span><span class="ux-tag">任務導向</span><span class="ux-tag">AI 整合</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -384,6 +502,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Landing Page</div>
           <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
           <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
+          <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span class="ux-tag">CTA 策略</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -394,6 +513,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Web Tool / Lead Gen</div>
           <div class="work-title">獲利計算機</div>
           <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
+          <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span class="ux-tag">互動回饋</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -404,6 +524,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Web Form / Lead Gen</div>
           <div class="work-title">關稅評量問券網頁</div>
           <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
+          <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span class="ux-tag">心理模型</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span></div>
         </div>
       </div>
@@ -414,6 +535,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Recruitment</div>
           <div class="work-title">Y26 招募網翻新設計</div>
           <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
+          <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span class="ux-tag">模組化管理</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span></div>
         </div>
       </div>
@@ -424,6 +546,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">E-Commerce</div>
           <div class="work-title">弘信生醫 — 多品牌美妝電商架構重組</div>
           <div class="work-desc">雙軌式導航解決多品牌迷宮問題，Token 化設計系統讓新品牌上架只需調色。</div>
+          <div class="ux-tags"><span class="ux-tag">雙軌導航</span><span class="ux-tag">Token 系統</span><span class="ux-tag">折扣邏輯</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2023</span></div>
         </div>
       </div>
@@ -434,6 +557,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Brand + UIUX</div>
           <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
           <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
+          <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span class="ux-tag">Mobile First</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div><span class="work-year">2023</span></div>
         </div>
       </div>
@@ -444,6 +568,7 @@ footer a:hover{color:var(--g)}
           <div class="work-cat">Web Redesign</div>
           <div class="work-title">鼎新官網 — 關於我們頁面重製</div>
           <div class="work-desc">Claude + Figma + VS Code 協作完成，AI 輔助設計流程的實際落地。</div>
+          <div class="ux-tags"><span class="ux-tag">AI 協作</span><span class="ux-tag">設計轉開發</span><span class="ux-tag">品牌形象</span></div>
           <div class="work-footer"><div class="work-tools"><span class="work-tool">Claude</span><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2026</span></div>
         </div>
       </div>
@@ -472,31 +597,31 @@ footer a:hover{color:var(--g)}
 </div>
 <div class="visual-section-wrap">
   <div class="visual-section-label">社群圖文</div>
-  <div class="visual-masonry">
-    <img class="visual-masonry-img" src="images/visual-social/01.jpg" alt="社群圖文 1" onclick="openVisualLightbox('social',0)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/02.jpg" alt="社群圖文 2" onclick="openVisualLightbox('social',1)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/03.jpg" alt="社群圖文 3" onclick="openVisualLightbox('social',2)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/04.jpg" alt="社群圖文 4" onclick="openVisualLightbox('social',3)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
+  <div class="social-grid">
+    <img class="social-grid-img" src="images/visual-social/01.jpg" alt="社群圖文 1" onclick="openVisualLightbox('social',0)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/02.jpg" alt="社群圖文 2" onclick="openVisualLightbox('social',1)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/03.jpg" alt="社群圖文 3" onclick="openVisualLightbox('social',2)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/04.jpg" alt="社群圖文 4" onclick="openVisualLightbox('social',3)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
   </div>
 </div>
 <div class="visual-section-wrap">
   <div class="visual-section-label">電商行銷 / 門市布置 / 包裝印刷</div>
-  <div class="visual-masonry">
-    <img class="visual-masonry-img" src="images/visual-ecom/01.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 1" onclick="openVisualLightbox('ecom',0)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/02.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 2" onclick="openVisualLightbox('ecom',1)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/03.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 3" onclick="openVisualLightbox('ecom',2)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/04.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 4" onclick="openVisualLightbox('ecom',3)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/05.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 5" onclick="openVisualLightbox('ecom',4)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/06.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 6" onclick="openVisualLightbox('ecom',5)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/07.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 7" onclick="openVisualLightbox('ecom',6)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/08.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 8" onclick="openVisualLightbox('ecom',7)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/09.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 9" onclick="openVisualLightbox('ecom',8)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/10.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 10" onclick="openVisualLightbox('ecom',9)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/11.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 11" onclick="openVisualLightbox('ecom',10)" loading="lazy"/>
-    <img class="visual-masonry-img" src="images/visual-ecom/12.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 12" onclick="openVisualLightbox('ecom',11)" loading="lazy"/>
+  <div class="social-grid">
+    <img class="social-grid-img" src="images/visual-ecom/01.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 1" onclick="openVisualLightbox('ecom',0)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/02.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 2" onclick="openVisualLightbox('ecom',1)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/03.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 3" onclick="openVisualLightbox('ecom',2)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/04.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 4" onclick="openVisualLightbox('ecom',3)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/05.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 5" onclick="openVisualLightbox('ecom',4)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/06.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 6" onclick="openVisualLightbox('ecom',5)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/07.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 7" onclick="openVisualLightbox('ecom',6)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/08.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 8" onclick="openVisualLightbox('ecom',7)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/09.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 9" onclick="openVisualLightbox('ecom',8)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/10.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 10" onclick="openVisualLightbox('ecom',9)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/11.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 11" onclick="openVisualLightbox('ecom',10)" loading="lazy"/>
+    <img class="social-grid-img" src="images/visual-ecom/12.jpg" alt="電商行銷 / 門市布置 / 包裝印刷 12" onclick="openVisualLightbox('ecom',11)" loading="lazy"/>
   </div>
 </div>
   </div>
@@ -581,16 +706,21 @@ footer a:hover{color:var(--g)}
 <!-- MODAL -->
 <div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
   <div class="modal" id="modalBox">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-hero" id="modalHero">
-      <div class="modal-hero-overlay"></div>
-      <div class="modal-hero-content">
-        <div class="modal-cat" id="modalCat"></div>
-        <div class="modal-title" id="modalTitle"></div>
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <span class="modal-cat" id="modalCat"></span>
+        <span class="modal-title" id="modalTitle"></span>
       </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
+    <!-- Meta -->
     <div class="modal-meta" id="modalMeta"></div>
-    <div class="modal-body" id="modalBody"></div>
+    <!-- Two-column body -->
+    <div class="modal-body">
+      <div class="modal-img-panel" id="modalImgPanel"></div>
+      <div class="modal-text-panel" id="modalBody"></div>
+    </div>
   </div>
 </div>
 
@@ -687,7 +817,7 @@ const projects={
     {title:'案例展示：2+N 策略',text:'先完整展示兩項最具代表性的案例，再讓其他案例透過「閱讀更多」提供選項。縮短初次閱讀的頁面長度，避免受眾產生滑動疲勞，透過分層展示逐步引導深入了解。'},
     {title:'服務項目區塊',text:'採用互動式切換設計，將複雜服務拆解為「線上」與「線下」兩大核心模組，引導使用者根據自身需求進行篩選，縮短決策路徑，提升預約諮詢的轉換效率。'}
   ]},
-  calculator:{cat:'Web Tool / Lead Gen',title:'獲利計算機',thumb:'t-amber',year:'2025',tools:['Figma','VS Code'],sections:[
+  calculator:{cat:'Web Tool / Lead Gen',title:'獲利計算機',thumb:'t-amber',year:'2025',tools:['Figma','VS Code'],live:'https://www.digiwin.com.tw/dsc/solution/WB003954/profit',sections:[
     {title:'專案背景',text:'因應川普關稅議題升溫，企業對成本轉嫁與毛利評估需求激增。因母產品（大型 ERP）門檻較高、推廣不易，提出「試玩版（Lite Version）」策略——作為獲取潛在客戶名單的誘餌工具，降低中小企業主的進入門檻。'},
     {title:'核心洞察',highlight:'在決策工具中，使用者需要的不是精確到小數點後的財務報表，而是「我現在該不該擔心？」的直覺警示。'},
     {title:'UX 設計策略',points:['單頁式流程：銷售價格 → 成本 → 現行關稅 → 預計關稅，即可產生分析結果','動態回饋：視覺閃爍與區塊強調（Highlighting），讓使用者輸入數值後立刻鎖定結果落點','Desktop 優先：B2B 情境多為辦公室 PC 操作，集中資源優化桌機體驗以換取更豐富的數據圖表']},
@@ -701,7 +831,7 @@ const projects={
     {title:'與需求方的設計權衡',text:'需求方希望以「交通工具」代表企業等級，但交通工具的強弱語意在關稅議題上較為模糊。優化方案：在保留交通工具視覺的前提下，主動提議導入「全球通用五星評等系統」，讓使用者不需思考就能秒懂自己的抗風險等級。'},
     {title:'響應式設計',text:'針對手機版，將橫向複雜的對比圖表重新解構為「垂直堆疊式卡片」，並保持觸控熱區的易操作性。建立標準化元件庫，確保從問卷輸入頁到報告產出頁的視覺語言高度統一。'}
   ]},
-  y26:{cat:'Recruitment Website',title:'Y26 招募網翻新設計',thumb:'t-navy',year:'2026',tools:['Figma'],sections:[
+  y26:{cat:'Recruitment Website',title:'Y26 招募網翻新設計',thumb:'t-navy',year:'2026',tools:['Figma'],live:'https://www.digiwin.com.tw/hr/school/',sections:[
     {title:'接手時的挑戰',text:'面對一個兩年前製作、維護邏輯混亂的舊站。製作方式並不符合「網頁模組化」的思維，導致 PM 在管理上非常痛苦。核心問題不只是視覺老舊，而是整個資訊架構都需要從求職者的角度重新思考。'},
     {title:'轉換率優先：刪除干擾',highlight:'招募網的本質是轉換率（Conversion Rate）。舊版選單塞滿了 YouTube、就享知等外部連結——協調 PM 刪除這些會讓流量流失的按鈕，將導航列空間留給關鍵的「職缺類別」。'},
     {title:'色彩編碼解決職務辨識問題',text:'面對五大職務計畫，光靠文字名稱太難辨識。為每個職務定義專屬色系（如：領袖之星 = 紫色、服務顧問 = 綠色、營運規劃 = 黃色）。在資訊負荷過重的環境下，色彩是直覺導航的第一步，讓使用者一眼就認出「我現在在哪個計畫裡」。'},
@@ -722,7 +852,7 @@ const projects={
     {title:'視覺策略',highlight:'刻意營造留白的「呼吸感」。運用自然色系結合適度留白，將「無添加」的品牌理念視覺化，試圖在視覺上建立起高品質的信賴感，而不是像傳統藥局那樣冷冰冰的。'},
     {title:'設計系統',text:'整理了一套基礎元件規範（UI Kit），從定義色彩計畫到常用的按鈕、卡片與輸入框模組。模組化設計的好處是未來不論是要新增產品類別還是活動頁，都能直接復用現有元件，大幅降低溝通成本，維持視覺一致性。'}
   ]},
-  dingxin:{cat:'Web Redesign',title:'鼎新官網 — 關於我們頁面重製',thumb:'t-forest',year:'2026',tools:['Claude AI','Figma','VS Code'],sections:[
+  dingxin:{cat:'Web Redesign',title:'鼎新官網 — 關於我們頁面重製',thumb:'t-forest',year:'2026',tools:['Claude AI','Figma','VS Code'],live:'https://www.digiwin.com.tw/aboutdsc',preview:'https://sarita645.github.io/dinwin_about02/',sections:[
     {title:'專案背景',text:'以 Claude + Figma + VS Code 協作完成的官網「關於我們」頁面重製，是一次 AI 輔助設計流程的實際落地實踐。這個專案也印證了設計師與 AI 工具協作的工作模式，讓設計到開發的流程更緊密整合。'},
     {title:'AI 輔助工作流',points:['Figma：完成版面設計與視覺規格定義','Claude AI：協助將設計稿轉換為可落地的 HTML/CSS 代碼','VS Code：最終細節調整與跨瀏覽器優化']},
     {title:'設計理念',text:'企業形象頁面不只是公司資料的陳列，更是品牌價值的視覺傳達。透過清晰的資訊層級與現代化的視覺語言，讓訪客在短暫的閱讀時間內，快速建立對品牌的正面印象與信任感。'},
@@ -732,35 +862,39 @@ const projects={
 
 function openModal(id){
   const p=projects[id];if(!p)return;
+  // Header
   document.getElementById('modalCat').textContent=p.cat;
   document.getElementById('modalTitle').textContent=p.title;
-  document.getElementById('modalHero').className='modal-hero '+p.thumb;
+  // Meta
   let meta=`<div class="meta-item"><span class="meta-label">Year</span>&nbsp;${p.year}</div>`;
   meta+=`<div class="meta-item"><span class="meta-label">Tools</span>&nbsp;${p.tools.map(t=>`<span class="meta-tag">${t}</span>`).join('')}</div>`;
   if(p.figma)meta+=`<a class="meta-link" href="${p.figma}" target="_blank">↗ Figma</a>`;
   if(p.live)meta+=`<a class="meta-link" href="${p.live}" target="_blank">↗ Live Site</a>`;
   if(p.preview)meta+=`<a class="meta-link" href="${p.preview}" target="_blank">↗ Preview</a>`;
   document.getElementById('modalMeta').innerHTML=meta;
+  // LEFT — image panel
   const gals = projectGallery[id] || [];
+  let imgPanel='';
+  if(gals.length>0){
+    gals.forEach((src,gi)=>{
+      imgPanel+=`<img class="modal-panel-img" src="${src}" alt="Project image ${gi+1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
+    });
+  } else {
+    imgPanel=`<div class="modal-no-img">No images</div>`;
+  }
+  document.getElementById('modalImgPanel').innerHTML=imgPanel;
+  // RIGHT — text panel
   let body='';
-  // Insert gallery strip after first section
-  p.sections.forEach((s,si)=>{
+  p.sections.forEach(s=>{
     body+=`<div class="modal-section"><div class="modal-section-title">${s.title}</div>`;
     if(s.text)body+=`<p class="modal-section-text">${s.text}</p>`;
     if(s.highlight)body+=`<div class="modal-highlight">${s.highlight}</div>`;
     if(s.points){body+=`<ul class="modal-points">`;s.points.forEach(pt=>{body+=`<li>${pt}</li>`;});body+=`</ul>`;}
     body+=`</div>`;
-    // Insert gallery after section index 0 (first section = project overview)
-    if(si===0 && gals.length>0){
-      body+=`<div class="modal-gallery">`;
-      gals.forEach((src,gi)=>{
-        body+=`<img class="modal-gallery-img" src="${src}" alt="Project image ${gi+1}" onclick="openLightbox('${id}',${gi})"/>`;
-      });
-      body+=`</div>`;
-    }
   });
   document.getElementById('modalBody').innerHTML=body;
   document.getElementById('modalBody').scrollTop=0;
+  document.getElementById('modalImgPanel').scrollTop=0;
   document.getElementById('modalBackdrop').classList.add('open');
   document.body.style.overflow='hidden';
   document.getElementById('cursor').classList.add('modal-open');
