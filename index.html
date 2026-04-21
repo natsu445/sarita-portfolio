@@ -1919,11 +1919,11 @@
         <div class="visual-section-label">EDM</div>
         <div class="social-grid">
           <img class="social-grid-img" src="images/EDM/01.jpg" alt="EDM 1"
-            onclick="openVisualLightbox('social',0)" loading="lazy" />
+            onclick="openVisualLightbox('edm',0)" loading="lazy" />
           <img class="social-grid-img" src="images/EDM/02.png" alt="EDM 2"
-            onclick="openVisualLightbox('social',1)" loading="lazy" />
+            onclick="openVisualLightbox('edm',1)" loading="lazy" />
           <img class="social-grid-img" src="images/EDM/03.jpg" alt="EDM 3"
-            onclick="openVisualLightbox('social',2)" loading="lazy" />
+            onclick="openVisualLightbox('edm',2)" loading="lazy" />
 
         </div>
       </div>
@@ -2353,9 +2353,10 @@
 
     // Visual section lightbox
     const visualGallery = {
-      travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg"],
+      travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg", "images/visual-travel/07.jpg", "images/visual-travel/08.jpg", "images/visual-travel/09.jpg", "images/visual-travel/10.jpg", "images/visual-travel/11.jpg"],
       social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"],
-      ecom: ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
+      edm:    ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"],
+      ecom:   ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
     };
     let _vlbSec = '', _vlbIdx = 0;
     function openVisualLightbox(sec, idx) {
