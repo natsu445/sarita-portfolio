@@ -864,6 +864,57 @@
       color: rgba(255, 255, 255, .45)
     }
 
+    .exp-desc {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .32);
+      line-height: 1.65;
+      margin-top: 5px;
+      font-weight: 300;
+    }
+    .exp-item--edu .exp-period {
+      color: rgba(255,255,255,.35);
+    }
+    .exp-item--edu::before {
+      background: rgba(255,255,255,.2);
+    }
+    .exp-item--edu .exp-role {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      font-weight: 400;
+    }
+
+
+    
+    .about-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 1.5rem 0 1.75rem;
+    }
+    .about-skill-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .about-skill-label {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      width: 52px;
+      flex-shrink: 0;
+    }
+    .about-skill-tag {
+      font-size: 11.5px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.7);
+    }
+
     .about-bg {
       position: absolute;
       width: 400px;
@@ -1572,7 +1623,7 @@
         <p class="hero-eyebrow">✦ UI/UX Designer &amp; Visual Designer</p>
         <h1 class="hero-name">Hello,<br />I'm <em>Sarita</em></h1>
         <p class="hero-role">設計，是解決問題的過程</p>
-        <p class="hero-bio">擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7 年視覺設計</strong>經驗，橫跨工業 HMI 系統、ERP 介面、RWD
+        <p class="hero-bio">擁有 <strong>6–7 年設計工作經驗</strong>，橫跨工業 HMI 系統、ERP 介面、RWD
           網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
         <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
         <div class="hero-process-chips">
@@ -2024,10 +2075,31 @@
       <div class="about-grid">
         <div>
           <p class="about-eyebrow">About Me</p>
-          <h2 class="about-heading">Design with<br /><em>Purpose.</em></h2>
-          <p class="about-text">我是 Sarita，一位擁有 <strong>3 年 UIUX 設計</strong>與 <strong>7
-              年視覺設計</strong>經驗的設計師。<br /><br />曾參與工業製造系統 HMI 介面重設計、多品牌電商 IA 優化、B2B
-            企業官網重構等多樣化專案，橫跨製造業、美妝電商與科技產業。<br /><br />我相信好的設計來自對人的理解——深入研究使用者需求，再透過設計將複雜問題轉化為直覺流暢的體驗。</p>
+          <h2 class="about-heading">從平面出發，<br/><em>往體驗走。</em></h2>
+          <p class="about-text">7 年平面設計基底，轉職 UI/UX 後累積 2 年數位產品設計實務。橫跨工業 HMI、B2B SaaS、電商品牌等場域，熟悉從使用者研究、IA 規劃到 Design System 建立的完整流程。<br/><br/>擅長與 PM 和工程師協作，將複雜需求轉化為直覺且落地的設計方案。具備 HTML／CSS 切版能力，能精準溝通、縮短設計到開發的距離。</p>
+          <div class="about-skills">
+            <div class="about-skill-group">
+              <span class="about-skill-label">設計流程</span>
+              <span class="about-skill-tag">使用者研究</span>
+              <span class="about-skill-tag">IA 資訊架構</span>
+              <span class="about-skill-tag">Wireframe</span>
+              <span class="about-skill-tag">Prototype</span>
+              <span class="about-skill-tag">Design System</span>
+            </div>
+            <div class="about-skill-group">
+              <span class="about-skill-label">工具</span>
+              <span class="about-skill-tag">Figma</span>
+              <span class="about-skill-tag">Illustrator</span>
+              <span class="about-skill-tag">Photoshop</span>
+              <span class="about-skill-tag">HTML／CSS</span>
+            </div>
+            <div class="about-skill-group">
+              <span class="about-skill-label">協作</span>
+              <span class="about-skill-tag">跨部門溝通</span>
+              <span class="about-skill-tag">PM 協作</span>
+              <span class="about-skill-tag">工程對接</span>
+            </div>
+          </div>
           <div class="about-contact">
             <a href="mailto:sarita445645@gmail.com" class="contact-link">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -2040,26 +2112,42 @@
         </div>
         <div class="about-right">
           <div class="exp-timeline">
+
             <div class="exp-item">
-              <div class="exp-period">2022 — Present</div>
+              <div class="exp-period">2025 — 仍在職</div>
+              <div class="exp-role">UI 設計師</div>
+              <div class="exp-company">鼎新數智 · B2B SaaS</div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-period">2024</div>
+              <div class="exp-role">UIUX 設計師</div>
+              <div class="exp-company">盛大資訊 · HMI 工業介面</div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-period">2023</div>
               <div class="exp-role">UI/UX Designer</div>
-              <div class="exp-company">工業製造 · HMI &amp; Web Platform</div>
+              <div class="exp-company">瓦吉科技 · Web / RWD</div>
             </div>
+
             <div class="exp-item">
-              <div class="exp-period">2020 — 2022</div>
-              <div class="exp-role">Visual Designer</div>
-              <div class="exp-company">電商品牌 · 行銷設計</div>
+              <div class="exp-period">2022</div>
+              <div class="exp-role">美編人員</div>
+              <div class="exp-company">日本橋資訊 · 平面印刷</div>
             </div>
+
             <div class="exp-item">
-              <div class="exp-period">2017 — 2020</div>
-              <div class="exp-role">Graphic Designer</div>
-              <div class="exp-company">品牌視覺 · 印刷 · 社群</div>
+              <div class="exp-period">2018 — 2020</div>
+              <div class="exp-role">行程美編</div>
+              <div class="exp-company">飛揚綜合旅行社 · 旅遊平面</div>
             </div>
-            <div class="exp-item">
+
+            <div class="exp-item exp-item--edu">
               <div class="exp-period">Education</div>
-              <div class="exp-role">視覺傳達設計學系</div>
-              <div class="exp-company">設計相關科系畢業</div>
+              <div class="exp-role">台南應用科技大學 · 美術學系</div>
             </div>
+
           </div>
         </div>
       </div>
