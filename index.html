@@ -1415,6 +1415,45 @@
       border-color: var(--g)
     }
 
+
+    /* ── Before / After labels in modal image panel ── */
+    .img-group { display: flex; flex-direction: column; gap: 0; }
+    .img-group-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px 4px 0 0;
+      font-weight: 500;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+    }
+    .img-group-label.before {
+      background: #f0f0ee;
+      color: var(--ink3);
+      border: 1px solid var(--border);
+    }
+    .img-group-label.after {
+      background: var(--g-pale);
+      color: var(--g-dark);
+      border: 1px solid var(--g-light);
+    }
+    .img-group-label.design {
+      background: var(--bg);
+      color: var(--ink3);
+      border: 1px solid var(--border);
+    }
+    .img-group .modal-panel-img:first-of-type {
+      border-top-left-radius: 0;
+    }
+    .img-group-divider {
+      height: 8px;
+    }
+
     /* ── LIGHTBOX ── */
     #lightbox {
       display: none;
@@ -2364,6 +2403,24 @@
       }
     };
 
+
+    // Before/After config: { beforeCount: N } means first N = before, rest = after
+    // beforeCount: 0 = no split, show as "Design"
+    const imgConfig = {
+      w11:        { beforeCount: 1 },   // gallery-01=before, gallery-02=after
+      w433:       { beforeCount: 5 },   // gallery-01~05=before, 06~12=after
+      w1:         { beforeCount: 1 },   // gallery-01=before, gallery-02=after
+      dingxin:    { beforeCount: 1 },   // gallery-01=before, gallery-02=after
+      csc:        { beforeCount: 0 },
+      b2b:        { beforeCount: 0 },
+      landing:    { beforeCount: 0 },
+      calculator: { beforeCount: 0 },
+      survey:     { beforeCount: 0 },
+      hongxin:    { beforeCount: 0 },
+      yisen:      { beforeCount: 0 },
+      y26:        { beforeCount: 0 },
+    };
+
     function openModal(id) {
       const p = projects[id]; if (!p) return;
       // Header
@@ -2378,13 +2435,38 @@
       document.getElementById('modalMeta').innerHTML = meta;
       // LEFT — image panel
       const gals = projectGallery[id] || [];
+      const cfg = imgConfig[id] || { beforeCount: 0 };
       let imgPanel = '';
-      if (gals.length > 0) {
-        gals.forEach((src, gi) => {
-          imgPanel += `<img class="modal-panel-img" src="${src}" alt="Project image ${gi + 1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
-        });
-      } else {
+      if (gals.length === 0) {
         imgPanel = `<div class="modal-no-img">No images</div>`;
+      } else if (cfg.beforeCount > 0) {
+        const beforeImgs = gals.slice(0, cfg.beforeCount);
+        const afterImgs  = gals.slice(cfg.beforeCount);
+        // Before group
+        imgPanel += `<div class="img-group">`;
+        imgPanel += `<span class="img-group-label before">Before</span>`;
+        beforeImgs.forEach((src, gi) => {
+          imgPanel += `<img class="modal-panel-img" src="${src}" alt="Before ${gi+1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
+        });
+        imgPanel += `</div>`;
+        // Divider
+        if (afterImgs.length > 0) {
+          imgPanel += `<div class="img-group-divider"></div>`;
+          imgPanel += `<div class="img-group">`;
+          imgPanel += `<span class="img-group-label after">After</span>`;
+          afterImgs.forEach((src, gi) => {
+            const globalIdx = cfg.beforeCount + gi;
+            imgPanel += `<img class="modal-panel-img" src="${src}" alt="After ${gi+1}" onclick="openLightbox('${id}',${globalIdx})" loading="lazy"/>`;
+          });
+          imgPanel += `</div>`;
+        }
+      } else {
+        imgPanel += `<div class="img-group">`;
+        imgPanel += `<span class="img-group-label design">Design</span>`;
+        gals.forEach((src, gi) => {
+          imgPanel += `<img class="modal-panel-img" src="${src}" alt="Design ${gi+1}" onclick="openLightbox('${id}',${gi})" loading="lazy"/>`;
+        });
+        imgPanel += `</div>`;
       }
       document.getElementById('modalImgPanel').innerHTML = imgPanel;
       // RIGHT — text panel
