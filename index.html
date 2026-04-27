@@ -52,34 +52,36 @@
       line-height: 1.6
     }
 
-    * {
-      cursor: none
+    /* Custom cursor — desktop only */
+    @media (pointer: fine) {
+      * { cursor: none }
+      #cursor {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: var(--g);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width .2s, height .2s, opacity .2s, background .2s;
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.35)
+      }
+      #cursor.hover {
+        width: 36px;
+        height: 36px;
+        opacity: .65;
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.7), 0 4px 16px rgba(0,0,0,0.3)
+      }
+      #cursor.modal-open {
+        background: var(--g);
+        opacity: .9;
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 2px 8px rgba(0,0,0,0.4)
+      }
     }
-
-    #cursor {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      background: var(--g);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width .2s, height .2s, opacity .2s, background .2s;
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.35)
-    }
-
-    #cursor.hover {
-      width: 36px;
-      height: 36px;
-      opacity: .65;
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.7), 0 4px 16px rgba(0,0,0,0.3)
-    }
-
-    #cursor.modal-open {
-      background: var(--g);
-      opacity: .9;
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 2px 8px rgba(0,0,0,0.4)
+    /* Hide cursor element on touch devices */
+    @media (pointer: coarse) {
+      #cursor { display: none }
     }
 
     nav {
@@ -889,23 +891,30 @@
     .about-skills {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
       margin: 1.5rem 0 1.75rem;
     }
     .about-skill-group {
       display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 6px;
     }
     .about-skill-label {
       font-family: var(--mono);
-      font-size: 9.5px;
-      letter-spacing: .1em;
+      font-size: 9px;
+      letter-spacing: .12em;
       text-transform: uppercase;
       color: rgba(255,255,255,.35);
-      width: 52px;
-      flex-shrink: 0;
+      line-height: 1;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      align-self: flex-start;
+      padding-right: 8px;
+    }
+    .about-skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
     .about-skill-tag {
       font-size: 11.5px;
@@ -2123,24 +2132,30 @@
           <div class="about-skills">
             <div class="about-skill-group">
               <span class="about-skill-label">設計流程</span>
-              <span class="about-skill-tag">使用者研究</span>
-              <span class="about-skill-tag">IA 資訊架構</span>
-              <span class="about-skill-tag">Wireframe</span>
-              <span class="about-skill-tag">Prototype</span>
-              <span class="about-skill-tag">Design System</span>
+              <div class="about-skill-tags">
+                <span class="about-skill-tag">使用者研究</span>
+                <span class="about-skill-tag">IA 資訊架構</span>
+                <span class="about-skill-tag">Wireframe</span>
+                <span class="about-skill-tag">Prototype</span>
+                <span class="about-skill-tag">Design System</span>
+              </div>
             </div>
             <div class="about-skill-group">
               <span class="about-skill-label">工具</span>
-              <span class="about-skill-tag">Figma</span>
-              <span class="about-skill-tag">Illustrator</span>
-              <span class="about-skill-tag">Photoshop</span>
-              <span class="about-skill-tag">HTML／CSS</span>
+              <div class="about-skill-tags">
+                <span class="about-skill-tag">Figma</span>
+                <span class="about-skill-tag">Illustrator</span>
+                <span class="about-skill-tag">Photoshop</span>
+                <span class="about-skill-tag">HTML／CSS</span>
+              </div>
             </div>
             <div class="about-skill-group">
               <span class="about-skill-label">協作</span>
-              <span class="about-skill-tag">跨部門溝通</span>
-              <span class="about-skill-tag">PM 協作</span>
-              <span class="about-skill-tag">工程對接</span>
+              <div class="about-skill-tags">
+                <span class="about-skill-tag">跨部門溝通</span>
+                <span class="about-skill-tag">PM 協作</span>
+                <span class="about-skill-tag">工程對接</span>
+              </div>
             </div>
           </div>
           <div class="about-contact">
