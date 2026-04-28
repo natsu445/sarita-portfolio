@@ -1649,6 +1649,38 @@
       color: var(--ink2);
     }
   
+    
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px;
+      margin-left: 1rem;
+    }
+    .lang-btn {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .06em;
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      color: var(--ink3);
+      transition: all .15s;
+      font-weight: 400;
+    }
+    .lang-btn.active {
+      background: var(--g);
+      color: white;
+    }
+    .lang-btn:hover:not(.active) {
+      color: var(--g);
+    }
+
     .disclaimer {
       text-align: center;
       padding: .75rem 2rem;
@@ -1674,6 +1706,10 @@
       <li><a href="#about">About</a></li>
       <!-- <li><a href="mailto:sarita445645@gmail.com"><span class="nav-dot"></span>Contact</a></li> -->
     </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('zh')" id="btn-zh">中</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
   </nav>
 
   <section id="hero">
@@ -2378,40 +2414,33 @@
       },
       landing: {
         cat: 'Landing Page', title: '就享知導流推廣頁（夥伴營銷 Landing Page）', thumb: 't-green', year: '2025', tools: ['Figma', 'VS Code'], live: 'https://www.digiwin.com.tw/digiknow/service/index.html', preview: 'https://sarita645.github.io/digiknow-redesign02/', sections: [
-          { title: '專案背景與目標', text: '本頁面核心目標在於「導流」，將使用者有效引導至「就享知」平台。我從網站分享的商業資訊切入，推論目標受眾主要為「尋求數位轉型解方的中小企業決策者」，設計策略定調為：以最高效率傳達核心價值，讓繁忙的主管級受眾能第一時間捕捉到重點。' },
-          { title: 'Banner 策略決策', highlight: '原先團隊考量滿版影片或幻燈片，但我從轉換率角度切入，建議改用「精煉標題 + 清晰 CTA」——避免過多動態元素分散受眾對導流入口的注意力，確保進入頁面後的目標路徑是直覺且流暢的。' },
-          { title: '資訊架構：內容減法', text: '定義方塊與標籤的字數建議，透過精簡贅字並強化重點關鍵字，讓受眾在快速滑動時也能輕鬆理解核心內容。' },
-          { title: '視覺策略：降低認知摩擦', text: 'PM 提議嘗試更具生活感的文青風格，但我考量導流過程中的視覺連貫性（Visual Consistency），延續色調能減少使用者跳轉時的違和感，建立穩固的品牌信任度，讓導流後的留存效果更理想。' },
-          { title: '案例展示的遞進邏輯（2+N 策略）', text: '先完整展示兩項最具代表性的案例，其他案例透過「閱讀更多」提供選項。縮短初次閱讀的頁面長度，避免滑動疲勞，透過分層展示逐步引導使用者深入了解。' },
-          { title: '服務項目：互動式切換設計', text: '將複雜服務拆解為「線上」與「線下」兩大核心模組，引導使用者根據自身需求篩選，縮短決策路徑，提升預約諮詢的轉換效率。' },
-          { title: '協作心得', highlight: '部分區塊（如 Banner 形式）最終採用折衷方案，但我成功在資訊層級、視覺規範與案例展示邏輯上導入了專業的設計思維。UIUX 的價值在於：在尊重團隊需求的前提下，透過邏輯與數據提供最有利於商業目標的優化方案。' }
-]
+          { title: '需求方一開始什麼都沒說', text: '接到這個案子時，需求方只說「需要一個網頁」。是經過討論之後，才逐漸釐清目標是要拚轉換率、把使用者導流到「就享知」平台。目標受眾是尋求數位轉型解方的中小企業決策者——繁忙的主管級受眾，進來之後要能第一時間抓到重點。' },
+          { title: '我拒絕了幻燈片 Banner，但還是做了一版', text: '需求方一開始提議要用大型幻燈片輪播 Banner。我的判斷是：如果要拚轉換率，進來就應該是明顯的訴求和 CTA，過多的動態元素只會分散注意力。但當時對方不採納我的建議，我還是按照需求做了一版滿版輪播的版本。做完之後，需求方自己評估後覺得不對，才回頭改成現行版本——也就是我一開始建議的方向。' },
+          { title: '這件事讓我學到的', highlight: '判斷是對的，但當時我沒有足夠的數據或理由去支撐這個建議。需求方不是不理性，他們只是需要被說服，而不是被告知。這個經驗之後，我開始在提設計方向的時候，同時準備「為什麼」——不只是設計直覺，而是可以說清楚的邏輯。' },
+          { title: '最終版本的設計決策', points: ['精煉標題 + 清晰 CTA：讓受眾一進站就能看到行動入口，不被其他元素分散', '案例展示 2+N 策略：先完整展示兩個最具代表性的案例，其他透過「閱讀更多」提供，避免滑動疲勞', '視覺延續性：與品牌調性保持一致，減少跳轉後的違和感，讓導流後的留存效果更穩定', '服務模組互動切換：線上 / 線下服務拆成兩個模組讓使用者自行篩選，縮短決策路徑'] }
+        ]
       },
       calculator: {
         cat: 'Web Tool / Lead Gen', title: '獲利計算機', thumb: 't-amber', year: '2025', tools: ['Figma', 'VS Code'], live: 'https://www.digiwin.com.tw/dsc/solution/WB003954/profit', sections: [
-          { title: '專案背景', text: '因應川普關稅議題升溫，企業對成本轉嫁與毛利評估需求激增。因母產品（大型 ERP）門檻較高、推廣不易，提出「試玩版（Lite Version）」策略——透過極簡化工具降低中小企業主的進入門檻，作為獲取潛在客戶名單（Lead Gen）的誘餌。' },
-          { title: '核心洞察', highlight: '在此類決策工具中，使用者需要的不是精確到小數點後的財務報表，而是「我現在該不該擔心？」的直覺警示。' },
-          { title: 'UX 設計策略', points: ['單頁式流程：銷售價格 → 成本 → 現行關稅 → 預計關稅，即可產生分析，不增加認知負擔', '動態回饋：視覺閃爍與區塊強調（Highlighting），讓使用者輸入數值後立刻鎖定結果落點', 'Desktop 優先：B2B 情境多為辦公室 PC 操作，集中資源優化桌機體驗，換取更複雜的數據圖表表現力'] },
-          { title: 'Teaser Design 誘餌策略', text: '刻意不提供「完整解析」，僅提供「關鍵提示」——這是 UX 上的誘餌設計，引導使用者因好奇或需求進一步詢問產品。在分析結果下方直接埋入「諮詢服務」按鈕，縮短從工具使用到商業轉化的路徑。' },
-          { title: '上線後的主動反思', text: '諮詢轉化率不如預期，我主動分析並回饋給團隊：外層推廣頁面的文案未能精準擊中用戶對關稅的恐懼或痛點；試玩版介面過於現代，與正式版軟體的傳統介面存在「體驗斷層」——這是後續需要優化的關鍵點。' }
+          { title: '我的角色', text: '這個專案我負責的是畫面的 UI 設計，整體策略方向由需求方規劃。背景是因應川普關稅議題升溫，企業對毛利評估的需求激增，需求方決定以「試玩版工具」作為 Lead Gen 的入口，降低中小企業主對大型 ERP 的進入門檻。' },
+          { title: 'UI 設計的執行重點', points: ['單頁式流程：銷售價格 → 成本 → 現行關稅 → 預計關稅，讓使用者能快速得到試算結果', '動態回饋：輸入數值後視覺立即反映結果，讓使用者感受到「有在計算」的即時感', 'Desktop 優先：B2B 情境多為辦公室 PC 操作，介面在桌機上的資訊密度與圖表表現是主要考量'] },
+          { title: '做完之後的觀察', text: '上線後諮詢轉化率不如預期。我事後分析，試玩版的介面做得相對現代，但正式版 ERP 軟體的介面風格較傳統——兩者之間存在一個「體驗斷層」，使用者從工具跳到諮詢頁面時，可能會產生不一致的感受。這是我之後在接類似的行銷工具設計時，會特別留意的一件事。' }
         ]
       },
       survey: {
         cat: 'Web Form / Lead Gen', title: '關稅評量問券網頁', thumb: 't-clay', year: '2025', tools: ['Figma'], live: 'https://www.digiwin.com.tw/dsc/diagnosis/07/', sections: [
-          { title: '專案背景', text: '在國際貿易動盪的背景下，企業主迫切需要了解自身抗壓性。本專案透過「自律檢測系統」作為 Lead Generation 的領頭羊，吸引中小企業主留下資訊以換取深度分析報告。核心挑戰：如何在枯燥的問卷中降低跳出率，並讓複雜的對比數據在手機端依然「一眼即懂」。' },
-          { title: '降低填答壓力', points: ['微互動進度條：將問卷拆解為 5 大階段，讓使用者明確感知「距離終點還有多遠」，有效降低放棄填寫的機率', '場域考量：老闆們可能在通勤或零碎時間查看報告，特別強化 Mobile (375px) 操作流暢度，確保所有圖表在小螢幕上不需橫向滾動即可閱讀'] },
-          { title: '數據視覺化的心理模型', highlight: '根據古騰堡瀏覽動線（Gutenberg Diagram），將「使用者企業」數據置於右側——因為右下角是視覺的「終點 / 結論區」，讓使用者在看完產業基準後，最後一眼落在自己的數據上，產生強烈的對比感與行動動機。' },
-          { title: '溝通與權衡', text: '需求方希望以「交通工具」代表企業等級，但強弱語意在關稅議題上較為模糊。我主動提議導入「全球通用五星評等系統」——在保留交通工具視覺的前提下，讓使用者不需思考就能秒懂自己的抗風險等級。' },
-          { title: '響應式適配', text: '針對手機版，將橫向複雜的對比圖表重新解構為「垂直堆疊式卡片」，並保持觸控熱區的易操作性。建立標準化元件庫，確保從問卷輸入頁到報告產出頁的視覺語言高度統一。' }
+          { title: '我的角色', text: '這個案子主要負責 UI 設計。這份問券的核心目的是收集使用者資料（Lead Gen），因此「讓使用者填完」比「讓介面好看」更重要。' },
+          { title: '進度條：我參與的一個決策', text: '在設計過程中，有一個討論點是要不要加入進度條。我評估後建議要加——問券填寫的情況下，使用者如果不知道還要填多久，很容易因為看不到終點而中途放棄。加上進度條讓使用者有個概念，知道自己現在在哪、還差多遠，這是降低棄填率最直接的方式。' },
+          { title: 'UI 設計的執行重點', points: ['5 大階段進度條：將問券拆解為可感知的段落，讓使用者在填答過程中有明確的推進感', '數據視覺化：根據古騰堡瀏覽動線，將「使用者企業」的數據放在右側結論區，讓使用者最後一眼落在自己的數字上，產生對比感與行動動機', 'Mobile 優先：目標受眾可能在通勤或零碎時間查看，確保所有圖表在 375px 螢幕上不需橫向滾動即可閱讀'] },
+          { title: '一個溝通折衷的例子', text: '需求方希望用「交通工具」代表企業等級，但這個比喻在關稅議題的語境下強弱感不夠直覺。我提議在保留交通工具視覺的前提下，加入「五星評等」系統——讓使用者不需要思考，秒懂自己的抗風險等級。最終採用了這個折衷方案。' }
         ]
       },
       y26: {
         cat: 'Recruitment Website', title: 'Y26 招募網翻新設計', thumb: 't-navy', year: '2026', tools: ['Figma'], live: 'https://www.digiwin.com.tw/hr/school/', sections: [
-          { title: '接手時的挑戰', text: '面對一個兩年前製作、維護邏輯混亂的舊站。製作方式並不符合「網頁模組化」的思維，導致 PM 在管理上非常痛苦。核心問題不只是視覺老舊，而是整個資訊架構都需要從求職者的角度重新思考。' },
-          { title: '轉換率優先：刪除干擾', highlight: '招募網的本質是轉換率（Conversion Rate）。舊版選單塞滿了 YouTube、就享知等外部連結——協調 PM 刪除這些會讓流量流失的按鈕，將導航列空間留給關鍵的「職缺類別」。' },
-          { title: '色彩編碼解決職務辨識問題', text: '面對五大職務計畫，光靠文字名稱太難辨識。為每個職務定義專屬色系（如：領袖之星 = 紫色、服務顧問 = 綠色、營運規劃 = 黃色）。在資訊負荷過重的環境下，色彩是直覺導航的第一步，讓使用者一眼就認出「我現在在哪個計畫裡」。' },
-          { title: '視覺年輕化', text: '校招對象是大學生，希望避開 ERP 產業那種硬梆梆、沈重的刻板印象。雖然部分插圖（樹苗、太空人等）是 PM 指定的既有素材，但透過重新規劃整體色彩調性，改用更陽光、輕透且高飽和的配色，把原本感覺比較悶的 ERP 形象換掉，讓學生進到網頁時感受到活力和可能性。' },
-          { title: '執行成果', points: ['模組化建構：省略無效按鈕與冗餘區塊，PM 後續在文字替換與管理上變得非常輕鬆', '一致性體驗：從 Banner、eDM 到網頁元件，都建立了一致的規範', 'UI/UX 師不只是畫圖的人，更是企業與使用者之間的轉譯者'] }
+          { title: '先看舊版，再決定怎麼改', text: '接手前我先去看了舊版網站。這是針對校園招募的頁面，有幾個固定職缺，但舊版的維護邏輯混亂，不符合模組化的概念，PM 在管理上很吃力。我的翻新方向延續了舊版用顏色區分職缺的做法——這個識別邏輯對使用者是有效的，不需要推翻，只需要做得更系統化。' },
+          { title: '顏色編碼：讓職缺一眼可辨', text: '面對幾個職缺計畫，光靠文字名稱太難辨識。我為每個職缺定義了專屬色系，讓使用者在資訊量大的環境下，靠顏色就能快速定位自己在看哪個職缺、現在在哪個計畫裡。' },
+          { title: '我提出了文案方向的建議', text: '在執行 UI 的過程中，我注意到各職缺的標題大同小異，內容描述也很模糊——從求職者的角度去看，很難判斷這幾個職缺有什麼差別，也看不出來哪個適合自己。我向 PM 提出希望能重新梳理文案，讓每個職缺的重點更清楚，是站在求職者需要知道什麼的角度去寫，不是站在招募方想說什麼的角度。這個建議最後沒有被採用，UI 按照既有文案執行。' },
+          { title: '在限制裡做好能做的事', highlight: '文案無法改動，但 UI 的部分我盡量做到讓視覺彌補文字的不足——清楚的色彩分區、模組化的元件讓 PM 後續維護更輕鬆、刪除會讓流量流失的外部連結。設計師不是只有在理想條件下才能發揮，在限制裡找到能做的事，也是一種能力。' }
         ]
       },
       hongxin: {
@@ -2513,7 +2542,8 @@
       document.getElementById('modalImgPanel').innerHTML = imgPanel;
       // RIGHT — text panel
       let body = '';
-      p.sections.forEach(s => {
+      const activeSections = (currentLang === 'en' && projectsEN[id]) ? projectsEN[id].sections : p.sections;
+  activeSections.forEach(s => {
         body += `<div class="modal-section"><div class="modal-section-title">${s.title}</div>`;
         if (s.text) body += `<p class="modal-section-text">${s.text}</p>`;
         if (s.highlight) body += `<div class="modal-highlight">${s.highlight}</div>`;
@@ -2655,6 +2685,225 @@
       if (e.key === 'ArrowRight') lightboxNav(1);
       if (e.key === 'Escape') closeLightbox();
     });
+
+// ══════════════════════════════════════
+// LANGUAGE SWITCHER
+// ══════════════════════════════════════
+const projectsEN = {
+  w11: {cat:"Industrial HMI",title:"China Steel W11 Production Info System HMI",sections:
+    [{title:"Understanding Why the System Exists",text:"When I joined this project, I was looking at a monitoring system that had been running for over thirty years. Dense information, oversaturated colors, hard-to-read text — similar starting point as W433. Before touching anything, I proposed visiting the factory floor. The supervisor agreed and arranged a few familiar colleagues to take me around."},
+          {title:"Why the Site Visit Mattered",text:"Just hearing descriptions of a transport system felt abstract. I wanted to see why they needed this kind of interface — what the conveyor lines between factory zones actually looked like, and why the original design was built the way it was. Since I was unfamiliar with this industry, most of my understanding came from conversations with colleagues during the tour — pile colors, conveyor directions, loading flow. There was no single 'aha moment.' But when I went back to redesign the screen, I had a lot more details to think about."},
+          {title:"UI Layout Should Match the Physical Space",text:"I had done an initial draft before the visit, but after walking the site, I rebuilt the layout to mirror the actual physical positions on the ground. The port was placed at the center-right — all conveyor routes radiate outward from there. The idea was to match the interface's spatial arrangement to how operators already think about the factory floor. No extra mental translation needed."},
+          {title:"Bridging the Generational Gap",text:"Senior operators read by 'position' and 'color' — a color shift tells them immediately where something is wrong. Newer staff read by 'intuition' and 'hierarchy' — the old interface was fragmented, buttons didn't look like buttons, and the learning curve was steep. The challenge: could I restructure the information hierarchy without destroying the color memory that veterans had built over decades?"},
+          {title:"Visual Restructuring Decisions",points:["Modular zoning: Split into left (fixed silo status), right (dynamic vessels), and bottom (data summary) — helping the brain filter irrelevant information fast", "Reduced visual fatigue: Recalibrated color saturation so operators monitoring for long shifts are not strained", "Tangible UI elements: Converted hidden functions embedded in lines into standard buttons — improving click accuracy and reducing accidental touches during busy operations"]},
+          {title:"A Path Both Generations Can Walk",highlight:"I kept the data coordinates that veteran operators had memorized, but redrew the visual symbols. Veterans can still find data by muscle memory. Newcomers can look at a ship-shaped or crane-shaped icon and immediately understand what's happening on the ground. A good industrial UI redesign isn't self-expression — it's finding a path that both generations can walk."}]
+  },
+  w433: {cat:"Industrial HMI",title:"China Steel W433 Spheroidizing Plant HMI",sections:
+    [{title:"Seeing It With Fresh Eyes",text:"When I received this project, I had no prior training on this system — so I experienced it exactly as a first-time user would. First impression: cluttered layout, chaotic colors, no clear focal point. That unfamiliarity became my starting point. Veteran operators had long since stopped seeing these problems."},
+          {title:"What I Asked in the Interviews",points:["Any difficulty using the system?", "Are there too many colors? Do they require memorization?", "When there's an emergency alert, how do you notice it?", "Is the text readable? Does staring at it for long shifts strain your eyes?"]},
+          {title:"What Users Told Me",text:"Younger users consistently said the colors were too many, required learning time, and caused eye strain over long sessions. This pointed me to the real problem: it wasn't that color-coding was wrong — it was that the saturation and contrast were too high, causing visual fatigue. And with no clear visual hierarchy, every element competed for attention equally, burying the most critical information."},
+          {title:"Three Core Pain Points",points:["No visual priority: High-brightness color blocks made the critical \"abnormal status panel\" disappear into the background noise", "Map-style cognitive load: Operators had to memorize exact button positions — sustained high-intensity scanning increased the risk of errors", "30 years of muscle memory: Senior staff resistance was not irrational — new designs that break automatic operation habits create real safety risks"]},
+          {title:"Progressive Enhancement: Evolve, Not Replace",points:["Redefine color logic: Keep existing color categories but dramatically reduce block sizes — from full-background fills to precise labels and highlights", "Use negative space to build hierarchy: Card-based layout with breathing room so operators can locate targets faster without scanning a maze of color blocks", "Make alerts visible again: Once overall saturation was lowered, the red warning indicators finally \"pop\" when something goes wrong"]},
+          {title:"Long-Shift Ergonomics",text:"Operators may stare at this screen for eight hours straight. Making data readable without strain is a baseline requirement. I rebuilt the color palette for industrial readability — not consumer-app aesthetics — and improved font contrast, table striping, and status badge clarity."},
+          {title:"The Most Important Part Was Communication",highlight:"I invited senior colleagues to demo their most-used workflows, making them feel the design was made for them. I told them: 'None of the steps changed — we just adjusted the lighting.' The best industrial UI redesign isn't noticed. Users just find their work flows a little more smoothly."}]
+  },
+  w1: {cat:"Smart Factory",title:"W1 In-Plant Transport Smart Factory Platform",sections:
+    [{title:"\"What Is This?\" — Starting From Zero",text:"My first thought when I received this project was genuinely: 'What is this?' After discussions with the client, it became clear: this was the mother screen for navigating to each factory sub-unit. The problem was the original interface was a pure text list — as features accumulated, the list grew longer, and operators had to rely entirely on memorization to find what they needed."},
+          {title:"Go to the Factory First",text:"Looking at wireframes in an office gives you a very limited view. I proposed visiting the site myself, and brought my phone to photograph each zone. Walking the floor made something immediately obvious: abstract alphanumeric codes like A01 or B01 had zero connection to how operators actually understood the space. Putting real photos into the interface would let the UI speak the same language as the people using it."},
+          {title:"The Solution: Give Users Two Paths",text:"I replaced the list structure with image + text cards showing real factory zone photos. This gave users two ways to navigate: experienced operators recognize zones by sight; newer staff can use the text labels to confirm. No forcing a single method — both paths work."},
+          {title:"Core Rule: Never Touch the Workflow",text:"The client had one firm requirement: core operation flows cannot change. For frontline workers, stability always comes first. My job was not to redesign the system — it was to reorganize the visual layer so users could reach their destination faster, without changing a single operational step."},
+          {title:"Addressing Alert Fatigue",text:"The old system would highlight everything in red whenever anything happened — resulting in a screen full of red that nobody responded to anymore. This time I introduced notification tiers: routine items stay in the status bar, only truly urgent alerts get visual amplification. I also built standard UI templates so future maintainers can't accidentally break things by changing one element."},
+          {title:"Let the Photos Do the Explaining",highlight:"No memorizing codes. See the photo, know where to go — that was the single goal of this project. When a digital interface's spatial logic matches how operators already think about the physical space, the system stops being a list of functions and starts being a tool that feels natural."}]
+  },
+  csc: {cat:"Web App / GIS",title:"China Steel CSC Campus Street Map",sections:
+    [{title:"My Role: UI Support — But More Than UI",text:"I was brought in for the UI portion of this project. But I didn't limit myself to what I was asked. Through conversations with the client, I discovered the interface had planned features they hadn't mentioned to me — and I proactively offered to help design those parts too."},
+          {title:"Questions I Asked",points:["What features might be added in the future?", "What types of routes will the map need to show?", "Will there be auto-routing or guided navigation?", "The client mentioned wanting to calculate shortest path and estimated travel time — how should that route be visualized in the UI?", "If a section is under maintenance or temporarily blocked, how do users see that in real time?"]},
+          {title:"Designing Under Security Constraints",text:"Google Maps is off-limits at China Steel — strict security policy means all map data must stay on the internal network. The bigger constraint: workers can't use their phones to navigate on-site. The interface has to be used on an office computer before leaving. It's not about 'how to find the way' — it's about 'how to build the mental map before you go.'"},
+          {title:"Key Design Decisions",points:["Dual-mode toggle (Map / Satellite): Sometimes relative position isn't enough — users need building silhouettes to confirm direction", "Search and route planning anchored top-left: Users can start the task immediately the moment they sit down", "Zone-level color coding: Level 1–3 areas distinguished by Marker color — less cognitive overhead in a high-load environment"]},
+          {title:"Details Determine Trust",text:"Even within a UI support role, I maintained strict CSS specifications — fine-tuning padding and gap values to keep text legible inside complex annotations. The close button for expanded menus was required to share the same anchor point as the hamburger menu, so users could open and close without moving the cursor. These details are invisible when done right, but they determine whether users trust the tool."},
+          {title:"I Didn't See It Through — But I Left a Foundation",highlight:"I didn't end up participating in the full build. But before I left, I completed a full component spec — button states, path markers, color definitions, all documented. Whoever picked it up next wouldn't need to guess or redefine from scratch. That's the most valuable thing I could leave behind in the time I had."}]
+  },
+  b2b: {cat:"B2B Website",title:"Website Restructure — Data-Driven B2B Architecture",sections:
+    [{title:"Why the Website Needed a Redesign",text:"This project is currently paused after the research phase — but the research itself is complete. The central question was: 'Why does the website need a redesign?' I requested data from the frontend engineers: click rates, what users searched for, where they lingered, where they dropped off. The data showed users were getting lost. And as a new employee, I tried to use the website myself and couldn't find what I was looking for either — data and personal experience pointed to the same problem."},
+          {title:"The Core Problem: The Header Is Built for Insiders",text:"The current header has eight top-level items that expand into dense product code lists — T100, Workflow ERP GP, METIS, SmartERP... These names are meaningful to people inside the company, but a first-time visitor has no idea which one to click. The navigation is organized around product taxonomy, not user tasks."},
+          {title:"Three Structural Failures in the Data",points:["67% of traffic was returning customers looking for login or technical support — but their needs weren't addressed anywhere prominent", "57% of new visitors got lost after entering 'Industry Solutions' — the navigation labels were too internal, full of product codes", "MES, AI, and other high-search core products were buried three layers deep — users had to learn internal product names before they could find what they needed"]},
+          {title:"My Recommendation",text:"I presented a proposal to restructure the entire site architecture — not just the UI, but the back-end content categorization which was equally fragmented. My recommendation: rebuild the Header around user tasks, not product lists. Move login, technical support, and other returning-customer needs to the Footer. The manager didn't give strong feedback after the presentation. The project is still on hold."},
+          {title:"Paused Doesn't Mean the Research Had No Value",highlight:"This project gave me my first complete experience doing data-driven design research — not 'this navigation feels wrong,' but using click data, search logs, and personal experience to show exactly where the problems were, why they existed, and where to go from there. Even if the project doesn't move forward, the way of thinking I developed here is something I carry with me."}]
+  },
+  landing: {cat:"Landing Page",title:"Jiuxiangzhi Partner Marketing Landing Page",sections:
+    [{title:"The Client Started With Almost Nothing",text:"The brief was just: 'we need a webpage.' Through discussion, we gradually clarified the goal: drive conversions and funnel users to the Jiuxiangzhi platform. Target audience: SME decision-makers looking for digital transformation tools — busy, senior-level people who needed to grasp the core message immediately."},
+          {title:"I Pushed Back on the Carousel — Then Built It Anyway",text:"The client's first idea was a large full-screen slideshow banner. My read: if the goal is conversion, users need a clear value proposition and CTA the moment they land — excessive animation just pulls attention away from the action point. They didn't take my recommendation, so I built the carousel version first. After reviewing it themselves, they decided it wasn't working. We went back to the version I'd originally proposed."},
+          {title:"What This Taught Me",highlight:"My judgment was right, but I didn't have enough supporting evidence at the time. Clients don't always reject bad suggestions — sometimes they reject good ones for the same reason: no data behind it. After this, I started preparing the 'why' alongside every design recommendation — not just design intuition, but a clear explanation of the logic."},
+          {title:"Final Version Design Decisions",points:["Focused headline + clear CTA: Users see the action entry point immediately, nothing competing for attention", "2+N case study strategy: Two flagship cases shown in full, others behind \"read more\" — reducing scroll fatigue while allowing depth for interested users", "Visual continuity: Consistent with brand tone to reduce the sense of discontinuity after clicking through", "Online/Offline service toggle: Split into two modules so users self-filter by need, shortening the decision path"]}]
+  },
+  calculator: {cat:"Web Tool / Lead Gen",title:"Profit Calculator",sections:
+    [{title:"My Role",text:"I was responsible for the UI design on this project. The overall strategy was planned by the product team. Context: rising tariff concerns under new trade policies had businesses urgently needing to evaluate cost impact and profit margins. The team decided to build a lightweight 'Lite Version' tool as a Lead Gen entry point — lowering the barrier for SMEs to engage with a full ERP solution."},
+          {title:"UI Design Execution",points:["Single-page flow: Sales price → Cost → Current tariff → Projected tariff, minimal steps to get a result", "Dynamic feedback: Visual highlighting responds immediately as values are entered — users feel the tool is \"actually calculating\"", "Desktop-first: B2B context means most users are at office computers — concentrated effort on desktop layout and richer data visualization"]},
+          {title:"Post-Launch Observation",text:"Consultation conversion rates came in below expectations. Looking back, I think the UI felt too modern and polished compared to the traditional interface of the full ERP software — there was an experience discontinuity when users jumped from the tool to the consultation page. This is something I now specifically watch for when working on marketing tools that feed into enterprise product funnels."}]
+  },
+  survey: {cat:"Web Form / Lead Gen",title:"Tariff Risk Assessment Survey",sections:
+    [{title:"My Role",text:"I was responsible for the UI design. The primary purpose of this survey is lead collection — getting SME owners to leave their contact details in exchange for a personalized risk analysis report. The key challenge: how do you keep users engaged through a multi-question form, and make complex comparison data readable on mobile?"},
+          {title:"The Progress Bar: A Decision I Helped Make",text:"One discussion point during the project was whether to include a progress indicator. I evaluated and recommended yes — in a survey context, if users don't know how much longer the form will take, many will drop off simply because they can't see the end. A progress bar gives users a sense of where they are and how close they are to finishing. That visibility alone significantly reduces abandonment."},
+          {title:"UI Design Execution",points:["5-stage progress indicator: Breaks the survey into perceivable segments, giving users a clear sense of forward momentum", "Data visualization using Gutenberg layout: User company data placed on the right — the \"conclusion zone\" of natural reading flow — so the last thing users see is their own number against the industry benchmark", "Mobile-first: Target audience may be checking results on the go — all charts optimized for 375px screens with no horizontal scrolling required"]},
+          {title:"A Communication Compromise",text:"The client wanted to use 'vehicle types' to represent company risk levels — car, truck, ship, etc. But in the context of tariff risk, the strength metaphor wasn't intuitive enough. I proposed keeping the vehicle visuals while adding a universal five-star rating overlay — so users could instantly understand their risk level without any explanation. That compromise was adopted."}]
+  },
+  y26: {cat:"Recruitment",title:"Y26 Recruitment Website Redesign",sections:
+    [{title:"Reviewing the Old Version Before Deciding What to Change",text:"Before starting, I reviewed the existing website. It was a campus recruitment page with a fixed set of job tracks, but the maintenance structure didn't support modular editing — the PM struggled to update it. My redesign direction kept the color-coding approach from the old version. That identification logic was working for users. No need to replace it — just make it more systematic."},
+          {title:"Color Coding: One Glance, One Track",text:"With several job tracks to navigate, text names alone weren't distinguishable enough. I assigned a dedicated color system to each track, so users in a high-information environment could immediately identify which track they were in — without reading everything."},
+          {title:"I Raised a Content Concern",text:"While executing the UI, I noticed the job track titles were nearly identical to each other, and the descriptions were vague. From a candidate's perspective, it was hard to tell what each role actually involved or which one was right for them. I suggested to the PM that the content should be rewritten from the candidate's point of view — what they need to know, not what the company wants to say. The suggestion wasn't adopted, and the UI was built using the existing copy."},
+          {title:"Doing What You Can Within Constraints",highlight:"The copy couldn't change, but the UI could still minimize the damage — clear color zoning, modular components for easy PM maintenance, and removing external links that were leaking traffic away from the page. Designers don't only work in ideal conditions. Finding what you can do within constraints is a skill in itself."}]
+  },
+  hongxin: {cat:"E-Commerce",title:"Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce",sections:
+    [{title:"Not Just Selling — Building a System",text:"This was a B2C e-commerce project for Hongxin Bio-Medical. The core challenge wasn't aesthetics — it was building an architecture that could support a continuously expanding brand portfolio without the navigation collapsing under its own weight. Two goals: shorten the decision path from search to checkout, and design a foundation that scales."},
+          {title:"The User Pain Points",points:["Navigation friction: As SKU count grew, traditional menu layers became a maze — users couldn't find what they wanted", "Calculation burden: Multiple overlapping promotions forced users to mentally calculate which combination gave the best deal — a leading cause of cart abandonment", "My approach: Reduction — a minimal UI that steps aside and lets products and banners take center stage"]},
+          {title:"Dual-Track Navigation",highlight:"Brand-oriented: For users loyal to a specific brand — reinforces trust and recognition. Function-oriented: For users solving a problem — lets them filter across brands by skin concern or product type. I spent significant time aligning logic with the engineering team to ensure promotion rules were clearly rendered on the front end."},
+          {title:"Details That Build Confidence",points:["Discount stacking logic: System defaults to maximum discount; clearly defined stacking rules (cash vouchers stackable, discount codes mutually exclusive)", "Expired code recovery: When a user enters an invalid code, the system recommends the current best promotion — because if they've reached the checkout intent, why let them leave empty-handed?"]},
+          {title:"Post-Delivery Validation",highlight:"After handoff, the client's operations ran smoothly enough that no revision requests came in. The best design validation is when the logic and architecture are solid enough at the start that the product runs cleanly after launch."}]
+  },
+  yisen: {cat:"Brand + UIUX",title:"Yisen Frozen Food — Yiran Brand Design",sections:
+    [{title:"Building a Brand From Zero",text:"The Yiran brand's starting point was defining what 'natural and pure' means in a digital context. I was responsible for the full flow — from function mapping and IA planning to final visual delivery. The website's role was clear: SEO foundation and first-impression trust builder. It had to make a new brand feel credible in a short visit."},
+          {title:"Research Without Data",text:"With almost no brand-specific data to start from, I began with competitive benchmarking of established health food and organic e-commerce brands. A recurring pattern: information overload. Consumers facing pages of unfamiliar chemical ingredient names experience decision fatigue. I recommended 'ingredient labeling' — translating complex terminology into intuitive tags, reducing unnecessary clicks in the decision path."},
+          {title:"IA and Flow Planning",points:["SEO-first flat navigation: Easy to browse for users, easy to crawl for search engines", "Shortest possible checkout path: From add-to-cart to order complete — no unnecessary friction, building a solid foundation for future sales channel expansion", "Error prevention: Real-time form validation prompts when required fields are missed — reducing drop-off caused by user frustration mid-checkout"]},
+          {title:"Visual Strategy: Breathing Room",text:"I designed for a sense of 'breathable' whitespace — Mobile First thinking throughout. On a small screen, I prioritized top-level category navigation (Food / Medicine / Drinks) so users understand the brand scope immediately. Natural color tones with deliberate spacing made the 'no additives' philosophy feel tangible, without the cold, clinical feeling of a pharmacy."},
+          {title:"Edge Cases and Error Flows",points:["Form validation: Inline prompts for missed required fields lower abandonment mid-checkout", "Future iteration suggestions: I recommended the client consider adding \"out of stock notifications\" and \"recurring purchase reminders\" — for high-repurchase health products, these features drive long-term conversion more than any visual optimization"]},
+          {title:"Delivering a Foundation, Not Just a Design",highlight:"I delivered a well-structured, SEO-ready design system — a complete 0→1 build for the brand. The real value comes after launch: monitor keyword performance via Google Search Console, track the checkout funnel for drop-off points, and iterate. Design doesn't end at handoff."}]
+  },
+  dingxin: {cat:"Web Redesign",title:"Digiwin Website — About Us Page Redesign",sections:
+    [{title:"What Needed to Change",text:"Digiwin Digital is an established B2B ERP company in Taiwan. The 'About Us' page was essentially a dense brand document — high word count, high information density, but no visual rhythm. Visitors couldn't extract the core brand positioning in a short read. My role was to work with the PM to restructure the content, then translate it into a page design. The goal wasn't to make it look better. It was to make what the brand wanted to say actually get read."},
+          {title:"The Problem: A Report, Not a Conversation",text:"The old page read like an internal company brief. Four specific problems: flat information hierarchy with no visual priority; key data (73%, 76%, 61% coverage rates) buried in paragraph text; 40 years of company history stacked in continuous blocks; Asia-Pacific market presence described entirely in text with no spatial anchor."},
+          {title:"Design Decisions",points:["Visual hierarchy rebuilt: Clear type scale — display headline, h2 section titles, 16px body — with alternating background colors to create a natural chapter rhythm", "Data visualization: Three coverage rate figures converted to pie charts — numbers as evidence, not self-proclamation", "Interactive history timeline: 40 years of milestones organized into a Tab-style timeline — content stays complete, but readers control how deep they go", "Geographic visualization: Asia-Pacific offices displayed on an interactive Leaflet map — clicking a marker shows city-level detail"]},
+          {title:"Accessibility and Semantic Markup",text:"The old page used multiple h1 tags — a violation of WCAG heading hierarchy guidelines. The redesign enforces a single h1 per page, section titles use h2, decorative large text uses a display class, and aria-expanded and aria-controls attributes were added throughout for screen reader support."},
+          {title:"Design as Translation",highlight:"This project sharpened my understanding of what it means to 'design text information.' The designer's role here is less decorator, more translator — converting the intent behind words into a structure visitors can feel. Sometimes a single heading level adjustment, or the introduction of a timeline, is all it takes to make a long page readable from top to bottom."}]
+  },
+};
+
+
+const uiEN = {
+  nav: {"works": "Works", "visual": "Visual", "skills": "Skills", "about": "About"},
+  hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "6+ years of cross-industry design experience, <strong>rooted in graphic design, growing into UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Design is not just about visuals — it's the process of solving problems.\"", "cta1": "View My Work", "chips": ["🔍 User Research", "🗂 Information Architecture", "⚡ Prototype", "📐 Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
+  sections: {"works_num": "01", "works_title": "UI/UX Design Works", "visual_num": "02", "visual_title": "Visual Design", "skills_num": "03", "skills_title": "Skills & Tools"},
+  filters: ["All", "Industrial HMI", "Web Design", "E-Commerce / Brand"],
+  cards: {"w11": {"cat": "Industrial HMI", "title": "China Steel W11 Production Info System HMI", "desc": "Field visit to factory floor. Cross-generational design strategy for both veterans and newcomers — aligning digital UI with physical space.", "ux_tags": ["Field Research", "Cross-gen Design", "IA Restructure"]}, "w433": {"cat": "Industrial HMI", "title": "China Steel W433 Spheroidizing Plant HMI", "desc": "30-year-old system redesign. Rebuilt visual hierarchy without breaking muscle memory — making alerts visible again.", "ux_tags": ["User Interview", "Progressive Enhancement", "Visual Hierarchy"]}, "w1": {"cat": "Smart Factory", "title": "W1 In-Plant Transport Smart Factory Platform", "desc": "HMI to Web migration. On-site photography integrated into UI — from numbered lists to visual map navigation.", "ux_tags": ["Field Research", "Information Architecture", "Modularization"]}, "csc": {"cat": "Web App / GIS", "title": "China Steel CSC Campus Street Map", "desc": "Internal-network GIS navigation. Dual-mode toggle + color-coded zones — helping workers build spatial memory before heading out.", "ux_tags": ["GIS Design", "Color System", "Component Spec"]}, "b2b": {"cat": "B2B Website", "title": "Website Restructure — Data-Driven B2B Architecture", "desc": "GA4 data audit + task-oriented grid. Core products surfaced from L3 depth. Full conversion funnel restructured.", "ux_tags": ["Data Audit", "Task-Oriented IA", "AI Integration"]}, "landing": {"cat": "Landing Page", "title": "Jiuxiangzhi Partner Marketing Landing Page", "desc": "Conversion-first design for SME decision-makers. Concise headline + clear CTA strategy to shorten the decision path.", "ux_tags": ["Conversion Optimization", "Content Reduction", "CTA Strategy"]}, "calculator": {"cat": "Web Tool / Lead Gen", "title": "Profit Calculator", "desc": "Tariff-impact margin calculator tool. Teaser design + Lead Gen mechanism to lower ERP entry barrier.", "ux_tags": ["Lead Gen", "Teaser Design", "Interactive Feedback"]}, "survey": {"cat": "Web Form / Lead Gen", "title": "Tariff Risk Assessment Survey", "desc": "5-stage progress indicator to reduce drop-off. Gutenberg layout for data comparison. Star rating resolves semantic ambiguity.", "ux_tags": ["Progress Design", "Data Visualization", "Mental Model"]}, "y26": {"cat": "Recruitment", "title": "Y26 Recruitment Website Redesign", "desc": "Removed external links to stop traffic leakage. Color-coded job tracks for 5 roles. Modular build for easier PM maintenance.", "ux_tags": ["Color Coding", "Conversion Rate", "Modular Design"]}, "hongxin": {"cat": "E-Commerce", "title": "Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce", "desc": "Dual-track navigation resolves multi-brand maze. Token-based design system — new brand launch requires only color swap.", "ux_tags": ["Dual Navigation", "Token System", "Discount Logic"]}, "yisen": {"cat": "Brand + UIUX", "title": "Yisen Frozen Food — Yiran Brand Design", "desc": "New natural food brand built from 0→1. SEO-first IA + flat navigation. Mobile First design for an additive-free brand identity.", "ux_tags": ["SEO Architecture", "Brand Building", "Mobile First"]}, "dingxin": {"cat": "Web Redesign", "title": "Digiwin Website — About Us Page Redesign", "desc": "Claude + Figma + VS Code collaboration. AI-assisted design-to-development workflow. Corporate identity modernization.", "ux_tags": ["AI Collaboration", "Design-to-Dev", "Brand Identity"]}},
+  visual_labels: {"travel": "Travel", "social": "Social Media Graphics", "edm": "EDM", "ecom": "E-Commerce / Retail / Packaging"},
+  skills: {"design_label": "Design Process", "design_items": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"], "tools_label": "Tools", "tools_items": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"], "collab_label": "Collaboration", "collab_items": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"], "tools_section_label": "Design Tools"},
+  about: {"eyebrow": "About Me", "heading_line1": "Rooted in graphic design,", "heading_em": "growing into UX.", "text": "7 years of graphic design foundation, with 2 years of hands-on digital product design after transitioning into UI/UX. Experienced across industrial HMI, B2B SaaS, and e-commerce brand design — familiar with the full flow from user research and IA planning to Design System delivery.<br/><br/>Comfortable working alongside PMs and engineers, translating complex requirements into intuitive, implementable design. Proficient in HTML/CSS, bridging the gap between design and development.", "skill_groups": [{"label": "Design Process", "tags": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"]}, {"label": "Tools", "tags": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"]}, {"label": "Collaboration", "tags": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"]}]},
+  timeline: [{"period": "2025 — Present", "role": "UI Designer", "company": "Digiwin Digital · B2B SaaS"}, {"period": "2024", "role": "UI/UX Designer", "company": "Shengda Info · HMI Industrial Interface"}, {"period": "2023", "role": "UI/UX Designer", "company": "Waji Tech · Web / RWD"}, {"period": "2022", "role": "Graphic Designer", "company": "Nihonbashi Info · Print & Visual"}, {"period": "2018 — 2020", "role": "Graphic Designer", "company": "Feiyang Travel · Travel Visual"}, {"period": "Education", "role": "Tainan University of Technology · Fine Arts", "company": ""}],
+  footer: {"sig": "2026 Sarita · Design", "sub": "UI/UX Designer & Visual Designer · Taiwan", "disclaimer": "All content and images are shared for design portfolio purposes only. All project assets belong to their respective companies."},
+  modal: {"year_label": "Year", "tools_label": "Tools", "figma_link": "↗ Figma", "live_link": "↗ Live Site", "preview_link": "↗ Preview", "no_img": "No images", "before_label": "Before", "after_label": "After", "design_label": "Design"},
+};
+
+let currentLang = 'zh';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('btn-zh').classList.toggle('active', lang==='zh');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  if (lang === 'en') applyEN(); else applyZH();
+}
+
+function applyEN() {
+  const u = uiEN;
+  // Nav links (skip contact)
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navKeys = ['works','visual','skills','about'];
+  navLinks.forEach((a,i) => { if(navKeys[i]) a.childNodes[a.childNodes.length-1].textContent = u.nav[navKeys[i]]; });
+  // Hero
+  document.querySelector('.hero-eyebrow').textContent = u.hero.eyebrow;
+  document.querySelector('.hero-name').innerHTML = u.hero.name_line1 + '<br/>' + u.hero.name_line2;
+  document.querySelector('.hero-role').textContent = u.hero.role;
+  document.querySelector('.hero-bio').innerHTML = u.hero.bio;
+  document.querySelector('.hero-quote').textContent = u.hero.quote;
+  // Process chips
+  const chips = document.querySelectorAll('.process-chip');
+  u.hero.chips.forEach((c,i) => { if(chips[i]) chips[i].textContent = c; });
+  // Stat labels
+  const statLabels = document.querySelectorAll('.stat-label');
+  u.hero.stat_labels.forEach((l,i) => { if(statLabels[i]) statLabels[i].textContent = l; });
+  // Tags
+  const tags = document.querySelectorAll('.tag-cloud .tag');
+  u.hero.tags.forEach((t,i) => { if(tags[i]) tags[i].textContent = t; });
+  // Section headers
+  document.querySelector('#works .section-num').textContent = u.sections.works_num;
+  document.querySelector('#works .section-title').textContent = u.sections.works_title;
+  document.querySelector('#visual .section-num').textContent = u.sections.visual_num;
+  document.querySelector('#visual .section-title').textContent = u.sections.visual_title;
+  document.querySelector('#skills .section-num').textContent = u.sections.skills_num;
+  document.querySelector('#skills .section-title').textContent = u.sections.skills_title;
+  // Filter buttons
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  u.filters.forEach((f,i) => { if(filterBtns[i]) filterBtns[i].textContent = f; });
+  // Work cards
+  const pids = ['w11','w433','w1','csc','b2b','landing','calculator','survey','y26','hongxin','yisen','dingxin'];
+  pids.forEach(pid => {
+    const card = document.querySelector(`[onclick="openModal('${pid}')"]`);
+    if (!card || !u.cards[pid]) return;
+    const c = u.cards[pid];
+    const cat = card.querySelector('.work-cat'); if(cat) cat.textContent = c.cat;
+    const title = card.querySelector('.work-title'); if(title) title.textContent = c.title;
+    const desc = card.querySelector('.work-desc'); if(desc) desc.textContent = c.desc;
+    const uxTags = card.querySelectorAll('.ux-tag');
+    if(c.ux_tags) c.ux_tags.forEach((t,i) => { if(uxTags[i]) uxTags[i].textContent = t; });
+  });
+  // Visual section labels
+  const vsLabels = document.querySelectorAll('.visual-section-label');
+  const vlKeys = ['travel','social','edm','ecom'];
+  vsLabels.forEach((el,i) => { if(vlKeys[i]) el.textContent = u.visual_labels[vlKeys[i]]; });
+  // Skills
+  const sk = u.skills;
+  const skLabels = document.querySelectorAll('.about-skill-label');
+  if(skLabels[0]) skLabels[0].textContent = sk.design_label;
+  if(skLabels[1]) skLabels[1].textContent = sk.tools_label;
+  if(skLabels[2]) skLabels[2].textContent = sk.collab_label;
+  const allSkTags = document.querySelectorAll('.about-skill-tags');
+  const skGroups = [sk.design_items, sk.tools_items, sk.collab_items];
+  allSkTags.forEach((grp,gi) => {
+    const tags = grp.querySelectorAll('.about-skill-tag');
+    if(skGroups[gi]) skGroups[gi].forEach((t,ti) => { if(tags[ti]) tags[ti].textContent = t; });
+  });
+  document.querySelector('.tools-label').textContent = sk.tools_section_label;
+  // About
+  const a = u.about;
+  document.querySelector('.about-eyebrow').textContent = a.eyebrow;
+  document.querySelector('.about-heading').innerHTML = a.heading_line1 + '<br/><em>' + a.heading_em + '</em>';
+  document.querySelector('.about-text').innerHTML = a.text;
+  // About skill groups
+  const aboutSkLabels = document.querySelectorAll('.about-skill-label');
+  const aboutSkTagGroups = document.querySelectorAll('.about-skill-tags');
+  a.skill_groups.forEach((g,gi) => {
+    if(aboutSkLabels[gi]) aboutSkLabels[gi].textContent = g.label;
+    if(aboutSkTagGroups[gi]) {
+      const t = aboutSkTagGroups[gi].querySelectorAll('.about-skill-tag');
+      g.tags.forEach((tag,ti) => { if(t[ti]) t[ti].textContent = tag; });
+    }
+  });
+  // Timeline
+  const expItems = document.querySelectorAll('.exp-item:not(.exp-item--edu)');
+  u.timeline.slice(0,-1).forEach((t,i) => {
+    if(!expItems[i]) return;
+    const p = expItems[i].querySelector('.exp-period'); if(p) p.textContent = t.period;
+    const r = expItems[i].querySelector('.exp-role'); if(r) r.textContent = t.role;
+    const c = expItems[i].querySelector('.exp-company'); if(c) c.textContent = t.company;
+  });
+  const eduItem = document.querySelector('.exp-item--edu');
+  if(eduItem) {
+    const last = u.timeline[u.timeline.length-1];
+    const r = eduItem.querySelector('.exp-role'); if(r) r.textContent = last.role;
+  }
+  // Footer
+  document.querySelector('.footer-sig span').textContent = u.footer.sig;
+  const footerSpan = document.querySelector('footer > span'); if(footerSpan) footerSpan.textContent = u.footer.sub;
+  document.querySelector('.disclaimer').textContent = u.footer.disclaimer;
+  // Nav logo
+  document.querySelector('.nav-logo').innerHTML = 'Sarita<span>.</span>';
+  // Hero CTA
+  const cta1 = document.querySelector('.btn-primary'); if(cta1) cta1.textContent = u.hero.cta1;
+}
+
+function applyZH() {
+  // Reload page to restore Chinese — simplest approach for full zh restoration
+  location.reload();
+}
+
   </script>
 </body>
 
