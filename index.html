@@ -1031,6 +1031,126 @@
       color: var(--g);
     }
 
+
+    /* ── MODAL TABS ── */
+    .modal-tabs {
+      display: none;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+    .modal-tabs.visible { display: flex; }
+    .modal-tab {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border: none;
+      background: transparent;
+      color: var(--ink3);
+      border-bottom: 2px solid transparent;
+      transition: all .15s;
+      cursor: pointer;
+    }
+    .modal-tab.active {
+      color: var(--g);
+      border-bottom-color: var(--g);
+    }
+    .modal-tab:hover:not(.active) { color: var(--ink2); }
+
+    /* Research panel */
+    .modal-research-panel {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 22px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--g-light) transparent;
+    }
+    .modal-research-panel.active { display: block; }
+    .modal-text-panel.tab-mode { display: none; }
+    .modal-text-panel.tab-mode.active { display: block; }
+
+    .research-section { margin-bottom: 1.75rem; }
+    .research-section:last-child { margin-bottom: 0; }
+    .research-h2 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: .6rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--g-pale);
+    }
+    .research-p {
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--ink2);
+      margin-bottom: .6rem;
+    }
+    .research-p strong { color: var(--ink); font-weight: 500; }
+    .research-ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: .5rem 0;
+    }
+    .research-ul li {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.7;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .research-ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--g);
+      font-size: 10px;
+      top: 3px;
+    }
+    .research-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      margin: .75rem 0;
+    }
+    .research-table th {
+      text-align: left;
+      padding: 7px 10px;
+      background: var(--g-pale);
+      color: var(--g-dark);
+      font-weight: 500;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .research-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink2);
+      line-height: 1.6;
+      vertical-align: top;
+    }
+    .research-table tr:last-child td { border-bottom: none; }
+    .research-quote {
+      border-left: 3px solid var(--g);
+      background: var(--g-pale);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--g-dark);
+      line-height: 1.75;
+      font-family: var(--serif);
+      font-style: italic;
+      margin: .75rem 0;
+    }
+
     /* ── MODAL SHELL ── */
     .modal {
       background: var(--card);
@@ -2290,11 +2410,18 @@
       </div>
       <!-- Meta -->
       <div class="modal-meta" id="modalMeta"></div>
+      <!-- Tabs (only shown for projects with research) -->
+      <div class="modal-tabs" id="modalTabs">
+        <button class="modal-tab active" onclick="switchModalTab('case')">案例介紹</button>
+        <button class="modal-tab" onclick="switchModalTab('research')">研究過程</button>
+      </div>
       <!-- Two-column body -->
       <div class="modal-body">
         <div class="modal-img-panel" id="modalImgPanel"></div>
         <div class="modal-text-panel" id="modalBody"></div>
       </div>
+      <!-- Research panel (full width, replaces body when active) -->
+      <div class="modal-research-panel" id="modalResearch"></div>
     </div>
   </div>
 
@@ -2517,6 +2644,202 @@
       y26:        { beforeCount: 0 },
     };
 
+
+    // Research Case Study data (only for projects that have it)
+    const projectResearch = {
+      w433: {
+        zh: `
+          <div class="research-section">
+            <h2 class="research-h2">背景與研究目標</h2>
+            <p class="research-p">接到這個專案時，任務是優化一套運作超過 30 年的工業 HMI 介面。沒有既有的使用者數據，也沒有前人的研究紀錄——從零開始理解這個系統和使用它的人。</p>
+            <p class="research-p"><strong>研究目標：</strong>了解不同使用者對現有介面的真實操作習慣與痛點，作為設計決策的依據。</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">為什麼選擇訪談，不用問卷</h2>
+            <p class="research-p">工廠環境裡的使用者不習慣書面表達，而且我需要理解的是操作「習慣」，不是意見——習慣只能透過對話才能挖到，問卷問不出來。</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">訪談前的準備</h2>
+            <p class="research-p">先自己看過介面，列出觀察到的問題點：</p>
+            <ul class="research-ul">
+              <li>為什麼這麼多顏色？顏色的功能是什麼？</li>
+              <li>操作流程的卡點在哪裡？</li>
+              <li>重複出現的字樣和功能不一致的按鈕是否有關聯？</li>
+            </ul>
+            <p class="research-p">但訪談時不會把這些疑慮說出來——先聽使用者怎麼說，不帶入自己的預設，避免引導性提問。訪談前也與課長討論，確認需要額外問操作習慣、使用環境、使用對象與頻率。</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">受訪者</h2>
+            <p class="research-p">在課長辦公室訪談 6 位使用者，涵蓋三個世代：</p>
+            <ul class="research-ul">
+              <li>1 位資深員工（近退休，使用系統逾 20 年）</li>
+              <li>課長（40 歲，熟悉全系統，也是改版的決策者）</li>
+              <li>3–4 位年輕同仁（20–30 歲）</li>
+            </ul>
+            <p class="research-p">選擇這幾位是因為他們是最直接的使用者，年資跨度能讓我看到不同的使用模式。</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">訪談問題方向</h2>
+            <ul class="research-ul">
+              <li>使用這個系統多久了？日常主要用來做什麼？</li>
+              <li>操作上有沒有遇到什麼不順手的地方？</li>
+              <li>畫面上的顏色，你們怎麼用它來判斷狀況？</li>
+              <li>緊急狀況發生時，你通常第一眼看哪裡？</li>
+              <li>如果介面有所調整，你最希望改善的是什麼？</li>
+            </ul>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">研究發現</h2>
+            <div class="research-quote">訪談結束後，從筆記整理出核心洞察——判斷標準是：哪些發現直接影響「視覺」和「體驗」這兩個改版核心。</div>
+            <ul class="research-ul">
+              <li><strong>洞察一：顏色是功能，不是裝飾。</strong>資深員工用顏色區分設備狀態，是幾十年累積的認知習慣。顏色不能拿掉，但問題是太多顏色同時出現、沒有層級，讓警報失去存在感。</li>
+              <li><strong>洞察二：年輕使用者的問題不是「不能用」，是「學不會」。</strong>介面沒有給他們任何邏輯可以依循——沒有視覺層級，所有元素同等重要，等於沒有重點。</li>
+              <li><strong>洞察三：長時間使用造成視覺疲勞。</strong>高飽和度配色加上密集資訊，是造成眼睛疲勞的直接原因——這不是美感問題，是人因問題。</li>
+              <li><strong>洞察四：系統是「堆加」出來的。</strong>30 年來由不同人持續疊加功能，視覺一致性幾乎不存在。</li>
+            </ul>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">洞察如何影響設計決策</h2>
+            <table class="research-table">
+              <thead><tr><th>研究發現</th><th>設計決策</th></tr></thead>
+              <tbody>
+                <tr><td>顏色是功能性的，不能移除</td><td>保留顏色分類，縮小色塊比例，從背景填充改為標籤與引導元素</td></tr>
+                <tr><td>高飽和度造成視覺疲勞</td><td>降低整體飽和度，讓警報顏色在需要時真正「跳」出來</td></tr>
+                <tr><td>年輕使用者缺乏視覺引導</td><td>建立卡片式架構與留白，重建視覺層級</td></tr>
+                <tr><td>系統堆加造成不一致</td><td>制定 UI 規範，統一元件樣式，防止後續維護繼續堆加</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">結果與驗證</h2>
+            <p class="research-p">課長看完設計後，直接請工程師套用介面。離開前製作了一份顏色規範表和 UI 規範文件——因為沒有文件，下一個維護者還是會繼續堆加，問題 30 年後依然存在。</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">反思</h2>
+            <div class="research-quote">這個案子讓我體認到，在沒有數據的環境裡，訪談是唯一能讓設計決策有依據的方式。而訪談最難的不是問問題，是在問之前先把自己的預設放下，讓使用者告訴你真正的問題是什麼。</div>
+          </div>
+        `,
+        en: `
+          <div class="research-section">
+            <h2 class="research-h2">Background & Research Goal</h2>
+            <p class="research-p">The task was to redesign an industrial HMI interface that had been in operation for over 30 years. No existing user data, no prior research records — starting from zero to understand this system and the people using it.</p>
+            <p class="research-p"><strong>Research goal:</strong> Understand the real operating habits and pain points of different users, to inform design decisions.</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Why Interviews, Not Questionnaires</h2>
+            <p class="research-p">Factory workers don't naturally express themselves in writing. More importantly, what I needed to understand was operating <em>habits</em> — not opinions. Habits only surface through conversation and observation. Questionnaires can't get there.</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Preparation Before Interviewing</h2>
+            <p class="research-p">I reviewed the interface first and listed my own observations:</p>
+            <ul class="research-ul">
+              <li>Why so many colors? What function does each serve?</li>
+              <li>Where are the friction points in the operation flow?</li>
+              <li>Are the repeated labels and inconsistent buttons connected?</li>
+            </ul>
+            <p class="research-p">I did not share these concerns during the interviews. I listened first, without leading — letting users tell me what they saw, not confirming what I already suspected.</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Participants</h2>
+            <ul class="research-ul">
+              <li>1 senior employee (near retirement, 20+ years on the system)</li>
+              <li>The supervisor (mid-40s, full system knowledge, and the decision-maker)</li>
+              <li>3–4 younger colleagues (20s–30s)</li>
+            </ul>
+            <p class="research-p">Chosen because they were the most direct users, and the generational range would surface genuinely different usage patterns.</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Interview Questions</h2>
+            <ul class="research-ul">
+              <li>How long have you been using this system? What do you mainly use it for?</li>
+              <li>Are there any parts of the operation that feel awkward or slow?</li>
+              <li>How do you use the colors on screen to understand what's happening?</li>
+              <li>When something urgent happens, where do you look first?</li>
+              <li>If the interface were updated, what would you most want to improve?</li>
+            </ul>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Research Findings</h2>
+            <div class="research-quote">After the interviews, I reviewed my notes and identified the findings most directly relevant to the visual and experience goals of the redesign.</div>
+            <ul class="research-ul">
+              <li><strong>Finding 1: Color is functional, not decorative.</strong> Senior operators use color to classify equipment status — a habit built over decades. Color can't be removed. But with too many colors at equal visual weight, alerts lose their visibility.</li>
+              <li><strong>Finding 2: Younger users' problem isn't inability — it's learnability.</strong> The interface gives them no logic to follow. No visual hierarchy, no clear priority — everything appears equally important, which means nothing stands out.</li>
+              <li><strong>Finding 3: Long-duration use causes visual fatigue.</strong> High saturation colors plus dense information cause eye strain — this is a human factors issue, not an aesthetic one.</li>
+              <li><strong>Finding 4: The system was built by layering.</strong> 30 years of different people adding features has left almost no visual consistency.</li>
+            </ul>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">From Findings to Design Decisions</h2>
+            <table class="research-table">
+              <thead><tr><th>Research Finding</th><th>Design Decision</th></tr></thead>
+              <tbody>
+                <tr><td>Color is functional, cannot be removed</td><td>Keep color categories, reduce block size — shift from background fills to precise labels and indicators</td></tr>
+                <tr><td>High saturation causes visual fatigue</td><td>Lower overall saturation so alert colors genuinely stand out when triggered</td></tr>
+                <tr><td>Younger users lack visual guidance</td><td>Introduce card-based layout with breathing room to rebuild visual hierarchy</td></tr>
+                <tr><td>Layered system causes inconsistency</td><td>Create UI specification to unify component styles and prevent future layering</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Outcome & Validation</h2>
+            <p class="research-p">The supervisor reviewed the design and immediately asked the engineering team to implement it. Before leaving the project, I produced a color specification and UI documentation — because without documentation, the next maintainer would keep layering on top, and the same problems would still exist 30 years from now.</p>
+          </div>
+
+          <div class="research-section">
+            <h2 class="research-h2">Reflection</h2>
+            <div class="research-quote">This project taught me that in environments without quantitative data, interviews are the only way to give design decisions a real foundation. The hardest part of interviewing isn't asking questions — it's setting aside your own assumptions first, and letting users show you what the real problem is.</div>
+          </div>
+        `
+      }
+    };
+
+
+    // Modal tab switching
+    function switchModalTab(tab) {
+      const tabs = document.querySelectorAll('.modal-tab');
+      const textPanel = document.getElementById('modalBody');
+      const researchPanel = document.getElementById('modalResearch');
+      const imgPanel = document.getElementById('modalImgPanel');
+
+      if (tab === 'case') {
+        tabs[0].classList.add('active'); tabs[1].classList.remove('active');
+        textPanel.style.display = 'block';
+        imgPanel.style.display = 'flex';
+        researchPanel.classList.remove('active');
+        // restore modal-body layout
+        document.querySelector('.modal-body').style.display = 'flex';
+        researchPanel.style.display = 'none';
+      } else {
+        tabs[0].classList.remove('active'); tabs[1].classList.add('active');
+        textPanel.style.display = 'none';
+        imgPanel.style.display = 'none';
+        researchPanel.classList.add('active');
+        document.querySelector('.modal-body').style.display = 'none';
+        researchPanel.style.display = 'block';
+        // Populate research content
+        const lang = typeof currentLang !== 'undefined' ? currentLang : 'zh';
+        const pid = researchPanel.dataset.pid;
+        if (pid && projectResearch[pid]) {
+          researchPanel.innerHTML = projectResearch[pid][lang] || projectResearch[pid]['zh'];
+        }
+      }
+    }
+
     function openModal(id) {
       const p = projects[id]; if (!p) return;
       // Header
@@ -2529,6 +2852,19 @@
       if (p.live) meta += `<a class="meta-link" href="${p.live}" target="_blank">↗ Live Site</a>`;
       if (p.preview) meta += `<a class="meta-link" href="${p.preview}" target="_blank">↗ Preview</a>`;
       document.getElementById('modalMeta').innerHTML = meta;
+      // Show/hide research tab
+      const tabsEl = document.getElementById('modalTabs');
+      const researchPanel = document.getElementById('modalResearch');
+      researchPanel.dataset.pid = id;
+      if (projectResearch[id]) {
+        tabsEl.classList.add('visible');
+      } else {
+        tabsEl.classList.remove('visible');
+      }
+      // Reset to case tab
+      document.querySelectorAll('.modal-tab').forEach((t,i) => t.classList.toggle('active', i===0));
+      researchPanel.style.display = 'none';
+      document.querySelector('.modal-body').style.display = '';
       // LEFT — image panel
       const gals = projectGallery[id] || [];
       const cfg = imgConfig[id] || { beforeCount: 0 };
