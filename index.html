@@ -2842,6 +2842,8 @@
 
     function openModal(id) {
       const p = projects[id]; if (!p) return;
+      // Deep link: write case id into URL hash so it can be shared
+      history.replaceState(null, '', '#work=' + id);
       // Header
       document.getElementById('modalCat').textContent = p.cat;
       document.getElementById('modalTitle').textContent = p.title;
@@ -2920,6 +2922,8 @@
     }
 
     function closeModal() {
+      // Deep link: remove case id from URL when modal closes
+      history.replaceState(null, '', location.pathname + location.search);
       document.getElementById('modalBackdrop').classList.remove('open');
       document.body.style.overflow = '';
       document.getElementById('cursor').classList.remove('modal-open');
@@ -2948,6 +2952,16 @@
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight) el.classList.add('visible');
       });
+
+      // Deep link: if URL contains #work=xxx, auto-open that case study
+      const deepLink = location.hash.match(/^#work=(\w+)$/);
+      if (deepLink && projects[deepLink[1]]) {
+        const caseId = deepLink[1];
+        // If the card lives inside the collapsed "more works" area, expand it first
+        const card = document.querySelector(`[onclick="openModal('${caseId}')"]`);
+        if (card && card.closest('#more-works')) toggleMoreWorks();
+        openModal(caseId);
+      }
     });
 
     // filter
