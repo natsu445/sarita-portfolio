@@ -1444,43 +1444,6 @@
       top: 3px
     }
 
-    .modal-report-block {
-      margin-top: .75rem;
-      padding: 16px 18px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--card);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .modal-report-desc {
-      font-size: 15px;
-      color: var(--ink2);
-      line-height: 1.7;
-      margin: 0;
-    }
-    .modal-report-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: var(--mono);
-      font-size: 13px;
-      letter-spacing: .04em;
-      color: var(--g-dark);
-      background: var(--g-pale);
-      border: 1px solid var(--g);
-      border-radius: 6px;
-      padding: 8px 16px;
-      text-decoration: none;
-      width: fit-content;
-      transition: background .2s, color .2s;
-    }
-    .modal-report-btn:hover {
-      background: var(--g);
-      color: #fff;
-    }
-
     /* mobile: stack vertically */
     @media(max-width:680px) {
       .modal-body {
@@ -2610,8 +2573,7 @@
             '操作員可能一盯就是八小時——讓資料檢視不吃力，是這次改版最基本的要求'
           ] },
           { title: '關於顏色的系統性問題', text: '訪談過程中我發現，顏色不一致的問題不只存在於 W433，整個廠區不同介面各自為政，切換時使用者要重新學一套顏色邏輯。我提出跨介面整合的建議，需求方決定先以 W433 為試點，建立一份顏色規範表，讓這個決策未來有機會延伸到其他介面。' },
-          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了一份 UI 規範——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這份規範是我在有限時間裡能留下最有延續性的東西。' },
-          { title: '🔬 深度研究報告', report: { label: '查看完整使用者研究報告', url: 'https://drive.google.com/file/d/1JLK1N-kwA_LzgwRk1-vIb8ZJOj5NH0ck/view?usp=sharing', desc: '包含跨世代訪談方法、發現轉譯路徑、設計決策依據，以及未完成的第二階段規劃。5 位受訪者、3 個世代、30 年系統。' } }
+          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了一份 UI 規範——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這份規範是我在有限時間裡能留下最有延續性的東西。' }
         ]
       },
       w1: {
@@ -2714,7 +2676,7 @@
     const imgConfig = {
       agentexp:   { beforeCount: 3 },   // gallery-01~03=before (PDF screens), 04~06=after (live site)
       w11:        { beforeCount: 1 },   // gallery-01=before, gallery-02=after
-      w433:       { beforeCount: 5 },   // gallery-01~05=before, 06~12=after
+      w433:       { beforeCount: 6 },   // gallery-01~06=before, 07~12=after
       w1:         { beforeCount: 1 },   // gallery-01=before, gallery-02=after
       dingxin:    { beforeCount: 1 },   // gallery-01=before, gallery-02=after
       csc:        { beforeCount: 0 },
@@ -2994,7 +2956,6 @@
         if (s.text) body += `<p class="modal-section-text">${s.text}</p>`;
         if (s.highlight) body += `<div class="modal-highlight">${s.highlight}</div>`;
         if (s.points) { body += `<ul class="modal-points">`; s.points.forEach(pt => { body += `<li>${pt}</li>`; }); body += `</ul>`; }
-        if (s.report) body += `<div class="modal-report-block"><p class="modal-report-desc">${s.report.desc}</p><a class="modal-report-btn" href="${s.report.url}" target="_blank" rel="noopener">📄 ${s.report.label} ↗</a></div>`;
         body += `</div>`;
       });
       document.getElementById('modalBody').innerHTML = body;
