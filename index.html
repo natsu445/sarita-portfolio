@@ -1155,7 +1155,7 @@
       background: var(--card);
       border-radius: 16px;
       width: 100%;
-      max-width: min(1200px, 94vw);
+      max-width: 900px;
       overflow: hidden;
       animation: modalIn .3s cubic-bezier(.34, 1.2, .64, 1);
       position: relative;
@@ -1298,16 +1298,16 @@
       overflow: hidden;
     }
 
-    /* LEFT — image panel (protagonist: takes the wider share) */
+    /* LEFT — image panel */
     .modal-img-panel {
-      width: 58%;
+      width: 42%;
       flex-shrink: 0;
       overflow-y: auto;
       background: var(--bg);
-      padding: 20px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 10px;
       border-right: 1px solid var(--border);
       scrollbar-width: thin;
       scrollbar-color: var(--g-light) transparent;
@@ -1350,11 +1350,11 @@
       min-height: 120px;
     }
 
-    /* RIGHT — text panel (supporting role: narrower column) */
+    /* RIGHT — text panel */
     .modal-text-panel {
       flex: 1;
       overflow-y: auto;
-      padding: 24px 26px;
+      padding: 20px 22px;
       scrollbar-width: thin;
       scrollbar-color: var(--g-light) transparent;
     }
@@ -1444,6 +1444,43 @@
       top: 3px
     }
 
+    .modal-report-block {
+      margin-top: .75rem;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-report-desc {
+      font-size: 15px;
+      color: var(--ink2);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .modal-report-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: var(--g-dark);
+      background: var(--g-pale);
+      border: 1px solid var(--g);
+      border-radius: 6px;
+      padding: 8px 16px;
+      text-decoration: none;
+      width: fit-content;
+      transition: background .2s, color .2s;
+    }
+    .modal-report-btn:hover {
+      background: var(--g);
+      color: #fff;
+    }
+
     /* mobile: stack vertically */
     @media(max-width:680px) {
       .modal-body {
@@ -1454,45 +1491,17 @@
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--border);
-        max-height: 320px;
+        max-height: 220px;
         flex-direction: row;
-        align-items: flex-start;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 12px;
-        gap: 10px
+        padding: 12px
       }
 
       .modal-panel-img {
         width: auto;
-        height: 272px;
+        height: 180px;
         flex-shrink: 0
-      }
-
-      .img-group {
-        flex-direction: row;
-        flex-shrink: 0;
-        align-items: flex-start;
-        gap: 10px
-      }
-
-      .img-group .modal-panel-img + .modal-panel-img {
-        margin-top: 0;
-        margin-left: 0
-      }
-
-      .img-group-label {
-        writing-mode: vertical-rl;
-        border-radius: 4px 0 0 4px;
-        margin-bottom: 0;
-        margin-right: -1px;
-        align-self: flex-start;
-        padding: 8px 4px
-      }
-
-      .img-group .modal-panel-img:first-of-type {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0
       }
 
       .modal-text-panel {
@@ -1501,10 +1510,6 @@
     }
 
     @media(max-width:900px) {
-
-      .modal-img-panel {
-        width: 52%
-      }
 
       .hero-grid,
       .about-grid {
@@ -1622,11 +1627,8 @@
     .img-group .modal-panel-img:first-of-type {
       border-top-left-radius: 0;
     }
-    .img-group .modal-panel-img + .modal-panel-img {
-      margin-top: 12px;
-    }
     .img-group-divider {
-      height: 12px;
+      height: 8px;
     }
 
     /* ── LIGHTBOX ── */
@@ -2477,13 +2479,12 @@
   <script>
     const projectGallery = {
       agentexp: [
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-01.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-02.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-03.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-04.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-05.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-06.jpg",
-        "https://natsu445.github.io/sarita-portfolio/images/agentexp/gallery-07.jpg"
+        "images/agentexp/gallery-01.jpg",
+        "images/agentexp/gallery-02.jpg",
+        "images/agentexp/gallery-03.jpg",
+        "images/agentexp/gallery-04.jpg",
+        "images/agentexp/gallery-05.jpg",
+        "images/agentexp/gallery-06.jpg"
       ],
       w11: [
         "images/w11/gallery-01.jpg",
@@ -2609,7 +2610,8 @@
             '操作員可能一盯就是八小時——讓資料檢視不吃力，是這次改版最基本的要求'
           ] },
           { title: '關於顏色的系統性問題', text: '訪談過程中我發現，顏色不一致的問題不只存在於 W433，整個廠區不同介面各自為政，切換時使用者要重新學一套顏色邏輯。我提出跨介面整合的建議，需求方決定先以 W433 為試點，建立一份顏色規範表，讓這個決策未來有機會延伸到其他介面。' },
-          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了一份 UI 規範——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這份規範是我在有限時間裡能留下最有延續性的東西。' }
+          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了一份 UI 規範——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這份規範是我在有限時間裡能留下最有延續性的東西。' },
+          { title: '🔬 深度研究報告', report: { label: '查看完整使用者研究報告', url: 'https://drive.google.com/file/d/1JLK1N-kwA_LzgwRk1-vIb8ZJOj5NH0ck/view?usp=sharing', desc: '包含跨世代訪談方法、發現轉譯路徑、設計決策依據，以及未完成的第二階段規劃。5 位受訪者、3 個世代、30 年系統。' } }
         ]
       },
       w1: {
@@ -2710,7 +2712,7 @@
     // Before/After config: { beforeCount: N } means first N = before, rest = after
     // beforeCount: 0 = no split, show as "Design"
     const imgConfig = {
-      agentexp:   { beforeCount: 3 },   // gallery-01~03=before, 04~07=after
+      agentexp:   { beforeCount: 3 },   // gallery-01~03=before (PDF screens), 04~06=after (live site)
       w11:        { beforeCount: 1 },   // gallery-01=before, gallery-02=after
       w433:       { beforeCount: 5 },   // gallery-01~05=before, 06~12=after
       w1:         { beforeCount: 1 },   // gallery-01=before, gallery-02=after
@@ -2992,6 +2994,7 @@
         if (s.text) body += `<p class="modal-section-text">${s.text}</p>`;
         if (s.highlight) body += `<div class="modal-highlight">${s.highlight}</div>`;
         if (s.points) { body += `<ul class="modal-points">`; s.points.forEach(pt => { body += `<li>${pt}</li>`; }); body += `</ul>`; }
+        if (s.report) body += `<div class="modal-report-block"><p class="modal-report-desc">${s.report.desc}</p><a class="modal-report-btn" href="${s.report.url}" target="_blank" rel="noopener">📄 ${s.report.label} ↗</a></div>`;
         body += `</div>`;
       });
       document.getElementById('modalBody').innerHTML = body;
