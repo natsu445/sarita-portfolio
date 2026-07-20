@@ -1155,7 +1155,7 @@
       background: var(--card);
       border-radius: 16px;
       width: 100%;
-      max-width: 900px;
+      max-width: min(1200px, 94vw);
       overflow: hidden;
       animation: modalIn .3s cubic-bezier(.34, 1.2, .64, 1);
       position: relative;
@@ -1298,16 +1298,16 @@
       overflow: hidden;
     }
 
-    /* LEFT — image panel */
+    /* LEFT — image panel (protagonist: takes the wider share) */
     .modal-img-panel {
-      width: 42%;
+      width: 58%;
       flex-shrink: 0;
       overflow-y: auto;
       background: var(--bg);
-      padding: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 16px;
       border-right: 1px solid var(--border);
       scrollbar-width: thin;
       scrollbar-color: var(--g-light) transparent;
@@ -1350,11 +1350,11 @@
       min-height: 120px;
     }
 
-    /* RIGHT — text panel */
+    /* RIGHT — text panel (supporting role: narrower column) */
     .modal-text-panel {
       flex: 1;
       overflow-y: auto;
-      padding: 20px 22px;
+      padding: 24px 26px;
       scrollbar-width: thin;
       scrollbar-color: var(--g-light) transparent;
     }
@@ -1490,17 +1490,45 @@
         width: 100%;
         border-right: none;
         border-bottom: 1px solid var(--border);
-        max-height: 220px;
+        max-height: 320px;
         flex-direction: row;
+        align-items: flex-start;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 12px
+        padding: 12px;
+        gap: 10px
       }
 
       .modal-panel-img {
         width: auto;
-        height: 180px;
+        height: 272px;
         flex-shrink: 0
+      }
+
+      .img-group {
+        flex-direction: row;
+        flex-shrink: 0;
+        align-items: flex-start;
+        gap: 10px
+      }
+
+      .img-group .modal-panel-img + .modal-panel-img {
+        margin-top: 0;
+        margin-left: 0
+      }
+
+      .img-group-label {
+        writing-mode: vertical-rl;
+        border-radius: 4px 0 0 4px;
+        margin-bottom: 0;
+        margin-right: -1px;
+        align-self: flex-start;
+        padding: 8px 4px
+      }
+
+      .img-group .modal-panel-img:first-of-type {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0
       }
 
       .modal-text-panel {
@@ -1509,6 +1537,10 @@
     }
 
     @media(max-width:900px) {
+
+      .modal-img-panel {
+        width: 52%
+      }
 
       .hero-grid,
       .about-grid {
@@ -1626,8 +1658,11 @@
     .img-group .modal-panel-img:first-of-type {
       border-top-left-radius: 0;
     }
+    .img-group .modal-panel-img + .modal-panel-img {
+      margin-top: 12px;
+    }
     .img-group-divider {
-      height: 8px;
+      height: 12px;
     }
 
     /* ── LIGHTBOX ── */
@@ -2595,21 +2630,21 @@
       w433: {
         cat: 'Industrial HMI', title: '中鋼 W433 球化場 HMI', thumb: 't-teal', year: '2025', tools: ['Figma', 'VS Code'], sections: [
           { title: '問題是什麼', text: '一套運作超過三十年、中途被不同人持續堆加功能的 HMI，視覺一致性幾乎不存在。從第三者的角度來看其實相當有趣——他們這樣也能用了 30 年。但改版的挑戰不是「讓它變好看」，而是在不破壞任何人操作習慣的前提下，讓新人也能上手。' },
-          { title: '研究方法：訪談誰、為什麼是這些人', text: '在課長辦公室訪談了 6 位使用者，涵蓋三個世代——1 位資深員工（近退休、使用系統逾 20 年）、課長本人（40 歲、熟悉全系統），以及 3 位 20–30 歲的年輕同仁。選擇這幾位是因為他們是最直接的使用者，年資跨度能讓我看到不同的使用模式。我沒有用問卷，因為這個環境裡的使用者不習慣書面表達，面對面聊才能問到真實的操作習慣。' },
+          { title: '研究方法：訪談誰、為什麼是這些人', text: '在課長辦公室訪談了 5 位使用者，涵蓋三個世代——1 位資深員工（近退休、使用系統逾 20 年）、課長本人（40 歲、熟悉全系統），以及 3 位 20–30 歲的年輕同仁。選擇這幾位是因為他們是最直接的使用者，年資跨度能讓我看到不同的使用模式。我沒有用問卷，因為這個環境裡的使用者不習慣書面表達，面對面聊才能問到真實的操作習慣。' },
           { title: '三個世代，三種關係', points: [
-            '資深員工：不願意改。操作了 20–30 年，每個按鈕位置都是肌肉記憶。當我問顏色的用途，他說「好區分」——這個回答讓我確認：顏色分類的邏輯本身是對的，不能拿掉',
+            '資深員工：不願意改。操作了 20–30 年，每個按鈕位置都是肌肉記憶。他的核心訴求是——改完之後，還要能快速找到本來習慣的位置。這讓我確認：顏色與位置的分類邏輯本身是對的，不能拿掉',
             '年輕同仁：嫌醜，但在工廠環境裡不會主動多說。我主動問「如果視覺調整得更清楚，操作起來會比較好嗎」，得到肯定答覆。他們的問題不是不能用，而是學習成本高，介面沒有幫助他們建立邏輯',
             '課長：實際推動改版的決策者，也是我最重要的溝通對象'
           ] },
-          { title: '從發現到設計決策', text: '三個世代的衝突給了我一個很清楚的設計原則：顏色分類要保留，但飽和度要降低——讓年輕人眼睛不那麼累，同時老員工的顏色記憶還在。這不是折衷，而是找到一個兩邊都不用犧牲的解法。' },
+          { title: '從發現到設計決策', text: '把三個世代的訴求並置後，浮現一個清楚的交集——資深者要「找得到習慣的位置」、年輕人要「不必硬背就能建立邏輯」，本質上是同一個訴求：畫面要「好區分」。我把它定為這次改版的設計原則：顏色分類保留、飽和度降低——年輕人眼睛不那麼累，老員工的顏色記憶還在。這不是折衷，而是找到一個兩邊都不用犧牲的解法。' },
           { title: '視覺重組的具體決策', points: [
             '顏色保留但重新調配比：從大面積背景填充改為精準的標籤與引導元素，辨識度不變但不再傷眼',
             '用負空間梳理層級：卡片式架構搭配留白，讓操作員快速定位目標，不再在色塊迷宮裡找按鈕',
             '讓警報重新擁有存在感：整體降低飽和度之後，紅色警報燈出現時才能真正從畫面裡跳出來',
             '操作員可能一盯就是八小時——讓資料檢視不吃力，是這次改版最基本的要求'
           ] },
-          { title: '關於顏色的系統性問題', text: '訪談過程中我發現，顏色不一致的問題不只存在於 W433，整個廠區不同介面各自為政，切換時使用者要重新學一套顏色邏輯。我提出跨介面整合的建議，需求方決定先以 W433 為試點，建立一份顏色規範表，讓這個決策未來有機會延伸到其他介面。' },
-          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了一份 UI 規範——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這份規範是我在有限時間裡能留下最有延續性的東西。' },
+          { title: '關於顏色的系統性問題', text: '訪談中年輕同仁提到一個現象：同一種狀態的燈號，在廠區不同介面上顏色竟然不一致——這與我駐廠期間經手其他介面更新（MES、AIoT 平台等）時的觀察互相印證：整個廠區不同介面各自為政，切換時使用者要重新學一套顏色邏輯。在廠區，顏色是辨別錯誤狀態與緊急程度最快的訊號，這不只是美觀問題。我提出跨介面整合的建議，需求方決定先以 W433 為試點，建立一份顏色規範表，讓這個決策未來有機會延伸到其他介面。' },
+          { title: '交付與驗證', highlight: '課長看完後直接請工程師套用介面。我離開前製作了 UI 規範與通用配色表，並額外做了一個簡易的配色查詢網頁，讓後續維護的人能隨時查找對照——因為這套系統還會繼續被不同人維護，如果沒有文件，下一個人還是會繼續堆加，問題 30 年後依然存在。這些是我在有限時間裡能留下最有延續性的東西。' },
           { title: '🔬 深度研究報告', report: { label: '查看完整使用者研究報告', url: 'https://drive.google.com/file/d/1JLK1N-kwA_LzgwRk1-vIb8ZJOj5NH0ck/view?usp=sharing', desc: '包含跨世代訪談方法、發現轉譯路徑、設計決策依據，以及未完成的第二階段規劃。5 位受訪者、3 個世代、30 年系統。' } }
         ]
       },
@@ -2755,11 +2790,11 @@
 
           <div class="research-section">
             <h2 class="research-h2">受訪者</h2>
-            <p class="research-p">在課長辦公室訪談 6 位使用者，涵蓋三個世代：</p>
+            <p class="research-p">在課長辦公室訪談 5 位使用者，涵蓋三個世代：</p>
             <ul class="research-ul">
               <li>1 位資深員工（近退休，使用系統逾 20 年）</li>
               <li>課長（40 歲，熟悉全系統，也是改版的決策者）</li>
-              <li>3–4 位年輕同仁（20–30 歲）</li>
+              <li>3 位年輕同仁（20–30 歲，其中一位是後續依 Figma 稿實作上線的工程師）</li>
             </ul>
             <p class="research-p">選擇這幾位是因為他們是最直接的使用者，年資跨度能讓我看到不同的使用模式。</p>
           </div>
@@ -2836,8 +2871,8 @@
             <h2 class="research-h2">Participants</h2>
             <ul class="research-ul">
               <li>1 senior employee (near retirement, 20+ years on the system)</li>
-              <li>The supervisor (mid-40s, full system knowledge, and the decision-maker)</li>
-              <li>3–4 younger colleagues (20s–30s)</li>
+              <li>The supervisor (around 40, full system knowledge, and the decision-maker)</li>
+              <li>3 younger colleagues (20s–30s) — one of whom was the engineer who later implemented the redesign from my Figma files</li>
             </ul>
             <p class="research-p">Chosen because they were the most direct users, and the generational range would surface genuinely different usage patterns.</p>
           </div>
@@ -3204,7 +3239,7 @@ const projectsEN = {
   },
   w433: {cat:"Industrial HMI",title:"China Steel W433 Spheroidizing Plant HMI",sections:
     [{title:"Seeing It With Fresh Eyes",text:"When I received this project, I had no prior training on this system — so I experienced it exactly as a first-time user would. First impression: cluttered layout, chaotic colors, no clear focal point. That unfamiliarity became my starting point. Veteran operators had long since stopped seeing these problems."},
-          {title:"What I Asked in the Interviews",points:["Any difficulty using the system?", "Are there too many colors? Do they require memorization?", "When there's an emergency alert, how do you notice it?", "Is the text readable? Does staring at it for long shifts strain your eyes?"]},
+          {title:"What I Wanted to Find Out",points:["Any difficulty using the system?", "Are there too many colors? Do they require memorization?", "When there's an emergency alert, how do you notice it?", "Is the text readable? Does staring at it for long shifts strain your eyes?"]},
           {title:"What Users Told Me",text:"Younger users consistently said the colors were too many, required learning time, and caused eye strain over long sessions. This pointed me to the real problem: it wasn't that color-coding was wrong — it was that the saturation and contrast were too high, causing visual fatigue. And with no clear visual hierarchy, every element competed for attention equally, burying the most critical information."},
           {title:"Three Core Pain Points",points:["No visual priority: High-brightness color blocks made the critical \"abnormal status panel\" disappear into the background noise", "Map-style cognitive load: Operators had to memorize exact button positions — sustained high-intensity scanning increased the risk of errors", "30 years of muscle memory: Senior staff resistance was not irrational — new designs that break automatic operation habits create real safety risks"]},
           {title:"Progressive Enhancement: Evolve, Not Replace",points:["Redefine color logic: Keep existing color categories but dramatically reduce block sizes — from full-background fills to precise labels and highlights", "Use negative space to build hierarchy: Card-based layout with breathing room so operators can locate targets faster without scanning a maze of color blocks", "Make alerts visible again: Once overall saturation was lowered, the red warning indicators finally \"pop\" when something goes wrong"]},
