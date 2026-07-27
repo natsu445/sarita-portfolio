@@ -2595,13 +2595,14 @@
         live: 'https://agent-exp.apps.digiwincloud.com/',
         figma: 'https://www.figma.com/design/6Zn5XVhEcfy1YfgJzC4e7E/%E9%BC%8E%E6%96%B0-Agent-%E9%AB%94%E9%A9%97%E4%B8%AD%E5%BF%83?node-id=0-1&p=f&t=0VNhZCUwxBrlK9Kq-0',
         sections: [
-          { title: '為什麼要改版', text: '這個網站的目的是引導使用者體驗公司的 AI Agent 產品，最後完成留資料的轉換行為。改版的起因是主管反映：雖然有流量進來，真正走到最後留下資料的人非常少。我沒有後台數據的檢閱權限，所以改用提問補足——反問對方為什麼會這樣、可能的狀況有哪些、使用者是在什麼情境下點進這個頁面、這個頁面真正想達成的目的是什麼。問題的輪廓是從這些對話裡長出來的，不是從數據報表。' },
+          { title: '為什麼要改版（先問清楚要解決什麼）', text: '這是一個推廣公司 AI Agent 產品的互動體驗網站，目的是引導使用者走完體驗、最後完成留資料。專案由 PM 帶來需求，我做的第一件事是反問「為什麼需要做這一頁」——PM 的回答點出了關鍵：先前的宣傳頁面在跳轉到這個體驗頁時，動線會中斷，使用者的注意力斷在兩個頁面之間。我沒有後台數據權限，所以繼續用提問補足：使用者是在什麼情境點進來、這一頁真正想達成什麼。問題的輪廓是從這些對話裡長出來的，不是從數據報表。' },
           { title: '我的問題診斷', points: [
             '引導詞彙太難：首頁的文案對不熟悉產品的使用者來說語意模糊，進來之後不知道自己「應該做什麼」',
             '步驟重複造成流失：舊版流程要求使用者選兩次身份，相似的操作連續出現讓人困惑，進而放棄',
             '缺乏情境感：使用者不清楚「選了這個之後會發生什麼事」，也沒有線索告訴他們上一步和下一步的關聯'
           ] },
-          { title: '動線重新規劃', text: '我和主管一起梳理整個使用者旅程，把原本設計重新整理成五個清楚的階段：歡迎大廳（定義我是誰）→ 選擇場景（根據職能推薦）→ 場景開場（情境帶入 + 分身就位）→ 圓桌會議（實際體驗）→ 分身總結（成果 + CTA）。每一頁都要回答使用者心裡的問題：「我現在在哪、我接下來要幹嘛。」' },
+          { title: '動線與我的角色', text: '五個階段的基本架構與分類是 PM 提出的（PM 已與需求方確認過指定的分類與動向）：歡迎大廳（定義我是誰）→ 選擇場景（依職能推薦）→ 場景開場（情境帶入 + 分身就位）→ 圓桌會議（實際體驗）→ 分身總結（成果 + CTA）。我負責的是把這個架構落成畫面，並在銜接與呈現上提出我的看法——我的判準是每一頁都要回答使用者心裡的問題：「我現在在哪、接下來要幹嘛。」' },
+          { title: '一個被駁回、但我仍認為對的建議', text: '需求方原本要求使用者多次分頁選擇身份。我測試了整段動線的流暢度後，建議不要拆成那麼多頁、逐一點選，因為連續的相似操作會造成疲勞與流失。這個建議最後被需求方駁回（他們有既定的規劃），最終仍照多頁的方式呈現。我把它留在這裡，是因為我認為一個建議即使沒被採納，提出它的依據（動線測試）仍然成立——這也是我在能決策的範圍之外，能為體驗做的事。' },
           { title: '幾個關鍵的設計決策', points: [
             '首頁增加身份定位機制：讓使用者在進入前就確認自己的職能角色，AI 分身再根據角色給出個人化的說明，降低「我不知道這跟我有什麼關係」的疏離感',
             '選場景頁保留麵包屑狀態列：讓使用者在瀏覽過程中隨時看到「你的職能：採購」，持續確立身份、強化代入感',
@@ -3217,13 +3218,14 @@ const projectsEN = {
     live:"https://agent-exp.apps.digiwincloud.com/",
     figma:"https://www.figma.com/design/6Zn5XVhEcfy1YfgJzC4e7E/%E9%BC%8E%E6%96%B0-Agent-%E9%AB%94%E9%A9%97%E4%B8%AD%E5%BF%83?node-id=0-1&p=f&t=0VNhZCUwxBrlK9Kq-0",
     sections:[
-    {title:"Why a Redesign Was Needed",text:"The site's goal was to guide users through an AI Agent demo experience and ultimately convert them into leads. The redesign was triggered by a manager noting that traffic wasn't translating into completions. I had no access to the backend analytics, so I compensated with questions — why might this be happening, what were the likely scenarios, in what context did users click into this page, and what was the page actually meant to achieve. The shape of the problem came from those conversations, not from a data report."},
+    {title:"Why a Redesign Was Needed (Ask What We're Actually Solving First)",text:"This is an interactive experience site promoting the company's AI Agent product; the goal is to guide users through the experience and ultimately capture a lead. The PM brought the brief, and the first thing I did was ask \"why do we need this page?\" — the PM's answer pointed to the crux: the earlier promotional page lost users when it handed off to this experience page; attention broke in the gap between the two pages. With no backend access, I kept probing: in what context do users arrive, what is this page really meant to achieve. The shape of the problem came from those conversations, not a data report."},
     {title:"My Problem Diagnosis",points:[
       "Ambiguous copy: The homepage text assumed familiarity with the product. New visitors had no clear cue for what to do next",
       "Duplicate identity selection: Users were asked to choose their role twice in quick succession, creating confusion and drop-off",
       "Missing contextual bridging: Nothing told users what they'd just chosen or what came next — each step felt disconnected"
     ]},
-    {title:"Restructuring the Flow",text:"Working with the PM, we mapped the journey into five clear stages: Welcome Hall (define who you are) → Scene Selection (role-matched recommendations) → Scene Opening (context + agent briefing) → Roundtable (actual experience) → Summary (results + CTA). Every page needed to answer one question: 'Where am I, and what do I do next?'"},
+    {title:"The Flow and My Role",text:"The five-stage architecture and its categories came from the PM (who had already confirmed the required categories and flow with the client): Welcome Hall (define who you are) → Scene Selection (role-matched) → Scene Opening (context + agent briefing) → Roundtable (actual experience) → Summary (results + CTA). My job was to turn that architecture into screens, and to offer my view on the transitions and presentation — my yardstick being that every page must answer the user's question: 'Where am I, and what do I do next?'"},
+    {title:"A Recommendation That Was Rejected — But I Still Think Was Right",text:"The client originally required users to select their identity across several separate pages. After testing the flow, I recommended against splitting it into that many click-through pages, because repeated similar actions cause fatigue and drop-off. The recommendation was ultimately overruled (the client had a fixed plan), and the multi-page version shipped. I keep it here because a recommendation not taken doesn't invalidate the reasoning (a flow test) behind it — and it's what I could do for the experience beyond the range of what I got to decide."},
     {title:"Key Design Decisions",points:[
       "Identity anchoring on entry: Users confirm their role before proceeding; the AI agent responds with role-specific framing, reducing 'what does this have to do with me?'",
       "Persistent breadcrumb status bar: 'Your role: Procurement' stays visible throughout, reinforcing identity and immersion",
