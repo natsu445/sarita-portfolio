@@ -1892,48 +1892,6 @@
       background: var(--ink);
       border-top: 1px solid rgba(255,255,255,.04);
     }
-
-    /* ── 04 · DESIGN SYSTEM ── */
-    #design-system { background: var(--card); }
-    .ds-grid { display: grid; gap: 3.2rem; }
-    .ds-block-label {
-      font-family: var(--mono); font-size: 13px; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--g-dark);
-      margin-bottom: 1.2rem; display: flex; align-items: center; gap: .7rem;
-    }
-    .ds-block-label::before { content: ""; width: 20px; height: 1px; background: var(--g); }
-    /* Color */
-    .ds-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 14px; }
-    .ds-swatch { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card); }
-    .ds-swatch-chip { height: 70px; }
-    .ds-swatch-meta { padding: 10px 12px; }
-    .ds-swatch-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
-    .ds-swatch-hex { font-family: var(--mono); font-size: 12px; color: var(--ink2); margin-top: 3px; }
-    .ds-swatch-var { font-family: var(--mono); font-size: 11px; color: var(--ink3); margin-top: 1px; }
-    /* Typography */
-    .ds-type-row { padding: 1.15rem 0; border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: 150px 1fr; gap: 1.5rem; align-items: baseline; }
-    .ds-type-row:first-child { border-top: none; padding-top: 0; }
-    .ds-type-use { font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
-      color: var(--g-dark); text-transform: uppercase; }
-    .ds-type-font { font-size: 12.5px; color: var(--ink3); margin-top: 5px; }
-    .ds-type-serif { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: var(--ink); line-height: 1.12; }
-    .ds-type-sans { font-family: var(--sans); font-size: 1.05rem; font-weight: 400; color: var(--ink2); line-height: 1.6; }
-    .ds-type-mono { font-family: var(--mono); font-size: 1rem; color: var(--ink2); letter-spacing: .05em; }
-    /* Components */
-    .ds-components { display: flex; flex-wrap: wrap; gap: 2rem 2.6rem; align-items: flex-start; }
-    .ds-comp-row { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
-    .ds-chip { font-family: var(--sans); font-size: 13.5px; color: var(--ink2);
-      background: var(--g-pale); border: 1px solid var(--g-light); border-radius: 100px; padding: 5px 14px; }
-    .ds-card { width: 232px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--card); }
-    .ds-card-top { height: 84px; background: linear-gradient(135deg, var(--g-light), var(--g-pale)); }
-    .ds-card-body { padding: 13px 15px; }
-    .ds-card-cat { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--g-dark); }
-    .ds-card-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-top: 6px; }
-    .ds-card-desc { font-size: 12.5px; color: var(--ink3); margin-top: 7px; line-height: 1.5; }
-    @media (max-width: 640px) {
-      .ds-type-row { grid-template-columns: 1fr; gap: .5rem; }
-    }
 </style>
 </head>
 
@@ -1964,7 +1922,7 @@
         <p class="hero-role">設計從不該停在紙上。走進使用者的現實，才是真正的起點。</p>
         <p class="hero-bio">擁有 <strong>近 7 年設計工作經驗</strong>，橫跨工業 HMI 系統、ERP 介面、RWD
           網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
-        <blockquote class="hero-quote">「每個介面背後，都是走進使用者的一整段旅程。」</blockquote>
+        <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
         <div class="hero-process-chips">
           <span class="process-chip">使用者研究</span>
           <span class="process-chip">資訊架構</span>
@@ -2419,81 +2377,6 @@
             <div class="tool-icon"></div>Gemini
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 04 · DESIGN SYSTEM ── -->
-  <section id="design-system">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Design System</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="ds-grid">
-
-        <!-- Color -->
-        <div class="reveal">
-          <div class="ds-block-label">Color</div>
-          <div class="ds-swatches">
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#4a9e5c"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Primary</div><div class="ds-swatch-hex">#4A9E5C</div><div class="ds-swatch-var">--g</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#2a6b38"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Primary Dark</div><div class="ds-swatch-hex">#2A6B38</div><div class="ds-swatch-var">--g-dark</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#c8e6cc"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Primary Light</div><div class="ds-swatch-hex">#C8E6CC</div><div class="ds-swatch-var">--g-light</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#eef7f0"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Primary Pale</div><div class="ds-swatch-hex">#EEF7F0</div><div class="ds-swatch-var">--g-pale</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#18181a"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Ink</div><div class="ds-swatch-hex">#18181A</div><div class="ds-swatch-var">--ink</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#48484e"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Ink 2</div><div class="ds-swatch-hex">#48484E</div><div class="ds-swatch-var">--ink2</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#90909a"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Ink 3</div><div class="ds-swatch-hex">#90909A</div><div class="ds-swatch-var">--ink3</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#f6f5f0"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Background</div><div class="ds-swatch-hex">#F6F5F0</div><div class="ds-swatch-var">--bg</div></div></div>
-            <div class="ds-swatch"><div class="ds-swatch-chip" style="background:#ffffff;box-shadow:inset 0 0 0 1px rgba(24,24,26,.09)"></div><div class="ds-swatch-meta"><div class="ds-swatch-name">Card</div><div class="ds-swatch-hex">#FFFFFF</div><div class="ds-swatch-var">--card</div></div></div>
-          </div>
-        </div>
-
-        <!-- Typography -->
-        <div class="reveal">
-          <div class="ds-block-label">Typography</div>
-          <div class="ds-type">
-            <div class="ds-type-row">
-              <div><div class="ds-type-use">Display / Heading</div><div class="ds-type-font">Playfair Display</div></div>
-              <div class="ds-type-serif">從平面出發，往體驗走。</div>
-            </div>
-            <div class="ds-type-row">
-              <div><div class="ds-type-use">Body</div><div class="ds-type-font">Noto Sans TC</div></div>
-              <div class="ds-type-sans">從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</div>
-            </div>
-            <div class="ds-type-row">
-              <div><div class="ds-type-use">Label / Numeric</div><div class="ds-type-font">Space Mono</div></div>
-              <div class="ds-type-mono">04 — DESIGN SYSTEM · 2026</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Components -->
-        <div class="reveal">
-          <div class="ds-block-label">Components</div>
-          <div class="ds-components">
-            <div class="ds-comp-row">
-              <a class="btn btn-primary" href="#works">Primary</a>
-              <a class="btn btn-outline" href="#works">Outline</a>
-            </div>
-            <div class="ds-comp-row">
-              <span class="ds-chip">User Research</span>
-              <span class="ds-chip">IA</span>
-              <span class="ds-chip">Prototype</span>
-              <span class="ds-chip">Design System</span>
-            </div>
-            <div class="ds-card">
-              <div class="ds-card-top"></div>
-              <div class="ds-card-body">
-                <div class="ds-card-cat">Component</div>
-                <div class="ds-card-title">Project Card</div>
-                <div class="ds-card-desc">Cover · category · title · tags — one consistent structure.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -3448,7 +3331,7 @@ const projectsEN = {
 
 const uiEN = {
   nav: {"works": "Works", "visual": "Visual", "skills": "Skills", "about": "About"},
-  hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "6+ years of cross-industry design experience, <strong>rooted in graphic design, growing into UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Behind every interface is a whole journey walked with the user.\"", "cta1": "View My Work", "chips": ["User Research", "Information Architecture", "Prototype", "Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
+  hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "6+ years of cross-industry design experience, <strong>rooted in graphic design, growing into UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Design is not just about visuals — it's the process of solving problems.\"", "cta1": "View My Work", "chips": ["User Research", "Information Architecture", "Prototype", "Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
   sections: {"works_num": "01", "works_title": "UI/UX Design Works", "visual_num": "02", "visual_title": "Visual Design", "skills_num": "03", "skills_title": "Skills & Tools"},
   filters: ["All", "Industrial HMI", "Web Design", "E-Commerce / Brand"],
   cards: {"agentexp": {"cat": "Web Redesign / Experience", "title": "Website Redesign — AI Agent Experience Center", "desc": "Diagnosed user drop-off, restructured 5-step journey flow. Design to deliverable HTML in 3 days — letting the immersive AI experience actually get completed.", "ux_tags": ["Flow Optimization", "User Guidance", "Rapid Delivery"]}, "w11": {"cat": "Industrial HMI", "title": "China Steel W11 Production Info System HMI", "desc": "Field visit to factory floor. Cross-generational design strategy for both veterans and newcomers — aligning digital UI with physical space.", "ux_tags": ["Field Research", "Cross-gen Design", "IA Restructure"]}, "w433": {"cat": "Industrial HMI", "title": "China Steel W433 Spheroidizing Plant HMI", "desc": "30-year-old system redesign. Rebuilt visual hierarchy without breaking muscle memory — making alerts visible again.", "ux_tags": ["User Interview", "Progressive Enhancement", "Visual Hierarchy"]}, "w1": {"cat": "Smart Factory", "title": "W1 In-Plant Transport Smart Factory Platform", "desc": "HMI to Web migration. On-site photography integrated into UI — from numbered lists to visual map navigation.", "ux_tags": ["Field Research", "Information Architecture", "Modularization"]}, "csc": {"cat": "Web App / GIS", "title": "China Steel CSC Campus Street Map", "desc": "Internal-network GIS navigation. Dual-mode toggle + color-coded zones — helping workers build spatial memory before heading out.", "ux_tags": ["GIS Design", "Color System", "Component Spec"]}, "b2b": {"cat": "B2B Website", "title": "Website Restructure — Data-Driven B2B Architecture", "desc": "GA4 data audit + task-oriented grid. Core products surfaced from L3 depth. Full conversion funnel restructured.", "ux_tags": ["Data Audit", "Task-Oriented IA", "AI Integration"]}, "landing": {"cat": "Landing Page", "title": "Jiuxiangzhi Partner Marketing Landing Page", "desc": "Conversion-first design for SME decision-makers. Concise headline + clear CTA strategy to shorten the decision path.", "ux_tags": ["Conversion Optimization", "Content Reduction", "CTA Strategy"]}, "calculator": {"cat": "Web Tool / Lead Gen", "title": "Profit Calculator", "desc": "Tariff-impact margin calculator tool. Teaser design + Lead Gen mechanism to lower ERP entry barrier.", "ux_tags": ["Lead Gen", "Teaser Design", "Interactive Feedback"]}, "survey": {"cat": "Web Form / Lead Gen", "title": "Tariff Risk Assessment Survey", "desc": "5-stage progress indicator to reduce drop-off. Gutenberg layout for data comparison. Star rating resolves semantic ambiguity.", "ux_tags": ["Progress Design", "Data Visualization", "Mental Model"]}, "y26": {"cat": "Recruitment", "title": "Y26 Recruitment Website Redesign", "desc": "Removed external links to stop traffic leakage. Color-coded job tracks for 5 roles. Modular build for easier PM maintenance.", "ux_tags": ["Color Coding", "Conversion Rate", "Modular Design"]}, "hongxin": {"cat": "E-Commerce", "title": "Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce", "desc": "Restructured classification for a multi-brand storefront — product type first, brands nested underneath, plus component and state specs.", "ux_tags": ["Information Architecture", "Component Specs", "Cross-team Collaboration"]}, "yisen": {"cat": "Brand + UIUX", "title": "Yisen Frozen Food — Yiran Brand Design", "desc": "New natural food brand built from 0→1. SEO-first IA + flat navigation. Mobile First design for an additive-free brand identity.", "ux_tags": ["SEO Architecture", "Brand Building", "Mobile First"]}, "dingxin": {"cat": "Web Redesign", "title": "Digiwin Website — About Us Page Redesign", "desc": "Claude + Figma + VS Code collaboration. AI-assisted design-to-development workflow. Corporate identity modernization.", "ux_tags": ["AI Collaboration", "Design-to-Dev", "Brand Identity"]}},
