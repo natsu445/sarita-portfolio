@@ -1025,6 +1025,22 @@
     #more-works.hidden {
       display: none;
     }
+    .see-more-wrap {
+      text-align: center;
+      margin-top: 2.4rem;
+    }
+    #see-more-btn {
+      font-family: var(--mono);
+      font-size: 13.5px;
+      letter-spacing: .08em;
+      padding: 11px 30px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--ink2);
+      cursor: pointer;
+      transition: all .2s;
+    }
     #see-more-btn:hover {
       border-color: var(--g);
       color: var(--g);
@@ -2020,83 +2036,7 @@
       </div>
       <div class="works-grid" id="worksGrid">
 
-        <div class="work-card reveal" data-cat="hmi" onclick="openModal('w11')">
-          <div class="work-thumb t-slate"
-            style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Industrial HMI</div>
-            <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
-            <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
-            <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span
-                class="ux-tag">IA 重構</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span
-                  class="work-tool">Illustrator</span><span class="work-tool">VS Code</span></div><span
-                class="work-year">2024</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-card reveal reveal-delay-1" data-cat="hmi" onclick="openModal('w433')">
-          <div class="work-thumb t-teal"
-            style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Industrial HMI</div>
-            <div class="work-title">中鋼 W433 球化場 HMI</div>
-            <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
-            <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span
-                class="ux-tag">視覺層級</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
-              <span class="work-year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-card reveal reveal-delay-2" data-cat="hmi" onclick="openModal('w1')">
-          <div class="work-thumb t-indigo"
-            style="background-image:url(images/w1/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Smart Factory</div>
-            <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
-            <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
-            <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span
-                class="ux-tag">模組化</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-card reveal" data-cat="hmi" onclick="openModal('csc')">
-          <div class="work-thumb t-moss"
-            style="background-image:url(images/csc/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Web App / GIS</div>
-            <div class="work-title">中鋼 CSC 街景地圖</div>
-            <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
-            <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span
-                class="ux-tag">元件規範</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
-              </div><span class="work-year">2025</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('b2b')">
+        <div class="work-card reveal" data-cat="web" onclick="openModal('b2b')">
           <div class="work-thumb t-olive"
             style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;">
             <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
@@ -2115,9 +2055,7 @@
           </div>
         </div>
 
-
-
-        <div class="work-card reveal" data-cat="ecom" onclick="openModal('hongxin')">
+        <div class="work-card reveal reveal-delay-1" data-cat="ecom" onclick="openModal('hongxin')">
           <div class="work-thumb t-rose"
             style="background-image:url(images/hongxin/cover.jpg);background-size:cover;background-position:center top;">
             <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
@@ -2134,137 +2072,6 @@
             </div>
           </div>
         </div>
-
-        <!-- See More button -->
-        <div id="see-more-wrap" style="grid-column:1/-1;text-align:center;padding:1rem 0 .5rem;">
-          <button id="see-more-btn" onclick="toggleMoreWorks()" style="font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:9px 24px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--ink2);transition:all .2s;">
-            閱讀更多 ▾
-          </button>
-        </div>
-
-        <!-- More works: collapsible -->
-        <div id="more-works" class="hidden">
-        <div class="work-card reveal" data-cat="web" onclick="openModal('agentexp')">
-          <div class="work-thumb t-indigo"
-            style="background-image:url(images/agentexp/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Web Redesign / Experience</div>
-            <div class="work-title">網頁翻新 — AI Agent 體驗中心</div>
-            <div class="work-desc">分析使用者流失點，簡化五步驟動線，3 天內完成設計稿到可交付 HTML，讓沉浸式 AI 體驗真正被走完。</div>
-            <div class="ux-tags"><span class="ux-tag">動線優化</span><span class="ux-tag">使用者引導</span><span class="ux-tag">快速交付</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2026</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('landing')">
-          <div class="work-thumb t-green"
-            style="background-image:url(images/landing/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Landing Page</div>
-            <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
-            <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
-            <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span
-                class="ux-tag">CTA 策略</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
-              <span class="work-year">2025</span>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="work-card reveal" data-cat="web" onclick="openModal('calculator')">
-          <div class="work-thumb t-amber"
-            style="background-image:url(images/calculator/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Web Tool / Lead Gen</div>
-            <div class="work-title">獲利計算機</div>
-            <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
-            <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span
-                class="ux-tag">互動回饋</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
-              <span class="work-year">2025</span>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('survey')">
-          <div class="work-thumb t-clay"
-            style="background-image:url(images/survey/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Web Form / Lead Gen</div>
-            <div class="work-title">關稅評量問卷網頁</div>
-            <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
-            <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span
-                class="ux-tag">心理模型</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('y26')">
-          <div class="work-thumb t-navy"
-            style="background-image:url(images/y26/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Recruitment</div>
-            <div class="work-title">Y26 招募網翻新設計</div>
-            <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
-            <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span
-                class="ux-tag">模組化管理</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span>
-            </div>
-          </div>
-        </div>
-
-
-
-
-
-        <div class="work-card reveal reveal-delay-1" data-cat="ecom" onclick="openModal('yisen')">
-          <div class="work-thumb t-warm"
-            style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;">
-            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
-                class="work-overlay-sub">點擊查看完整介紹</span></div>
-          </div>
-          <div class="work-body">
-            <div class="work-cat">Brand + UIUX</div>
-            <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
-            <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
-            <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span
-                class="ux-tag">Mobile First</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
-              </div><span class="work-year">2023</span>
-            </div>
-          </div>
-        </div>
-
-
 
         <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('dingxin')">
           <div class="work-thumb t-forest"
@@ -2285,9 +2092,220 @@
           </div>
         </div>
 
+        <div class="work-card reveal" data-cat="web" onclick="openModal('agentexp')">
+          <div class="work-thumb t-indigo"
+            style="background-image:url(images/agentexp/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Redesign / Experience</div>
+            <div class="work-title">網頁翻新 — AI Agent 體驗中心</div>
+            <div class="work-desc">分析使用者流失點，簡化五步驟動線，3 天內完成設計稿到可交付 HTML，讓沉浸式 AI 體驗真正被走完。</div>
+            <div class="ux-tags"><span class="ux-tag">動線優化</span><span class="ux-tag">使用者引導</span><span class="ux-tag">快速交付</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="ecom" onclick="openModal('yisen')">
+          <div class="work-thumb t-warm"
+            style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Brand + UIUX</div>
+            <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
+            <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
+            <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span
+                class="ux-tag">Mobile First</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2023</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="hmi" onclick="openModal('w433')">
+          <div class="work-thumb t-teal"
+            style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Industrial HMI</div>
+            <div class="work-title">中鋼 W433 球化場 HMI</div>
+            <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
+            <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span
+                class="ux-tag">視覺層級</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="more-works" class="hidden">
+
+        <div class="work-card reveal" data-cat="hmi" onclick="openModal('w11')">
+          <div class="work-thumb t-slate"
+            style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Industrial HMI</div>
+            <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
+            <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
+            <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span
+                class="ux-tag">IA 重構</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span
+                  class="work-tool">Illustrator</span><span class="work-tool">VS Code</span></div><span
+                class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="hmi" onclick="openModal('w1')">
+          <div class="work-thumb t-indigo"
+            style="background-image:url(images/w1/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Smart Factory</div>
+            <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
+            <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
+            <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span
+                class="ux-tag">模組化</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="hmi" onclick="openModal('csc')">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/csc/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web App / GIS</div>
+            <div class="work-title">中鋼 CSC 街景地圖</div>
+            <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
+            <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span
+                class="ux-tag">元件規範</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal" data-cat="web" onclick="openModal('landing')">
+          <div class="work-thumb t-green"
+            style="background-image:url(images/landing/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Landing Page</div>
+            <div class="work-title">就享知導流推廣頁（夥伴營銷）</div>
+            <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
+            <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span
+                class="ux-tag">CTA 策略</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('calculator')">
+          <div class="work-thumb t-amber"
+            style="background-image:url(images/calculator/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Tool / Lead Gen</div>
+            <div class="work-title">獲利計算機</div>
+            <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
+            <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span
+                class="ux-tag">互動回饋</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2" data-cat="web" onclick="openModal('survey')">
+          <div class="work-thumb t-clay"
+            style="background-image:url(images/survey/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Form / Lead Gen</div>
+            <div class="work-title">關稅評量問卷網頁</div>
+            <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
+            <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span
+                class="ux-tag">心理模型</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal" data-cat="web" onclick="openModal('y26')">
+          <div class="work-thumb t-navy"
+            style="background-image:url(images/y26/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Recruitment</div>
+            <div class="work-title">Y26 招募網翻新設計</div>
+            <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
+            <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span
+                class="ux-tag">模組化管理</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1" data-cat="web" onclick="openModal('esg')">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/esg/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web / Landing Page</div>
+            <div class="work-title">ESG 永續數據館 — 高密度內容的網頁化</div>
+            <div class="work-desc">PM 給的是一張 23 吋長的 EDM 稿，我把它拆開重新分層：角色變進入點、密集循環表改成全年循環、抽象挑戰落成壓力清單。</div>
+            <div class="ux-tags"><span class="ux-tag">內容重構</span><span class="ux-tag">資訊層級</span><span
+                class="ux-tag">HTML 切版</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span
+                  class="work-tool">Claude</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
 
         </div><!-- end more-works -->
 
+      </div>
+
+      <div class="see-more-wrap">
+        <button id="see-more-btn" onclick="toggleMoreWorks()">閱讀更多 ▾</button>
       </div>
     </div>
   </section>
@@ -2629,6 +2647,10 @@
 
   <script>
     const projectGallery = {
+      esg: [
+        'images/esg/01.jpg',
+        'images/esg/02.jpg',
+      ],
       agentexp: [
         "images/agentexp/gallery-01.jpg",
         "images/agentexp/gallery-02.jpg",
@@ -2707,6 +2729,42 @@
     };
 
     const projects = {
+      esg: {
+        cat: 'Web / Landing Page', title: 'ESG 永續數據館 — 高密度內容的網頁化重構', thumb: 't-moss', year: '2026', tools: ['Figma', 'VS Code', 'Claude'], live: 'https://www.digiwin.com.tw/dsc/project/ESG/data-hub/',
+        sections: [
+          { title: '為什麼做這一頁（先確認要解決什麼）', text: '這是一頁對外推廣「ESG 永續數據館 ＋ AI」的行銷 landing page，需求與內容都由 PM 帶進來。它要說的核心觀念是：ESG 不是「做完一次碳盤查、交一份報告書就結束」，而是每年都得面對的法規循環。我動手前先確認兩件事——這頁主要說給誰聽（財務長、永續長這類企業決策角色），以及使用者看完之後要他做什麼。這兩個答案決定了後面所有內容的排序，不是我先想版面，而是先想動線。' },
+
+          { title: '我拿到的素材：一張 23 吋長的 EDM 稿', text: 'PM 給我的是一張約 23 吋長的直式 EDM 版面稿，資訊密度非常高：四項法定循環的時間點、負責角色、依循標準全部塞在一張密集表格裡，再加上三大挑戰、四個價值主張，一路往下線性堆疊。EDM 的閱讀邏輯是「從頭讀到尾」，但網頁使用者不是這樣看的，他們用掃描的，找到跟自己有關的段落才會停下來。所以我的工作不是把這張稿子原封搬上網，而是把同一批內容拆開、重新分層。' },
+
+          { title: '我的問題診斷', points: [
+            '資訊沒有層級：四項循環、三大挑戰、價值主張全部同等份量堆在一起，使用者無法一眼判斷「哪一段跟我有關」。',
+            '密集表格不適合網頁：EDM 裡的循環對照表在小螢幕上會擠成一團，直接搬上網就是犧牲可讀性。',
+            '缺少進入點：整頁沒有替不同角色（財務長／永續長）各開一條動線，每個人都得從頭讀起。',
+            '下一步訊號太弱：內容很滿，但看完要做什麼、往哪走，指引不夠明確。'
+          ] },
+
+          { title: '從 PM 內容到畫面：幾個關鍵重組', points: [
+            '把「角色」從表格欄位變成進入點：PPT 裡財務長、永續長只是循環表中的一欄，我把他們拉出來獨立成「執行永續的關鍵角色」區塊，各自配上 Scenario 情境問句與對應解方，讓使用者一進來就能對號入座。',
+            '把密集循環表改成「全年循環」時間軸：四項法定循環（財報、股東會年報、年度永續策略、ESG 報告書）保留原本的時間點、角色、標準，但改用循環式視覺呈現，強調「揭露 × 查證 × 改善」是一個會重複的環，而不是一張要逐格讀的表。',
+            '把三大挑戰落成具體的壓力清單：抽象的「法律面／審計面／風險管理面」被我轉成財務長四項壓力、永續長五項壓力的條列，讓痛點是可辨認的、而且跟角色綁在一起。',
+            '把散落的價值主張收斂成一條主軸：PPT 的四個價值點，我在頁面上收斂成「同一份可信數據，同時支援營運管理、合規揭露與 AI 決策」這條主線，其餘價值點退為支撐。',
+            '替內容補上層級與呼吸感：原稿是滿版堆疊，我在網頁上重新分段、留白、建立標題層級，讓每一個區塊都能被單獨掃描、單獨理解。'
+          ] },
+
+          { title: '幾個關鍵的設計決策', points: [
+            '導覽錨點對齊使用者關心的問題：頂部錨點切成「ESG 企業挑戰／了解永續數據館／AI Agent 專家／300+ 客戶見證」，讓人能直接跳到自己在意的段落，而不是被迫線性往下滑。',
+            '導入前後（Before／After）對照：AI Agent 的效益用「導入前現況 → 導入後效益」對照呈現，並搭配可量化的數字（報告工時、框架覆蓋、填報覆蓋率等），把抽象的「AI 幫你」變成看得到的差距。',
+            '維持品牌一致性：字體與色彩沿用鼎新的品牌規範，讓這頁和官網其他頁面是同一套視覺語言，而不是一個風格孤立的行銷頁。'
+          ] },
+
+          { title: '我的角色與交付', text: '我負責的是網頁設計稿與 HTML 切版，切版階段借助 Claude 協作，把最耗工的手工環節壓縮掉，切好之後交給工程師接後續串接。內容文案由 PM 提供；頁面後來出的「一般版／高階版」是 PM 針對受眾對文案做的調整，不在我負責的範圍。我把力氣放在同一件事上：這批內容，怎麼在網頁上被正確地分層與理解。' },
+
+          { title: '4 天完成設計到 HTML 交付', highlight: '從設計稿到 HTML 切版，整頁大約 4 天。能這麼快有兩個原因：一是動筆前先把「這頁說給誰聽、看完要他做什麼」想清楚，資訊排序才有依據，不必邊做邊猜；二是切版大量借助 AI 協作。工具幫我省下的是手工時間，不是判斷。' },
+
+          { title: '核心原則：翻譯，不是搬運', highlight: '拿到一份很滿的內容稿，最容易的做法是照著版面搬上網。但 EDM 和網頁是兩種閱讀方式，照搬只會把「讀不完」的問題也一起搬過去。設計師真正該做的，是把 PM 的內容翻譯成使用者能掃描、能對號入座、能找到下一步的資訊層級。內容是 PM 的，怎麼被理解是我的。' }
+        ]
+      },
+
       agentexp: {
         cat: 'Web Redesign / Experience', title: '網頁翻新 — AI Agent 體驗中心', thumb: 't-indigo', year: '2026', tools: ['Figma', 'VS Code'],
         live: 'https://agent-exp.apps.digiwincloud.com/',
@@ -3208,7 +3266,17 @@
     function filterWorks(cat, btn) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('.work-card').forEach(card => { card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none'; });
+      const wrap = document.getElementById('more-works');
+      const seeBtn = document.getElementById('see-more-btn');
+      if (cat === 'all') {
+        if (wrap) wrap.classList.add('hidden');
+        if (seeBtn) { seeBtn.style.display = ''; seeBtn.textContent = (currentLang === 'en' ? 'See More ▾' : '閱讀更多 ▾'); }
+        document.querySelectorAll('.work-card').forEach(card => { card.style.display = ''; });
+      } else {
+        if (wrap) { wrap.classList.remove('hidden'); wrap.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }
+        if (seeBtn) seeBtn.style.display = 'none';
+        document.querySelectorAll('.work-card').forEach(card => { card.style.display = (card.dataset.cat === cat) ? '' : 'none'; });
+      }
     }
 
     // nav highlight
@@ -3246,6 +3314,7 @@
       const btn = document.getElementById('see-more-btn');
       const isHidden = wrap.classList.contains('hidden');
       wrap.classList.toggle('hidden', !isHidden);
+      if (isHidden) { wrap.querySelectorAll('.reveal').forEach(el => el.classList.add('visible')); }
       btn.textContent = isHidden
         ? (currentLang === 'en' ? 'Show Less ▴' : '收起 ▴')
         : (currentLang === 'en' ? 'See More ▾' : '閱讀更多 ▾');
