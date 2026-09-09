@@ -2199,6 +2199,25 @@
           </div>
         </div>
 
+        <div class="work-card reveal" data-cat="web" onclick="openModal('esg')">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/esg/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web / Landing Page</div>
+            <div class="work-title">ESG 永續數據館 — 高密度內容的網頁化</div>
+            <div class="work-desc">PM 給的是一張 23 吋長的 EDM 稿，我把它拆開重新分層：角色變進入點、密集循環表改成全年循環、抽象挑戰落成壓力清單。</div>
+            <div class="ux-tags"><span class="ux-tag">內容重構</span><span class="ux-tag">資訊層級</span><span
+                class="ux-tag">HTML 切版</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span
+                  class="work-tool">Claude</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
 
 
 
@@ -2512,6 +2531,10 @@
 
   <script>
     const projectGallery = {
+      esg: [
+        'images/esg/01.jpg',
+        'images/esg/02.jpg',
+      ],
       agentexp: [
         "images/agentexp/gallery-01.jpg",
         "images/agentexp/gallery-02.jpg",
@@ -2590,6 +2613,42 @@
     };
 
     const projects = {
+      esg: {
+        cat: 'Web / Landing Page', title: 'ESG 永續數據館 — 高密度內容的網頁化重構', thumb: 't-moss', year: '2026', tools: ['Figma', 'VS Code', 'Claude'], live: 'https://www.digiwin.com.tw/dsc/project/ESG/data-hub/',
+        sections: [
+          { title: '為什麼做這一頁（先確認要解決什麼）', text: '這是一頁對外推廣「ESG 永續數據館 ＋ AI」的行銷 landing page，需求與內容都由 PM 帶進來。它要說的核心觀念是：ESG 不是「做完一次碳盤查、交一份報告書就結束」，而是每年都得面對的法規循環。我動手前先確認兩件事——這頁主要說給誰聽（財務長、永續長這類企業決策角色），以及使用者看完之後要他做什麼。這兩個答案決定了後面所有內容的排序，不是我先想版面，而是先想動線。' },
+
+          { title: '我拿到的素材：一張 23 吋長的 EDM 稿', text: 'PM 給我的是一張約 23 吋長的直式 EDM 版面稿，資訊密度非常高：四項法定循環的時間點、負責角色、依循標準全部塞在一張密集表格裡，再加上三大挑戰、四個價值主張，一路往下線性堆疊。EDM 的閱讀邏輯是「從頭讀到尾」，但網頁使用者不是這樣看的，他們用掃描的，找到跟自己有關的段落才會停下來。所以我的工作不是把這張稿子原封搬上網，而是把同一批內容拆開、重新分層。' },
+
+          { title: '我的問題診斷', points: [
+            '資訊沒有層級：四項循環、三大挑戰、價值主張全部同等份量堆在一起，使用者無法一眼判斷「哪一段跟我有關」。',
+            '密集表格不適合網頁：EDM 裡的循環對照表在小螢幕上會擠成一團，直接搬上網就是犧牲可讀性。',
+            '缺少進入點：整頁沒有替不同角色（財務長／永續長）各開一條動線，每個人都得從頭讀起。',
+            '下一步訊號太弱：內容很滿，但看完要做什麼、往哪走，指引不夠明確。'
+          ] },
+
+          { title: '從 PM 內容到畫面：幾個關鍵重組', points: [
+            '把「角色」從表格欄位變成進入點：PPT 裡財務長、永續長只是循環表中的一欄，我把他們拉出來獨立成「執行永續的關鍵角色」區塊，各自配上 Scenario 情境問句與對應解方，讓使用者一進來就能對號入座。',
+            '把密集循環表改成「全年循環」時間軸：四項法定循環（財報、股東會年報、年度永續策略、ESG 報告書）保留原本的時間點、角色、標準，但改用循環式視覺呈現，強調「揭露 × 查證 × 改善」是一個會重複的環，而不是一張要逐格讀的表。',
+            '把三大挑戰落成具體的壓力清單：抽象的「法律面／審計面／風險管理面」被我轉成財務長四項壓力、永續長五項壓力的條列，讓痛點是可辨認的、而且跟角色綁在一起。',
+            '把散落的價值主張收斂成一條主軸：PPT 的四個價值點，我在頁面上收斂成「同一份可信數據，同時支援營運管理、合規揭露與 AI 決策」這條主線，其餘價值點退為支撐。',
+            '替內容補上層級與呼吸感：原稿是滿版堆疊，我在網頁上重新分段、留白、建立標題層級，讓每一個區塊都能被單獨掃描、單獨理解。'
+          ] },
+
+          { title: '幾個關鍵的設計決策', points: [
+            '導覽錨點對齊使用者關心的問題：頂部錨點切成「ESG 企業挑戰／了解永續數據館／AI Agent 專家／300+ 客戶見證」，讓人能直接跳到自己在意的段落，而不是被迫線性往下滑。',
+            '導入前後（Before／After）對照：AI Agent 的效益用「導入前現況 → 導入後效益」對照呈現，並搭配可量化的數字（報告工時、框架覆蓋、填報覆蓋率等），把抽象的「AI 幫你」變成看得到的差距。',
+            '維持品牌一致性：字體與色彩沿用鼎新的品牌規範，讓這頁和官網其他頁面是同一套視覺語言，而不是一個風格孤立的行銷頁。'
+          ] },
+
+          { title: '我的角色與交付', text: '我負責的是網頁設計稿與 HTML 切版，切版階段借助 Claude 協作，把最耗工的手工環節壓縮掉，切好之後交給工程師接後續串接。內容文案由 PM 提供；頁面後來出的「一般版／高階版」是 PM 針對受眾對文案做的調整，不在我負責的範圍。我把力氣放在同一件事上：這批內容，怎麼在網頁上被正確地分層與理解。' },
+
+          { title: '4 天完成設計到 HTML 交付', highlight: '從設計稿到 HTML 切版，整頁大約 4 天。能這麼快有兩個原因：一是動筆前先把「這頁說給誰聽、看完要他做什麼」想清楚，資訊排序才有依據，不必邊做邊猜；二是切版大量借助 AI 協作。工具幫我省下的是手工時間，不是判斷。' },
+
+          { title: '核心原則：翻譯，不是搬運', highlight: '拿到一份很滿的內容稿，最容易的做法是照著版面搬上網。但 EDM 和網頁是兩種閱讀方式，照搬只會把「讀不完」的問題也一起搬過去。設計師真正該做的，是把 PM 的內容翻譯成使用者能掃描、能對號入座、能找到下一步的資訊層級。內容是 PM 的，怎麼被理解是我的。' }
+        ]
+      },
+
       agentexp: {
         cat: 'Web Redesign / Experience', title: '網頁翻新 — AI Agent 體驗中心', thumb: 't-indigo', year: '2026', tools: ['Figma', 'VS Code'],
         live: 'https://agent-exp.apps.digiwincloud.com/',
