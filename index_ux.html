@@ -969,6 +969,30 @@
       background: var(--g)
     }
 
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem
+    }
+
+    .footer-resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, .55);
+      transition: color .2s
+    }
+
+    .footer-resume-link::before {
+      content: '↓';
+      font-size: 12px;
+      color: var(--g)
+    }
+
+    .footer-resume-link:hover {
+      color: var(--g)
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -1920,7 +1944,7 @@
         <p class="hero-eyebrow">✦ UI/UX Designer &amp; Visual Designer</p>
         <h1 class="hero-name">Hello,<br />I'm <em>Sarita</em></h1>
         <p class="hero-role">設計從不該停在紙上。走進使用者的現實，才是真正的起點。</p>
-        <p class="hero-bio">擁有 <strong>近 7 年設計工作經驗</strong>，橫跨工業 HMI 系統、ERP 介面、RWD
+        <p class="hero-bio"><strong>7 年設計資歷，近 3 年專注 UI/UX</strong>，橫跨工業 HMI 系統、ERP 介面、RWD
           網頁與品牌平面設計。擅長從使用者研究出發，將複雜問題轉化為直覺流暢的數位體驗。</p>
         <blockquote class="hero-quote">「設計不只是視覺的呈現，更是解決問題的過程。」</blockquote>
         <div class="hero-process-chips">
@@ -2407,7 +2431,7 @@
         <div>
           <p class="about-eyebrow">About Me</p>
           <h2 class="about-heading">從平面出發，<br/><em>往體驗走。</em></h2>
-          <p class="about-text">近 7 年設計工作經驗，平面設計為根基，轉職 UI/UX 後累積數位產品設計實務。橫跨工業 HMI、B2B SaaS、電商品牌等場域，熟悉從使用者研究、IA 規劃到 Design System 建立的完整流程。<br/><br/>擅長與 PM 和工程師協作，將複雜需求轉化為直覺且落地的設計方案。具備 HTML／CSS 切版能力，能精準溝通、縮短設計到開發的距離。</p>
+          <p class="about-text">7 年設計資歷，平面設計為根基，近 3 年轉職投入 UI/UX，累積數位產品設計實務。橫跨工業 HMI、B2B SaaS、電商品牌等場域，熟悉從使用者研究、IA 規劃到 Design System 建立的完整流程。<br/><br/>擅長與 PM 和工程師協作，將複雜需求轉化為直覺且落地的設計方案。具備 HTML／CSS 切版能力，能精準溝通、縮短設計到開發的距離。</p>
           <div class="about-skills">
             <div class="about-skill-group">
               <span class="about-skill-label">設計流程</span>
@@ -2496,7 +2520,10 @@
       <div class="footer-dot"></div><span>2026 Sarita · Design</span>
     </div>
     <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
-    <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
+    <div class="footer-links">
+      <a href="sarita-resume.pdf" download class="footer-resume-link">履歷下載</a>
+      <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
+    </div>
   </footer>
 
   <div class="disclaimer">本作品集內容及圖片僅供設計交流參考，所有專案素材歸屬原公司所有。</div>
@@ -3390,15 +3417,15 @@ const projectsEN = {
 
 const uiEN = {
   nav: {"works": "Works", "visual": "Visual", "skills": "Skills", "about": "About"},
-  hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "6+ years of cross-industry design experience, <strong>rooted in graphic design, growing into UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Design is not just about visuals — it's the process of solving problems.\"", "cta1": "View My Work", "chips": ["User Research", "Information Architecture", "Prototype", "Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
+  hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "<strong>7 years in design, with close to 3 years focused on UI/UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Design is not just about visuals — it's the process of solving problems.\"", "cta1": "View My Work", "chips": ["User Research", "Information Architecture", "Prototype", "Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
   sections: {"works_num": "01", "works_title": "UI/UX Design Works", "visual_num": "02", "visual_title": "Visual Design", "skills_num": "03", "skills_title": "Skills & Tools"},
   filters: ["All", "Industrial HMI", "Web Design", "E-Commerce / Brand"],
   cards: {"agentexp": {"cat": "Web Redesign / Experience", "title": "Website Redesign — AI Agent Experience Center", "desc": "Diagnosed user drop-off, restructured 5-step journey flow. Design to deliverable HTML in 3 days — letting the immersive AI experience actually get completed.", "ux_tags": ["Flow Optimization", "User Guidance", "Rapid Delivery"]}, "w11": {"cat": "Industrial HMI", "title": "China Steel W11 Production Info System HMI", "desc": "Field visit to factory floor. Cross-generational design strategy for both veterans and newcomers — aligning digital UI with physical space.", "ux_tags": ["Field Research", "Cross-gen Design", "IA Restructure"]}, "w433": {"cat": "Industrial HMI", "title": "China Steel W433 Spheroidizing Plant HMI", "desc": "30-year-old system redesign. Rebuilt visual hierarchy without breaking muscle memory — making alerts visible again.", "ux_tags": ["User Interview", "Progressive Enhancement", "Visual Hierarchy"]}, "w1": {"cat": "Smart Factory", "title": "W1 In-Plant Transport Smart Factory Platform", "desc": "HMI to Web migration. On-site photography integrated into UI — from numbered lists to visual map navigation.", "ux_tags": ["Field Research", "Information Architecture", "Modularization"]}, "csc": {"cat": "Web App / GIS", "title": "China Steel CSC Campus Street Map", "desc": "Internal-network GIS navigation. Dual-mode toggle + color-coded zones — helping workers build spatial memory before heading out.", "ux_tags": ["GIS Design", "Color System", "Component Spec"]}, "b2b": {"cat": "B2B Website", "title": "Website Restructure — Data-Driven B2B Architecture", "desc": "GA4 data audit + task-oriented grid. Core products surfaced from L3 depth. Full conversion funnel restructured.", "ux_tags": ["Data Audit", "Task-Oriented IA", "AI Integration"]}, "landing": {"cat": "Landing Page", "title": "Jiuxiangzhi Partner Marketing Landing Page", "desc": "Conversion-first design for SME decision-makers. Concise headline + clear CTA strategy to shorten the decision path.", "ux_tags": ["Conversion Optimization", "Content Reduction", "CTA Strategy"]}, "calculator": {"cat": "Web Tool / Lead Gen", "title": "Profit Calculator", "desc": "Tariff-impact margin calculator tool. Teaser design + Lead Gen mechanism to lower ERP entry barrier.", "ux_tags": ["Lead Gen", "Teaser Design", "Interactive Feedback"]}, "survey": {"cat": "Web Form / Lead Gen", "title": "Tariff Risk Assessment Survey", "desc": "5-stage progress indicator to reduce drop-off. Gutenberg layout for data comparison. Star rating resolves semantic ambiguity.", "ux_tags": ["Progress Design", "Data Visualization", "Mental Model"]}, "y26": {"cat": "Recruitment", "title": "Y26 Recruitment Website Redesign", "desc": "Removed external links to stop traffic leakage. Color-coded job tracks for 5 roles. Modular build for easier PM maintenance.", "ux_tags": ["Color Coding", "Conversion Rate", "Modular Design"]}, "hongxin": {"cat": "E-Commerce", "title": "Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce", "desc": "Restructured classification for a multi-brand storefront — product type first, brands nested underneath, plus component and state specs.", "ux_tags": ["Information Architecture", "Component Specs", "Cross-team Collaboration"]}, "yisen": {"cat": "Brand + UIUX", "title": "Yisen Frozen Food — Yiran Brand Design", "desc": "New natural food brand built from 0→1. SEO-first IA + flat navigation. Mobile First design for an additive-free brand identity.", "ux_tags": ["SEO Architecture", "Brand Building", "Mobile First"]}, "dingxin": {"cat": "Web Redesign", "title": "Digiwin Website — About Us Page Redesign", "desc": "Claude + Figma + VS Code collaboration. AI-assisted design-to-development workflow. Corporate identity modernization.", "ux_tags": ["AI Collaboration", "Design-to-Dev", "Brand Identity"]}},
   visual_labels: {"travel": "Travel", "social": "Social Media Graphics", "edm": "EDM", "ecom": "E-Commerce / Retail / Packaging"},
   skills: {"design_label": "Design Process", "design_items": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"], "tools_label": "Tools", "tools_items": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"], "collab_label": "Collaboration", "collab_items": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"], "tools_section_label": "Design Tools"},
-  about: {"eyebrow": "About Me", "heading_line1": "Rooted in graphic design,", "heading_em": "growing into UX.", "text": "7 years of graphic design foundation, with 2 years of hands-on digital product design after transitioning into UI/UX. Experienced across industrial HMI, B2B SaaS, and e-commerce brand design — familiar with the full flow from user research and IA planning to Design System delivery.<br/><br/>Comfortable working alongside PMs and engineers, translating complex requirements into intuitive, implementable design. Proficient in HTML/CSS, bridging the gap between design and development.", "skill_groups": [{"label": "Design Process", "tags": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"]}, {"label": "Tools", "tags": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"]}, {"label": "Collaboration", "tags": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"]}]},
+  about: {"eyebrow": "About Me", "heading_line1": "Rooted in graphic design,", "heading_em": "growing into UX.", "text": "7 years of graphic design foundation, with close to 3 years of hands-on digital product design after transitioning into UI/UX. Experienced across industrial HMI, B2B SaaS, and e-commerce brand design — familiar with the full flow from user research and IA planning to Design System delivery.<br/><br/>Comfortable working alongside PMs and engineers, translating complex requirements into intuitive, implementable design. Proficient in HTML/CSS, bridging the gap between design and development.", "skill_groups": [{"label": "Design Process", "tags": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"]}, {"label": "Tools", "tags": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"]}, {"label": "Collaboration", "tags": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"]}]},
   timeline: [{"period": "2025 — Present", "role": "UI Designer", "company": "Digiwin Digital · B2B SaaS"}, {"period": "2024", "role": "UI/UX Designer", "company": "Shengda Info · HMI Industrial Interface"}, {"period": "2023", "role": "UI/UX Designer", "company": "Waji Tech · Web / RWD"}, {"period": "2022", "role": "Graphic Designer", "company": "Nihonbashi Info · Print & Visual"}, {"period": "2018 — 2020", "role": "Graphic Designer", "company": "Feiyang Travel · Travel Visual"}, {"period": "Education", "role": "Tainan University of Technology · Fine Arts", "company": ""}],
-  footer: {"sig": "2026 Sarita · Design", "sub": "UI/UX Designer & Visual Designer · Taiwan", "disclaimer": "All content and images are shared for design portfolio purposes only. All project assets belong to their respective companies."},
+  footer: {"sig": "2026 Sarita · Design", "sub": "UI/UX Designer & Visual Designer · Taiwan", "disclaimer": "All content and images are shared for design portfolio purposes only. All project assets belong to their respective companies.", "resume_label": "Resume Download"},
   modal: {"year_label": "Year", "tools_label": "Tools", "figma_link": "↗ Figma", "live_link": "↗ Live Site", "preview_link": "↗ Preview", "no_img": "No images", "before_label": "Before", "after_label": "After", "design_label": "Design"},
 };
 
@@ -3514,6 +3541,7 @@ function applyEN() {
   document.querySelector('.footer-sig span').textContent = u.footer.sig;
   const footerSpan = document.querySelector('footer > span'); if(footerSpan) footerSpan.textContent = u.footer.sub;
   document.querySelector('.disclaimer').textContent = u.footer.disclaimer;
+  const resumeLink = document.querySelector('.footer-resume-link'); if(resumeLink) resumeLink.textContent = u.footer.resume_label;
   // Nav logo
   document.querySelector('.nav-logo').innerHTML = 'Sarita<span>.</span>';
   // Hero CTA
