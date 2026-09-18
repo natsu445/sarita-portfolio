@@ -1608,6 +1608,12 @@
         text-align: center
       }
 
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .8rem 1.2rem
+      }
+
       .modal-body {
         max-height: 65vh
       }
@@ -2521,6 +2527,8 @@
     </div>
     <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
     <div class="footer-links">
+      <a href="index.html" class="footer-more-ux" title="UIUX 作品集">●</a>
+      <a href="index_art.html" class="footer-more-art">藝文</a>
       <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download class="footer-resume-link">履歷下載</a>
       <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
     </div>
@@ -3425,7 +3433,7 @@ const uiEN = {
   skills: {"design_label": "Design Process", "design_items": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"], "tools_label": "Tools", "tools_items": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"], "collab_label": "Collaboration", "collab_items": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"], "tools_section_label": "Design Tools"},
   about: {"eyebrow": "About Me", "heading_line1": "Rooted in graphic design,", "heading_em": "growing into UX.", "text": "7 years of graphic design foundation, with close to 3 years of hands-on digital product design after transitioning into UI/UX. Experienced across industrial HMI, B2B SaaS, and e-commerce brand design — familiar with the full flow from user research and IA planning to Design System delivery.<br/><br/>Comfortable working alongside PMs and engineers, translating complex requirements into intuitive, implementable design. Proficient in HTML/CSS, bridging the gap between design and development.", "skill_groups": [{"label": "Design Process", "tags": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"]}, {"label": "Tools", "tags": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"]}, {"label": "Collaboration", "tags": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"]}]},
   timeline: [{"period": "2025 — Present", "role": "UI Designer", "company": "Digiwin Digital · B2B SaaS"}, {"period": "2024", "role": "UI/UX Designer", "company": "Shengda Info · HMI Industrial Interface"}, {"period": "2023", "role": "UI/UX Designer", "company": "Waji Tech · Web / RWD"}, {"period": "2022", "role": "Graphic Designer", "company": "Nihonbashi Info · Print & Visual"}, {"period": "2018 — 2020", "role": "Graphic Designer", "company": "Feiyang Travel · Travel Visual"}, {"period": "Education", "role": "Tainan University of Technology · Fine Arts", "company": ""}],
-  footer: {"sig": "2026 Sarita · Design", "sub": "UI/UX Designer & Visual Designer · Taiwan", "disclaimer": "All content and images are shared for design portfolio purposes only. All project assets belong to their respective companies.", "resume_label": "Resume Download"},
+  footer: {"sig": "2026 Sarita · Design", "sub": "UI/UX Designer & Visual Designer · Taiwan", "disclaimer": "All content and images are shared for design portfolio purposes only. All project assets belong to their respective companies.", "resume_label": "Resume Download", "more_ux": "●", "more_art": "Art & Visual Portfolio"},
   modal: {"year_label": "Year", "tools_label": "Tools", "figma_link": "↗ Figma", "live_link": "↗ Live Site", "preview_link": "↗ Preview", "no_img": "No images", "before_label": "Before", "after_label": "After", "design_label": "Design"},
 };
 
@@ -3542,6 +3550,8 @@ function applyEN() {
   const footerSpan = document.querySelector('footer > span'); if(footerSpan) footerSpan.textContent = u.footer.sub;
   document.querySelector('.disclaimer').textContent = u.footer.disclaimer;
   const resumeLink = document.querySelector('.footer-resume-link'); if(resumeLink) resumeLink.textContent = u.footer.resume_label;
+  const moreUx = document.querySelector('.footer-more-ux'); if(moreUx) moreUx.textContent = u.footer.more_ux;
+  const moreArt = document.querySelector('.footer-more-art'); if(moreArt) moreArt.textContent = u.footer.more_art;
   // Nav logo
   document.querySelector('.nav-logo').innerHTML = 'Sarita<span>.</span>';
   // Hero CTA
