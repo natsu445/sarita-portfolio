@@ -1988,13 +1988,30 @@
 .uxcta{display:flex;justify-content:center;margin-top:2.6rem}
 .uxcta a{font-family:var(--mono);font-size:.82rem;color:var(--g-dark);text-decoration:none;border:1px solid var(--border);padding:.8rem 1.6rem;border-radius:40px;background:var(--card);transition:border-color .3s,color .3s}
 .uxcta a:hover{border-color:var(--g);color:var(--g)}
-.version-switch{display:inline-flex;border:1px solid var(--border);border-radius:40px;overflow:hidden;vertical-align:middle}
-.version-switch a{padding:.5rem 1.15rem;font-family:var(--mono);font-size:.76rem;color:var(--ink3);text-decoration:none;border-right:1px solid var(--border);transition:color .3s}
-.version-switch a:last-child{border-right:none}
-.version-switch a.current{background:var(--g);color:#fff}
-.version-switch a:hover:not(.current){color:var(--g)}
-.footer-switch-wrap{width:100%;display:flex;justify-content:center;margin-top:1.4rem}
+.nav-spacer{width:72px}
+@media(max-width:768px){.nav-spacer{display:none}}
 
+
+    /* ── 作品集版本切換（index / index_visual / index_art 共用同一組結構與標籤） ── */
+    footer { flex-wrap: wrap; row-gap: 1.5rem }
+    .footer-versions { flex: 1 0 100%; order: -1; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .6rem 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, .06) }
+    .version-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .35) }
+    .version-switch { display: inline-flex; border: 1px solid rgba(255, 255, 255, .14); border-radius: 40px; overflow: hidden }
+    .version-switch a { padding: .5rem 1.15rem; font-size: 13px; letter-spacing: .04em; white-space: nowrap; color: rgba(255, 255, 255, .55); border-right: 1px solid rgba(255, 255, 255, .14); transition: color .2s, background .2s }
+    .version-switch a:last-child { border-right: 0 }
+    .version-switch a:hover { color: var(--g) }
+    .version-switch a[aria-current="page"] { background: var(--g); color: #fff; pointer-events: none }
+    @media(max-width:580px) {
+      footer { row-gap: .6rem }
+      .footer-versions { flex: none; width: 100%; margin-bottom: .9rem }
+      .version-switch a { padding: .5rem .75rem; font-size: 12px }
+    }
+    @media(max-width:420px) {
+      .version-switch { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100% ; max-width: 300px }
+      .version-switch a { text-align: center; border-right: 1px solid rgba(255, 255, 255, .14) }
+      .version-switch a:nth-child(2n) { border-right: 0 }
+      .version-switch a:nth-child(-n+2) { border-bottom: 1px solid rgba(255, 255, 255, .14) }
+    }
 </style>
 </head>
 <body>
@@ -2008,13 +2025,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <div class="footer-switch-wrap" style="width:auto;margin:0">
-      <div class="version-switch">
-        <a href="index_visual.html" class="current">綜合</a>
-        <a href="index.html">UI/UX</a>
-        <a href="index_art.html">藝文</a>
-      </div>
-    </div>
+    <div class="nav-spacer" aria-hidden="true"></div>
   </nav>
 
   <section id="hero">
@@ -2185,6 +2196,19 @@
       </div>
       <p class="section-note reveal">近三年把平面的根帶進數位——UI/UX 介面、RWD 網頁，並具備 HTML／CSS 切版能力。點擊可瀏覽各專案圖庫；完整案例與研究過程收錄於 UI/UX 版作品集。</p>
       <div class="works-grid">
+        <div class="work-card reveal" data-cat="ux" onclick="openGallery('erp07',0)">
+          <div class="work-thumb t-navy" style="background-image:url(images/20261109/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
+          <div class="work-body">
+            <div class="work-cat">Landing Page / AI 協作</div>
+            <div class="work-title">鼎新 ERP 選型推廣頁 — 依企業規模找到起點</div>
+            <div class="work-desc">把四條 ERP 產品線依企業規模與營運型態分流，搭配成長路徑與實證數據，讓決策者先找到起點、再預約諮詢；與 AI 協作完成設計到切版。</div>
+            <div class="ux-tags"><span class="ux-tag">選型分流</span><span class="ux-tag">資訊架構</span><span class="ux-tag">AI 協作</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span class="work-tool">Claude</span></div>
+              <span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
         <div class="work-card reveal" data-cat="ux" onclick="openGallery('b2b',0)">
           <div class="work-thumb t-olive" style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
           <div class="work-body">
@@ -2400,6 +2424,15 @@
   </section>
 
   <footer>
+    <div class="footer-versions" role="navigation" aria-label="作品集版本">
+      <span class="version-label">Portfolio</span>
+      <div class="version-switch">
+        <a href="index.html" data-en="UI/UX + Graphic">UI/UX＋平面</a>
+        <a href="index_ux.html" data-en="UI/UX">UI/UX</a>
+        <a href="index_visual.html" data-en="Graphic Design" aria-current="page">平面設計</a>
+        <a href="index_art.html" data-en="Art &amp; Curation">藝文策展</a>
+      </div>
+    </div>
     <div class="footer-sig">
       <div class="footer-dot"></div><span>2026 Sarita · Design</span>
     </div>
@@ -2407,13 +2440,6 @@
     <div class="footer-links">
       <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download class="footer-resume-link">履歷下載</a>
       <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
-    </div>
-    <div class="footer-switch-wrap">
-      <div class="version-switch">
-        <a href="index_visual.html" class="current">綜合視覺</a>
-        <a href="index.html">UI / UX</a>
-        <a href="index_art.html">藝文</a>
-      </div>
     </div>
   </footer>
 
@@ -2431,7 +2457,7 @@
   </div>
 
   <script>
-    const GAL = {"travel": ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg", "images/visual-travel/07.jpg", "images/visual-travel/08.jpg", "images/visual-travel/09.jpg", "images/visual-travel/10.jpg", "images/visual-travel/11.jpg"], "kv": ["images/visual-ecom/01.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/12.jpg"], "dm": ["images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg"], "pkg": ["images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg"], "social": ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"], "edm": ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"], "photo": ["images/photography/01.jpg", "images/photography/02.jpg", "images/photography/03.jpg", "images/photography/04.jpg", "images/photography/05.jpg", "images/photography/06.jpg"], "b2b": ["images/b2b/cover.jpg", "images/b2b/gallery-01.jpg"], "agentexp": ["images/agentexp/cover.jpg", "images/agentexp/gallery-01.jpg", "images/agentexp/gallery-02.jpg", "images/agentexp/gallery-03.jpg", "images/agentexp/gallery-04.jpg", "images/agentexp/gallery-05.jpg", "images/agentexp/gallery-06.jpg", "images/agentexp/gallery-07.jpg"], "w433": ["images/w433/cover.jpg", "images/w433/gallery-01.jpg", "images/w433/gallery-02.jpg", "images/w433/gallery-03.jpg", "images/w433/gallery-04.jpg", "images/w433/gallery-05.jpg", "images/w433/gallery-06.jpg", "images/w433/gallery-07.jpg", "images/w433/gallery-08.jpg", "images/w433/gallery-09.jpg", "images/w433/gallery-10.jpg", "images/w433/gallery-11.jpg", "images/w433/gallery-12.jpg"], "w11": ["images/w11/cover.jpg", "images/w11/gallery-01.jpg", "images/w11/gallery-02.jpg"], "hongxin": ["images/hongxin/cover.jpg", "images/hongxin/gallery-01.jpg", "images/hongxin/gallery-02.jpg", "images/hongxin/gallery-03.jpg", "images/hongxin/gallery-04.jpg", "images/hongxin/gallery-05.jpg"], "yisen": ["images/yisen/cover.jpg", "images/yisen/gallery-01.jpg", "images/yisen/gallery-02.jpg", "images/yisen/gallery-03.jpg"]};
+    const GAL = {"erp07": ["images/20261109/gallery-01.jpg"], "travel": ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg", "images/visual-travel/07.jpg", "images/visual-travel/08.jpg", "images/visual-travel/09.jpg", "images/visual-travel/10.jpg", "images/visual-travel/11.jpg"], "kv": ["images/visual-ecom/01.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/12.jpg"], "dm": ["images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg"], "pkg": ["images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg"], "social": ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg", "images/visual-social/08.jpg", "images/visual-social/09.jpg", "images/visual-social/10.jpg", "images/visual-social/11.jpg", "images/visual-social/12.jpg", "images/visual-social/13.jpg"], "edm": ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"], "photo": ["images/photography/01.jpg", "images/photography/02.jpg", "images/photography/03.jpg", "images/photography/04.jpg", "images/photography/05.jpg", "images/photography/06.jpg"], "b2b": ["images/b2b/cover.jpg", "images/b2b/gallery-01.jpg"], "agentexp": ["images/agentexp/cover.jpg", "images/agentexp/gallery-01.jpg", "images/agentexp/gallery-02.jpg", "images/agentexp/gallery-03.jpg", "images/agentexp/gallery-04.jpg", "images/agentexp/gallery-05.jpg", "images/agentexp/gallery-06.jpg", "images/agentexp/gallery-07.jpg"], "w433": ["images/w433/cover.jpg", "images/w433/gallery-01.jpg", "images/w433/gallery-02.jpg", "images/w433/gallery-03.jpg", "images/w433/gallery-04.jpg", "images/w433/gallery-05.jpg", "images/w433/gallery-06.jpg", "images/w433/gallery-07.jpg", "images/w433/gallery-08.jpg", "images/w433/gallery-09.jpg", "images/w433/gallery-10.jpg", "images/w433/gallery-11.jpg", "images/w433/gallery-12.jpg"], "w11": ["images/w11/cover.jpg", "images/w11/gallery-01.jpg", "images/w11/gallery-02.jpg"], "hongxin": ["images/hongxin/cover.jpg", "images/hongxin/gallery-01.jpg", "images/hongxin/gallery-02.jpg", "images/hongxin/gallery-03.jpg", "images/hongxin/gallery-04.jpg", "images/hongxin/gallery-05.jpg"], "yisen": ["images/yisen/cover.jpg", "images/yisen/gallery-01.jpg", "images/yisen/gallery-02.jpg", "images/yisen/gallery-03.jpg"]};
     let _g='', _i=0;
     function openGallery(key, idx){
       const a = GAL[key] || [];

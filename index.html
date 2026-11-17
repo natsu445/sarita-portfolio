@@ -1873,6 +1873,12 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, .1)
     }
 
+    .social-grid-img--wide {
+      grid-column: span 2;
+      aspect-ratio: auto;
+      height: 100%
+    }
+
     @media(max-width:600px) {
       .social-grid {
         grid-template-columns: repeat(2, 1fr)
@@ -1980,6 +1986,27 @@
     @media (max-width: 640px) {
       .ds-type-row { grid-template-columns: 1fr; gap: .5rem; }
     }
+
+    /* ── 作品集版本切換（index / index_visual / index_art 共用同一組結構與標籤） ── */
+    footer { flex-wrap: wrap; row-gap: 1.5rem }
+    .footer-versions { flex: 1 0 100%; order: -1; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .6rem 1rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, .06) }
+    .version-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, .35) }
+    .version-switch { display: inline-flex; border: 1px solid rgba(255, 255, 255, .14); border-radius: 40px; overflow: hidden }
+    .version-switch a { padding: .5rem 1.15rem; font-size: 13px; letter-spacing: .04em; white-space: nowrap; color: rgba(255, 255, 255, .55); border-right: 1px solid rgba(255, 255, 255, .14); transition: color .2s, background .2s }
+    .version-switch a:last-child { border-right: 0 }
+    .version-switch a:hover { color: var(--g) }
+    .version-switch a[aria-current="page"] { background: var(--g); color: #fff; pointer-events: none }
+    @media(max-width:580px) {
+      footer { row-gap: .6rem }
+      .footer-versions { flex: none; width: 100%; margin-bottom: .9rem }
+      .version-switch a { padding: .5rem .75rem; font-size: 12px }
+    }
+    @media(max-width:420px) {
+      .version-switch { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100% ; max-width: 300px }
+      .version-switch a { text-align: center; border-right: 1px solid rgba(255, 255, 255, .14) }
+      .version-switch a:nth-child(2n) { border-right: 0 }
+      .version-switch a:nth-child(-n+2) { border-bottom: 1px solid rgba(255, 255, 255, .14) }
+    }
 </style>
 </head>
 
@@ -2065,6 +2092,24 @@
         <button class="filter-btn" onclick="filterWorks('ecom',this)">電商 / 品牌</button>
       </div>
       <div class="works-grid" id="worksGrid">
+        <div class="work-card reveal" data-cat="web" onclick="openModal('erp07')">
+          <div class="work-thumb t-navy"
+            style="background-image:url(images/20261109/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">Read Case Study</span><span
+                class="work-overlay-sub">點擊查看完整介紹</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Landing Page / AI 協作</div>
+            <div class="work-title">鼎新 ERP 選型推廣頁 — 依企業規模找到起點</div>
+            <div class="work-desc">把四條 ERP 產品線依企業規模與營運型態分流，搭配成長路徑與實證數據，讓決策者先找到起點、再預約諮詢；與 AI 協作完成設計到切版。</div>
+            <div class="ux-tags"><span class="ux-tag">選型分流</span><span class="ux-tag">資訊架構</span><span class="ux-tag">AI 協作</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span class="work-tool">Claude</span></div>
+              <span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+
 
         <div class="work-card reveal" data-cat="web" onclick="openModal('b2b')">
           <div class="work-thumb t-olive"
@@ -2374,6 +2419,12 @@
             <img class="social-grid-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
             <img class="social-grid-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
             <img class="social-grid-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
+            <img class="social-grid-img" src="images/visual-social/08.jpg" alt="能源管理 × 碳盤查 CBAM 1" onclick="openVisualLightbox('social',7)" loading="lazy"/>
+            <img class="social-grid-img" src="images/visual-social/09.jpg" alt="能源管理 × 碳盤查 CBAM 2" onclick="openVisualLightbox('social',8)" loading="lazy"/>
+            <img class="social-grid-img" src="images/visual-social/10.jpg" alt="能源管理 × 碳盤查 CBAM 3" onclick="openVisualLightbox('social',9)" loading="lazy"/>
+            <img class="social-grid-img" src="images/visual-social/11.jpg" alt="中小型醫材代理 1" onclick="openVisualLightbox('social',10)" loading="lazy"/>
+            <img class="social-grid-img" src="images/visual-social/12.jpg" alt="中小型醫材代理 2" onclick="openVisualLightbox('social',11)" loading="lazy"/>
+            <img class="social-grid-img social-grid-img--wide" src="images/visual-social/13.jpg" alt="AI 實作體驗課程橫幅" onclick="openVisualLightbox('social',12)" loading="lazy"/>
           </div>
         </div>
 
@@ -2565,13 +2616,20 @@
   </section>
 
   <footer>
+    <div class="footer-versions" role="navigation" aria-label="作品集版本">
+      <span class="version-label">Portfolio</span>
+      <div class="version-switch">
+        <a href="index.html" data-en="UI/UX + Graphic" aria-current="page">UI/UX＋平面</a>
+        <a href="index_ux.html" data-en="UI/UX">UI/UX</a>
+        <a href="index_visual.html" data-en="Graphic Design">平面設計</a>
+        <a href="index_art.html" data-en="Art &amp; Curation">藝文策展</a>
+      </div>
+    </div>
     <div class="footer-sig">
       <div class="footer-dot"></div><span>2026 Sarita · Design</span>
     </div>
     <span>UI/UX Designer &amp; Visual Designer · Taiwan</span>
     <div class="footer-links">
-      <a href="index_ux.html" class="footer-more-ux" title="UIUX 作品集">●</a>
-      <a href="index_art.html" class="footer-more-art">藝文</a>
       <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download class="footer-resume-link">履歷下載</a>
       <a href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
     </div>
@@ -2609,6 +2667,9 @@
 
   <script>
     const projectGallery = {
+      erp07: [
+        "images/20261109/gallery-01.jpg"
+      ],
       esg: [
         'images/esg/01.jpg',
         'images/esg/02.jpg',
@@ -2691,6 +2752,55 @@
     };
 
     const projects = {
+      erp07: {
+        "cat": "Landing Page / AI 協作",
+        "title": "鼎新 ERP 選型推廣頁 — 依企業規模找到起點",
+        "thumb": "t-navy",
+        "year": "2026",
+        "tools": [
+          "Figma",
+          "VS Code",
+          "Claude"
+        ],
+        "live": "https://www.digiwin.com.tw/dsc/marketing/WB004093/07/index.html",
+        "sections": [
+          {
+            "title": "這一頁要解決什麼",
+            "text": "這是鼎新 ERP 的廣告導流頁（WB004093 登陸頁系列之一），對象是正在評估 ERP 的企業決策者。鼎新 ERP 有 SmartERP、Workflow ERP、Cosmos ERP、T100 四條產品線，對還不熟悉的人來說，進來的第一個問題往往是「我該看哪一套？」。所以這頁的任務很單純：讓使用者用最短的時間找到適合自己的起點，並且願意留下來預約顧問諮詢。"
+          },
+          {
+            "title": "我的問題診斷",
+            "points": [
+              "產品線名稱對使用者沒有意義：SmartERP、Workflow、Cosmos、T100 是內部語言，使用者無法從名字判斷哪一套跟自己有關。",
+              "只講功能、不講情境：功能清單看起來每套都差不多，缺少「你現在遇到什麼問題」的對號入座點。",
+              "擔心選錯、長大要換：評估 ERP 的人最怕公司成長後整套系統要重來，這個顧慮需要被正面回答。",
+              "信任需要證據：B2B 決策成本高，光說「我們很懂產業」不夠，需要數字與客戶案例撐腰。"
+            ]
+          },
+          {
+            "title": "資訊架構：照決策順序排",
+            "text": "整頁依照決策者的思考順序排列：先選型（我是哪一種公司）→ 擴充系統（之後長大怎麼辦）→ 行業（懂不懂我的產業）→ 案例（別人做出什麼成果）→ 導入方式（實際要怎麼進行）→ 常見問題。頂部導覽錨點直接對應這幾個問題，讓使用者可以跳到自己最在意的段落，而不是被迫從頭讀到尾。"
+          },
+          {
+            "title": "幾個關鍵的設計決策",
+            "points": [
+              "方案卡以「情境」開頭：四張方案卡先寫「您可能正遇到⋯⋯」（例如 Excel 重複作業跟不上接單量、門市與電商庫存不同步），再標註適用規模與產品名稱，讓使用者先對號入座，再認識產品。",
+              "替猶豫的人留一條路：方案卡下方放「還不確定哪一套適合？」的諮詢入口，並給小型團隊一個 A1 商務應用雲線上試用的出口，不讓任何一種使用者卡在選型這一步。",
+              "用對照回答「長大要不要換」：擴充系統區塊先對照「各自找系統」與「鼎新的做法」，再用 01–04 成長階段卡（起步 → 成長 → 擴廠與多據點 → 跨公司經營）說明每個階段的管理卡點與可串接的系統。",
+              "把實證數字做成視覺錨點：顧問人數、服務企業數、77% 公開發行企業覆蓋率改用大數字與圓環圖呈現，客戶案例則以成效數字開頭，讓證據可以被掃描到。",
+              "FAQ 收斂在頁尾：把費用、時間、資料移轉、資安、日後擴充等最後一哩的疑慮集中回答，並加上結構化資料，兼顧 SEO。"
+            ]
+          },
+          {
+            "title": "與 AI 協作的方式",
+            "text": "這頁是我搭配 AI 完成的：版面配置、資訊層級與視覺規範由我決定，HTML／CSS 切版借助 Claude 產出，再由我逐段檢查與調整，包含 RWD 斷點、圖片轉成 WebP 並縮到實際顯示尺寸、SEO 標記等細節。AI 讓我把時間從手工切版移到真正需要判斷的地方：內容怎麼排、使用者會在哪裡卡住。"
+          },
+          {
+            "title": "核心原則：先回答「我該看哪一套」",
+            "highlight": "產品介紹頁很容易變成功能型錄，但使用者帶著的是一個問題，不是一份規格需求。這一頁的每個區塊都在回答決策過程中的下一個疑問：我是哪一種公司、之後長大怎麼辦、你們懂不懂我的產業、別人成效如何、實際要怎麼開始。問題被依序回答了，預約諮詢才會是自然的下一步。"
+          }
+        ]
+      },
       esg: {
         cat: 'Web / Landing Page', title: 'ESG 永續數據館 — 高密度內容的網頁化重構', thumb: 't-moss', year: '2026', tools: ['Figma', 'VS Code', 'Claude'], live: 'https://www.digiwin.com.tw/dsc/project/ESG/data-hub/',
         sections: [
@@ -2888,6 +2998,7 @@
     // Before/After config: { beforeCount: N } means first N = before, rest = after
     // beforeCount: 0 = no split, show as "Design"
     const imgConfig = {
+      erp07:     { beforeCount: 0 },
       agentexp:   { beforeCount: 3 },   // gallery-01~03=before (PDF screens), 04~06=after (live site)
       w11:        { beforeCount: 1 },   // gallery-01=before, gallery-02=after
       w433:       { beforeCount: 6 },   // gallery-01~06=before, 07~12=after
@@ -3298,7 +3409,7 @@
     // Visual section lightbox
     const visualGallery = {
       travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg", "images/visual-travel/07.jpg", "images/visual-travel/08.jpg", "images/visual-travel/09.jpg", "images/visual-travel/10.jpg", "images/visual-travel/11.jpg"],
-      social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg"],
+      social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg", "images/visual-social/08.jpg", "images/visual-social/09.jpg", "images/visual-social/10.jpg", "images/visual-social/11.jpg", "images/visual-social/12.jpg", "images/visual-social/13.jpg"],
       edm:    ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"],
       ecom:   ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
     };
@@ -3362,6 +3473,7 @@
 // LANGUAGE SWITCHER
 // ══════════════════════════════════════
 const projectsEN = {
+  erp07: {"cat":"Landing Page / AI Collaboration","title":"Digiwin ERP Selection Landing Page — Start From Your Company Size","live":"https://www.digiwin.com.tw/dsc/marketing/WB004093/07/index.html","sections":[{"title":"What This Page Needed to Solve","text":"This is an ad landing page for Digiwin ERP (part of the WB004093 landing page series), aimed at business decision-makers evaluating ERP. Digiwin offers four product lines — SmartERP, Workflow ERP, Cosmos ERP and T100 — and for newcomers the first question is usually \"which one should I look at?\" The page's job is simple: help visitors find their starting point as fast as possible, and make booking a consultation the natural next step."},{"title":"My Problem Diagnosis","points":["Product names mean nothing to users: SmartERP, Workflow, Cosmos and T100 are internal language — visitors can't tell which one is relevant to them.","Features without context: feature lists look alike across products; there was no \"this is the problem you have\" moment for users to recognize themselves.","Fear of outgrowing the system: the biggest worry in ERP evaluation is having to replace everything as the company grows — that concern had to be answered head-on.","Trust needs evidence: B2B decisions are expensive; \"we know your industry\" isn't enough without numbers and customer cases."]},{"title":"Information Architecture: Follow the Decision Order","text":"The page follows how a decision-maker thinks: selection (what kind of company am I) → expansion (what happens when we grow) → industries (do you understand my industry) → cases (what results did others get) → implementation (how does it actually work) → FAQ. The top navigation anchors map directly to these questions, so users can jump to what matters to them."},{"title":"Key Design Decisions","points":["Plan cards lead with a scenario: each of the four cards opens with \"You may be facing…\" (e.g. Excel can't keep up with orders, store and e-commerce inventory out of sync) before naming the company size and product.","A path for the undecided: a \"Not sure which fits?\" consultation entry sits below the cards, plus an A1 cloud free-trial exit for small teams — no one gets stuck at the selection step.","Answering \"will we outgrow it\" with a comparison: the expansion section contrasts \"a separate system for every need\" with Digiwin's approach, then uses 01–04 growth-stage cards (start → growth → multi-site → multi-company) to show each stage's pain points and connectable systems.","Proof as visual anchors: consultant headcount, customer count and 77% public-company coverage are shown as large numbers and a ring chart; customer cases lead with their result metrics.","FAQ at the end: cost, timeline, data migration, security and future expansion are answered in one place, with structured data for SEO."]},{"title":"How I Worked With AI","text":"I built this page in collaboration with AI: layout, information hierarchy and visual rules were my decisions; HTML/CSS was generated with Claude, then reviewed and refined by me section by section — responsive breakpoints, WebP images resized to their display size, and SEO markup. AI moved my time away from hand-coding toward the parts that need judgment: how content is ordered and where users get stuck."},{"title":"Core Principle: Answer \"Which One Is Mine\" First","highlight":"Product pages easily turn into feature catalogs, but visitors arrive with a question, not a spec sheet. Every section here answers the next question in the decision: what kind of company am I, what happens when we grow, do you know my industry, what results did others get, how do we start. Once those are answered in order, booking a consultation becomes the natural next step."}]},
   agentexp: {cat:"Web Redesign / Experience",title:"Website Redesign — AI Agent Experience Center",
     live:"https://agent-exp.apps.digiwincloud.com/",
     figma:"https://www.figma.com/design/6Zn5XVhEcfy1YfgJzC4e7E/%E9%BC%8E%E6%96%B0-Agent-%E9%AB%94%E9%A9%97%E4%B8%AD%E5%BF%83?node-id=0-1&p=f&t=0VNhZCUwxBrlK9Kq-0",
@@ -3482,7 +3594,7 @@ const uiEN = {
   hero: {"eyebrow": "✦ UI/UX Designer & Visual Designer", "name_line1": "Hello,", "name_line2": "I'm <em>Sarita</em>", "role": "Design is the process of solving problems.", "bio": "<strong>7 years in design, with close to 3 years focused on UI/UX.</strong><br/><br/>Experienced across industrial HMI, B2B SaaS, e-commerce, and brand design. Skilled in translating complex requirements into intuitive, well-grounded design decisions.", "quote": "\"Behind every interface is a whole journey walked with the user.\"", "cta1": "View My Work", "chips": ["User Research", "Information Architecture", "Prototype", "Design System"], "stat_labels": ["Years UIUX", "Years Visual", "Projects", "Curiosity"], "tags": ["HMI Interface", "Design System", "RWD Web", "B2B / B2C", "User Research", "Prototyping"]},
   sections: {"works_num": "01", "works_title": "UI/UX Design Works", "visual_num": "02", "visual_title": "Visual Design", "skills_num": "03", "skills_title": "Skills & Tools"},
   filters: ["All", "Industrial HMI", "Web Design", "E-Commerce / Brand"],
-  cards: {"agentexp": {"cat": "Web Redesign / Experience", "title": "Website Redesign — AI Agent Experience Center", "desc": "Diagnosed user drop-off, restructured 5-step journey flow. Design to deliverable HTML in 3 days — letting the immersive AI experience actually get completed.", "ux_tags": ["Flow Optimization", "User Guidance", "Rapid Delivery"]}, "w11": {"cat": "Industrial HMI", "title": "China Steel W11 Production Info System HMI", "desc": "Field visit to factory floor. Cross-generational design strategy for both veterans and newcomers — aligning digital UI with physical space.", "ux_tags": ["Field Research", "Cross-gen Design", "IA Restructure"]}, "w433": {"cat": "Industrial HMI", "title": "China Steel W433 Spheroidizing Plant HMI", "desc": "30-year-old system redesign. Rebuilt visual hierarchy without breaking muscle memory — making alerts visible again.", "ux_tags": ["User Interview", "Progressive Enhancement", "Visual Hierarchy"]}, "w1": {"cat": "Smart Factory", "title": "W1 In-Plant Transport Smart Factory Platform", "desc": "HMI to Web migration. On-site photography integrated into UI — from numbered lists to visual map navigation.", "ux_tags": ["Field Research", "Information Architecture", "Modularization"]}, "csc": {"cat": "Web App / GIS", "title": "China Steel CSC Campus Street Map", "desc": "Internal-network GIS navigation. Dual-mode toggle + color-coded zones — helping workers build spatial memory before heading out.", "ux_tags": ["GIS Design", "Color System", "Component Spec"]}, "b2b": {"cat": "B2B Website", "title": "Website Restructure — Data-Driven B2B Architecture", "desc": "GA4 data audit + task-oriented grid. Core products surfaced from L3 depth. Full conversion funnel restructured.", "ux_tags": ["Data Audit", "Task-Oriented IA", "AI Integration"]}, "landing": {"cat": "Landing Page", "title": "Jiuxiangzhi Partner Marketing Landing Page", "desc": "Conversion-first design for SME decision-makers. Concise headline + clear CTA strategy to shorten the decision path.", "ux_tags": ["Conversion Optimization", "Content Reduction", "CTA Strategy"]}, "calculator": {"cat": "Web Tool / Lead Gen", "title": "Profit Calculator", "desc": "Tariff-impact margin calculator tool. Teaser design + Lead Gen mechanism to lower ERP entry barrier.", "ux_tags": ["Lead Gen", "Teaser Design", "Interactive Feedback"]}, "survey": {"cat": "Web Form / Lead Gen", "title": "Tariff Risk Assessment Survey", "desc": "5-stage progress indicator to reduce drop-off. Gutenberg layout for data comparison. Star rating resolves semantic ambiguity.", "ux_tags": ["Progress Design", "Data Visualization", "Mental Model"]}, "y26": {"cat": "Recruitment", "title": "Y26 Recruitment Website Redesign", "desc": "Removed external links to stop traffic leakage. Color-coded job tracks for 5 roles. Modular build for easier PM maintenance.", "ux_tags": ["Color Coding", "Conversion Rate", "Modular Design"]}, "hongxin": {"cat": "E-Commerce", "title": "Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce", "desc": "Restructured classification for a multi-brand storefront — product type first, brands nested underneath, plus component and state specs.", "ux_tags": ["Information Architecture", "Component Specs", "Cross-team Collaboration"]}, "yisen": {"cat": "Brand + UIUX", "title": "Yisen Frozen Food — Yiran Brand Design", "desc": "New natural food brand built from 0→1. SEO-first IA + flat navigation. Mobile First design for an additive-free brand identity.", "ux_tags": ["SEO Architecture", "Brand Building", "Mobile First"]}, "dingxin": {"cat": "Web Redesign", "title": "Digiwin Website — About Us Page Redesign", "desc": "Claude + Figma + VS Code collaboration. AI-assisted design-to-development workflow. Corporate identity modernization.", "ux_tags": ["AI Collaboration", "Design-to-Dev", "Brand Identity"]}},
+  cards: {"erp07": {"cat":"Landing Page / AI Collaboration","title":"Digiwin ERP Selection Landing Page — Start From Your Company Size","desc":"Routes four ERP product lines by company size and business model, backed by a growth path and proof points — so decision-makers find their starting point before booking a consultation. Designed and built with AI collaboration.","ux_tags":["Selection Routing","Information Architecture","AI Collaboration"]}, "agentexp": {"cat": "Web Redesign / Experience", "title": "Website Redesign — AI Agent Experience Center", "desc": "Diagnosed user drop-off, restructured 5-step journey flow. Design to deliverable HTML in 3 days — letting the immersive AI experience actually get completed.", "ux_tags": ["Flow Optimization", "User Guidance", "Rapid Delivery"]}, "w11": {"cat": "Industrial HMI", "title": "China Steel W11 Production Info System HMI", "desc": "Field visit to factory floor. Cross-generational design strategy for both veterans and newcomers — aligning digital UI with physical space.", "ux_tags": ["Field Research", "Cross-gen Design", "IA Restructure"]}, "w433": {"cat": "Industrial HMI", "title": "China Steel W433 Spheroidizing Plant HMI", "desc": "30-year-old system redesign. Rebuilt visual hierarchy without breaking muscle memory — making alerts visible again.", "ux_tags": ["User Interview", "Progressive Enhancement", "Visual Hierarchy"]}, "w1": {"cat": "Smart Factory", "title": "W1 In-Plant Transport Smart Factory Platform", "desc": "HMI to Web migration. On-site photography integrated into UI — from numbered lists to visual map navigation.", "ux_tags": ["Field Research", "Information Architecture", "Modularization"]}, "csc": {"cat": "Web App / GIS", "title": "China Steel CSC Campus Street Map", "desc": "Internal-network GIS navigation. Dual-mode toggle + color-coded zones — helping workers build spatial memory before heading out.", "ux_tags": ["GIS Design", "Color System", "Component Spec"]}, "b2b": {"cat": "B2B Website", "title": "Website Restructure — Data-Driven B2B Architecture", "desc": "GA4 data audit + task-oriented grid. Core products surfaced from L3 depth. Full conversion funnel restructured.", "ux_tags": ["Data Audit", "Task-Oriented IA", "AI Integration"]}, "landing": {"cat": "Landing Page", "title": "Jiuxiangzhi Partner Marketing Landing Page", "desc": "Conversion-first design for SME decision-makers. Concise headline + clear CTA strategy to shorten the decision path.", "ux_tags": ["Conversion Optimization", "Content Reduction", "CTA Strategy"]}, "calculator": {"cat": "Web Tool / Lead Gen", "title": "Profit Calculator", "desc": "Tariff-impact margin calculator tool. Teaser design + Lead Gen mechanism to lower ERP entry barrier.", "ux_tags": ["Lead Gen", "Teaser Design", "Interactive Feedback"]}, "survey": {"cat": "Web Form / Lead Gen", "title": "Tariff Risk Assessment Survey", "desc": "5-stage progress indicator to reduce drop-off. Gutenberg layout for data comparison. Star rating resolves semantic ambiguity.", "ux_tags": ["Progress Design", "Data Visualization", "Mental Model"]}, "y26": {"cat": "Recruitment", "title": "Y26 Recruitment Website Redesign", "desc": "Removed external links to stop traffic leakage. Color-coded job tracks for 5 roles. Modular build for easier PM maintenance.", "ux_tags": ["Color Coding", "Conversion Rate", "Modular Design"]}, "hongxin": {"cat": "E-Commerce", "title": "Hongxin Bio-Medical — Multi-Brand Beauty E-Commerce", "desc": "Restructured classification for a multi-brand storefront — product type first, brands nested underneath, plus component and state specs.", "ux_tags": ["Information Architecture", "Component Specs", "Cross-team Collaboration"]}, "yisen": {"cat": "Brand + UIUX", "title": "Yisen Frozen Food — Yiran Brand Design", "desc": "New natural food brand built from 0→1. SEO-first IA + flat navigation. Mobile First design for an additive-free brand identity.", "ux_tags": ["SEO Architecture", "Brand Building", "Mobile First"]}, "dingxin": {"cat": "Web Redesign", "title": "Digiwin Website — About Us Page Redesign", "desc": "Claude + Figma + VS Code collaboration. AI-assisted design-to-development workflow. Corporate identity modernization.", "ux_tags": ["AI Collaboration", "Design-to-Dev", "Brand Identity"]}},
   visual_labels: {"travel": "Travel", "social": "Social Media Graphics", "edm": "EDM", "ecom": "E-Commerce / Retail / Packaging"},
   skills: {"design_label": "Design Process", "design_items": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"], "tools_label": "Tools", "tools_items": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"], "collab_label": "Collaboration", "collab_items": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"], "tools_section_label": "Design Tools"},
   about: {"eyebrow": "About Me", "heading_line1": "Rooted in graphic design,", "heading_em": "growing into UX.", "text": "7 years of graphic design foundation, with close to 3 years of hands-on digital product design after transitioning into UI/UX. Experienced across industrial HMI, B2B SaaS, and e-commerce brand design — familiar with the full flow from user research and IA planning to Design System delivery.<br/><br/>Comfortable working alongside PMs and engineers, translating complex requirements into intuitive, implementable design. Proficient in HTML/CSS, bridging the gap between design and development.", "skill_groups": [{"label": "Design Process", "tags": ["User Research", "Information Architecture", "Wireframe", "Prototype", "Design System"]}, {"label": "Tools", "tags": ["Figma", "Illustrator", "Photoshop", "HTML/CSS"]}, {"label": "Collaboration", "tags": ["Cross-team Communication", "PM Collaboration", "Dev Handoff"]}]},
@@ -3532,7 +3644,7 @@ function applyEN() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   u.filters.forEach((f,i) => { if(filterBtns[i]) filterBtns[i].textContent = f; });
   // Work cards
-  const pids = ['agentexp','w11','w433','w1','csc','b2b','landing','calculator','survey','y26','hongxin','yisen','dingxin'];
+  const pids = ['erp07','agentexp','w11','w433','w1','csc','b2b','landing','calculator','survey','y26','hongxin','yisen','dingxin'];
   pids.forEach(pid => {
     const card = document.querySelector(`[onclick="openModal('${pid}')"]`);
     if (!card || !u.cards[pid]) return;
@@ -3605,7 +3717,7 @@ function applyEN() {
   document.querySelector('.disclaimer').textContent = u.footer.disclaimer;
   const resumeLink = document.querySelector('.footer-resume-link'); if(resumeLink) resumeLink.textContent = u.footer.resume_label;
   const moreUx = document.querySelector('.footer-more-ux'); if(moreUx) moreUx.textContent = u.footer.more_ux;
-  const moreArt = document.querySelector('.footer-more-art'); if(moreArt) moreArt.textContent = u.footer.more_art;
+  document.querySelectorAll('.version-switch a[data-en]').forEach(a => { a.textContent = a.dataset.en; });
   // Nav logo
   document.querySelector('.nav-logo').innerHTML = 'Sarita<span>.</span>';
   // Hero CTA

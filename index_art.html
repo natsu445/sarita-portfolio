@@ -345,6 +345,23 @@
   .foot .disc{margin-top:1.2rem;font-size:.76rem;color:var(--ink-faint);opacity:.75;max-width:40em;
     margin-left:auto;margin-right:auto;line-height:1.8}
 
+  /* ── 作品集版本切換（與 index / index_visual 同結構、同標籤，配色沿用本頁） ── */
+  .footer-versions{margin-top:2.2rem;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.6rem 1rem}
+  .version-label{font-family:var(--serif-lat);font-style:italic;font-size:.82rem;letter-spacing:.08em;color:var(--ink-faint)}
+  .version-switch{display:inline-flex;border:1px solid var(--line);border-radius:40px;overflow:hidden}
+  .version-switch a{padding:.5rem 1.15rem;font-size:.82rem;letter-spacing:.04em;white-space:nowrap;color:var(--ink-soft);
+    text-decoration:none;border-right:1px solid var(--line);transition:color .3s,background .3s}
+  .version-switch a:last-child{border-right:0}
+  .version-switch a:hover{color:var(--seal)}
+  .version-switch a[aria-current="page"]{background:var(--seal);color:#fff;pointer-events:none}
+  @media(max-width:480px){.version-switch a{padding:.5rem .75rem;font-size:.76rem}}
+  @media(max-width:420px){
+    .version-switch{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;width:100%;max-width:300px}
+    .version-switch a{text-align:center;border-right:1px solid var(--line)}
+    .version-switch a:nth-child(2n){border-right:0}
+    .version-switch a:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  }
+
   /* ── Lightbox ── */
   .lb{position:fixed;inset:0;z-index:500;background:rgba(18,17,14,.94);
     display:none;align-items:center;justify-content:center;padding:2.5rem;cursor:zoom-out}
@@ -629,8 +646,15 @@
   </p>
   <div class="more-links">
     <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download>履歷下載</a>
-    <a href="index.html">平面視覺</a>
-    <a href="index_ux.html">UIUX</a>
+  </div>
+  <div class="footer-versions" role="navigation" aria-label="作品集版本">
+    <span class="version-label">Portfolio</span>
+    <div class="version-switch">
+      <a href="index.html" data-en="UI/UX + Graphic">UI/UX＋平面</a>
+      <a href="index_ux.html" data-en="UI/UX">UI/UX</a>
+      <a href="index_visual.html" data-en="Graphic Design">平面設計</a>
+      <a href="index_art.html" data-en="Art &amp; Curation" aria-current="page">藝文策展</a>
+    </div>
   </div>
   <p class="disc">本作品集內容及圖片僅供設計交流參考，部分專案素材之權利歸屬原委託公司所有。</p>
 </section>
