@@ -356,10 +356,9 @@
   .version-switch a[aria-current="page"]{background:var(--seal);color:#fff;pointer-events:none}
   @media(max-width:480px){.version-switch a{padding:.5rem .75rem;font-size:.76rem}}
   @media(max-width:420px){
-    .version-switch{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;width:100%;max-width:300px}
+    .version-switch{display:grid;grid-template-columns:repeat(3,1fr);border-radius:16px;width:100%;max-width:340px}
     .version-switch a{text-align:center;border-right:1px solid var(--line)}
-    .version-switch a:nth-child(2n){border-right:0}
-    .version-switch a:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .version-switch a:last-child{border-right:0}
   }
 
   /* ── Lightbox ── */
@@ -570,7 +569,7 @@
         或替品牌建立可維護的視覺規範。這是多數視覺工作者較少具備的一面。
       </p>
     </div>
-    <a class="bridge-cta" href="index.html">
+    <a class="bridge-cta" href="index_ux.html">
       看數位作品集<span class="lat">UI / UX →</span>
     </a>
   </div>
@@ -650,7 +649,6 @@
   <div class="footer-versions" role="navigation" aria-label="作品集版本">
     <span class="version-label">Portfolio</span>
     <div class="version-switch">
-      <a href="index.html" data-en="UI/UX + Graphic">UI/UX＋平面</a>
       <a href="index_ux.html" data-en="UI/UX">UI/UX</a>
       <a href="index_visual.html" data-en="Graphic Design">平面設計</a>
       <a href="index_art.html" data-en="Art &amp; Curation" aria-current="page">藝文策展</a>

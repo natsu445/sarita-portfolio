@@ -1760,6 +1760,13 @@
     }
 
     /* ── VISUAL DESIGN GALLERY ── */
+    /* Visual teaser → index_visual.html */
+    .section-note { max-width: 62ch; margin: 1.3rem 0 .4rem; color: var(--ink2); font-size: 1rem; line-height: 1.95 }
+    #visual .works-grid { margin-top: 2rem }
+    .uxcta { display: flex; justify-content: center; margin-top: 2.6rem }
+    .uxcta a { font-family: var(--mono); font-size: .82rem; color: var(--g-dark); text-decoration: none; border: 1px solid var(--border); padding: .8rem 1.6rem; border-radius: 40px; background: var(--bg); transition: border-color .3s, color .3s }
+    .uxcta a:hover { border-color: var(--g); color: var(--g) }
+
     .visual-section-wrap {
       margin-bottom: 2.5rem
     }
@@ -1944,10 +1951,9 @@
       .version-switch a { padding: .5rem .75rem; font-size: 12px }
     }
     @media(max-width:420px) {
-      .version-switch { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100% ; max-width: 300px }
+      .version-switch { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 16px; width: 100% ; max-width: 340px }
       .version-switch a { text-align: center; border-right: 1px solid rgba(255, 255, 255, .14) }
-      .version-switch a:nth-child(2n) { border-right: 0 }
-      .version-switch a:nth-child(-n+2) { border-bottom: 1px solid rgba(255, 255, 255, .14) }
+      .version-switch a:last-child { border-right: 0 }
     }
 </style>
 </head>
@@ -2346,75 +2352,53 @@
 
   <section id="visual" style="background:var(--card);">
     <div class="section-inner">
-
-      <div class="section-header reveal" style="cursor:pointer;user-select:none;" onclick="toggleVisual()">
+      <div class="section-header reveal">
         <span class="section-num">02</span>
         <h2 class="section-title">Visual Design</h2>
         <div class="section-line"></div>
-        <span id="visual-toggle-icon" style="font-family:var(--mono);font-size:14px;color:var(--ink3);letter-spacing:.06em;margin-left:1rem;white-space:nowrap;flex-shrink:0;">展開 ▾</span>
       </div>
-
-      <div id="visual-content" style="display:none;overflow:hidden;">
-
-        <div class="visual-section-wrap">
-          <div class="visual-section-label">Travel</div>
-          <div class="visual-masonry">
-            <img class="visual-masonry-img" src="images/visual-travel/01.jpg" alt="Travel 1" onclick="openVisualLightbox('travel',0)" loading="lazy"/>
-            <img class="visual-masonry-img" src="images/visual-travel/02.jpg" alt="Travel 2" onclick="openVisualLightbox('travel',1)" loading="lazy"/>
-            <img class="visual-masonry-img" src="images/visual-travel/03.jpg" alt="Travel 3" onclick="openVisualLightbox('travel',2)" loading="lazy"/>
-            <img class="visual-masonry-img" src="images/visual-travel/04.jpg" alt="Travel 4" onclick="openVisualLightbox('travel',3)" loading="lazy"/>
-            <img class="visual-masonry-img" src="images/visual-travel/05.jpg" alt="Travel 5" onclick="openVisualLightbox('travel',4)" loading="lazy"/>
-            <img class="visual-masonry-img" src="images/visual-travel/06.jpg" alt="Travel 6" onclick="openVisualLightbox('travel',5)" loading="lazy"/>
+      <p class="section-note reveal" data-en="Before UI/UX, my roots are in print and graphic design — catalog layout, key visuals, social graphics and packaging prepress. Here are a few highlights; the full collection lives in the Graphic Design portfolio.">在 UI/UX 之前，我的根是平面美編——刊物型錄排版、主視覺、社群圖文與包裝印前。這裡精選幾件，完整作品收錄於平面設計版作品集。</p>
+      <div class="works-grid">
+        <a class="work-card reveal" href="index_visual.html#g=catalog" style="text-decoration:none;color:inherit;">
+          <div class="work-thumb t-warm" style="background-image:url(images/visual-travel/03.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text" data-en="View in Graphic Portfolio">前往平面作品集</span><span class="work-overlay-sub" data-en="Opens index_visual">點擊查看完整圖庫</span></div></div>
+          <div class="work-body">
+            <div class="work-cat">Editorial / Catalog</div>
+            <div class="work-title" data-en="Multi-page Editorial — Travel Catalog">多頁刊物排版 — 旅遊行程型錄</div>
+            <div class="work-desc" data-en="Grid and information hierarchy across covers, inner pages and spreads.">封面、內頁與跨頁的網格與資訊分層，整合主視覺、景點、行程與地圖。</div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Illustrator</span><span class="work-tool">Photoshop</span></div>
+              <span class="work-year">2018–2020</span>
+            </div>
           </div>
-        </div>
-
-        <div class="visual-section-wrap">
-          <div class="visual-section-label">社群圖文</div>
-          <div class="social-grid">
-            <img class="social-grid-img" src="images/visual-social/01.jpg" alt="社群圖文 1" onclick="openVisualLightbox('social',0)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/02.jpg" alt="社群圖文 2" onclick="openVisualLightbox('social',1)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/03.jpg" alt="社群圖文 3" onclick="openVisualLightbox('social',2)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/04.jpg" alt="社群圖文 4" onclick="openVisualLightbox('social',3)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/05.jpg" alt="社群圖文 5" onclick="openVisualLightbox('social',4)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/06.jpg" alt="社群圖文 6" onclick="openVisualLightbox('social',5)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/07.jpg" alt="社群圖文 7" onclick="openVisualLightbox('social',6)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/08.jpg" alt="能源管理 × 碳盤查 CBAM 1" onclick="openVisualLightbox('social',7)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/09.jpg" alt="能源管理 × 碳盤查 CBAM 2" onclick="openVisualLightbox('social',8)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/10.jpg" alt="能源管理 × 碳盤查 CBAM 3" onclick="openVisualLightbox('social',9)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/11.jpg" alt="中小型醫材代理 1" onclick="openVisualLightbox('social',10)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-social/12.jpg" alt="中小型醫材代理 2" onclick="openVisualLightbox('social',11)" loading="lazy"/>
-            <img class="social-grid-img social-grid-img--wide" src="images/visual-social/13.jpg" alt="AI 實作體驗課程橫幅" onclick="openVisualLightbox('social',12)" loading="lazy"/>
+        </a>
+        <a class="work-card reveal" href="index_visual.html#g=kv" style="text-decoration:none;color:inherit;">
+          <div class="work-thumb t-olive" style="background-image:url(images/visual-ecom/05.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text" data-en="View in Graphic Portfolio">前往平面作品集</span><span class="work-overlay-sub" data-en="Opens index_visual">點擊查看完整圖庫</span></div></div>
+          <div class="work-body">
+            <div class="work-cat">Key Visual</div>
+            <div class="work-title" data-en="Product Key Visuals — Campaign &amp; Brand KV">商品主視覺 — 檔期與品牌 KV</div>
+            <div class="work-desc" data-en="Campaign visuals built from product selling points, extended across site and social.">從商品賣點發展主視覺與檔期主題，建立可延展的版面語言。</div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Photoshop</span><span class="work-tool">Illustrator</span></div>
+              <span class="work-year">2022</span>
+            </div>
           </div>
-        </div>
-
-        <div class="visual-section-wrap">
-          <div class="visual-section-label">EDM</div>
-          <div class="social-grid">
-            <img class="social-grid-img" src="images/EDM/01.jpg" alt="EDM 1" onclick="openVisualLightbox('edm',0)" loading="lazy"/>
-            <img class="social-grid-img" src="images/EDM/02.png" alt="EDM 2" onclick="openVisualLightbox('edm',1)" loading="lazy"/>
-            <img class="social-grid-img" src="images/EDM/03.jpg" alt="EDM 3" onclick="openVisualLightbox('edm',2)" loading="lazy"/>
+        </a>
+        <a class="work-card reveal" href="index_visual.html#g=social" style="text-decoration:none;color:inherit;">
+          <div class="work-thumb t-forest" style="background-image:url(images/visual-social/01.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text" data-en="View in Graphic Portfolio">前往平面作品集</span><span class="work-overlay-sub" data-en="Opens index_visual">點擊查看完整圖庫</span></div></div>
+          <div class="work-body">
+            <div class="work-cat">Social</div>
+            <div class="work-title" data-en="Social Graphics — B2B Topic Series">社群圖文 — B2B 主題系列</div>
+            <div class="work-desc" data-en="Turning ERP / HR / ESG topics into clear social posts with a consistent template system.">把 ERP／人事／ESG 等硬議題轉成好懂的社群主圖，建立一致的版型與色彩系統。</div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Photoshop</span></div>
+              <span class="work-year">2025—</span>
+            </div>
           </div>
-        </div>
-
-        <div class="visual-section-wrap">
-          <div class="visual-section-label">電商行銷 / 門市布置 / 包裝印刷</div>
-          <div class="social-grid">
-            <img class="social-grid-img" src="images/visual-ecom/01.jpg" alt="電商 1" onclick="openVisualLightbox('ecom',0)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/02.jpg" alt="電商 2" onclick="openVisualLightbox('ecom',1)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/03.jpg" alt="電商 3" onclick="openVisualLightbox('ecom',2)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/04.jpg" alt="電商 4" onclick="openVisualLightbox('ecom',3)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/05.jpg" alt="電商 5" onclick="openVisualLightbox('ecom',4)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/06.jpg" alt="電商 6" onclick="openVisualLightbox('ecom',5)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/07.jpg" alt="電商 7" onclick="openVisualLightbox('ecom',6)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/08.jpg" alt="電商 8" onclick="openVisualLightbox('ecom',7)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/09.jpg" alt="電商 9" onclick="openVisualLightbox('ecom',8)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/10.jpg" alt="電商 10" onclick="openVisualLightbox('ecom',9)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/11.jpg" alt="電商 11" onclick="openVisualLightbox('ecom',10)" loading="lazy"/>
-            <img class="social-grid-img" src="images/visual-ecom/12.jpg" alt="電商 12" onclick="openVisualLightbox('ecom',11)" loading="lazy"/>
-          </div>
-        </div>
-
-      </div><!-- end visual-content -->
+        </a>
+      </div>
+      <div class="uxcta reveal">
+        <a href="index_visual.html#works-visual" data-en="See the full Graphic Design portfolio →">看完整平面設計作品 →</a>
+      </div>
     </div>
   </section>
 
@@ -2576,7 +2560,6 @@
     <div class="footer-versions" role="navigation" aria-label="作品集版本">
       <span class="version-label">Portfolio</span>
       <div class="version-switch">
-        <a href="index.html" data-en="UI/UX + Graphic">UI/UX＋平面</a>
         <a href="index_ux.html" data-en="UI/UX" aria-current="page">UI/UX</a>
         <a href="index_visual.html" data-en="Graphic Design">平面設計</a>
         <a href="index_art.html" data-en="Art &amp; Curation">藝文策展</a>
@@ -3339,56 +3322,6 @@
         : (currentLang === 'en' ? 'See More ▾' : '閱讀更多 ▾');
     }
 
-    // Visual section toggle
-    function toggleVisual() {
-      const content = document.getElementById('visual-content');
-      const icon = document.getElementById('visual-toggle-icon');
-      const isHidden = content.style.display === 'none';
-      content.style.display = isHidden ? 'block' : 'none';
-      if (currentLang === 'en') {
-        icon.textContent = isHidden ? 'Collapse ▴' : 'Expand ▾';
-      } else {
-        icon.textContent = isHidden ? '收起 ▴' : '展開 ▾';
-      }
-    }
-
-    // Visual section lightbox
-    const visualGallery = {
-      travel: ["images/visual-travel/01.jpg", "images/visual-travel/02.jpg", "images/visual-travel/03.jpg", "images/visual-travel/04.jpg", "images/visual-travel/05.jpg", "images/visual-travel/06.jpg", "images/visual-travel/07.jpg", "images/visual-travel/08.jpg", "images/visual-travel/09.jpg", "images/visual-travel/10.jpg", "images/visual-travel/11.jpg"],
-      social: ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg", "images/visual-social/08.jpg", "images/visual-social/09.jpg", "images/visual-social/10.jpg", "images/visual-social/11.jpg", "images/visual-social/12.jpg", "images/visual-social/13.jpg"],
-      edm:    ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"],
-      ecom:   ["images/visual-ecom/01.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg", "images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/12.jpg"]
-    };
-    let _vlbSec = '', _vlbIdx = 0;
-    function openVisualLightbox(sec, idx) {
-      const gals = visualGallery[sec] || [];
-      if (!gals.length) return;
-      _vlbSec = sec; _vlbIdx = idx;
-      document.getElementById('lightboxImg').src = gals[idx];
-      document.getElementById('lightboxCounter').textContent = (idx + 1) + ' / ' + gals.length;
-      document.getElementById('lightbox').classList.add('open');
-      // Override nav to use visual gallery
-      window._lightboxMode = 'visual';
-    }
-    // Patch lightboxNav to handle both modes
-    const _origLightboxNav = lightboxNav;
-    lightboxNav = function (dir) {
-      if (window._lightboxMode === 'visual') {
-        const gals = visualGallery[_vlbSec] || [];
-        _vlbIdx = (_vlbIdx + dir + gals.length) % gals.length;
-        document.getElementById('lightboxImg').src = gals[_vlbIdx];
-        document.getElementById('lightboxCounter').textContent = (_vlbIdx + 1) + ' / ' + gals.length;
-      } else {
-        _origLightboxNav(dir);
-      }
-    };
-    // Reset mode on close
-    const _origClose = closeLightbox;
-    closeLightbox = function () {
-      _origClose();
-      window._lightboxMode = 'project';
-    };
-    window._lightboxMode = 'project';
 
     // Lightbox
     let _lbId = '', _lbIdx = 0;
@@ -3601,10 +3534,8 @@ function applyEN() {
     const uxTags = card.querySelectorAll('.ux-tag');
     if(c.ux_tags) c.ux_tags.forEach((t,i) => { if(uxTags[i]) uxTags[i].textContent = t; });
   });
-  // Visual section labels
-  const vsLabels = document.querySelectorAll('.visual-section-label');
-  const vlKeys = ['travel','social','edm','ecom'];
-  vsLabels.forEach((el,i) => { if(vlKeys[i]) el.textContent = u.visual_labels[vlKeys[i]]; });
+  // Visual teaser (links to index_visual.html)
+  document.querySelectorAll('#visual [data-en]').forEach(el => { el.innerHTML = el.dataset.en; });
   // Skills
   const sk = u.skills;
   const skLabels = document.querySelectorAll('.about-skill-label');
@@ -3618,11 +3549,6 @@ function applyEN() {
     if(skGroups[gi]) skGroups[gi].forEach((t,ti) => { if(tags[ti]) tags[ti].textContent = t; });
   });
   document.querySelector('.tools-label').textContent = sk.tools_section_label;
-  // Visual toggle label (reset to collapsed state)
-  const toggleIcon = document.getElementById('visual-toggle-icon');
-  if (toggleIcon) toggleIcon.textContent = 'Expand ▾';
-  const visualContent = document.getElementById('visual-content');
-  if (visualContent) visualContent.style.display = 'none';
   // Reset see-more button
   const seeMoreBtn = document.getElementById('see-more-btn');
   if (seeMoreBtn) seeMoreBtn.textContent = 'See More ▾';

@@ -1982,6 +1982,35 @@
 
 
 /* ===== index_visual 專屬微調 ===== */
+/* ── 平面作品：直接攤開的專案展示 ── */
+.vproj{padding:2.8rem 0;border-top:1px solid var(--border);scroll-margin-top:80px}
+.filter-bar + .vproj{border-top:0;padding-top:.6rem}
+.vproj[hidden]{display:none!important}
+.vproj-info{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:.8rem 3rem;margin-bottom:1.6rem;align-items:start}
+.vproj-cat{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--g)}
+.vproj-title{font-family:var(--sans);font-size:1.35rem;font-weight:600;color:var(--ink);line-height:1.45;margin:.35rem 0 .45rem}
+.vproj-meta{font-family:var(--mono);font-size:12px;color:var(--ink3);letter-spacing:.03em}
+.vproj-desc{color:var(--ink2);font-size:.95rem;line-height:1.9;margin:0 0 .7rem}
+.vm img{display:block;width:100%;height:auto;border-radius:6px;cursor:zoom-in;background:var(--card);border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+.vm img:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(24,24,26,.08)}
+.vm-cols2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.vm-cols2 .span2{grid-column:1/-1}
+.vm-masonry{columns:3;column-gap:14px}
+.vm-masonry.c4{columns:4}
+.vm-masonry img{margin-bottom:14px;break-inside:avoid}
+.vm-scroll{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.vm-frame{max-height:560px;overflow-y:auto;border:1px solid var(--border);border-radius:6px;background:var(--card);overscroll-behavior:contain}
+.vm-frame img{border:0;border-radius:0}
+.vm-frame img:hover{transform:none;box-shadow:none}
+.vm-hint{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-top:.9rem}
+.vproj-soon{padding-top:2rem;border-top:1px solid var(--border)}
+@media(max-width:800px){
+  .vproj-info{grid-template-columns:1fr;gap:.6rem}
+  .vm-masonry,.vm-masonry.c4{columns:2}
+  .vm-scroll{grid-template-columns:1fr}
+  .vm-frame{max-height:70vh}
+}
+@media(max-width:480px){.vm-cols2{grid-template-columns:1fr}}
 .section-note{max-width:62ch;margin:1.3rem 0 .4rem;color:var(--ink2);font-size:1rem;line-height:1.95}
 .work-thumb.ph{background:repeating-linear-gradient(45deg,#eef7f0,#eef7f0 12px,#e3efe6 12px,#e3efe6 13px);display:flex;align-items:center;justify-content:center}
 .work-thumb.ph .ph-badge{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--g-dark);border:1px dashed var(--g);padding:.45rem .85rem;border-radius:4px;background:rgba(255,255,255,.65)}
@@ -2007,10 +2036,9 @@
       .version-switch a { padding: .5rem .75rem; font-size: 12px }
     }
     @media(max-width:420px) {
-      .version-switch { display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; width: 100% ; max-width: 300px }
+      .version-switch { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 16px; width: 100% ; max-width: 340px }
       .version-switch a { text-align: center; border-right: 1px solid rgba(255, 255, 255, .14) }
-      .version-switch a:nth-child(2n) { border-right: 0 }
-      .version-switch a:nth-child(-n+2) { border-bottom: 1px solid rgba(255, 255, 255, .14) }
+      .version-switch a:last-child { border-right: 0 }
     }
 </style>
 </head>
@@ -2084,120 +2112,169 @@
         <h2 class="section-title">平面設計作品</h2>
         <div class="section-line"></div>
       </div>
-      <p class="section-note reveal">以平面美編為主幹的實務作品——從多頁刊物與型錄排版、電商的主視覺與促銷 DM、到包裝的刀模與印前完稿，涵蓋出版印前到社群的完整範圍。點擊任一張可瀏覽完整圖庫。</p>
+      <p class="section-note reveal">以平面美編為主幹的實務作品——從多頁刊物與型錄排版、電商的主視覺與促銷 DM、到包裝的刀模與印前完稿。作品直接攤開在頁面上，點任一張圖可放大瀏覽。</p>
       <div class="filter-bar reveal reveal-delay-1">
         <button class="filter-btn active" onclick="filterVisual('all',this)">All</button>
         <button class="filter-btn" onclick="filterVisual('layout',this)">刊物・型錄・DM</button>
         <button class="filter-btn" onclick="filterVisual('visual',this)">主視覺・社群・EDM</button>
         <button class="filter-btn" onclick="filterVisual('print',this)">包裝印前</button>
-        <button class="filter-btn" onclick="filterVisual('photo',this)">攝影</button>
       </div>
-      <div class="works-grid">
-        <div class="work-card reveal" data-cat="layout" onclick="openGallery('catalog',0)">
-          <div class="work-thumb t-warm" style="background-image:url(images/visual-travel/03.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Editorial / Catalog</div>
-            <div class="work-title">多頁刊物排版 — 旅遊行程型錄</div>
-            <div class="work-desc">多頁出版品的編排實務：封面、內頁與跨頁的網格與資訊分層，整合主視覺、景點、行程與地圖。同一套編排邏輯可延伸到刊物、手冊與簡章。</div>
+
+      <article class="vproj reveal" id="p-catalog" data-cat="layout">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Editorial / Catalog</div>
+            <h3 class="vproj-title">多頁刊物排版 — 旅遊行程型錄</h3>
+            <div class="vproj-meta">Illustrator · Photoshop　/　2018–2020</div>
+          </div>
+          <div>
+            <p class="vproj-desc">多頁出版品的編排實務：封面、內頁與跨頁的網格與資訊分層，整合主視覺、景點、行程與地圖。同一套編排邏輯可延伸到刊物、手冊與簡章。</p>
             <div class="ux-tags"><span class="ux-tag">多頁排版</span><span class="ux-tag">出版編排</span><span class="ux-tag">完稿</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Illustrator</span><span class="work-tool">Photoshop</span></div>
-              <span class="work-year">2018–2020</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="layout" onclick="openGallery('tvdm',0)">
-          <div class="work-thumb t-rose" style="background-image:url(images/visual-travel/07.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Flyer / Banner</div>
-            <div class="work-title">旅遊 DM 與行銷物料 — 行程廣告單</div>
-            <div class="work-desc">單張促購的視覺整合：主視覺、賣點與價格層級一次到位，快速吸睛又好讀。含行程 DM 與活動 banner。</div>
+        <div class="vm vm-cols2">
+          <img src="images/visual-travel/01.jpg" alt="旅遊行程型錄 1" loading="lazy" />
+          <img src="images/visual-travel/02.jpg" alt="旅遊行程型錄 2" loading="lazy" />
+          <img src="images/visual-travel/03.jpg" alt="旅遊行程型錄 3" loading="lazy" />
+          <img src="images/visual-travel/04.jpg" alt="旅遊行程型錄 4" loading="lazy" />
+          <img src="images/visual-travel/05.jpg" alt="旅遊行程型錄 5" loading="lazy" />
+          <img src="images/visual-travel/06.jpg" alt="旅遊行程型錄 6" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="vproj reveal" id="p-tvdm" data-cat="layout">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Flyer / Banner</div>
+            <h3 class="vproj-title">旅遊 DM 與行銷物料 — 行程廣告單</h3>
+            <div class="vproj-meta">Illustrator · Photoshop　/　2018–2020</div>
+          </div>
+          <div>
+            <p class="vproj-desc">單張促購的視覺整合：主視覺、賣點與價格層級一次到位，快速吸睛又好讀。含行程 DM 與活動 banner。</p>
             <div class="ux-tags"><span class="ux-tag">單張主視覺</span><span class="ux-tag">賣點整合</span><span class="ux-tag">價格層級</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Illustrator</span><span class="work-tool">Photoshop</span></div>
-              <span class="work-year">2018–2020</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="layout" onclick="openGallery('dm',0)">
-          <div class="work-thumb t-rose" style="background-image:url(images/visual-ecom/08.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Flyer</div>
-            <div class="work-title">促銷 DM — 高密度商品編排</div>
-            <div class="work-desc">一張 DM 要塞進數十款商品仍清楚好逛；以網格、分區與價格層級控制閱讀節奏。</div>
+        <div class="vm vm-cols2">
+          <img src="images/visual-travel/07.jpg" alt="旅遊 DM 1" loading="lazy" />
+          <img src="images/visual-travel/08.jpg" alt="旅遊 DM 2" loading="lazy" />
+          <img src="images/visual-travel/09.jpg" alt="旅遊 DM 3" loading="lazy" />
+          <img src="images/visual-travel/10.jpg" alt="旅遊 DM 4" loading="lazy" />
+          <img class="span2" src="images/visual-travel/11.jpg" alt="活動 banner" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="vproj reveal" id="p-dm" data-cat="layout">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Flyer</div>
+            <h3 class="vproj-title">促銷 DM — 高密度商品編排</h3>
+            <div class="vproj-meta">Illustrator · Photoshop　/　2022</div>
+          </div>
+          <div>
+            <p class="vproj-desc">一張 DM 要塞進數十款商品仍清楚好逛；以網格、分區與價格層級控制閱讀節奏。</p>
             <div class="ux-tags"><span class="ux-tag">商品網格</span><span class="ux-tag">價格層級</span><span class="ux-tag">促購動線</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Illustrator</span><span class="work-tool">Photoshop</span></div>
-              <span class="work-year">2022</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="visual" onclick="openGallery('kv',0)">
-          <div class="work-thumb t-olive" style="background-image:url(images/visual-ecom/05.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Key Visual</div>
-            <div class="work-title">商品主視覺 — 檔期與品牌 KV</div>
-            <div class="work-desc">從商品賣點發展主視覺與檔期主題，建立可延展的版面語言，套用到站內與社群。</div>
+        <div class="vm vm-cols2">
+          <img src="images/visual-ecom/08.jpg" alt="促銷 DM 1" loading="lazy" />
+          <img src="images/visual-ecom/09.jpg" alt="促銷 DM 2" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="vproj reveal" id="p-kv" data-cat="visual">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Key Visual</div>
+            <h3 class="vproj-title">商品主視覺 — 檔期與品牌 KV</h3>
+            <div class="vproj-meta">Photoshop · Illustrator　/　2022</div>
+          </div>
+          <div>
+            <p class="vproj-desc">從商品賣點發展主視覺與檔期主題，建立可延展的版面語言，套用到站內與社群。</p>
             <div class="ux-tags"><span class="ux-tag">主視覺</span><span class="ux-tag">檔期主題</span><span class="ux-tag">系列延展</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Photoshop</span><span class="work-tool">Illustrator</span></div>
-              <span class="work-year">2022</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="visual" onclick="openGallery('social',0)">
-          <div class="work-thumb t-forest" style="background-image:url(images/visual-social/01.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Social</div>
-            <div class="work-title">社群圖文 — B2B 主題系列</div>
-            <div class="work-desc">把 ERP／人事／ESG 等硬議題轉成好懂的社群主圖，建立一致的版型與色彩系統。</div>
+        <div class="vm vm-masonry">
+          <img src="images/visual-ecom/01.jpg" alt="商品主視覺 1" loading="lazy" />
+          <img src="images/visual-ecom/06.jpg" alt="商品主視覺 2" loading="lazy" />
+          <img src="images/visual-ecom/05.jpg" alt="商品主視覺 3" loading="lazy" />
+          <img src="images/visual-ecom/04.jpg" alt="商品主視覺 4" loading="lazy" />
+          <img src="images/visual-ecom/07.jpg" alt="商品主視覺 5" loading="lazy" />
+          <img src="images/visual-ecom/12.jpg" alt="商品主視覺 6" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="vproj reveal" id="p-social" data-cat="visual">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Social</div>
+            <h3 class="vproj-title">社群圖文 — B2B 主題系列</h3>
+            <div class="vproj-meta">Figma · Photoshop　/　2025—</div>
+          </div>
+          <div>
+            <p class="vproj-desc">把 ERP／人事／ESG 等硬議題轉成好懂的社群主圖，建立一致的版型與色彩系統。</p>
             <div class="ux-tags"><span class="ux-tag">議題轉譯</span><span class="ux-tag">版型系統</span><span class="ux-tag">色彩規範</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Photoshop</span></div>
-              <span class="work-year">2025—</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="visual" onclick="openGallery('edm',0)">
-          <div class="work-thumb t-indigo" style="background-image:url(images/EDM/01.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">EDM</div>
-            <div class="work-title">EDM — 電子報版式</div>
-            <div class="work-desc">長版電子報的資訊分層與導購動線：主視覺、段落與 CTA 的節奏安排。</div>
+        <div class="vm vm-masonry c4">
+          <img src="images/visual-social/01.jpg" alt="社群圖文 1" loading="lazy" />
+          <img src="images/visual-social/02.jpg" alt="社群圖文 2" loading="lazy" />
+          <img src="images/visual-social/03.jpg" alt="社群圖文 3" loading="lazy" />
+          <img src="images/visual-social/04.jpg" alt="社群圖文 4" loading="lazy" />
+          <img src="images/visual-social/05.jpg" alt="社群圖文 5" loading="lazy" />
+          <img src="images/visual-social/06.jpg" alt="社群圖文 6" loading="lazy" />
+          <img src="images/visual-social/07.jpg" alt="社群圖文 7" loading="lazy" />
+          <img src="images/visual-social/08.jpg" alt="能源管理 × 碳盤查 CBAM 1" loading="lazy" />
+          <img src="images/visual-social/09.jpg" alt="能源管理 × 碳盤查 CBAM 2" loading="lazy" />
+          <img src="images/visual-social/10.jpg" alt="能源管理 × 碳盤查 CBAM 3" loading="lazy" />
+          <img src="images/visual-social/11.jpg" alt="中小型醫材代理 1" loading="lazy" />
+          <img src="images/visual-social/12.jpg" alt="中小型醫材代理 2" loading="lazy" />
+        </div>
+        <div class="vm vm-cols2" style="margin-top:14px;">
+          <img class="span2" src="images/visual-social/13.jpg" alt="AI 實作體驗課程橫幅" loading="lazy" />
+        </div>
+      </article>
+
+      <article class="vproj reveal" id="p-edm" data-cat="visual">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">EDM</div>
+            <h3 class="vproj-title">EDM — 電子報版式</h3>
+            <div class="vproj-meta">Photoshop　/　2022</div>
+          </div>
+          <div>
+            <p class="vproj-desc">長版電子報的資訊分層與導購動線：主視覺、段落與 CTA 的節奏安排。</p>
             <div class="ux-tags"><span class="ux-tag">版式編排</span><span class="ux-tag">導購動線</span><span class="ux-tag">CTA</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Photoshop</span></div>
-              <span class="work-year">2022</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="print" onclick="openGallery('pkg',0)">
-          <div class="work-thumb t-teal" style="background-image:url(images/visual-ecom/10.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Packaging / Print</div>
-            <div class="work-title">包裝設計 — 刀模與印前完稿</div>
-            <div class="work-desc">從螢幕到實體的印前功夫：刀模展開、出血與安全邊、尺寸結構、紙材與發印規格。</div>
+        <div class="vm vm-scroll">
+          <div class="vm-frame"><img src="images/EDM/01.jpg" alt="EDM 1" loading="lazy" /></div>
+          <div class="vm-frame"><img src="images/EDM/02.png" alt="EDM 2" loading="lazy" /></div>
+          <div class="vm-frame"><img src="images/EDM/03.jpg" alt="EDM 3" loading="lazy" /></div>
+        </div>
+        <p class="vm-hint">↕ 長版 EDM 可在框內捲動閱讀，點圖放大</p>
+      </article>
+
+      <article class="vproj reveal" id="p-pkg" data-cat="print">
+        <div class="vproj-info">
+          <div>
+            <div class="vproj-cat">Packaging / Print</div>
+            <h3 class="vproj-title">包裝設計 — 刀模與印前完稿</h3>
+            <div class="vproj-meta">Illustrator　/　2022</div>
+          </div>
+          <div>
+            <p class="vproj-desc">從螢幕到實體的印前功夫：刀模展開、出血與安全邊、尺寸結構、紙材與發印規格。</p>
             <div class="ux-tags"><span class="ux-tag">刀模</span><span class="ux-tag">出血</span><span class="ux-tag">CMYK 完稿</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Illustrator</span></div>
-              <span class="work-year">2022</span>
-            </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="photo">
-          <div class="work-thumb ph t-rose"><span class="ph-badge">Coming Soon ·  陸續收錄</span></div>
-          <div class="work-body">
-            <div class="work-cat">Photography</div>
-            <div class="work-title">攝影紀實 — 現場與旅途</div>
-            <div class="work-desc">構圖、光線與氛圍，是平面設計的另一種肌肉。作品整理中，將陸續收錄。</div>
-            <div class="ux-tags"><span class="ux-tag">紀實</span><span class="ux-tag">構圖</span><span class="ux-tag">光線</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">—</span></div>
-              <span class="work-year">2026</span>
-            </div>
-          </div>
+        <div class="vm vm-masonry">
+          <img src="images/visual-ecom/10.jpg" alt="包裝設計 1" loading="lazy" />
+          <img src="images/visual-ecom/02.jpg" alt="包裝設計 2" loading="lazy" />
+          <img src="images/visual-ecom/11.jpg" alt="包裝設計 3" loading="lazy" />
+          <img src="images/visual-ecom/03.jpg" alt="包裝設計 4" loading="lazy" />
         </div>
-      </div>
+      </article>
+
+      <p class="vm-hint vproj-soon reveal">攝影紀實 — 現場與旅途：作品整理中，將陸續收錄。</p>
     </div>
   </section>
 
@@ -2303,7 +2380,7 @@
         </div>
       </div>
       <div class="uxcta reveal">
-        <a href="index.html">看完整 UI/UX 案例介紹與研究過程 →</a>
+        <a href="index_ux.html#works">看完整 UI/UX 案例介紹與研究過程 →</a>
       </div>
     </div>
   </section>
@@ -2459,7 +2536,6 @@
     <div class="footer-versions" role="navigation" aria-label="作品集版本">
       <span class="version-label">Portfolio</span>
       <div class="version-switch">
-        <a href="index.html" data-en="UI/UX + Graphic">UI/UX＋平面</a>
         <a href="index_ux.html" data-en="UI/UX">UI/UX</a>
         <a href="index_visual.html" data-en="Graphic Design" aria-current="page">平面設計</a>
         <a href="index_art.html" data-en="Art &amp; Curation">藝文策展</a>
@@ -2521,15 +2597,23 @@
     function filterVisual(cat, btn){
       document.querySelectorAll('#works-visual .filter-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
-      document.querySelectorAll('#works-visual .work-card').forEach(card=>{
-        card.style.display = (cat==='all'||card.dataset.cat===cat) ? '' : 'none';
+      document.querySelectorAll('#works-visual .vproj').forEach(p=>{
+        p.hidden = !(cat==='all'||p.dataset.cat===cat);
       });
     }
+
+    // 平面作品：點頁面上的圖 → 以同一專案的圖組開燈箱
+    document.querySelectorAll('#works-visual .vproj').forEach(p=>{
+      const key = 'inline-' + p.id;
+      const imgs = [...p.querySelectorAll('.vm img')];
+      GAL[key] = imgs.map(im=>im.getAttribute('src'));
+      imgs.forEach((im,i)=>im.addEventListener('click',()=>openGallery(key,i)));
+    });
 
     // cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => { cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px'; });
-    document.querySelectorAll('a,button,.work-card,.tag,.skill-item,.tool-badge,.filter-btn').forEach(el => {
+    document.querySelectorAll('a,button,.work-card,.vm img,.tag,.skill-item,.tool-badge,.filter-btn').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
@@ -2543,6 +2627,12 @@
       document.querySelectorAll('.reveal').forEach(el => {
         if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
       });
+      // Deep link from index_ux.html: #g=catalog → scroll to that project
+      const m = location.hash.match(/^#g=(\w+)$/);
+      if(m){
+        const proj = document.getElementById('p-' + m[1]);
+        if(proj){ proj.classList.add('visible'); proj.scrollIntoView({block:'start'}); }
+      }
     });
 
     // nav highlight
