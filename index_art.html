@@ -13,8 +13,8 @@
   gtag('config', 'G-38BDPVCXYF');
 </script>
 
-<title>Sarita — 藝文視覺・影像・空間</title>
-<meta name="description" content="美術系出身的視覺工作者。平面、影像、空間陳列與展覽視覺。以設計的系統性，走進藝文的現場。" />
+<title>Sarita — 展覽與活動企劃</title>
+<meta name="description" content="美術系出身的視覺工作者，正走向展覽與活動企劃。從命題、對象、體驗到落地——能提出題目，也能親手把它做出來。" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -278,6 +278,75 @@
     .proposal-visual .seal-huge{width:20%}
   }
 
+  /* ── i. 方法：五步企劃流程 ── */
+  .method{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .method li{padding:1.8rem 1.3rem 1.6rem;border-right:1px solid var(--line-soft);position:relative}
+  .method li:last-child{border-right:0}
+  .method .no{font-family:var(--serif-lat);font-style:italic;color:var(--seal);font-size:.95rem}
+  .method h3{font-family:var(--serif-han);font-weight:700;font-size:1.3rem;margin:.5rem 0 .15rem}
+  .method .en{font-family:var(--serif-lat);font-style:italic;font-size:.85rem;color:var(--ink-faint)}
+  .method p{margin-top:.9rem;font-size:.93rem;line-height:1.85;color:var(--ink-soft)}
+  .method .hand{display:inline-block;margin-top:1rem;font-size:.78rem;letter-spacing:.06em;
+    color:var(--seal);border:1px solid rgba(162,56,43,.35);border-radius:2px;padding:.15rem .5rem}
+  .method .hand.muted{color:var(--ink-faint);border-color:var(--line)}
+  .method-note{margin-top:1.4rem;font-size:.88rem;color:var(--ink-faint)}
+  .method-note .hand{font-size:.78rem;color:var(--seal);border:1px solid rgba(162,56,43,.35);
+    border-radius:2px;padding:.1rem .45rem;margin:0 .25rem}
+  @media(max-width:980px){
+    .method{grid-template-columns:1fr 1fr}
+    .method li{border-bottom:1px solid var(--line-soft)}
+    .method li:nth-child(2n){border-right:0}
+    .method li:last-child{grid-column:1/-1;border-bottom:0}
+  }
+  @media(max-width:560px){
+    .method{grid-template-columns:1fr}
+    .method li{border-right:0}
+  }
+
+  /* ── ii. 概念提案：案例骨架 ── */
+  .proposal + .proposal{margin-top:1.6rem}
+  .proposal .kind{font-family:var(--serif-lat);font-style:italic;color:var(--ink-faint);
+    font-size:.9rem;margin-left:.8rem}
+  .proposal ol li em{font-style:normal;display:block;font-family:var(--sans-han);
+    font-size:.86rem;color:var(--ink-faint);margin-top:.15rem}
+  .proposal-visual .ph{position:absolute;bottom:1rem;left:1rem;right:1rem;text-align:center;
+    font-family:var(--serif-han);font-size:.8rem;letter-spacing:.1em;color:var(--ink-faint)}
+
+  /* ── iii. 落地能力：按企劃流程歸類 ── */
+  .make{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem 2rem}
+  .make-item .tag{font-family:var(--serif-lat);font-style:italic;font-size:.85rem;color:var(--seal)}
+  .make-item h3{font-family:var(--serif-han);font-weight:700;font-size:1.35rem;margin:.3rem 0 .4rem}
+  .make-item h3 small{font-family:var(--serif-han);font-weight:300;font-size:.85rem;color:var(--ink-faint);margin-left:.6rem}
+  .make-item p{font-size:.94rem;line-height:1.85;color:var(--ink-soft);margin-bottom:1rem;max-width:34em}
+  .make-item .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+  .make-item .thumbs figure{aspect-ratio:1/1}
+  .make-item .thumbs.wide{grid-template-columns:1fr 1fr}
+  .make-item .thumbs.wide figure{aspect-ratio:4/3}
+  .make-item .thumbs figure img{object-position:center top}
+  .make-empty{aspect-ratio:3/1;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif-han);font-size:.85rem;letter-spacing:.1em;color:var(--ink-faint);
+    background:repeating-linear-gradient(45deg,transparent,transparent 13px,rgba(27,26,23,.03) 13px,rgba(27,26,23,.03) 14px)}
+  .more{display:inline-flex;gap:.5rem;margin-top:.9rem;font-family:var(--serif-han);font-size:.9rem;
+    font-weight:500;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--seal);padding-bottom:2px;
+    transition:color .3s}
+  .more:hover{color:var(--seal)}
+  @media(max-width:760px){.make{grid-template-columns:1fr}}
+
+  /* ── iv. 延伸閱讀：兩張導向卡 ── */
+  .ext{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2.4rem}
+  .ext a{display:grid;grid-template-columns:1fr;text-decoration:none;color:var(--paper);
+    border:1px solid rgba(244,243,239,.2);transition:border-color .4s,background .4s}
+  .ext a:hover{border-color:rgba(244,243,239,.6);background:rgba(244,243,239,.04)}
+  .ext .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;aspect-ratio:3/1;overflow:hidden}
+  .ext .strip img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .ext .tx{padding:1.4rem 1.5rem 1.5rem}
+  .ext .tx .lat{font-size:.88rem;color:rgba(244,243,239,.55)}
+  .ext .tx h3{font-family:var(--serif-han);font-weight:500;font-size:1.3rem;margin:.25rem 0 .5rem}
+  .ext .tx p{margin:0;font-size:.92rem;color:rgba(244,243,239,.62)}
+  .ext .tx .go{display:inline-block;margin-top:1rem;font-family:var(--serif-han);font-size:.92rem;color:#E9A79B}
+  @media(max-width:760px){.ext{grid-template-columns:1fr}}
+
   /* ── 數位延伸：把 UI/UX 濃縮成一段加分項 ── */
   .bridge{padding:4.5rem var(--edge);background:var(--ink);color:var(--paper)}
   .bridge-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr auto;
@@ -392,35 +461,35 @@
     <svg class="seal" style="color:var(--seal)"><use href="#seal"/></svg>Sarita
   </a>
   <nav>
-    <a href="#graphic">平面</a>
-    <a href="#image">影像</a>
-    <a href="#space">空間</a>
-    <a href="#exhibition">展覽</a>
+    <a href="#method">方法</a>
+    <a href="#proposal">提案</a>
+    <a href="#making">落地</a>
+    <a href="#more">延伸</a>
     <a href="#about">關於</a>
     <a href="#contact">聯絡</a>
   </nav>
 </header>
 
-<!-- ══ HERO ══ -->
+<!-- ══ HERO：我想做的事 ══ -->
 <section class="hero" id="hero">
   <div class="hero-mark" id="heroMark">
     <svg class="seal-lg" style="color:var(--seal)"><use href="#seal"/></svg>
-    <div class="role">視覺・影像・空間
-      <span class="en">Visual · Image · Space</span>
+    <div class="role">展覽・活動企劃
+      <span class="en">Concept · Curation · Making</span>
     </div>
   </div>
 
   <h1 class="hero-statement">
-    <span class="ln">以美術為底，</span>
-    <span class="ln">做平面、<span class="accent">影像</span>與空間的視覺；</span>
-    <span class="ln">把設計的系統性，</span>
-    <span class="ln"><b>帶進藝文的現場。</b></span>
+    <span class="ln">我想策劃</span>
+    <span class="ln">能讓人<span class="accent">走進去</span>、也能<span class="accent">帶回家</span>的</span>
+    <span class="ln">展覽與活動——</span>
+    <span class="ln"><b>從命題，一路做到現場。</b></span>
   </h1>
 
   <p class="hero-sub" id="heroSub">
-    美術學系出身，近七年橫跨旅遊、印刷、電商與數位介面的視覺工作。
-    習慣從<em>一張紙的完稿</em>想到<em>一面牆的陳列</em>，也能把視覺延伸到網站與規範。
-    現在，想把這套能力帶回最在意「怎麼被看見」的藝文場域。
+    美術學系出身，七年都在做視覺：旅遊圖文、印刷完稿、電商主視覺、網站與介面。
+    一直以來，我負責的是<em>把別人的題目做出來</em>；接下來，我想往前一步，成為<em>提出題目的人</em>。
+    這一頁是我的方向、我的方法，以及我已經能親手落地的部分。
   </p>
 
   <div class="hero-foot" id="heroFoot">
@@ -434,144 +503,204 @@
   <div class="index-inner">
     <p class="index-title">Contents 目次</p>
     <ul class="index-list">
-      <li><a href="#graphic"><span class="no">i.</span><span class="nm">平面與主視覺<span class="en">Graphic & Key Visual</span></span><span class="ct">海報・DM・EDM・社群</span></a></li>
-      <li><a href="#image"><span class="no">ii.</span><span class="nm">影像與紀實<span class="en">Image & Documentation</span></span><span class="ct">攝影・現場</span></a></li>
-      <li><a href="#space"><span class="no">iii.</span><span class="nm">空間與陳列<span class="en">Space & Display</span></span><span class="ct">空間陳列・進行中</span></a></li>
-      <li><a href="#exhibition"><span class="no">iv.</span><span class="nm">展覽主視覺<span class="en">Exhibition Identity</span></span><span class="ct">概念提案・進行中</span></a></li>
+      <li><a href="#method"><span class="no">i.</span><span class="nm">我怎麼想<span class="en">Method</span></span><span class="ct">五步企劃流程</span></a></li>
+      <li><a href="#proposal"><span class="no">ii.</span><span class="nm">概念提案<span class="en">Proposals</span></span><span class="ct">自主提案・進行中</span></a></li>
+      <li><a href="#making"><span class="no">iii.</span><span class="nm">我已經會的<span class="en">Making</span></span><span class="ct">主視覺・空間・影像・線上</span></a></li>
+      <li><a href="#more"><span class="no">iv.</span><span class="nm">延伸閱讀<span class="en">Further Reading</span></span><span class="ct">平面設計・UI/UX 作品集</span></a></li>
     </ul>
   </div>
 </section>
 
-<!-- ══ i. 平面與主視覺 ══ -->
-<section class="work" id="graphic">
+<!-- ══ i. 我怎麼想 ══ -->
+<section class="work" id="method">
   <div class="work-inner">
     <div class="work-head">
       <span class="krn">i.</span>
-      <h2>平面與主視覺<span class="en">Graphic &amp; Key Visual</span></h2>
+      <h2>我怎麼想<span class="en">Method</span></h2>
       <p class="work-note">
-        從主題出發，發展一組能延展的視覺語言——主視覺、社群圖文、EDM 到活動宣傳。
-        美術系的色感與構成是底子，商品型錄與完稿的經驗讓它們落得了地。
+        一檔展覽或活動，我會用這五步來想。前三步決定「值不值得做、做給誰」，
+        後兩步決定「做不做得出來」——而後兩步，正是我過去七年每天在做的事。
       </p>
     </div>
 
-    <div class="grid-nine">
-      <figure class="zoom" data-full="images/visual-social/01.jpg"><img src="images/visual-social/01.jpg" alt="平面作品 一" loading="lazy"/><figcaption>主視覺 · 社群主圖</figcaption></figure>
-      <figure class="zoom" data-full="images/visual-social/02.jpg"><img src="images/visual-social/02.jpg" alt="平面作品 二" loading="lazy"/><figcaption>系列延展</figcaption></figure>
-      <figure class="zoom" data-full="images/visual-social/03.jpg"><img src="images/visual-social/03.jpg" alt="平面作品 三" loading="lazy"/><figcaption>社群圖文</figcaption></figure>
-      <figure class="zoom" data-full="images/visual-social/04.jpg"><img src="images/visual-social/04.jpg" alt="平面作品 四" loading="lazy"/><figcaption>社群圖文</figcaption></figure>
-      <figure class="zoom" data-full="images/visual-social/05.jpg"><img src="images/visual-social/05.jpg" alt="平面作品 五" loading="lazy"/><figcaption>社群圖文</figcaption></figure>
-      <figure class="zoom" data-full="images/visual-social/06.jpg"><img src="images/visual-social/06.jpg" alt="平面作品 六" loading="lazy"/><figcaption>社群圖文</figcaption></figure>
-      <figure class="zoom" data-full="images/EDM/01.jpg"><img src="images/EDM/01.jpg" alt="EDM 一" loading="lazy"/><figcaption>EDM · 活動宣傳</figcaption></figure>
-      <figure class="zoom" data-full="images/EDM/02.png"><img src="images/EDM/02.png" alt="EDM 二" loading="lazy"/><figcaption>EDM · 版式編排</figcaption></figure>
-      <figure class="zoom" data-full="images/EDM/03.jpg"><img src="images/EDM/03.jpg" alt="EDM 三" loading="lazy"/><figcaption>EDM · 主視覺應用</figcaption></figure>
-    </div>
+    <ol class="method">
+      <li>
+        <span class="no">01</span>
+        <h3>命題</h3><span class="en">Why</span>
+        <p>先問這件事為什麼值得被看見。一句話說得清楚的題目，才撐得起後面所有決定。</p>
+      </li>
+      <li>
+        <span class="no">02</span>
+        <h3>對象</h3><span class="en">Who</span>
+        <p>是誰會來、帶著什麼期待離開？同一個題目，給學生和給藏家，會是兩種展。</p>
+      </li>
+      <li>
+        <span class="no">03</span>
+        <h3>體驗</h3><span class="en">How</span>
+        <p>設計觀眾從進場到離場的節奏：動線、停留點、高潮，以及最後帶走的那一刻。</p>
+      </li>
+      <li>
+        <span class="no">04</span>
+        <h3>接觸點</h3><span class="en">Touchpoints</span>
+        <p>觀眾在哪裡遇見它？主視覺、文宣、社群、現場空間、線上頁面，用同一套語言說話。</p>
+        <span class="hand">我能親手做</span>
+      </li>
+      <li>
+        <span class="no">05</span>
+        <h3>落地與延伸</h3><span class="en">After</span>
+        <p>排時程、估物料、完稿輸出；展後用影像紀錄與線上展，讓它被看見得更久。</p>
+        <span class="hand">我能親手做</span>
+      </li>
+    </ol>
+    <p class="method-note">標有<span class="hand">我能親手做</span>的步驟，對應下方「iii. 我已經會的」。</p>
   </div>
 </section>
 
-<!-- ══ ii. 影像與紀實 ══ -->
-<section class="work" id="image" style="background:var(--paper-2)">
+<!-- ══ ii. 概念提案 ══ -->
+<section class="work" id="proposal" style="background:var(--paper-2)">
   <div class="work-inner">
     <div class="work-head">
       <span class="krn">ii.</span>
-      <h2>影像與紀實<span class="en">Image &amp; Documentation</span></h2>
+      <h2>概念提案<span class="en">Proposals</span></h2>
       <p class="work-note">
-        用鏡頭記錄地方、光線與人的痕跡。這組是旅途中的觀察，
-        也是「藝文現場紀錄」的基本功——構圖、氛圍與敘事。更多藝文現場紀錄，陸續加入。
-      </p>
-    </div>
-
-    <div class="col-masonry">
-      <figure class="zoom" data-full="images/photography/01.jpg"><img src="images/photography/01.jpg" alt="影像 一" loading="lazy"/><figcaption>紀實 · 旅途</figcaption></figure>
-      <figure class="zoom" data-full="images/photography/02.jpg"><img src="images/photography/02.jpg" alt="影像 二" loading="lazy"/><figcaption>紀實 · 光線</figcaption></figure>
-      <figure class="zoom" data-full="images/photography/03.jpg"><img src="images/photography/03.jpg" alt="影像 三" loading="lazy"/><figcaption>紀實 · 街景</figcaption></figure>
-      <figure class="zoom" data-full="images/photography/04.jpg"><img src="images/photography/04.jpg" alt="影像 四" loading="lazy"/><figcaption>紀實 · 氛圍</figcaption></figure>
-      <figure class="zoom" data-full="images/photography/05.jpg"><img src="images/photography/05.jpg" alt="影像 五" loading="lazy"/><figcaption>紀實 · 細節</figcaption></figure>
-      <figure class="zoom" data-full="images/photography/06.jpg"><img src="images/photography/06.jpg" alt="影像 六" loading="lazy"/><figcaption>紀實 · 場景</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ══ iii. 空間與陳列（進行中） ══ -->
-<section class="work" id="space">
-  <div class="work-inner">
-    <div class="work-head">
-      <span class="krn">iii.</span>
-      <h2>空間與陳列<span class="en">Space &amp; Display</span></h2>
-      <p class="work-note">
-        平面之外，也讓視覺進入真實空間——門市布置、櫥窗與展場陳列。
-        怎麼在一個場域裡安排動線、節奏與焦點，是最接近「布展」的一段實務。這一區正在整理。
-      </p>
-    </div>
-
-    <div class="proposal rev">
-      <div>
-        <span class="stamp"><svg width="12" height="12" style="color:var(--seal)"><use href="#seal"/></svg>進行中 In Progress</span>
-        <h3>真實空間裡的視覺，即將收錄</h3>
-        <p>
-          從門市與櫥窗的陳列，到展場的空間布置，將以實際案例與現場影像呈現——
-          包含動線安排、視覺焦點與物料應用。
-        </p>
-        <ol>
-          <li><span>01</span>門市・櫥窗陳列</li>
-          <li><span>02</span>展場空間布置</li>
-          <li><span>03</span>動線與視覺焦點</li>
-          <li><span>04</span>現場影像紀錄</li>
-        </ol>
-      </div>
-      <div class="proposal-visual" aria-hidden="true">
-        <svg class="seal-huge" viewBox="0 0 40 40" style="color:var(--seal)"><use href="#seal"/></svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ iv. 展覽主視覺（概念提案・進行中） ══ -->
-<section class="work" id="exhibition" style="background:var(--paper-2)">
-  <div class="work-inner">
-    <div class="work-head">
-      <span class="krn">iv.</span>
-      <h2>展覽主視覺<span class="en">Exhibition Identity</span></h2>
-      <p class="work-note">
-        把前面所有能力收攏成一件事：為一檔展覽建立完整的視覺識別。
-        這是我正在進行的自主概念案——不是既有委託，而是自己命題、自己策劃。
+        以下是自主提案，不是既有委託——自己命題、自己企劃，並親手做出主視覺、空間示意與線上頁面。
+        每個提案都照上面的五步走一遍，正在進行中。
       </p>
     </div>
 
     <div class="proposal">
       <div>
-        <span class="stamp"><svg width="12" height="12" style="color:var(--seal)"><use href="#seal"/></svg>進行中 In Progress</span>
-        <h3>一檔自主策展的視覺提案</h3>
-        <p>
-          從一個展覽命題開始，發展主視覺，並延伸成一整套可落地的應用系統——
-          海報、邀請卡、手冊/節目冊、周邊與展場空間示意。完成後將收錄於此。
-        </p>
+        <span class="stamp"><svg width="12" height="12" style="color:var(--seal)"><use href="#seal"/></svg>自主提案・進行中</span>
+        <h3>提案 01　一檔展覽<span class="kind">Exhibition</span></h3>
+        <p>從一個展覽命題開始，寫出策展論述，再一路推到觀眾會看見的每個接觸點。</p>
         <ol>
-          <li><span>01</span>展覽命題與策展論述</li>
-          <li><span>02</span>主視覺與字體、色彩系統</li>
-          <li><span>03</span>文宣應用：海報・DM・手冊</li>
-          <li><span>04</span>展場空間與影像紀錄</li>
+          <li><span>01</span><div>命題與對象<em>為什麼做、做給誰看</em></div></li>
+          <li><span>02</span><div>概念與展名<em>策展論述、展名、一句話介紹</em></div></li>
+          <li><span>03</span><div>場地、動線與時程<em>平面配置、觀展節奏、預算級距</em></div></li>
+          <li><span>04</span><div>落地樣貌<em>主視覺、海報／手冊、空間示意、線上展頁面</em></div></li>
+          <li><span>05</span><div>預期成效<em>想讓觀眾帶走什麼、怎麼評估</em></div></li>
         </ol>
       </div>
       <div class="proposal-visual" aria-hidden="true">
         <svg class="seal-huge" viewBox="0 0 40 40" style="color:var(--seal)"><use href="#seal"/></svg>
+        <span class="ph">主視覺製作中</span>
+      </div>
+    </div>
+
+    <div class="proposal rev">
+      <div>
+        <span class="stamp"><svg width="12" height="12" style="color:var(--seal)"><use href="#seal"/></svg>自主提案・進行中</span>
+        <h3>提案 02　一場活動<span class="kind">Event</span></h3>
+        <p>比展覽更短、更需要「當下」的體驗：從報名、現場到活動後的延伸，設計一條完整的參與旅程。</p>
+        <ol>
+          <li><span>01</span><div>命題與對象<em>為什麼辦、誰會來</em></div></li>
+          <li><span>02</span><div>活動形式與流程<em>議程、互動環節、現場節奏</em></div></li>
+          <li><span>03</span><div>宣傳與報名<em>主視覺、社群圖文、EDM、報名頁</em></div></li>
+          <li><span>04</span><div>現場佈置<em>空間示意、指標、拍照點</em></div></li>
+          <li><span>05</span><div>活動後延伸<em>影像紀錄、回顧頁、成效回收</em></div></li>
+        </ol>
+      </div>
+      <div class="proposal-visual" aria-hidden="true">
+        <svg class="seal-huge" viewBox="0 0 40 40" style="color:var(--seal)"><use href="#seal"/></svg>
+        <span class="ph">主視覺製作中</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ 數位延伸 ══ -->
-<section class="bridge">
-  <div class="bridge-inner">
-    <div>
-      <h2>視覺不只停在紙上，<span class="accent">也能延伸到線上。</span></h2>
-      <p>
-        除了平面與空間，我也做 UI/UX 與網頁——能把一檔展覽延伸成線上展、活動網站，
-        或替品牌建立可維護的視覺規範。這是多數視覺工作者較少具備的一面。
+<!-- ══ iii. 我已經會的 ══ -->
+<section class="work" id="making">
+  <div class="work-inner">
+    <div class="work-head">
+      <span class="krn">iii.</span>
+      <h2>我已經會的<span class="en">Making</span></h2>
+      <p class="work-note">
+        企劃要能落地，靠的是接觸點與執行。以下照企劃流程整理我現有的能力，每類只放幾件代表作，
+        完整作品請到對應的作品集閱讀。
       </p>
     </div>
-    <a class="bridge-cta" href="index_ux.html">
-      看數位作品集<span class="lat">UI / UX →</span>
-    </a>
+
+    <div class="make">
+      <div class="make-item">
+        <span class="tag">Touchpoint · 對外溝通</span>
+        <h3>主視覺與平面<small>海報・社群・EDM</small></h3>
+        <p>從一個主題發展出能延展的視覺語言，主視覺、社群圖文到活動宣傳都說同一種話。</p>
+        <div class="thumbs">
+          <figure class="zoom" data-full="images/visual-social/01.jpg"><img src="images/visual-social/01.jpg" alt="主視覺・社群主圖" loading="lazy"/><figcaption>主視覺 · 社群主圖</figcaption></figure>
+          <figure class="zoom" data-full="images/visual-social/02.jpg"><img src="images/visual-social/02.jpg" alt="系列延展" loading="lazy"/><figcaption>系列延展</figcaption></figure>
+          <figure class="zoom" data-full="images/EDM/01.jpg"><img src="images/EDM/01.jpg" alt="EDM 活動宣傳" loading="lazy"/><figcaption>EDM · 活動宣傳</figcaption></figure>
+        </div>
+        <a class="more" href="index_visual.html#works-visual">完整平面作品 →</a>
+      </div>
+
+      <div class="make-item">
+        <span class="tag">Touchpoint · 線上延伸</span>
+        <h3>網頁與線上體驗<small>活動頁・RWD・UI/UX</small></h3>
+        <p>能把一檔展覽延伸成線上展、把一場活動做成報名頁，而且自己切得了版。</p>
+        <div class="thumbs wide">
+          <figure class="zoom" data-full="images/landing/cover.jpg"><img src="images/landing/cover.jpg" alt="導流推廣頁" loading="lazy"/><figcaption>推廣活動頁</figcaption></figure>
+          <figure class="zoom" data-full="images/y26/cover.jpg"><img src="images/y26/cover.jpg" alt="招募網翻新" loading="lazy"/><figcaption>招募網翻新</figcaption></figure>
+        </div>
+        <a class="more" href="index_ux.html#works">完整 UI/UX 作品 →</a>
+      </div>
+
+      <div class="make-item">
+        <span class="tag">Experience · 現場體驗</span>
+        <h3>空間與陳列<small>門市・櫥窗・展場</small></h3>
+        <p>讓視覺進入真實空間，安排動線、節奏與焦點，是最接近布展的一段實務。</p>
+        <div class="make-empty">案例整理中</div>
+      </div>
+
+      <div class="make-item">
+        <span class="tag">After · 記錄與延伸</span>
+        <h3>影像與紀實<small>攝影・現場紀錄</small></h3>
+        <p>用鏡頭記錄地方、光線與人，構圖、氛圍與敘事是展後延伸的基本功。</p>
+        <div class="make-empty">影像整理中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ iv. 延伸閱讀 ══ -->
+<section class="bridge" id="more">
+  <div class="bridge-inner">
+    <div>
+      <h2>想看完整的執行作品，<span class="accent">這裡有兩本。</span></h2>
+      <p>
+        這一頁講方向與方法。平面設計與 UI/UX 各有一本完整作品集，
+        是我把企劃落地時真正會用上的兩隻手。
+      </p>
+    </div>
+  </div>
+  <div class="bridge-inner" style="display:block">
+    <div class="ext">
+      <a href="index_visual.html">
+        <div class="strip">
+          <img src="images/visual-social/03.jpg" alt="" loading="lazy"/>
+          <img src="images/EDM/03.jpg" alt="" loading="lazy"/>
+          <img src="images/visual-travel/01.jpg" alt="" loading="lazy"/>
+        </div>
+        <div class="tx">
+          <span class="lat">Graphic Design</span>
+          <h3>平面設計作品集</h3>
+          <p>型錄、DM、主視覺、社群圖文、EDM、包裝——從完稿到印刷輸出。</p>
+          <span class="go">前往閱讀 →</span>
+        </div>
+      </a>
+      <a href="index_ux.html">
+        <div class="strip">
+          <img src="images/landing/cover.jpg" alt="" loading="lazy"/>
+          <img src="images/y26/cover.jpg" alt="" loading="lazy"/>
+          <img src="images/w1/cover.jpg" alt="" loading="lazy"/>
+        </div>
+        <div class="tx">
+          <span class="lat">UI / UX</span>
+          <h3>UI/UX 作品集</h3>
+          <p>活動頁、網站翻新、B2B 介面與設計系統——附完整研究與流程。</p>
+          <span class="go">前往閱讀 →</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -579,15 +708,16 @@
 <section class="about" id="about">
   <div class="about-inner">
     <div>
-      <h2>從<span class="accent">美術</span>出發的<br>視覺工作者</h2>
+      <h2>從<span class="accent">美術</span>出發，<br>走向企劃</h2>
       <p class="about-lead">
         <em>台南應用科技大學・美術學系</em>畢業，受的是純美術的訓練——素描、繪畫、色彩與創作。
         這是我看待所有視覺的根。<br><br>
         七年之間，我把這個根帶進不同的現場：旅遊的圖文、印刷的完稿、電商的主視覺、
         工業與 SaaS 的介面。每一段都在練同一件事——<em>把複雜的東西，變成好看又好懂的樣子</em>。
-        現在，我想回到最需要這種能力的藝文領域。
+        現在，我想把這些能力往前推一步：不只做視覺，而是從命題開始，企劃一檔展覽或一場活動。
       </p>
       <div class="capabilities">
+        <div class="cap-row"><span class="lb">企劃</span><span class="vl">命題發想・提案撰寫・體驗與動線規劃（自主提案進行中）</span></div>
         <div class="cap-row"><span class="lb">純美術</span><span class="vl">素描・繪畫・色彩・構成</span></div>
         <div class="cap-row"><span class="lb">平面與印刷</span><span class="vl">主視覺・海報／DM・完稿・紙材與輸出</span></div>
         <div class="cap-row"><span class="lb">影像</span><span class="vl">攝影・紀實・後製</span></div>
@@ -595,7 +725,7 @@
         <div class="cap-row"><span class="lb">數位</span><span class="vl">網頁／RWD・UI/UX・Design System</span></div>
         <div class="cap-row"><span class="lb">工具</span><span class="vl">Illustrator・Photoshop・InDesign・Figma・Canva</span></div>
       </div>
-      <p class="about-cap">A designer with a fine-arts root, working across print, image, space and screen.</p>
+      <p class="about-cap">A designer with a fine-arts root, moving from making visuals to shaping the whole experience.</p>
     </div>
 
     <div>
@@ -637,11 +767,11 @@
 
 <!-- ══ 聯絡 / 頁尾 ══ -->
 <section class="foot" id="contact">
-  <p class="big">如果你的展覽、活動或品牌，<br>正在找一個懂設計、也做視覺紀錄的人——</p>
+  <p class="big">如果你的展覽或活動，<br>正在找一個能提出題目、也能親手把它做出來的人——</p>
   <a class="mail" href="mailto:sarita445645@gmail.com">sarita445645@gmail.com</a>
   <p class="meta">
-    Sarita · 藝文視覺・影像・空間 · Taiwan 2026<br>
-    平面 · 印刷 · 攝影紀錄 · 空間陳列 · 展覽視覺
+    Sarita · 展覽與活動企劃 · Taiwan 2026<br>
+    命題 · 體驗 · 主視覺 · 空間 · 線上延伸
   </p>
   <div class="more-links">
     <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download>履歷下載</a>
