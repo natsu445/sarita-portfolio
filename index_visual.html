@@ -2040,7 +2040,15 @@
       .version-switch a { text-align: center; border-right: 1px solid rgba(255, 255, 255, .14) }
       .version-switch a:last-child { border-right: 0 }
     }
-</style>
+    /* 從 UI/UX 頁過來時的返回按鈕 */
+    .back-to-ux{position:fixed;left:20px;bottom:20px;z-index:600;display:none;align-items:center;gap:.45rem;
+      font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink2);text-decoration:none;
+      background:var(--card);border:1px solid var(--border);border-radius:40px;padding:10px 18px;
+      box-shadow:0 8px 24px rgba(24,24,26,.10);transition:border-color .2s,color .2s}
+    .back-to-ux:hover{border-color:var(--g);color:var(--g)}
+    .back-to-ux.show{display:inline-flex}
+    @media (max-width:600px){.back-to-ux{left:16px;bottom:16px;font-size:12px;padding:9px 15px}}
+  </style>
 </head>
 <body>
   <div id="cursor"></div>
@@ -2216,21 +2224,25 @@
           </div>
         </div>
         <div class="vm vm-masonry c4">
-          <img src="images/visual-social/01.jpg" alt="社群圖文 1" loading="lazy" />
-          <img src="images/visual-social/02.jpg" alt="社群圖文 2" loading="lazy" />
-          <img src="images/visual-social/03.jpg" alt="社群圖文 3" loading="lazy" />
-          <img src="images/visual-social/04.jpg" alt="社群圖文 4" loading="lazy" />
-          <img src="images/visual-social/05.jpg" alt="社群圖文 5" loading="lazy" />
-          <img src="images/visual-social/06.jpg" alt="社群圖文 6" loading="lazy" />
-          <img src="images/visual-social/07.jpg" alt="社群圖文 7" loading="lazy" />
-          <img src="images/visual-social/08.jpg" alt="能源管理 × 碳盤查 CBAM 1" loading="lazy" />
-          <img src="images/visual-social/09.jpg" alt="能源管理 × 碳盤查 CBAM 2" loading="lazy" />
-          <img src="images/visual-social/10.jpg" alt="能源管理 × 碳盤查 CBAM 3" loading="lazy" />
-          <img src="images/visual-social/11.jpg" alt="中小型醫材代理 1" loading="lazy" />
-          <img src="images/visual-social/12.jpg" alt="中小型醫材代理 2" loading="lazy" />
-        </div>
-        <div class="vm vm-cols2" style="margin-top:14px;">
-          <img class="span2" src="images/visual-social/13.jpg" alt="AI 實作體驗課程橫幅" loading="lazy" />
+          <img src="images/visual-social/01.jpg" alt="設備業智慧售服 — AI 讓售後服務成為商機引擎" loading="lazy" />
+          <img src="images/visual-social/02.jpg" alt="設備業智慧售服 — 售服 3 大斷點" loading="lazy" />
+          <img src="images/visual-social/03.jpg" alt="設備業專案管理 — 掌握 3 大關鍵" loading="lazy" />
+          <img src="images/visual-social/04.jpg" alt="設備業專案管理 — 提升 3 大能力" loading="lazy" />
+          <img src="images/visual-social/05.jpg" alt="不改機台的 AI 革命 — 跨設備聯動實境秀" loading="lazy" />
+          <img src="images/visual-social/06.jpg" alt="AI 頭家嚴選 — 企業 AI Agent 落地實務" loading="lazy" />
+          <img src="images/visual-social/07.jpg" alt="能源管理 × 碳盤查 CBAM 1" loading="lazy" />
+          <img src="images/visual-social/08.jpg" alt="能源管理 × 碳盤查 CBAM 2" loading="lazy" />
+          <img src="images/visual-social/09.jpg" alt="能源管理 × 碳盤查 CBAM 3" loading="lazy" />
+          <img src="images/visual-social/10.jpg" alt="中小企業低成本能源管理" loading="lazy" />
+          <img src="images/visual-social/11.jpg" alt="食品加工業 — 食安溯源" loading="lazy" />
+          <img src="images/visual-social/12.jpg" alt="金屬業 — 庫存精準度提升" loading="lazy" />
+          <img src="images/visual-social/13.jpg" alt="缺工時代的庫存管理" loading="lazy" />
+          <img src="images/visual-social/14.jpg" alt="人事管理" loading="lazy" />
+          <img src="images/visual-social/15.jpg" alt="中小企業人事系統" loading="lazy" />
+          <img src="images/visual-social/16.jpg" alt="中小型醫材代理 1" loading="lazy" />
+          <img src="images/visual-social/17.jpg" alt="中小型醫材代理 2" loading="lazy" />
+          <img src="images/visual-social/18.jpg" alt="社群圖文延展" loading="lazy" />
+          <img src="images/visual-social/19.jpg" alt="AI 實作體驗課程橫幅" loading="lazy" />
         </div>
       </article>
 
@@ -2287,97 +2299,260 @@
       </div>
       <p class="section-note reveal">近三年把平面的根帶進數位——UI/UX 介面、RWD 網頁，並具備 HTML／CSS 切版能力。點擊可瀏覽各專案圖庫；完整案例與研究過程收錄於 UI/UX 版作品集。</p>
       <div class="works-grid">
+        <div class="work-card reveal" data-cat="ux" onclick="openGallery('b2b',0)">
+          <div class="work-thumb t-olive"
+            style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">B2B Website</div>
+            <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
+            <div class="work-desc">GA4 數據審計 + 任務導向網格，讓核心產品從 L3 深層浮出，轉換漏斗全面重整。</div>
+            <div class="ux-tags"><span class="ux-tag">數據審計</span><span class="ux-tag">任務導向</span><span class="ux-tag">AI
+                整合</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span class="work-tool">HTML / CSS</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-1" data-cat="ux" onclick="openGallery('agentexp',0)">
+          <div class="work-thumb t-indigo"
+            style="background-image:url(images/agentexp/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Redesign / Experience</div>
+            <div class="work-title">網頁翻新 — AI Agent 體驗中心</div>
+            <div class="work-desc">分析使用者流失點，簡化五步驟動線，3 天內完成設計稿到可交付 HTML，讓沉浸式 AI 體驗真正被走完。</div>
+            <div class="ux-tags"><span class="ux-tag">動線優化</span><span class="ux-tag">使用者引導</span><span class="ux-tag">快速交付</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-2" data-cat="ux" onclick="openGallery('w11',0)">
+          <div class="work-thumb t-slate"
+            style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Industrial HMI</div>
+            <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
+            <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
+            <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span
+                class="ux-tag">IA 重構</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span
+                  class="work-tool">Illustrator</span><span class="work-tool">VS Code</span><span class="work-tool">HTML / CSS</span></div><span
+                class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal" data-cat="ux" onclick="openGallery('esg',0)">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/esg/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web / Landing Page</div>
+            <div class="work-title">ESG 永續數據館 — 高密度內容的網頁化</div>
+            <div class="work-desc">PM 給的是一張 23 吋長的 EDM 稿，我把它拆開重新分層：角色變進入點、密集循環表改成全年循環、抽象挑戰落成壓力清單。</div>
+            <div class="ux-tags"><span class="ux-tag">內容重構</span><span class="ux-tag">資訊層級</span><span
+                class="ux-tag">HTML 切版</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span
+                  class="work-tool">Claude</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-1" data-cat="ux" onclick="openGallery('survey',0)">
+          <div class="work-thumb t-clay"
+            style="background-image:url(images/survey/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Form / Lead Gen</div>
+            <div class="work-title">關稅評量問卷網頁</div>
+            <div class="work-desc">5 階段進度條降低棄填率，古騰堡動線佈局數據對比，五星評等化解語意模糊問題。</div>
+            <div class="ux-tags"><span class="ux-tag">進度引導</span><span class="ux-tag">數據視覺化</span><span
+                class="ux-tag">心理模型</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-2" data-cat="ux" onclick="openGallery('csc',0)">
+          <div class="work-thumb t-moss"
+            style="background-image:url(images/csc/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web App / GIS</div>
+            <div class="work-title">中鋼 CSC 街景地圖</div>
+            <div class="work-desc">受限內網的廠區 GIS 導航，雙模式切換 + 色彩分級，讓維修人員出發前建立空間記憶。</div>
+            <div class="ux-tags"><span class="ux-tag">GIS 設計</span><span class="ux-tag">色彩系統</span><span
+                class="ux-tag">元件規範</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="see-more-wrap" style="grid-column:1/-1;">
+          <button id="see-more-btn" onclick="toggleMoreWorks()">閱讀更多 ▾</button>
+        </div> -->
+        <div id="more-works" class="hidden">
         <div class="work-card reveal" data-cat="ux" onclick="openGallery('erp07',0)">
-          <div class="work-thumb t-navy" style="background-image:url(images/20261109/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
+          <div class="work-thumb t-navy"
+            style="background-image:url(images/20261109/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
           <div class="work-body">
             <div class="work-cat">Landing Page / AI 協作</div>
-            <div class="work-title">ERP 選型推廣頁 — 依企業規模找到起點</div>
-            <div class="work-desc">把四條 ERP 產品線依企業規模與營運型態分流，搭配成長路徑與實證數據，讓決策者先找到起點、再預約諮詢；與 AI 協作完成設計到切版。</div>
-            <div class="ux-tags"><span class="ux-tag">選型分流</span><span class="ux-tag">資訊架構</span><span class="ux-tag">AI 協作</span></div>
+            <div class="work-title">ERP 推廣頁 — 與 AI 協作 3 天完成上線</div>
+            <div class="work-desc">依 PM 提供的文案與規劃，與 AI 協作在 3 天內完成插圖、版面編排、HTML 切版到上線。</div>
+            <div class="ux-tags"><span class="ux-tag">AI 協作</span><span class="ux-tag">HTML 切版</span><span class="ux-tag">插圖配置</span></div>
             <div class="work-footer">
               <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span class="work-tool">Claude</span></div>
               <span class="work-year">2026</span>
             </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="ux" onclick="openGallery('b2b',0)">
-          <div class="work-thumb t-olive" style="background-image:url(images/b2b/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">B2B Website</div>
-            <div class="work-title">官網重構 — 數據驅動的 B2B 架構轉型</div>
-            <div class="work-desc">GA4 數據審計 + 任務導向網格，讓核心產品從 L3 深層浮出，轉換漏斗全面重整。</div>
-            <div class="ux-tags"><span class="ux-tag">數據審計</span><span class="ux-tag">任務導向</span><span class="ux-tag">AI 整合</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
-              <span class="work-year">2025</span>
-            </div>
+        <div class="work-card reveal reveal-delay-1" data-cat="ux" onclick="openGallery('w433',0)">
+          <div class="work-thumb t-teal"
+            style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
           </div>
-        </div>
-        <div class="work-card reveal" data-cat="ux" onclick="openGallery('agentexp',0)">
-          <div class="work-thumb t-indigo" style="background-image:url(images/agentexp/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
-          <div class="work-body">
-            <div class="work-cat">Web Redesign / Experience</div>
-            <div class="work-title">網頁翻新 — AI Agent 體驗中心</div>
-            <div class="work-desc">分析使用者流失點，簡化五步驟動線，3 天內完成設計稿到可交付 HTML。</div>
-            <div class="ux-tags"><span class="ux-tag">動線優化</span><span class="ux-tag">使用者引導</span><span class="ux-tag">快速交付</span></div>
-            <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
-              <span class="work-year">2026</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card reveal" data-cat="ux" onclick="openGallery('w433',0)">
-          <div class="work-thumb t-teal" style="background-image:url(images/w433/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
           <div class="work-body">
             <div class="work-cat">Industrial HMI</div>
             <div class="work-title">中鋼 W433 球化場 HMI</div>
             <div class="work-desc">30 年老系統翻新，漸進式優化讓警報重新擁有存在感，不破壞肌肉記憶地重建視覺層級。</div>
-            <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span class="ux-tag">視覺層級</span></div>
+            <div class="ux-tags"><span class="ux-tag">使用者訪談</span><span class="ux-tag">漸進優化</span><span
+                class="ux-tag">視覺層級</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span><span class="work-tool">HTML / CSS</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-2" data-cat="ux" onclick="openGallery('w1',0)">
+          <div class="work-thumb t-indigo"
+            style="background-image:url(images/w1/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Smart Factory</div>
+            <div class="work-title">W1 場內運輸智慧工廠平台重構</div>
+            <div class="work-desc">HMI to Web 遷移，現場走訪後導入實景照片，轉盤導航解決清單撈針問題。</div>
+            <div class="ux-tags"><span class="ux-tag">現場走訪</span><span class="ux-tag">資訊架構</span><span
+                class="ux-tag">模組化</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal" data-cat="ux" onclick="openGallery('landing',0)">
+          <div class="work-thumb t-green"
+            style="background-image:url(images/landing/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Landing Page</div>
+            <div class="work-title">知識平台導流推廣頁（夥伴營銷）</div>
+            <div class="work-desc">針對中小企業決策者的導流設計，「精煉標題 + 清晰 CTA」縮短決策路徑提升轉換。</div>
+            <div class="ux-tags"><span class="ux-tag">轉換率優化</span><span class="ux-tag">內容減法</span><span
+                class="ux-tag">CTA 策略</span></div>
             <div class="work-footer">
               <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
               <span class="work-year">2025</span>
             </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="ux" onclick="openGallery('w11',0)">
-          <div class="work-thumb t-forest" style="background-image:url(images/w11/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
+        <div class="work-card reveal reveal-delay-1" data-cat="ux" onclick="openGallery('calculator',0)">
+          <div class="work-thumb t-amber"
+            style="background-image:url(images/calculator/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
           <div class="work-body">
-            <div class="work-cat">Industrial HMI</div>
-            <div class="work-title">中鋼 W11 生產資訊系統 HMI</div>
-            <div class="work-desc">走訪廠房現場，跨世代設計策略讓老手與新人都能無痛操作，把數位圖示與物理現場對齊。</div>
-            <div class="ux-tags"><span class="ux-tag">現場田調</span><span class="ux-tag">跨世代設計</span><span class="ux-tag">IA 重構</span></div>
+            <div class="work-cat">Web Tool / Lead Gen</div>
+            <div class="work-title">獲利計算機</div>
+            <div class="work-desc">因應關稅議題的毛利試算工具，Teaser Design 誘餌策略 + Lead Gen 轉化機制。</div>
+            <div class="ux-tags"><span class="ux-tag">Lead Gen</span><span class="ux-tag">Teaser Design</span><span
+                class="ux-tag">互動回饋</span></div>
             <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div>
-              <span class="work-year">2024</span>
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">VS Code</span></div>
+              <span class="work-year">2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="work-card reveal reveal-delay-2" data-cat="ux" onclick="openGallery('y26',0)">
+          <div class="work-thumb t-navy"
+            style="background-image:url(images/y26/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Recruitment</div>
+            <div class="work-title">Y26 招募網翻新設計</div>
+            <div class="work-desc">刪除外鏈降低流量流失，色彩編碼解決五大職務辨識問題，模組化建構讓 PM 維護輕鬆。</div>
+            <div class="ux-tags"><span class="ux-tag">色彩編碼</span><span class="ux-tag">轉換率</span><span
+                class="ux-tag">模組化管理</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2026</span>
             </div>
           </div>
         </div>
         <div class="work-card reveal" data-cat="ux" onclick="openGallery('hongxin',0)">
-          <div class="work-thumb t-rose" style="background-image:url(images/hongxin/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
+          <div class="work-thumb t-rose"
+            style="background-image:url(images/hongxin/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
           <div class="work-body">
             <div class="work-cat">E-Commerce</div>
             <div class="work-title">弘信生醫 — 多品牌美妝電商架構重組</div>
             <div class="work-desc">多品牌共站的分類重整，以產品類型為主軸、品牌收於其下，並建立基礎元件與狀態規範。</div>
-            <div class="ux-tags"><span class="ux-tag">資訊架構</span><span class="ux-tag">元件狀態規範</span><span class="ux-tag">跨團隊協作</span></div>
+            <div class="ux-tags"><span class="ux-tag">資訊架構</span><span class="ux-tag">元件狀態規範</span><span
+                class="ux-tag">跨團隊協作</span></div>
             <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span></div>
-              <span class="work-year">2023</span>
+              <div class="work-tools"><span class="work-tool">Figma</span></div><span class="work-year">2023</span>
             </div>
           </div>
         </div>
-        <div class="work-card reveal" data-cat="ux" onclick="openGallery('yisen',0)">
-          <div class="work-thumb t-warm" style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;"><div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div></div>
+        <div class="work-card reveal reveal-delay-1" data-cat="ux" onclick="openGallery('yisen',0)">
+          <div class="work-thumb t-warm"
+            style="background-image:url(images/yisen/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
           <div class="work-body">
             <div class="work-cat">Brand + UIUX</div>
             <div class="work-title">永昇冷凍食品 — 壹然品牌設計</div>
             <div class="work-desc">新創天然食品品牌 0 → 1，SEO 佈局核心 + 扁平化 IA，Mobile First 傳遞無添加理念。</div>
-            <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span class="ux-tag">Mobile First</span></div>
+            <div class="ux-tags"><span class="ux-tag">SEO 架構</span><span class="ux-tag">品牌建立</span><span
+                class="ux-tag">Mobile First</span></div>
             <div class="work-footer">
-              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span></div>
-              <span class="work-year">2023</span>
+              <div class="work-tools"><span class="work-tool">Figma</span><span class="work-tool">Illustrator</span>
+              </div><span class="work-year">2023</span>
             </div>
           </div>
         </div>
+        <div class="work-card reveal reveal-delay-2" data-cat="ux" onclick="openGallery('dingxin',0)">
+          <div class="work-thumb t-forest"
+            style="background-image:url(images/dingxin/cover.jpg);background-size:cover;background-position:center top;">
+            <div class="work-overlay"><span class="work-overlay-text">查看作品</span><span class="work-overlay-sub">點擊瀏覽圖庫</span></div>
+          </div>
+          <div class="work-body">
+            <div class="work-cat">Web Redesign</div>
+            <div class="work-title">企業官網 — 關於我們頁面重製</div>
+            <div class="work-desc">Claude + Figma + VS Code 協作完成，AI 輔助設計流程的實際落地。</div>
+            <div class="ux-tags"><span class="ux-tag">AI 協作</span><span class="ux-tag">設計轉開發</span><span
+                class="ux-tag">品牌形象</span></div>
+            <div class="work-footer">
+              <div class="work-tools"><span class="work-tool">Claude</span><span class="work-tool">Figma</span><span
+                  class="work-tool">VS Code</span></div><span class="work-year">2026</span>
+            </div>
+          </div>
+        </div>
+        </div><!-- end more-works -->
       </div>
       <div class="uxcta reveal">
         <a href="index_ux.html#works">看完整 UI/UX 案例介紹與研究過程 →</a>
@@ -2481,8 +2656,8 @@
           <div class="exp-timeline">
             <div class="exp-item">
               <div class="exp-period">2025 — 仍在職</div>
-              <div class="exp-role">UI 設計師</div>
-              <div class="exp-company">台灣 ERP 軟體公司 · B2B SaaS</div>
+              <div class="exp-role">視覺設計師</div>
+              <div class="exp-company">鼎新數智 · 行銷視覺／網頁</div>
             </div>
             <div class="exp-item">
               <div class="exp-period">2024</div>
@@ -2514,25 +2689,7 @@
     </div>
   </section>
 
-  <section id="contact" style="background:var(--card);">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="section-note reveal">開放接受平面設計／美編、視覺設計、UI/UX 相關職缺。擅長從完稿到上線的整段流程，也樂於接觸影音與動態等新工具。歡迎來信聊聊你的專案或職缺，我會儘快回覆。</p>
-      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;margin-top:1.8rem;">
-        <a href="mailto:sarita445645@gmail.com" class="btn btn-primary">寄信給我</a>
-        <a href="https://drive.google.com/file/d/1pd5FID6bAydXw6Sl009qR9UDRWySe-uT/view?usp=sharing" download style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.82rem;color:var(--g-dark);text-decoration:none;border:1px solid var(--border);padding:.75rem 1.4rem;border-radius:40px;background:transparent;transition:border-color .3s,color .3s;" onmouseover="this.style.borderColor='var(--g)';this.style.color='var(--g)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--g-dark)'">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1v9m0 0L5 7m3 3 3-3M2 13h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          下載履歷
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
+  <footer id="contact">
     <div class="footer-versions" role="navigation" aria-label="作品集版本">
       <span class="version-label">Portfolio</span>
       <div class="version-switch">
@@ -2566,7 +2723,7 @@
   </div>
 
   <script>
-    const GAL = {"erp07": ["images/20261109/gallery-01.jpg"], "catalog": ["images/travel-catalog/01-1.jpg", "images/travel-catalog/01-2.jpg", "images/travel-catalog/01-3.jpg", "images/travel-catalog/01-4.jpg", "images/travel-catalog/02-1.jpg", "images/travel-catalog/02-2.jpg", "images/travel-catalog/02-3.jpg", "images/travel-catalog/02-4.jpg", "images/travel-catalog/03-1.jpg", "images/travel-catalog/03-2.jpg", "images/travel-catalog/03-3.jpg", "images/travel-catalog/04-1.jpg", "images/travel-catalog/04-2.jpg", "images/travel-catalog/04-3.jpg", "images/travel-catalog/04-4.jpg", "images/travel-catalog/05-1.jpg", "images/travel-catalog/05-2.jpg", "images/travel-catalog/05-3.jpg", "images/travel-catalog/05-4.jpg", "images/travel-catalog/06-1.jpg", "images/travel-catalog/06-2.jpg", "images/travel-catalog/06-3.jpg", "images/travel-catalog/06-4.jpg", "images/travel-catalog/06-5.jpg"], "tvdm": ["images/travel-dm/07-1.jpg", "images/travel-dm/07-2.jpg", "images/travel-dm/07-3.jpg", "images/travel-dm/07-4.jpg", "images/travel-dm/08-1.jpg", "images/travel-dm/08-2.jpg", "images/travel-dm/08-3.jpg", "images/travel-dm/08-4.jpg", "images/travel-dm/09-1.jpg", "images/travel-dm/09-2.jpg", "images/travel-dm/09-3.jpg", "images/travel-dm/09-4.jpg", "images/travel-dm/10-1.jpg", "images/travel-dm/10-2.jpg", "images/travel-dm/10-3.jpg", "images/travel-dm/10-4.jpg", "images/visual-travel/11.jpg"], "kv": ["images/visual-ecom/01.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/12.jpg"], "dm": ["images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg"], "pkg": ["images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg"], "social": ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg", "images/visual-social/08.jpg", "images/visual-social/09.jpg", "images/visual-social/10.jpg", "images/visual-social/11.jpg", "images/visual-social/12.jpg", "images/visual-social/13.jpg"], "edm": ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"], "photo": ["images/photography/01.jpg", "images/photography/02.jpg", "images/photography/03.jpg", "images/photography/04.jpg", "images/photography/05.jpg", "images/photography/06.jpg"], "b2b": ["images/b2b/cover.jpg", "images/b2b/gallery-01.jpg"], "agentexp": ["images/agentexp/cover.jpg", "images/agentexp/gallery-01.jpg", "images/agentexp/gallery-02.jpg", "images/agentexp/gallery-03.jpg", "images/agentexp/gallery-04.jpg", "images/agentexp/gallery-05.jpg", "images/agentexp/gallery-06.jpg", "images/agentexp/gallery-07.jpg"], "w433": ["images/w433/cover.jpg", "images/w433/gallery-01.jpg", "images/w433/gallery-02.jpg", "images/w433/gallery-03.jpg", "images/w433/gallery-04.jpg", "images/w433/gallery-05.jpg", "images/w433/gallery-06.jpg", "images/w433/gallery-07.jpg", "images/w433/gallery-08.jpg", "images/w433/gallery-09.jpg", "images/w433/gallery-10.jpg", "images/w433/gallery-11.jpg", "images/w433/gallery-12.jpg"], "w11": ["images/w11/cover.jpg", "images/w11/gallery-01.jpg", "images/w11/gallery-02.jpg"], "hongxin": ["images/hongxin/cover.jpg", "images/hongxin/gallery-01.jpg", "images/hongxin/gallery-02.jpg", "images/hongxin/gallery-03.jpg", "images/hongxin/gallery-04.jpg", "images/hongxin/gallery-05.jpg"], "yisen": ["images/yisen/cover.jpg", "images/yisen/gallery-01.jpg", "images/yisen/gallery-02.jpg", "images/yisen/gallery-03.jpg"]};
+    const GAL = {"erp07": ["images/20261109/gallery-01.jpg"], "catalog": ["images/travel-catalog/01-1.jpg", "images/travel-catalog/01-2.jpg", "images/travel-catalog/01-3.jpg", "images/travel-catalog/01-4.jpg", "images/travel-catalog/02-1.jpg", "images/travel-catalog/02-2.jpg", "images/travel-catalog/02-3.jpg", "images/travel-catalog/02-4.jpg", "images/travel-catalog/03-1.jpg", "images/travel-catalog/03-2.jpg", "images/travel-catalog/03-3.jpg", "images/travel-catalog/04-1.jpg", "images/travel-catalog/04-2.jpg", "images/travel-catalog/04-3.jpg", "images/travel-catalog/04-4.jpg", "images/travel-catalog/05-1.jpg", "images/travel-catalog/05-2.jpg", "images/travel-catalog/05-3.jpg", "images/travel-catalog/05-4.jpg", "images/travel-catalog/06-1.jpg", "images/travel-catalog/06-2.jpg", "images/travel-catalog/06-3.jpg", "images/travel-catalog/06-4.jpg", "images/travel-catalog/06-5.jpg"], "tvdm": ["images/travel-dm/07-1.jpg", "images/travel-dm/07-2.jpg", "images/travel-dm/07-3.jpg", "images/travel-dm/07-4.jpg", "images/travel-dm/08-1.jpg", "images/travel-dm/08-2.jpg", "images/travel-dm/08-3.jpg", "images/travel-dm/08-4.jpg", "images/travel-dm/09-1.jpg", "images/travel-dm/09-2.jpg", "images/travel-dm/09-3.jpg", "images/travel-dm/09-4.jpg", "images/travel-dm/10-1.jpg", "images/travel-dm/10-2.jpg", "images/travel-dm/10-3.jpg", "images/travel-dm/10-4.jpg", "images/visual-travel/11.jpg"], "kv": ["images/visual-ecom/01.jpg", "images/visual-ecom/04.jpg", "images/visual-ecom/05.jpg", "images/visual-ecom/06.jpg", "images/visual-ecom/07.jpg", "images/visual-ecom/12.jpg"], "dm": ["images/visual-ecom/08.jpg", "images/visual-ecom/09.jpg"], "pkg": ["images/visual-ecom/10.jpg", "images/visual-ecom/11.jpg", "images/visual-ecom/02.jpg", "images/visual-ecom/03.jpg"], "social": ["images/visual-social/01.jpg", "images/visual-social/02.jpg", "images/visual-social/03.jpg", "images/visual-social/04.jpg", "images/visual-social/05.jpg", "images/visual-social/06.jpg", "images/visual-social/07.jpg", "images/visual-social/08.jpg", "images/visual-social/09.jpg", "images/visual-social/10.jpg", "images/visual-social/11.jpg", "images/visual-social/12.jpg", "images/visual-social/13.jpg", "images/visual-social/14.jpg", "images/visual-social/15.jpg", "images/visual-social/16.jpg", "images/visual-social/17.jpg", "images/visual-social/18.jpg", "images/visual-social/19.jpg"], "edm": ["images/EDM/01.jpg", "images/EDM/02.png", "images/EDM/03.jpg"], "photo": ["images/photography/01.jpg", "images/photography/02.jpg", "images/photography/03.jpg", "images/photography/04.jpg", "images/photography/05.jpg", "images/photography/06.jpg"], "b2b": ["images/b2b/cover.jpg", "images/b2b/gallery-01.jpg"], "agentexp": ["images/agentexp/cover.jpg", "images/agentexp/gallery-01.jpg", "images/agentexp/gallery-02.jpg", "images/agentexp/gallery-03.jpg", "images/agentexp/gallery-04.jpg", "images/agentexp/gallery-05.jpg", "images/agentexp/gallery-06.jpg", "images/agentexp/gallery-07.jpg"], "w433": ["images/w433/cover.jpg", "images/w433/gallery-01.jpg", "images/w433/gallery-02.jpg", "images/w433/gallery-03.jpg", "images/w433/gallery-04.jpg", "images/w433/gallery-05.jpg", "images/w433/gallery-06.jpg", "images/w433/gallery-07.jpg", "images/w433/gallery-08.jpg", "images/w433/gallery-09.jpg", "images/w433/gallery-10.jpg", "images/w433/gallery-11.jpg", "images/w433/gallery-12.jpg"], "w11": ["images/w11/cover.jpg", "images/w11/gallery-01.jpg", "images/w11/gallery-02.jpg"], "hongxin": ["images/hongxin/cover.jpg", "images/hongxin/gallery-01.jpg", "images/hongxin/gallery-02.jpg", "images/hongxin/gallery-03.jpg", "images/hongxin/gallery-04.jpg", "images/hongxin/gallery-05.jpg"], "yisen": ["images/yisen/cover.jpg", "images/yisen/gallery-01.jpg", "images/yisen/gallery-02.jpg", "images/yisen/gallery-03.jpg"], "esg": ["images/esg/01.jpg", "images/esg/02.jpg"], "w1": ["images/w1/gallery-01.jpg", "images/w1/gallery-02.jpg"], "csc": ["images/csc/gallery-01.jpg", "images/csc/gallery-02.jpg", "images/csc/gallery-03.jpg"], "landing": ["images/landing/gallery-01.jpg"], "calculator": ["images/calculator/gallery-01.jpg", "images/calculator/gallery-02.jpg", "images/calculator/gallery-03.jpg"], "survey": ["images/survey/gallery-01.jpg"], "y26": ["images/y26/gallery-01.jpg", "images/y26/gallery-02.jpg", "images/y26/gallery-03.jpg", "images/y26/gallery-04.jpg", "images/y26/gallery-05.jpg", "images/y26/gallery-06.jpg"], "dingxin": ["images/dingxin/gallery-01.jpg", "images/dingxin/gallery-02.jpg"]};
     let _g='', _i=0;
     // 尚未上傳的圖片 → 顯示「準備中」占位，不出現破圖
     const _PH = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440"><rect width="100%" height="100%" fill="#eef1ec"/><text x="50%" y="50%" font-family="monospace" font-size="22" fill="#6b8f76" text-anchor="middle" dominant-baseline="middle">圖片準備中 · Coming soon</text></svg>');
@@ -2578,6 +2735,12 @@
       document.getElementById('lightboxImg').src = a[idx];
       document.getElementById('lightboxCounter').textContent = (idx+1)+' / '+a.length;
       document.getElementById('lightbox').classList.add('open');
+    }
+    function toggleMoreWorks(){
+      const wrap=document.getElementById('more-works');
+      const btn=document.getElementById('see-more-btn');
+      const open=wrap.classList.toggle('hidden')===false;
+      btn.textContent = open ? '收起 ▴' : '閱讀更多 ▾';
     }
     function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
     function closeLightboxIfBg(e){ if(e.target===document.getElementById('lightbox')) closeLightbox(); }
@@ -2648,6 +2811,21 @@
         });
       }, { threshold:.4 }).observe(s);
     });
+  </script>
+  <a class="back-to-ux" id="backToUx" href="index_ux.html#visual">← 回到 UI/UX 作品集</a>
+  <script>
+    // 只有從 UI/UX 頁點過來才顯示；優先用瀏覽器返回，保留原本位置
+    (function(){
+      const btn=document.getElementById('backToUx');
+      let fromUx=new URLSearchParams(location.search).get('from')==='ux';
+      try{ if(fromUx) sessionStorage.setItem('fromUx','1'); else fromUx=sessionStorage.getItem('fromUx')==='1'; }catch(e){}
+      if(!fromUx) return;
+      btn.classList.add('show');
+      btn.addEventListener('click',e=>{
+        if(document.referrer.indexOf('index_ux.html')!==-1 && history.length>1){ e.preventDefault(); history.back(); }
+        try{ sessionStorage.removeItem('fromUx'); }catch(err){}
+      });
+    })();
   </script>
 </body>
 </html>
